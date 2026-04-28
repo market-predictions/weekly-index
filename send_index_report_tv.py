@@ -61,6 +61,16 @@ def linkify_tokens_in_text_md(text: str) -> str:
     return TOKEN_RE.sub(repl, text)
 
 
+def _append_escaped_prefix_preserving_terminal_space(out: list[str], prefix: str) -> None:
+    if not prefix:
+        return
+    if prefix.endswith(" "):
+        out.append(_base.esc(prefix[:-1]))
+        out.append("&nbsp;")
+    else:
+        out.append(_base.esc(prefix))
+
+
 def linkify_inline_tickers_html(text: str) -> str:
     raw = _base.clean_md_inline(text)
     out: list[str] = []
@@ -69,10 +79,10 @@ def linkify_inline_tickers_html(text: str) -> str:
         token = match.group(1)
         if not is_probable_ticker(token):
             continue
-        out.append(_base.esc(raw[last:match.start()]))
+        _append_escaped_prefix_preserving_terminal_space(out, raw[last:match.start()])
         out.append(ticker_anchor_html(token))
         last = match.end()
-    out.append(_base.esc(raw[last:]))
+    _append_escaped_prefix_preserving_terminal_space(out, raw[last:])
     return "".join(out)
 
 
