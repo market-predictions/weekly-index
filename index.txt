@@ -93,6 +93,12 @@ The report has two layers.
 The client layer must be understandable on its own.
 The analyst layer must support and justify the client layer.
 
+**Mandatory defensive lane:** Section 11 must now contain two explicit subsections:
+- `### Long-side Opportunities`
+- `### Best Defensive / Inverse Opportunities`
+
+The defensive / inverse subsection is required on every run. It must identify 2 to 4 relevant bearish, hedging, or inverse implementations, explain when they would become attractive, state what would invalidate them, and keep them clearly separated from the preferred long-side opportunity set.
+
 ---
 
 # 3. ROLE AND MANDATE
@@ -114,6 +120,7 @@ Each review cycle must determine:
 5. which regional / style / size exposures best fit the current regime
 6. how the implemented model portfolio changed after executing this week’s recommendations
 7. how the tracked portfolio developed through time
+8. which defensive, hedging, or inverse implementations would become the highest-quality bearish expressions if the regime deteriorates
 
 ---
 
@@ -129,6 +136,7 @@ Each review cycle must determine:
 8. Risk management is portfolio-level, not position-level only.
 9. Cash is an active choice.
 10. All weekly recommendations are assumed implemented in the model portfolio.
+11. Defensive alternatives should be researched continuously even when the base case remains constructive.
 
 ---
 
@@ -264,13 +272,23 @@ The internal candidate process must actively consider at least one candidate fro
 If a group is effectively ruled out for the current run, state the reason in the internal candidate ranking artifact.
 
 ## Candidate construction
-After the discovery sweep, construct 10–16 candidate exposures.
+After the discovery sweep, construct 10–16 long candidates.
 
-A candidate exposure must be:
+A long candidate exposure must be:
 - investable through a tradable proxy
 - relevant to the 3–12 month horizon
 - sufficiently differentiated from other candidates
 - connected to current macro, geopolitical, or structural drivers
+
+## Defensive / inverse construction
+Every run must also evaluate 2–5 defensive or inverse candidates across the most relevant vulnerable benchmark families.
+
+A defensive / inverse candidate must be:
+- investable through a tradable proxy or inverse ETF
+- explicitly linked to a deterioration scenario, hedge need, or bearish expression
+- paired with a trigger condition
+- paired with a clear invalidation condition
+- kept separate from the preferred long-side board
 
 ## Internal breadth discipline
 Before compressing to the published board, build an internal ranked candidate table that contains:
@@ -358,6 +376,8 @@ Use exactly this structure.
 ## 9. Second-Order Effects Map
 ## 10. Current Position Review
 ## 11. Best New Index Opportunities
+### Long-side Opportunities
+### Best Defensive / Inverse Opportunities
 ## 12. Portfolio Rotation Plan
 ## 13. Final Action Table
 ## 14. Position Changes Executed This Run
@@ -370,13 +390,20 @@ Use exactly this structure.
 This section should, by default, be built from the highest-ranked published entries in `index_candidate_ranking_YYMMDD.json` if that artifact exists.
 
 ### Section 11 — Best New Index Opportunities
-This section should, by default, surface the strongest non-published challengers from `index_candidate_ranking_YYMMDD.json`, especially where they improve regional breadth or represent the strongest omitted regional challenger.
+This section must contain both required subsections:
+- `### Long-side Opportunities`
+- `### Best Defensive / Inverse Opportunities`
+
+The long-side subsection should, by default, surface the strongest non-published bullish challengers from `index_candidate_ranking_YYMMDD.json`, especially where they improve regional breadth or represent the strongest omitted regional challenger.
+
+The defensive / inverse subsection should identify the strongest bearish, defensive, or inverse implementations for the current regime, explain what would trigger them, explain what would invalidate them, and keep them clearly separated from the preferred long-side opportunity set.
 
 ### Section 16 — Continuity Input for Next Run
 This section should, by default, use `index_discovery_coverage_YYMMDD.json` and `index_candidate_ranking_YYMMDD.json` to populate:
 - watchlist / dynamic radar memory
 - strong challengers not published
 - what would most likely change the board next run
+- which defensive / inverse lane deserves elevation if the regime deteriorates
 
 ---
 
@@ -411,3 +438,4 @@ Silently verify:
 10. Did I avoid asking the user for manual input if prior state existed?
 11. Did I consume candidate artifacts by default when they existed?
 12. Did I preserve executive readability and report discipline?
+13. Did I include the required defensive / inverse subsection inside Section 11?
