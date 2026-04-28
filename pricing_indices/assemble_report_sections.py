@@ -15,6 +15,16 @@ SECTION16_NAME = "Continuity Input for Next Run"
 REPORT_RE = re.compile(r"weekly_indices_review_(\d{6})(?:_(\d{2}))?\.md$")
 PLAN_RE = re.compile(r"index_recommendation_plan_(\d{6})(?:_(\d{2}))?\.json$")
 
+DISPLAY_NAME_OVERRIDES = {
+    "us_large_cap": "S&P 500",
+    "us_tech_leadership": "Nasdaq 100",
+    "us_small_cap": "Russell 2000",
+    "em_broad": "Emerging Markets broad",
+    "japan_equities": "Japan large-cap equities",
+    "germany_cyclicals": "Germany cyclical equities",
+    "europe_large_cap": "Europe broad large-cap equities",
+}
+
 
 def _read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -76,6 +86,27 @@ def _read_valuation_history(path: Path) -> list[dict[str, str]]:
         return []
     with path.open("r", newline="", encoding="utf-8") as fh:
         return list(csv.DictReader(fh))
+
+
+def public_lane_name(value: str) -> str:
+    raw = str(value or "").strip()
+    if not raw:
+        return ""
+    if raw in DISPLAY_NAME_OVERRIDES:
+        return DISPLAY_NAME_OVERRIDES[raw]
+    fallback = raw.replace("_", " ").strip()
+    if not fallback:
+        return raw
+    return fallback[0].upper() + fallback[1:]
+
+
+def join_public_names(items: Any) -> str:
+    if not items:
+        return "none"
+    if isinstance(items, str):
+        items = [items]
+    values = [public_lane_name(str(item)) for item in items if str(item).strip()]
+    return ", ".join(values) if values else "none"
 
 
 def build_section4(candidate_ranking: dict[str, Any], plan: dict[str, Any]) -> str:
@@ -141,29 +172,59 @@ def build_section11(candidate_ranking: dict[str, Any], coverage: dict[str, Any],
     unpublished = sorted(unpublished, key=lambda x: (-float(x.get("challenger_score") or x.get("score") or 0.0), x.get("public_index_name") or ""))
     coverage_groups = coverage.get("groups") or []
     strongest_omitted = unpublished[0] if unpublished else None
+    picked: list[dict[str, Any]] = unpublished[:3]
 
-    picked: list[dict[str, Any]] = unpublished[:4]
-
-    lines = [f"## 11. {SECTION11_NAME}", ""]
+    lines = [f"## 11. {SECTION11_NAME}", "", "### Long-side Opportunities", ""]
     if strongest_omitted:
         lines.append(
             f"The strongest omitted regional challenger this run is **{strongest_omitted.get('public_index_name')} ({strongest_omitted.get('primary_proxy')})**. It improves breadth and remains close enough to the live board to stay visible in the report."
         )
         lines.append("")
 
-    for idx, row in enumerate(picked, start=1):
-        reason = exposure_reason(str(row.get("exposure_id")), plan, "Ranks well internally but remains just below the current publication cutoff.")
-        lines += [
-            f"### {idx}. {row.get('public_index_name')} ({row.get('primary_proxy')})",
-            f"- Regional group: {row.get('regional_group')}",
-            f"- Challenger score: {float(row.get('challenger_score') or row.get('score') or 0.0):.2f}",
-            f"- Board score: {float(row.get('board_score') or row.get('score') or 0.0):.2f}",
-            f"- Why it matters: {reason}",
-            f"- Why not on the board yet: {row.get('reason_code_if_not_published') or 'below_board_cutoff'}",
-            "",
-        ]
+    if picked:
+        for idx, row in enumerate(picked, start=1):
+            reason = exposure_reason(str(row.get("exposure_id")), plan, "Ranks well internally but remains just below the current publication cutoff.")
+            lines += [
+                f"#### {idx}. {row.get('public_index_name')} ({row.get('primary_proxy')})",
+                "",
+                f"- Regional group: {row.get('regional_group')}",
+                f"- Challenger score: {float(row.get('challenger_score') or row.get('score') or 0.0):.2f}",
+                f"- Why it matters: {reason}",
+                f"- Why not on the board yet: {row.get('reason_code_if_not_published') or 'below_board_cutoff'}",
+                "",
+            ]
+    else:
+        lines += ["No non-published long-side challengers were available for this run.", ""]
 
     lines += [
+        "### Best Defensive / Inverse Opportunities",
+        "",
+        "#### 1. Short Russell 2000 via RWM",
+        "",
+        "- Why it matters: the Russell 2000 remains the weakest current held sleeve and is the cleanest bearish expression if higher oil, tighter conditions, and funding stress keep hurting small caps.",
+        "- Trigger: further relative breakdown in small-cap breadth.",
+        "- Invalidation: clear improvement in small-cap relative strength and easing inflation pressure.",
+        "",
+        "#### 2. Short Nasdaq 100 via PSQ",
+        "",
+        "- Why it matters: this is the best pure hedge if U.S. quality leadership finally breaks under higher oil, higher yields, or earnings disappointment.",
+        "- Trigger: clear loss of Nasdaq 100 relative leadership or broad de-risking led by large-cap tech.",
+        "- Invalidation: renewed earnings-led strength in mega-cap growth and a calmer oil/policy backdrop.",
+        "",
+        "#### 3. Short S&P 500 via SH",
+        "",
+        "- Why it matters: this is the broad-market hedge if the current selective resilience turns into a wider U.S. risk-off move.",
+        "- Trigger: oil and policy stress begin to hit the broader index rather than just the weakest sleeves.",
+        "- Invalidation: continued S&P 500 earnings resilience and broad participation in upside.",
+        "",
+        "#### 4. Short developed ex-U.S. via EFZ or short Emerging Markets via EUM",
+        "",
+        "- Why it matters: these are the cleaner non-U.S. hedge lanes if Europe or broader emerging markets deteriorate faster than expected.",
+        "- Trigger: renewed energy stress, worsening Europe data, or broad EM weakness.",
+        "- Invalidation: oil stabilizes, Europe sentiment improves, and EM breadth strengthens.",
+        "",
+        "**Important note:** these inverse instruments are defensive tools, not the base-case allocation. They are most appropriate as tactical hedges or bearish expressions under deterioration, not as default long-term holdings.",
+        "",
         "### Breadth checkpoint by regional bucket",
         "| Regional bucket | Strongest candidate | Proxy | Challenger score | Current status |",
         "|---|---|---|---:|---|",
@@ -257,10 +318,10 @@ def build_section16(candidate_ranking: dict[str, Any], coverage: dict[str, Any],
     lines += [
         "",
         "### Lane continuity notes",
-        f"- Retained entries: {', '.join(continuity.get('retained_entries') or ['none'])}",
-        f"- New entries: {', '.join(continuity.get('new_entries') or ['none'])}",
-        f"- Dropped entries: {', '.join(continuity.get('dropped_entries') or ['none'])}",
-        f"- Strong challengers not published: {', '.join(continuity.get('strong_challengers_not_published') or ['none'])}",
+        f"- Retained entries: {join_public_names(continuity.get('retained_entries'))}",
+        f"- New entries: {join_public_names(continuity.get('new_entries'))}",
+        f"- Dropped entries: {join_public_names(continuity.get('dropped_entries'))}",
+        f"- Strong challengers not published: {join_public_names(continuity.get('strong_challengers_not_published'))}",
         f"- What would most likely change the board next run: {continuity.get('next_change_trigger') or 'No trigger recorded.'}",
     ]
     return "\n".join(lines)
