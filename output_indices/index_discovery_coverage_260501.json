@@ -1,0 +1,143 @@
+{
+  "report_date_token": "260501",
+  "report_file": "weekly_indices_review_260501.md",
+  "requested_close_date": "2026-04-30",
+  "evidence_file": "index_candidate_evidence_260501.json",
+  "groups": [
+    {
+      "group": "U.S. core leadership",
+      "status": "surfaced",
+      "reason_if_ruled_out": "",
+      "strongest_candidate": {
+        "exposure_id": "us_tech_leadership",
+        "public_index_name": "Nasdaq 100",
+        "primary_proxy": "QQQ",
+        "score": 3.13,
+        "board_score": 3.13,
+        "challenger_score": 2.33,
+        "publish": true,
+        "reason_code_if_not_published": ""
+      }
+    },
+    {
+      "group": "continental Europe",
+      "status": "near_miss",
+      "reason_if_ruled_out": "",
+      "strongest_candidate": {
+        "exposure_id": "italy_large_cap",
+        "public_index_name": "FTSE MIB",
+        "primary_proxy": "EWI",
+        "score": 1.73,
+        "board_score": 1.73,
+        "challenger_score": 1.86,
+        "publish": false,
+        "reason_code_if_not_published": "strong_challenger_not_published"
+      }
+    },
+    {
+      "group": "UK",
+      "status": "ruled_out",
+      "reason_if_ruled_out": "score_below_relevance_threshold",
+      "strongest_candidate": {
+        "exposure_id": "uk_large_cap",
+        "public_index_name": "FTSE 100",
+        "primary_proxy": "EWU",
+        "score": 1.27,
+        "board_score": 1.27,
+        "challenger_score": 1.4,
+        "publish": false,
+        "reason_code_if_not_published": "board_capacity"
+      }
+    },
+    {
+      "group": "Switzerland",
+      "status": "ruled_out",
+      "reason_if_ruled_out": "score_below_relevance_threshold",
+      "strongest_candidate": {
+        "exposure_id": "switzerland_large_cap",
+        "public_index_name": "SMI",
+        "primary_proxy": "EWL",
+        "score": 0.98,
+        "board_score": 0.98,
+        "challenger_score": 1.16,
+        "publish": false,
+        "reason_code_if_not_published": "weak_relative_strength"
+      }
+    },
+    {
+      "group": "North America ex-U.S.",
+      "status": "near_miss",
+      "reason_if_ruled_out": "",
+      "strongest_candidate": {
+        "exposure_id": "canada_large_cap",
+        "public_index_name": "S&P/TSX 60",
+        "primary_proxy": "EWC",
+        "score": 1.72,
+        "board_score": 1.72,
+        "challenger_score": 1.85,
+        "publish": false,
+        "reason_code_if_not_published": "strong_challenger_not_published"
+      }
+    },
+    {
+      "group": "developed Asia-Pacific",
+      "status": "surfaced",
+      "reason_if_ruled_out": "",
+      "strongest_candidate": {
+        "exposure_id": "japan_equities",
+        "public_index_name": "Nikkei 225",
+        "primary_proxy": "EWJ",
+        "score": 2.57,
+        "board_score": 2.57,
+        "challenger_score": 2.7,
+        "publish": true,
+        "reason_code_if_not_published": ""
+      }
+    },
+    {
+      "group": "Greater China",
+      "status": "near_miss",
+      "reason_if_ruled_out": "",
+      "strongest_candidate": {
+        "exposure_id": "china_large_cap",
+        "public_index_name": "China large cap",
+        "primary_proxy": "FXI",
+        "score": 1.74,
+        "board_score": 1.74,
+        "challenger_score": 1.87,
+        "publish": false,
+        "reason_code_if_not_published": "strong_challenger_not_published"
+      }
+    },
+    {
+      "group": "India",
+      "status": "ruled_out",
+      "reason_if_ruled_out": "score_below_relevance_threshold",
+      "strongest_candidate": {
+        "exposure_id": "india_large_cap",
+        "public_index_name": "Nifty 50",
+        "primary_proxy": "INDA",
+        "score": 0.63,
+        "board_score": 0.63,
+        "challenger_score": 0.76,
+        "publish": false,
+        "reason_code_if_not_published": "weak_relative_strength"
+      }
+    },
+    {
+      "group": "EM broad",
+      "status": "surfaced",
+      "reason_if_ruled_out": "",
+      "strongest_candidate": {
+        "exposure_id": "em_broad",
+        "public_index_name": "Emerging Markets",
+        "primary_proxy": "EEM",
+        "score": 3.19,
+        "board_score": 3.19,
+        "challenger_score": 2.54,
+        "publish": true,
+        "reason_code_if_not_published": ""
+      }
+    }
+  ]
+}
