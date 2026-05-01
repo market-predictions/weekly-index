@@ -1,7 +1,7 @@
 {
   "report_date_token": "260501",
-  "report_file": "weekly_indices_review_260501.md",
-  "requested_close_date": "2026-04-30",
+  "report_file": "weekly_indices_review_260501_01.md",
+  "requested_close_date": "2026-05-01",
   "evidence_file": "index_candidate_evidence_260501.json",
   "groups": [
     {
@@ -12,9 +12,9 @@
         "exposure_id": "us_tech_leadership",
         "public_index_name": "Nasdaq 100",
         "primary_proxy": "QQQ",
-        "score": 3.13,
-        "board_score": 3.13,
-        "challenger_score": 2.33,
+        "score": 3.0,
+        "board_score": 3.0,
+        "challenger_score": 2.2,
         "publish": true,
         "reason_code_if_not_published": ""
       }
@@ -27,9 +27,9 @@
         "exposure_id": "italy_large_cap",
         "public_index_name": "FTSE MIB",
         "primary_proxy": "EWI",
-        "score": 1.73,
-        "board_score": 1.73,
-        "challenger_score": 1.86,
+        "score": 1.61,
+        "board_score": 1.61,
+        "challenger_score": 1.74,
         "publish": false,
         "reason_code_if_not_published": "strong_challenger_not_published"
       }
@@ -42,11 +42,11 @@
         "exposure_id": "uk_large_cap",
         "public_index_name": "FTSE 100",
         "primary_proxy": "EWU",
-        "score": 1.27,
-        "board_score": 1.27,
-        "challenger_score": 1.4,
+        "score": 0.71,
+        "board_score": 0.71,
+        "challenger_score": 0.84,
         "publish": false,
-        "reason_code_if_not_published": "board_capacity"
+        "reason_code_if_not_published": "weak_relative_strength"
       }
     },
     {
@@ -57,9 +57,9 @@
         "exposure_id": "switzerland_large_cap",
         "public_index_name": "SMI",
         "primary_proxy": "EWL",
-        "score": 0.98,
-        "board_score": 0.98,
-        "challenger_score": 1.16,
+        "score": 1.1,
+        "board_score": 1.1,
+        "challenger_score": 1.28,
         "publish": false,
         "reason_code_if_not_published": "weak_relative_strength"
       }
@@ -87,9 +87,9 @@
         "exposure_id": "japan_equities",
         "public_index_name": "Nikkei 225",
         "primary_proxy": "EWJ",
-        "score": 2.57,
-        "board_score": 2.57,
-        "challenger_score": 2.7,
+        "score": 2.35,
+        "board_score": 2.35,
+        "challenger_score": 2.48,
         "publish": true,
         "reason_code_if_not_published": ""
       }
@@ -117,9 +117,9 @@
         "exposure_id": "india_large_cap",
         "public_index_name": "Nifty 50",
         "primary_proxy": "INDA",
-        "score": 0.63,
-        "board_score": 0.63,
-        "challenger_score": 0.76,
+        "score": 0.74,
+        "board_score": 0.74,
+        "challenger_score": 0.87,
         "publish": false,
         "reason_code_if_not_published": "weak_relative_strength"
       }
