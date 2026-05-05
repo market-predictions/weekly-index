@@ -1,11 +1,11 @@
-# Daily Index OS — System Index
+# Weekly Index OS — System Index
 
-This file is the **first entry point** for meaningful work on `market-predictions/daily-index`.
+This file is the **first entry point** for meaningful work on `market-predictions/weekly-index`.
 
 ## Purpose
-This repository now contains two product tracks:
+This repository contains two product tracks:
 
-1. **Weekly Indices Review** — the primary active report product for a model portfolio of stock-index exposures with recommendations, continuity, valuation tracking, and delivery.
+1. **Weekly Indices Review** — the primary active report product for a model portfolio of stock-index exposures with recommendations, continuity, valuation tracking, delivery, breadth discipline, short-opportunity radar, and capital re-underwriting.
 2. **AEX Weekly Options** — a parked but preserved options-native track for structured AEX option analysis, machine trade plans, and later possible reuse.
 
 The architecture must keep four layers separate:
@@ -26,6 +26,7 @@ Do not collapse those four layers back into one opaque prompt.
 - `control/CHATGPT_PROJECT_INSTRUCTIONS.md`
 - `control/OPTIONAL_CUSTOM_GPT_SPEC.md`
 - `control/INDICES_REVIEW_ARCHITECTURE.md`
+- `control/INDEX_CAPITAL_REUNDERWRITING_RULES.md`
 
 ---
 
@@ -39,8 +40,11 @@ Do not collapse those four layers back into one opaque prompt.
 - `prompts/weekly_indices/03_OUTPUT_CONTRACT.md`
 - `prompts/weekly_indices/04_OPERATIONAL_RUNBOOK.md`
 - `pricing_indices/`
+- `research_indices/`
 - `send_index_report.py`
+- `send_index_report_tv.py`
 - `.github/workflows/send-weekly-indices-report.yml`
+- `tools/write_index_recommendation_scorecard.py`
 - `output_indices/`
 
 ### AEX Weekly Options — parked but preserved track
@@ -75,18 +79,20 @@ What the Weekly Indices Review is trying to decide:
 - macro regime classification
 - portfolio changes
 - opportunity-board ranking
+- short-opportunity / inverse-radar readiness
+- capital re-underwriting of every funded exposure
 - portfolio evolution through time
 
 ### 2. Input / state contract
-Where authoritative facts come from, in what order, and how conflicts are resolved.
-
-For Weekly Indices Review this must become explicit via:
+Where authoritative facts come from, in what order, and how conflicts are resolved:
 - benchmark index closes for analysis
-- tradable proxy closes for implemented model-portfolio valuation
+- tradable proxy closes for implemented valuation
 - portfolio state files
 - valuation history
 - recommendation plan
 - pricing audits
+- discovery/ranking artifacts
+- recommendation scorecard memory
 - continuity memory
 
 ### 3. Output contract
@@ -99,19 +105,22 @@ The Weekly Indices Review should feel comparable to ETF Review:
 - decision-useful
 - continuity-aware
 - operationally auditable
+- explicit about long opportunities versus defensive / inverse opportunities
 
 ### 4. Operational runbook
-How the review is actually executed:
+How the review is executed:
 - control-layer read order
 - pricing pass
-- regime classification
-- opportunity-board construction
-- portfolio scoring
+- research snapshots
+- candidate ranking and discovery coverage
+- report section assembly
+- capital re-underwriting scorecard validation
 - report generation
 - GitHub write
 - render / PDF
 - email delivery
 - manifest / receipt
+- state/artifact commit-back
 
 ---
 
@@ -133,18 +142,22 @@ For architecture work, debugging, workflow changes, state-authority work, or rep
 - Do not claim delivery succeeded without a manifest or receipt.
 - Do not let the report become a sprawling macro dump; it must remain compact and premium.
 - Do not let the production workflow send mail on non-report code changes.
+- Do not allow weak or replaceable holdings to remain indefinite unqualified Holds.
+- Do not mix defensive / inverse tools into the long-side opportunity board.
 
 ---
 
 ## Current direction of travel
 The target architecture is:
 
-- `daily-index` remains the host repo
-- **Weekly Indices Review** becomes the primary active report product
-- **AEX Weekly Options** remains available as a parked secondary product track
-- `index.txt` becomes the production runtime prompt
-- `index-pro.txt` becomes the premium editorial layer
-- `send_index_report.py` plus GitHub Actions become the delivery layer
-- `output_indices/` becomes the canonical output/state path
+- `weekly-index` remains the dedicated host repo for Weekly Indices Review
+- **Weekly Indices Review** is the primary active report product
+- **AEX Weekly Options** remains parked but preserved
+- `index.txt` is the production runtime prompt
+- `control/INDEX_CAPITAL_REUNDERWRITING_RULES.md` is the capital-discipline addendum
+- `index-pro.txt` is the premium editorial layer
+- `send_index_report.py` / `send_index_report_tv.py` plus GitHub Actions are the delivery layer
+- `output_indices/` is the canonical output/state path
 - benchmark index data drives analysis
 - tradable proxy data drives implemented model-portfolio valuation
+- `output_indices/index_recommendation_scorecard.csv` is the machine-readable recommendation discipline memory
