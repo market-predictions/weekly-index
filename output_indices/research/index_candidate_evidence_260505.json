@@ -112,10 +112,10 @@
       "relative_strength_metrics": {
         "requested_close_date": "2026-05-04",
         "selected_data_date": "2026-05-04",
-        "return_20d": 0.100509,
-        "return_60d": 0.084708,
-        "return_120d": 0.149282,
-        "drawdown_from_120d_high": -0.005981,
+        "return_20d": 0.10051,
+        "return_60d": 0.084709,
+        "return_120d": 0.149284,
+        "drawdown_from_120d_high": -0.00598,
         "analysis_symbol": "^RUT"
       },
       "evidence_notes": {
@@ -278,9 +278,9 @@
         "requested_close_date": "2026-05-04",
         "selected_data_date": "2026-05-04",
         "return_20d": 0.013769,
-        "return_60d": 0.051392,
-        "return_120d": 0.109586,
-        "drawdown_from_120d_high": -0.026126,
+        "return_60d": 0.051393,
+        "return_120d": 0.109587,
+        "drawdown_from_120d_high": -0.026125,
         "analysis_symbol": "^GSPTSE"
       },
       "evidence_notes": {

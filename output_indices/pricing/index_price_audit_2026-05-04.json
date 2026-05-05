@@ -35,7 +35,7 @@
       "primary_proxy": "QQQ",
       "shares": 48,
       "proxy_close": 672.88,
-      "benchmark_close": 27651.8184,
+      "benchmark_close": 27651.8203,
       "proxy_status": "fresh_close",
       "benchmark_status": "fresh_close",
       "market_value_eur": 27325.08
@@ -47,7 +47,7 @@
       "primary_proxy": "IWM",
       "shares": 90,
       "proxy_close": 277.88,
-      "benchmark_close": 2795.9966,
+      "benchmark_close": 2796.0,
       "proxy_status": "fresh_close",
       "benchmark_status": "fresh_close",
       "market_value_eur": 21158.38
