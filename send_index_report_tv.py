@@ -9,6 +9,11 @@ TOKEN_RE = re.compile(r"(?<![A-Za-z0-9])([A-Z][A-Z0-9.\-]{1,11})(?![A-Za-z0-9])"
 TRADINGVIEW_LINK_RE = re.compile(r'(<a\s+href=")([^\"]*tradingview\.com/chart/\?symbol=[^\"]+)(")', flags=re.IGNORECASE)
 TICKER_DENYLIST = {
     "USD", "EUR", "CASH", "NONE", "N/A", "ETF", "INDEX", "LONG", "SHORT", "ADD", "HOLD", "REDUCE", "CLOSE",
+    "FX", "TSX", "TSX60", "AEX", "SMI", "DAX", "IBEX", "CAC", "NIFTY", "FTSE", "NASDAQ", "SP",
+}
+VALID_PROXY_TICKERS = {
+    "SPY", "QQQ", "QQQM", "IWM", "VTWO", "EEM", "VWO", "INDA", "EWJ", "DXJ", "EWG", "FEZ", "IEUR",
+    "EWQ", "EWI", "EWP", "EWN", "EWU", "EWL", "EWC", "EWA", "FXI", "EWH", "RWM", "PSQ", "SH", "EFZ", "EUM", "VOO", "QUAL",
 }
 TICKER_HEADER_HINTS = {
     "ticker",
@@ -33,11 +38,12 @@ def is_probable_ticker(value: str) -> bool:
     raw = _base.clean_md_inline(value).strip()
     if not raw:
         return False
-    if raw.upper() in TICKER_DENYLIST:
+    raw_upper = raw.upper()
+    if raw_upper in TICKER_DENYLIST:
         return False
-    if len(raw) < 2 or len(raw) > 12:
-        return False
-    return bool(re.fullmatch(r"[A-Z][A-Z0-9.\-]{1,11}", raw))
+    if raw_upper in VALID_PROXY_TICKERS:
+        return True
+    return False
 
 
 def ticker_anchor_html(ticker: str) -> str:
