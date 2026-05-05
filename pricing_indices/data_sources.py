@@ -28,6 +28,7 @@ def requested_close_from_today(today: date) -> str:
 def _select_history_row(rows: list[dict[str, Any]], requested_close_date: str | None = None) -> dict[str, Any]:
     if not rows:
         raise RuntimeError("No usable Yahoo history rows were available")
+    rows = sorted(rows, key=lambda row: row["date"])
     selected = rows[-1]
     if requested_close_date:
         eligible = [row for row in rows if row["date"] <= requested_close_date]
@@ -90,7 +91,7 @@ def fetch_yahoo_history(
     return {
         "symbol": symbol,
         "selected": selected,
-        "rows": rows,
+        "rows": sorted(rows, key=lambda row: row["date"]),
         "currency": currency,
         "source": "yahoo_chart",
         "range": range_period,
@@ -134,11 +135,23 @@ def fetch_ecb_usd_per_eur(requested_close_date: str | None = None) -> dict[str, 
     if not observations:
         raise RuntimeError("ECB EUR/USD reference data was not available")
 
+    # ECB XML is commonly newest-first. Always sort explicitly so the selected
+    # row is the latest available observation on or before the requested close.
+    observations = sorted(observations, key=lambda row: row["date"])
     selected = observations[-1]
     if requested_close_date:
         eligible = [row for row in observations if row["date"] <= requested_close_date]
         if eligible:
             selected = eligible[-1]
+
+        requested = date.fromisoformat(requested_close_date)
+        selected_date = date.fromisoformat(selected["date"])
+        max_lag_days = 7
+        if (requested - selected_date).days > max_lag_days:
+            raise RuntimeError(
+                "ECB EUR/USD reference data is stale for requested close date: "
+                f"requested_close_date={requested_close_date} fx_date={selected['date']} max_lag_days={max_lag_days}"
+            )
 
     return {
         "date": selected["date"],
