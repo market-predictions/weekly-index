@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-05-05T09:13:09Z",
+  "workflow": {
+    "name": "Send weekly indices report",
+    "run_id": "25367785401",
+    "run_attempt": "1",
+    "job": "render-and-send",
+    "actor": "market-predictions",
+    "sha": "7c9ebafb8bc11267898edac2e40bd32cc8c45e9c",
+    "ref": "refs/heads/main",
+    "conclusion": "success"
+  },
+  "report": {
+    "file": "output_indices/weekly_indices_review_260505_04.md",
+    "token": "260505",
+    "composed_report_committed_expected": true,
+    "scaffold_markers_present": [],
+    "required_headings_present": {
+      "executive_summary": true,
+      "opportunity_board": true,
+      "equity_curve": true,
+      "best_new_index_opportunities": true,
+      "holdings_and_cash": true,
+      "continuity": true
+    }
+  },
+  "pricing": {
+    "audit_file": "output_indices/pricing/index_price_audit_2026-05-04.json",
+    "ok": true,
+    "decision": "update_covered_holdings_carry_unresolved",
+    "requested_close_date": "2026-05-04",
+    "fx_date": "2026-05-04",
+    "fx_usd_per_eur": 1.17,
+    "fresh_holdings_count": 4,
+    "holdings_count": 4,
+    "fresh_count_pct": 100.0,
+    "fresh_invested_weight_coverage_pct": 85.65,
+    "priced_invested_weight_coverage_pct": 85.65,
+    "unresolved_tickers": []
+  },
+  "state": {
+    "state_file": "output_indices/index_portfolio_state.json",
+    "exists": true,
+    "requested_close_date": "2026-05-04",
+    "fx_date": "2026-05-04",
+    "total_portfolio_value_eur": 108478.51,
+    "cash_eur": 15566.74,
+    "positions_count": 4
+  },
+  "breadth_and_opportunities": {
+    "candidate_ranking_file": "output_indices/index_candidate_ranking_260505.json",
+    "discovery_coverage_file": "output_indices/index_discovery_coverage_260505.json",
+    "candidate_ranking_exists": true,
+    "discovery_coverage_exists": true,
+    "candidate_count": 18,
+    "published_candidate_count": 5,
+    "coverage_group_count": 9,
+    "full_universe_breadth_ok": true,
+    "long_opportunities_ok": true,
+    "short_opportunities_radar_ok": true
+  },
+  "scorecard": {
+    "file": "output_indices/index_recommendation_scorecard.csv",
+    "exists": true,
+    "has_rows": true
+  },
+  "render_and_delivery": {
+    "render_validation": "unknown_without_workflow_step_failure_context",
+    "email_delivery": "unknown_without_send_script_receipt",
+    "delivery_receipt_required_for_success_claim": true
+  }
+}
