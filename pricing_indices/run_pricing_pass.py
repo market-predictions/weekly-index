@@ -42,7 +42,7 @@ def latest_completed_us_close_date(now_utc: datetime | None = None) -> str:
         return previous_business_day(today).isoformat()
     if now_utc.time() >= US_REGULAR_CLOSE_UTC:
         return today.isoformat()
-    return previous_business_day(today - timedelta(days=1) if today.weekday() == 0 else today - timedelta(days=1)).isoformat() if today.weekday() == 0 else previous_business_day(today - timedelta(days=1)).isoformat()
+    return previous_business_day(today - timedelta(days=1)).isoformat()
 
 
 def requested_close_from_today(today: date) -> str:
@@ -110,13 +110,13 @@ def parse_section15_from_report(md_text: str) -> tuple[list[dict[str, Any]], flo
                     "style": meta.get("style", "Unknown"),
                     "direction": "long",
                     "shares": int(_to_float(parts[1]) or 0),
-                    "proxy_currency": parts[3] or "USD",
-                    "avg_entry_proxy": _to_float(parts[2]),
-                    "latest_proxy_close": _to_float(parts[2]),
+                    "proxy_currency": parts[4] or "USD",
+                    "avg_entry_proxy": _to_float(parts[3]),
+                    "latest_proxy_close": _to_float(parts[3]),
                     "latest_benchmark_close": None,
-                    "market_value_local": _to_float(parts[4]),
-                    "market_value_eur": _to_float(parts[5]),
-                    "weight_pct": _to_float(parts[6]),
+                    "market_value_local": _to_float(parts[5]),
+                    "market_value_eur": _to_float(parts[6]),
+                    "weight_pct": _to_float(parts[7]) if len(parts) > 7 else None,
                     "role": meta.get("role", "portfolio exposure"),
                     "original_thesis": meta.get("original_thesis", "Carry-forward from latest stored report."),
                     "current_status": "hold",
@@ -251,23 +251,25 @@ def main() -> None:
     fresh_count = 0
     carried_forward_count = 0
     unresolved: list[str] = []
-    invested_weight_coverage = 0.0
     total_value_eur = float(cash_eur or 0.0)
+    fresh_market_value_eur = 0.0
+    priced_market_value_eur = 0.0
 
     for pos in positions:
         previous_proxy = pos.get("latest_proxy_close")
         previous_benchmark = pos.get("latest_benchmark_close")
         proxy_status = "carried_forward"
         benchmark_status = "carried_forward"
+        is_fresh_proxy = False
 
         try:
             proxy_quote = fetch_yahoo_close(pos["primary_proxy"], requested_close_date)
             pos["latest_proxy_close"] = round(float(proxy_quote["close"]), 4)
             pos["proxy_currency"] = proxy_quote.get("currency") or pos.get("proxy_currency") or "USD"
             proxy_status = "fresh_close"
+            is_fresh_proxy = True
             fresh_count += 1
         except Exception as exc:  # noqa: BLE001
-            proxy_quote = None
             if previous_proxy is None:
                 unresolved.append(pos["primary_proxy"])
                 pos["latest_proxy_close"] = None
@@ -282,7 +284,6 @@ def main() -> None:
             pos["latest_benchmark_close"] = round(float(benchmark_quote["close"]), 4)
             benchmark_status = "fresh_close"
         except Exception as exc:  # noqa: BLE001
-            benchmark_quote = None
             if previous_benchmark is None:
                 pos["latest_benchmark_close"] = None
                 benchmark_status = f"unresolved: {exc}"
@@ -297,6 +298,10 @@ def main() -> None:
         pos["market_value_local"] = market_value_local
         pos["market_value_eur"] = market_value_eur
         total_value_eur += market_value_eur
+        if latest_proxy_close:
+            priced_market_value_eur += market_value_eur
+        if is_fresh_proxy:
+            fresh_market_value_eur += market_value_eur
 
         price_rows.append(
             {
@@ -315,16 +320,18 @@ def main() -> None:
 
     for pos in positions:
         pos["weight_pct"] = round((float(pos.get("market_value_eur") or 0.0) / total_value_eur) * 100.0, 2) if total_value_eur else 0.0
-        if pos.get("latest_proxy_close") is not None:
-            invested_weight_coverage += float(pos["weight_pct"])
 
     holdings_count = len(positions)
-    coverage_count_pct = round((fresh_count / holdings_count) * 100.0, 2) if holdings_count else 0.0
-    invested_weight_coverage_pct = round(invested_weight_coverage, 2)
-    decision = "update_covered_holdings_carry_unresolved" if (coverage_count_pct >= 75.0 or invested_weight_coverage_pct >= 85.0) else "blocked_or_partial"
+    fresh_count_pct = round((fresh_count / holdings_count) * 100.0, 2) if holdings_count else 0.0
+    fresh_invested_weight_coverage_pct = round((fresh_market_value_eur / total_value_eur) * 100.0, 2) if total_value_eur else 0.0
+    priced_invested_weight_coverage_pct = round((priced_market_value_eur / total_value_eur) * 100.0, 2) if total_value_eur else 0.0
+    decision = (
+        "update_covered_holdings_carry_unresolved"
+        if (fresh_count_pct >= 75.0 or fresh_invested_weight_coverage_pct >= 85.0)
+        else "blocked_or_partial"
+    )
 
     state_payload = build_state_payload(run_date, requested_close_date, fx_basis, positions, float(cash_eur or 0.0), total_value_eur)
-    _write_json(state_path, state_payload)
 
     pricing_dir.mkdir(parents=True, exist_ok=True)
     audit_path = pricing_dir / f"index_price_audit_{requested_close_date}.json"
@@ -336,8 +343,10 @@ def main() -> None:
         "holdings_count": holdings_count,
         "fresh_holdings_count": fresh_count,
         "carried_forward_holdings_count": carried_forward_count,
-        "coverage_count_pct": coverage_count_pct,
-        "invested_weight_coverage_pct": invested_weight_coverage_pct,
+        "fresh_count_pct": fresh_count_pct,
+        "coverage_count_pct": fresh_count_pct,
+        "fresh_invested_weight_coverage_pct": fresh_invested_weight_coverage_pct,
+        "priced_invested_weight_coverage_pct": priced_invested_weight_coverage_pct,
         "decision": decision,
         "unresolved_tickers": unresolved,
         "fx_basis": fx_basis,
@@ -348,6 +357,15 @@ def main() -> None:
     }
     _write_json(audit_path, audit_payload)
 
+    if decision == "blocked_or_partial":
+        raise RuntimeError(
+            "Pricing pass blocked: fresh coverage below threshold. "
+            f"fresh_count_pct={fresh_count_pct:.2f} fresh_invested_weight_coverage_pct={fresh_invested_weight_coverage_pct:.2f} "
+            f"unresolved_tickers={','.join(unresolved) or 'none'} audit={audit_path}"
+        )
+
+    _write_json(state_path, state_payload)
+
     ensure_csv_headers(output_dir / "index_trade_ledger.csv", ["timestamp_utc", "action", "exposure_id", "proxy_ticker", "shares_delta", "note"])
     ensure_csv_headers(output_dir / "index_recommendation_scorecard.csv", ["as_of", "exposure_id", "display_name", "score", "action", "conviction_tier"])
     append_valuation_row(
@@ -356,9 +374,10 @@ def main() -> None:
     )
 
     print(
-        f"PRICING_PASS_{'OK' if fresh_count else 'PARTIAL'} | requested_close={requested_close_date} | "
+        f"PRICING_PASS_OK | requested_close={requested_close_date} | "
         f"holdings={holdings_count} | fresh={fresh_count} | carried={carried_forward_count} | "
-        f"weight_coverage={invested_weight_coverage_pct:.2f} | audit={audit_path.name} | source_mode={source_mode}"
+        f"fresh_weight_coverage={fresh_invested_weight_coverage_pct:.2f} | "
+        f"priced_weight_coverage={priced_invested_weight_coverage_pct:.2f} | audit={audit_path.name} | source_mode={source_mode}"
     )
 
 
