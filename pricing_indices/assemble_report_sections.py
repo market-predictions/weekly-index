@@ -26,6 +26,32 @@ DISPLAY_NAME_OVERRIDES = {
     "europe_large_cap": "Europe broad large-cap equities",
 }
 
+STATUS_LABELS = {
+    "surfaced": "Surfaced",
+    "considered": "Considered",
+    "near_miss": "Near miss",
+    "ruled_out": "Lower priority this run",
+    "published": "Published",
+}
+
+REASON_LABELS = {
+    "published": "Included on the board",
+    "strong_challenger_not_published": "Strong challenger, not yet funded",
+    "board_capacity": "Kept off the compact board by stronger candidates",
+    "weak_relative_strength": "Relative strength not strong enough yet",
+    "below_board_cutoff": "Below the publication cutoff this run",
+}
+
+
+def _client_status(value: Any) -> str:
+    raw = str(value or "").strip()
+    return STATUS_LABELS.get(raw, public_lane_name(raw))
+
+
+def _client_reason(value: Any) -> str:
+    raw = str(value or "").strip()
+    return REASON_LABELS.get(raw, public_lane_name(raw))
+
 
 def _read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -90,13 +116,6 @@ def _read_valuation_history(path: Path) -> list[dict[str, str]]:
 
 
 def _dedupe_valuation_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
-    """Keep the latest row per requested close date, preserving chronological order.
-
-    The workflow may run multiple same-day versions. For the client-facing equity
-    table and chart, repeated rows with the same close date look like a data
-    error. The audit trail remains in the CSV; the report shows one clean row per
-    pricing date.
-    """
     by_date: "OrderedDict[str, dict[str, str]]" = OrderedDict()
     for row in rows:
         key = row.get("requested_close_date") or row.get("as_of") or "unknown"
@@ -202,13 +221,14 @@ def build_section11(candidate_ranking: dict[str, Any], coverage: dict[str, Any],
     if picked:
         for idx, row in enumerate(picked, start=1):
             reason = exposure_reason(str(row.get("exposure_id")), plan, "Ranks well internally but remains just below the current publication cutoff.")
+            reason_code = _client_reason(row.get("reason_code_if_not_published") or "below_board_cutoff")
             lines += [
                 f"#### {idx}. {row.get('public_index_name')} ({row.get('primary_proxy')})",
                 "",
                 f"- Regional group: {row.get('regional_group')}",
                 f"- Challenger score: {float(row.get('challenger_score') or row.get('score') or 0.0):.2f}",
                 f"- Why it matters: {reason}",
-                f"- Why not on the board yet: {row.get('reason_code_if_not_published') or 'below_board_cutoff'}",
+                f"- Why not on the board yet: {reason_code}",
                 "",
             ]
     else:
@@ -251,7 +271,7 @@ def build_section11(candidate_ranking: dict[str, Any], coverage: dict[str, Any],
         cand = group.get("strongest_candidate") or {}
         if not cand:
             continue
-        status = "Published" if cand.get("publish") else ("Near miss" if group.get("status") == "near_miss" else "Ruled out / lower priority")
+        status = "Published" if cand.get("publish") else _client_status(group.get("status"))
         lines.append(
             f"| {group.get('group')} | {cand.get('public_index_name')} | {cand.get('primary_proxy')} | {float(cand.get('challenger_score') or cand.get('score') or 0.0):.2f} | {status} |"
         )
@@ -264,7 +284,8 @@ def build_section11(candidate_ranking: dict[str, Any], coverage: dict[str, Any],
     ]
     for row in sorted(all_candidates, key=lambda x: (-float(x.get('challenger_score') or x.get('score') or 0.0), x.get('public_index_name') or '')):
         published = "Yes" if row.get("publish") else "No"
-        reason = "published" if row.get("publish") else (row.get("reason_code_if_not_published") or "below_board_cutoff")
+        reason_key = "published" if row.get("publish") else (row.get("reason_code_if_not_published") or "below_board_cutoff")
+        reason = _client_reason(reason_key)
         lines.append(
             f"| {row.get('public_index_name')} | {row.get('regional_group')} | {row.get('primary_proxy')} | {published} | {float(row.get('challenger_score') or row.get('score') or 0.0):.2f} | {reason} |"
         )
@@ -330,7 +351,7 @@ def build_section16(candidate_ranking: dict[str, Any], coverage: dict[str, Any],
     for group in coverage.get("groups") or []:
         cand = group.get("strongest_candidate") or {}
         lines.append(
-            f"| {group.get('group')} | {group.get('status')} | {cand.get('public_index_name', '—')} | {cand.get('primary_proxy', '—')} | {float(cand.get('challenger_score') or cand.get('score') or 0.0):.2f} |"
+            f"| {group.get('group')} | {_client_status(group.get('status'))} | {cand.get('public_index_name', '—')} | {cand.get('primary_proxy', '—')} | {float(cand.get('challenger_score') or cand.get('score') or 0.0):.2f} |"
         )
 
     lines += [
