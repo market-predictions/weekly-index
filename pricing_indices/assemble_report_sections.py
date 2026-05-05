@@ -4,6 +4,7 @@ import argparse
 import csv
 import json
 import re
+from collections import OrderedDict
 from pathlib import Path
 from typing import Any
 
@@ -88,6 +89,21 @@ def _read_valuation_history(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(fh))
 
 
+def _dedupe_valuation_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    """Keep the latest row per requested close date, preserving chronological order.
+
+    The workflow may run multiple same-day versions. For the client-facing equity
+    table and chart, repeated rows with the same close date look like a data
+    error. The audit trail remains in the CSV; the report shows one clean row per
+    pricing date.
+    """
+    by_date: "OrderedDict[str, dict[str, str]]" = OrderedDict()
+    for row in rows:
+        key = row.get("requested_close_date") or row.get("as_of") or "unknown"
+        by_date[key] = row
+    return list(by_date.values())
+
+
 def public_lane_name(value: str) -> str:
     raw = str(value or "").strip()
     if not raw:
@@ -141,24 +157,26 @@ def build_section7(state: dict[str, Any], valuation_rows: list[dict[str, str]]) 
     starting_capital = float(state.get("starting_capital_eur") or 100000.0)
     ret_pct = ((total_value / starting_capital) - 1.0) * 100.0 if starting_capital else 0.0
     fx_date = ((state.get("pricing_basis") or {}).get("fx_date")) or requested_close
+    clean_rows = _dedupe_valuation_rows(valuation_rows)
 
     lines = [f"## 7. {SECTION7_NAME}", ""]
     lines += [
         f"- Starting capital (EUR): {starting_capital:.2f}",
         f"- Current portfolio value (EUR): {total_value:.2f}",
         f"- Since inception return (%): {ret_pct:.2f}",
-        f"- Equity-curve state: {'Inaugural baseline' if len(valuation_rows) <= 1 else 'Live tracked'}",
+        f"- Equity-curve state: {'Inaugural baseline' if len(clean_rows) <= 1 else 'Live tracked'}",
         f"- Pricing basis requested close date: {requested_close}",
         f"- FX reference date: {fx_date}",
-        f"- Notes: Holdings and NAV in this section are rebuilt from the live pricing/state layer for the requested close date {requested_close}.",
+        f"- Notes: Holdings and NAV are rebuilt from the pricing/state layer for the requested close date {requested_close}.",
         "",
         "| Date | Portfolio value (EUR) | Comment |",
         "|---|---:|---|",
     ]
-    if valuation_rows:
-        for row in valuation_rows[-10:]:
+    if clean_rows:
+        for row in clean_rows[-10:]:
+            close_date = row.get("requested_close_date") or row.get("as_of")
             lines.append(
-                f"| {row.get('requested_close_date') or row.get('as_of')} | {float(row.get('total_portfolio_value_eur') or 0.0):.2f} | Pricing basis close {row.get('requested_close_date')} |"
+                f"| {close_date} | {float(row.get('total_portfolio_value_eur') or 0.0):.2f} | Pricing basis close {close_date} |"
             )
     else:
         lines.append(f"| {requested_close} | {total_value:.2f} | Live pricing/state rebuild |")
@@ -201,20 +219,20 @@ def build_section11(candidate_ranking: dict[str, Any], coverage: dict[str, Any],
         "",
         "#### 1. Short Russell 2000 via RWM",
         "",
-        "- Why it matters: the Russell 2000 remains the weakest current held sleeve and is the cleanest bearish expression if higher oil, tighter conditions, and funding stress keep hurting small caps.",
+        "- Why it matters: the Russell 2000 remains the weakest current held sleeve and is the cleanest bearish expression if tighter conditions and funding stress keep hurting small caps.",
         "- Trigger: further relative breakdown in small-cap breadth.",
         "- Invalidation: clear improvement in small-cap relative strength and easing inflation pressure.",
         "",
         "#### 2. Short Nasdaq 100 via PSQ",
         "",
-        "- Why it matters: this is the best pure hedge if U.S. quality leadership finally breaks under higher oil, higher yields, or earnings disappointment.",
+        "- Why it matters: this is the cleanest hedge if U.S. growth leadership breaks under higher yields or earnings disappointment.",
         "- Trigger: clear loss of Nasdaq 100 relative leadership or broad de-risking led by large-cap tech.",
-        "- Invalidation: renewed earnings-led strength in mega-cap growth and a calmer oil/policy backdrop.",
+        "- Invalidation: renewed earnings-led strength in mega-cap growth and a calmer policy backdrop.",
         "",
         "#### 3. Short S&P 500 via SH",
         "",
-        "- Why it matters: this is the broad-market hedge if the current selective resilience turns into a wider U.S. risk-off move.",
-        "- Trigger: oil and policy stress begin to hit the broader index rather than just the weakest sleeves.",
+        "- Why it matters: this is the broad-market hedge if selective resilience turns into a wider U.S. risk-off move.",
+        "- Trigger: policy or liquidity stress begins to hit the broader index rather than only the weakest sleeves.",
         "- Invalidation: continued S&P 500 earnings resilience and broad participation in upside.",
         "",
         "#### 4. Short developed ex-U.S. via EFZ or short Emerging Markets via EUM",
