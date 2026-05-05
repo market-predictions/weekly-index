@@ -99,13 +99,19 @@ jobs:
         run: |
           python tools/write_index_recommendation_scorecard.py
 
-      - name: Commit composed report, research, pricing state, scorecard, and candidate artifacts back to main
-        if: success()
+      - name: Write run manifest
+        if: always()
+        run: |
+          python tools/write_weekly_indices_run_manifest.py --conclusion "${{ job.status }}"
+
+      - name: Commit composed report, run manifest, research, pricing state, scorecard, and candidate artifacts back to main
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
             output_indices/weekly_indices_review_*.md \
+            output_indices/run_manifests/*.json \
             output_indices/research/*.json \
             output_indices/index_candidate_ranking_*.json \
             output_indices/index_discovery_coverage_*.json \
@@ -114,8 +120,8 @@ jobs:
             output_indices/index_recommendation_scorecard.csv \
             output_indices/pricing/*.json || true
           if git diff --cached --quiet; then
-            echo "No composed report, research, pricing, scorecard, or candidate artifact changes to commit."
+            echo "No composed report, manifest, research, pricing, scorecard, or candidate artifact changes to commit."
             exit 0
           fi
-          git commit -m "Persist Weekly Indices composed report, research, pricing, and scorecard artifacts [skip ci]"
+          git commit -m "Persist Weekly Indices run manifest and artifacts [skip ci]"
           git push origin HEAD:main
