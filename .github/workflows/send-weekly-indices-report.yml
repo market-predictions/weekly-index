@@ -44,7 +44,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install markdown weasyprint matplotlib
 
-      - name: Run indices pricing pass dry run
+      - name: Run indices pricing pass
         run: |
           python -m pricing_indices.run_pricing_pass
 
@@ -99,12 +99,13 @@ jobs:
         run: |
           python tools/write_index_recommendation_scorecard.py
 
-      - name: Commit research, pricing state, scorecard, and candidate artifacts back to main
+      - name: Commit composed report, research, pricing state, scorecard, and candidate artifacts back to main
         if: success()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
+            output_indices/weekly_indices_review_*.md \
             output_indices/research/*.json \
             output_indices/index_candidate_ranking_*.json \
             output_indices/index_discovery_coverage_*.json \
@@ -113,8 +114,8 @@ jobs:
             output_indices/index_recommendation_scorecard.csv \
             output_indices/pricing/*.json || true
           if git diff --cached --quiet; then
-            echo "No research, pricing, scorecard, or candidate artifact changes to commit."
+            echo "No composed report, research, pricing, scorecard, or candidate artifact changes to commit."
             exit 0
           fi
-          git commit -m "Persist Weekly Indices research, pricing, and scorecard artifacts [skip ci]"
+          git commit -m "Persist Weekly Indices composed report, research, pricing, and scorecard artifacts [skip ci]"
           git push origin HEAD:main
