@@ -1,134 +1,115 @@
-# Daily Index OS — Current State
+# Weekly Index OS — Current State
 
 ## Snapshot date
-2026-04-19
+2026-05-05
 
 ## What this repository currently is
-This repository is currently a dedicated operating environment for **weekly AEX index option plays** with:
-- a four-layer prompt scaffold
-- snapshot producers
-- a structure-candidate builder
-- portfolio / Greeks refresh
-- validation
-- render / send logic
-- machine-readable trade-plan output
 
-## What has changed conceptually
-A new primary product direction has now been chosen:
+This repository is now a production-style Weekly Indices Review system with:
 
-### New primary active direction
-**Weekly Indices Review** — a premium weekly report for a model portfolio of stock-index exposures with recommendations, continuity, valuation tracking, and delivery.
+- `index.txt` as the production runtime prompt
+- `control/INDEX_CAPITAL_REUNDERWRITING_RULES.md` as the ETF-derived index-native capital discipline addendum
+- `index-pro.txt` as the premium editorial layer
+- `send_index_report.py` / `send_index_report_tv.py` as the delivery and rendering layer
+- `.github/workflows/send-weekly-indices-report.yml` as the push-triggered production send workflow
+- a pricing subsystem in `pricing_indices/`
+- a research subsystem in `research_indices/`
+- archived reports in `output_indices/`
+- pricing audits in `output_indices/pricing/`
+- candidate ranking and discovery coverage artifacts
+- explicit index state files:
+  - `output_indices/index_portfolio_state.json`
+  - `output_indices/index_valuation_history.csv`
+  - `output_indices/index_recommendation_scorecard.csv`
+- scorecard writer:
+  - `tools/write_index_recommendation_scorecard.py`
 
-### Existing but parked direction
-**AEX Weekly Options** remains preserved in the repo but is now parked as a secondary track rather than the primary active reporting product.
+The AEX options track remains preserved but parked.
 
-## What the new Weekly Indices Review should become
-A production-style review system comparable in end-user value and premium feel to ETF Review, but built around:
-- stock-index exposures
-- benchmark index analysis
-- tradable proxy implementation
-- explicit machine-readable portfolio state
-- quota-aware pricing audits
-- GitHub-write plus render/send workflow
+## What changed in this step
 
-## Core architectural decisions now in force
-1. `daily-index` remains the host repo.
-2. AEX options is preserved but parked.
-3. Weekly Indices Review becomes the primary active report product.
-4. The new product should **port the ETF framework and workflow**, not blindly copy the whole ETF repo.
-5. Analysis should be driven by **benchmark index closes** where appropriate.
-6. Implemented model-portfolio valuation should be driven by **tradable proxy closes**.
-7. The report must remain premium, compact, and decision-useful.
-8. The workflow should follow the ETF-style push-triggered production send model.
-9. Explicit state files should exist from the start rather than relying mainly on prior report parsing.
-10. The four-layer architecture remains non-negotiable.
+This update ports the most important lessons from the mature Weekly ETF Review system into the Weekly Index Review product:
+
+- capital re-underwriting discipline
+- fresh cash tests
+- thesis versus implementation split
+- direct alternative-duel requirement for weak or replaceable holdings
+- factor-overlap and breadth-concentration checks
+- defensive / inverse hedge readiness checks
+- cash policy checks
+- action-clock / inertia checks
+- machine-readable recommendation scorecard memory
+- send-path scorecard derivation validation before render and email
+- persisted scorecard commit-back after successful delivery
+
+## Why this matters
+
+The Weekly Index Review had already gained pricing, research, breadth, and short-radar layers, but it still lacked the mature ETF discipline that prevents vague `Hold` language from becoming inertia.
+
+This upgrade makes index holdings harder to hide behind:
+
+- weak holdings must be re-underwritten
+- replaceable holdings carry a timer and named alternatives
+- U.S. concentration must be called out as concentration, not diversification
+- small-cap and EM sleeves must justify their role when breadth or dollar pressure weakens
+- cash must be classified as reserve, residual, risk reserve, or deployment candidate
+- defensive / inverse opportunities remain separated from long-side opportunities
+- the scorecard preserves this discipline across runs
 
 ## Current strengths
-- The repo already has a clean four-layer operating-system structure.
-- The control layer is restart-friendly.
-- Machine-readable output thinking already exists.
-- Validation-before-delivery discipline already exists.
-- The repo is better suited than ETF as the long-term host for explicit state authority.
+
+- Strong executive look and feel in the Weekly Index report family.
+- Pricing-first workflow exists and fetches fresh proxy/benchmark closes where available.
+- Full-universe breadth visibility exists, including Europe, UK, Switzerland, Japan, Canada, Australia, Greater China, India, and EM broad.
+- Section 11 includes long-side opportunities and defensive / inverse short opportunities radar.
+- Report composition uses artifact-driven Section 4, 7, 11, 15, and 16 replacement.
+- Report-vs-ranking and pricing/NAV reconciliation validation exists.
+- Delivery workflow validates scorecard derivation before render/send.
+- `output_indices/index_recommendation_scorecard.csv` is now the explicit recommendation discipline memory.
 
 ## Current weaknesses
-### 1. Primary product mismatch
-The current active execution files are still aimed at AEX options rather than a stock-indices portfolio review.
 
-### 2. No indices-native production runtime yet
-Still missing:
-- `index.txt`
-- `index-pro.txt`
-- `send_index_report.py`
-- `.github/workflows/send-weekly-indices-report.yml`
+### 1. Recommendation scorecard is report-derived
+The scorecard currently derives from the canonical Weekly Index report. This is useful state memory, but not yet an independent implementation engine.
 
-### 3. No explicit indices state layer yet
-Still missing:
-- `output_indices/index_portfolio_state.json`
-- `output_indices/index_trade_ledger.csv`
-- `output_indices/index_valuation_history.csv`
-- `output_indices/index_recommendation_scorecard.csv`
-- `output_indices/index_recommendation_plan_YYMMDD.json`
-- `output_indices/pricing/index_price_audit_YYYYMMDD.json`
+### 2. Alternative duel scoring is still partly heuristic
+The scorecard stores named alternatives and required next action, but true 1-month / 3-month relative-strength duel values still need deeper machine-readable price history.
 
-### 4. Benchmark / proxy authority not yet implemented
-The new product requires explicit conflict-resolution rules between:
-- benchmark index data used for analysis
-- tradable proxy data used for portfolio valuation
+### 3. Factor exposure is rule-derived, not lookthrough-derived
+The current factor-overlap and breadth-concentration flags are deterministic and useful, but still approximate.
 
-### 5. Delivery layer not yet ported
-ETF already has a production-style report-send workflow and manifest discipline. The equivalent indices workflow is not yet in place.
+### 4. Control files still need continued cleanup over time
+Some historical language from the original AEX/daily-index transition may remain in older docs, but the current canonical source of truth now reflects Weekly Index Review as the active product.
 
-## Target architecture
-### ChatGPT side
-- one active runtime prompt for Weekly Indices Review: `index.txt`
-- one premium editorial layer: `index-pro.txt`
-- live GitHub reads remain authoritative
-- control layer remains the session restart discipline
-
-### GitHub side
-- `output_indices/` becomes the source of truth for the indices report family
-- explicit state files become first-class artifacts
-- pricing audits are stored under `output_indices/pricing/`
-- the weekly markdown report remains the visible report artifact
-- a machine-readable recommendation plan supports continuity and auditability
-
-### Delivery side
-- `send_index_report.py` handles validation, HTML render, PDF render, email send, and manifest write
-- a dedicated GitHub Actions workflow sends only when a new production indices report is written
-- non-report code changes must not resend the latest client report
+### 5. Delivery status must still be verified from workflow logs or manifest
+Do not claim render or email success without actual workflow evidence.
 
 ## Immediate priorities
-### Priority A — establish the new product track
-Still required:
-- create `index.txt`
-- create `index-pro.txt`
-- create split framework files under `prompts/weekly_indices/`
 
-### Priority B — define explicit state authority
-Still required:
-- create indices state files
-- define benchmark/proxy pricing precedence
-- define continuity input format
-- define recommendation-plan authority
+### Priority A — validate scorecard derivation on the next live report
+Confirm that:
+- `tools/write_index_recommendation_scorecard.py --check-only` passes before send
+- `output_indices/index_recommendation_scorecard.csv` refreshes after report publication
+- flagged holdings are sensible and not noisy
 
-### Priority C — port delivery and workflow
-Still required:
-- create `send_index_report.py`
-- create `send-weekly-indices-report.yml`
-- validate manifest/receipt behavior
+### Priority B — force decisions on weak or replaceable index sleeves
+The next report should explicitly review:
+- SPY / QQQ factor overlap and U.S. mega-cap concentration
+- IWM breadth validity and RWM defensive comparison
+- EEM dollar/EM validity and EUM defensive comparison
+- cash policy versus actionable challengers
+- whether Europe, Japan, UK, Switzerland, Canada, Australia, Greater China, India, or EM broad deserve more capital
 
-### Priority D — keep AEX options preserved
-Still required:
-- avoid destructive changes to the AEX track
-- keep files intact for later reuse
-- avoid mixing AEX options logic into the new indices runtime
+### Priority C — improve scorecard quality over time
+Future enhancements:
+- add real 1-month and 3-month relative-strength duel values
+- add better cash classification extraction
+- add more robust factor exposure model
+- add explicit consecutive-week replaceable history across reports
 
-## Recommended session start sequence
-For any future Weekly Indices Review architecture or implementation session:
-1. read `control/SYSTEM_INDEX.md`
-2. read this file
-3. read `control/NEXT_ACTIONS.md`
-4. only then open the specific execution file relevant to the task
+### Priority D — keep ETF lessons index-native
+Do not blindly copy ETF tickers, ETF state assumptions, or ETF-specific weak-point names. Apply the same discipline to index exposures, benchmark/proxy rules, and short/inverse radar.
 
 ## Current status label
-**AEX options remains preserved but parked; a new primary product direction has been chosen for this repo: Weekly Indices Review, using ETF-style production workflow and premium report discipline, with benchmark-index analysis and tradable-proxy implementation as the governing model.**
+
+**Weekly Index Review now has the key ETF lessons: pricing-first workflow, breadth discipline, short-opportunity radar, state artifact persistence, and a capital re-underwriting scorecard layer. The next live run should validate that weak, concentrated, or replaceable positions can no longer hide behind vague Hold language without named alternatives, triggers, or override reasons.**
