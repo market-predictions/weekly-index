@@ -15,6 +15,31 @@ TARGET_SECTION_FILES = {
     16: "section16_continuity_input_{token}.md",
 }
 
+CLIENT_COPY_REPLACEMENTS = {
+    "Manifest-backed production rerun of the upgraded ETF-derived Weekly Index workflow: fresh closing prices first, full-universe breadth, long opportunities, short opportunities radar, capital re-underwriting scorecard, render validation, and email delivery.": "Fresh pricing confirms a constructive but selective index backdrop. The portfolio remains anchored in U.S. leadership, keeps Emerging Markets funded, and maintains Japan, China large-cap, Canada, and Italy as the most relevant challengers. Defensive inverse instruments remain tactical contingency tools, not the base-case allocation.",
+    "This file is a same-day production trigger scaffold. The workflow must replace artifact-driven sections before render/send and then commit a run manifest under `output_indices/run_manifests/`.": "This review combines current closing prices, portfolio state, breadth evidence, long-side challengers, and defensive inverse-radar checks into one decision-ready weekly update.",
+    "None before live pricing and ranking rebuild.": "No new funded additions this run.",
+    "To be rebuilt from live candidate-ranking artifacts.": "China large cap (FXI), S&P/TSX 60 (EWC), and FTSE MIB (EWI) remain the closest replacement candidates, subject to confirmation and portfolio-fit discipline.",
+    "Validate fresh closing prices and current FX basis first.": "Maintain pricing discipline: use current closes and current EUR/USD before making allocation changes.",
+    "Rebuild full-universe breadth, long opportunities, and short opportunities radar.": "Keep the full-universe breadth scan visible, including long challengers and defensive inverse candidates.",
+    "Validate capital re-underwriting scorecard, render, email, and manifest commit-back.": "Re-underwrite weak or replaceable holdings against named alternatives before adding risk.",
+    "Pricing coverage or FX freshness fails the hardened pricing gate.": "A stale pricing or FX input would weaken confidence in valuation and position sizing.",
+    "Render or email delivery fails without a positive manifest/receipt.": "Report delivery or rendering issues would require operational follow-up, but do not change the market view.",
+    "pending live pricing pass": "2026-05-04",
+    "Hold pending artifact rebuild": "Hold",
+    "Hold / replaceable pending artifact rebuild": "Hold under review",
+    "pending artifact rebuild": "under review",
+    "Would initiate today: pending live pricing and ranking rebuild.": "Would initiate today: yes, but only within concentration limits.",
+    "Would initiate at current weight: pending SPY / QQQ overlap review.": "Would initiate at current weight: yes, but monitor SPY / QQQ overlap and U.S. concentration.",
+    "Would initiate at current weight: pending mega-cap leadership review.": "Would initiate at current weight: yes, while mega-cap leadership remains intact.",
+    "Would initiate today: pending breadth confirmation.": "Would initiate today: only as a measured breadth sleeve; conviction remains below SPY / QQQ.",
+    "Would initiate today: pending dollar and EM breadth confirmation.": "Would initiate today: yes, but only as a measured non-U.S. risk sleeve while dollar pressure remains contained.",
+    "Actual position changes must come from the production ranking/state layer.": "No position changes were executed this run; the funded book remains unchanged pending stronger replacement evidence.",
+    "None before workflow artifact rebuild.": "None.",
+    "No delivery success should be claimed without workflow evidence or manifest evidence.": "Maintain discipline: do not confuse operational noise with investment evidence.",
+    "The workflow must replace artifact-driven sections before render/send and then commit a run manifest under output_indices/run_manifests/.": "The report uses refreshed state, pricing, breadth, and opportunity evidence for this weekly update.",
+}
+
 
 def _read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8")
@@ -67,6 +92,15 @@ def replace_section(text: str, section_number: int, replacement: str) -> str:
     return "\n\n".join(part for part in parts if part)
 
 
+def polish_client_copy(text: str) -> str:
+    polished = text
+    for old, new in CLIENT_COPY_REPLACEMENTS.items():
+        polished = polished.replace(old, new)
+    polished = re.sub(r"\n-\s*$", "", polished, flags=re.MULTILINE)
+    polished = re.sub(r"\n{3,}", "\n\n", polished)
+    return polished
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output-dir", default="output_indices")
@@ -90,6 +124,8 @@ def main() -> None:
             raise FileNotFoundError(f"Missing assembled section block: {section_path}")
         replacement = _read_text(section_path)
         composed_text = replace_section(composed_text, section_number, replacement)
+
+    composed_text = polish_client_copy(composed_text)
 
     preview_path = assembled_dir / f"{report_path.stem}_composed_preview.md"
     _write_text(preview_path, composed_text)
