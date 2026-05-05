@@ -22,16 +22,18 @@ Your goal is to produce a repeatable portfolio decision process that remains bro
 
 Before taking any action, do all of the following in order:
 1. Read this file completely.
-2. Resolve the portfolio input using the rules below.
-3. Resolve whether this is an inaugural build, a continuation, or a user-overridden run.
-4. Complete the **Mandatory Pre-Analysis Pricing Pass** before macro analysis, portfolio scoring, GitHub write, or email delivery.
-5. Run the full discovery and ranking process only after the pricing pass has produced a valuation decision.
-6. Produce the full report using the required structure.
-7. Publish the full report in chat.
-8. Write the same report to GitHub using the naming/versioning rules below.
-9. Run `send_index_report.py` or equivalent delivery logic.
-10. Capture a positive delivery receipt when send succeeds.
-11. Only consider the workflow complete after chat publication, GitHub write, and email dispatch have all succeeded.
+2. Read `control/INDEX_CAPITAL_REUNDERWRITING_RULES.md` and apply it as the authoritative capital-discipline addendum.
+3. Resolve the portfolio input using the rules below.
+4. Resolve whether this is an inaugural build, a continuation, or a user-overridden run.
+5. Complete the **Mandatory Pre-Analysis Pricing Pass** before macro analysis, portfolio scoring, GitHub write, or email delivery.
+6. Run the full discovery and ranking process only after the pricing pass has produced a valuation decision.
+7. Run the capital re-underwriting layer before final action decisions.
+8. Produce the full report using the required structure.
+9. Publish the full report in chat.
+10. Write the same report to GitHub using the naming/versioning rules below.
+11. Run `send_index_report.py` or equivalent delivery logic.
+12. Capture a positive delivery receipt when send succeeds.
+13. Only consider the workflow complete after chat publication, GitHub write, and email dispatch have all succeeded.
 
 ## Non-skipping rule
 You must not:
@@ -47,7 +49,7 @@ You must not:
 - claim completion before all mandatory steps succeed
 
 ## Fail-loud rule
-If any mandatory delivery step fails — chat publication, GitHub write, HTML rendering, PDF generation, manifest creation, or email dispatch — treat the workflow as failed, say so explicitly, and do not describe the job as complete.
+If any mandatory delivery step fails — chat publication, GitHub write, HTML rendering, PDF generation, manifest creation, scorecard derivation, or email dispatch — treat the workflow as failed, say so explicitly, and do not describe the job as complete.
 
 ---
 
@@ -62,6 +64,27 @@ The analysis must be:
 - resistant to narrative drift
 - client-usable
 - trackable over time as a model portfolio
+
+---
+
+# 1A. CAPITAL RE-UNDERWRITING DISCIPLINE
+
+The capital discipline rules in `control/INDEX_CAPITAL_REUNDERWRITING_RULES.md` are mandatory.
+
+Every funded index exposure must earn capital again each run through:
+- fresh cash test
+- thesis versus implementation split
+- alternative duel for weak or replaceable holdings
+- contribution / opportunity-cost review
+- factor-overlap and breadth-concentration review
+- defensive / inverse hedge readiness review
+- cash policy review
+- action-clock / inertia review
+
+Machine-readable memory is required in:
+- `output_indices/index_recommendation_scorecard.csv`
+
+The production send workflow must validate that the latest report can derive this scorecard before render and email delivery.
 
 ---
 
@@ -137,13 +160,14 @@ Each review cycle must determine:
 9. Cash is an active choice.
 10. All weekly recommendations are assumed implemented in the model portfolio.
 11. Defensive alternatives should be researched continuously even when the base case remains constructive.
+12. `Hold but replaceable` is a temporary review state, not a permanent recommendation.
 
 ---
 
 # 5. INPUT RESOLUTION + STANDARDIZED INPUT TEMPLATE
 
 If the user does not explicitly provide a new portfolio in the current chat, automatically use the most recent stored report/state in:
-- repository: `market-predictions/daily-index`
+- repository: `market-predictions/weekly-index`
 - folder: `output_indices/`
 
 ## Most recent report rule
@@ -158,17 +182,25 @@ Recognize:
 ## No-manual-input fallback hierarchy
 1. explicit portfolio data in the current chat
 2. `output_indices/index_portfolio_state.json`
-3. matching `output_indices/index_candidate_ranking_YYMMDD.json` if it exists for the run date
-4. matching `output_indices/index_discovery_coverage_YYMMDD.json` if it exists for the run date
-5. Section `## 16. Continuity Input for Next Run` from the most recent stored report
-6. Section `## 15. Current Portfolio Holdings and Cash`
-7. deterministic assumptions
+3. `output_indices/index_recommendation_scorecard.csv`
+4. matching `output_indices/index_candidate_ranking_YYMMDD.json` if it exists for the run date
+5. matching `output_indices/index_discovery_coverage_YYMMDD.json` if it exists for the run date
+6. Section `## 16. Continuity Input for Next Run` from the most recent stored report
+7. Section `## 15. Current Portfolio Holdings and Cash`
+8. deterministic assumptions
 
 ## Artifact preference rule
 If matching candidate artifacts exist for the current report date, treat them as the preferred internal source of truth for:
 - which regional groups were actually considered
 - which candidate exposures scored highest internally
 - which omitted regional challengers deserve visibility in the client report
+
+If a scorecard exists, treat it as continuity memory for:
+- replaceable timers
+- action-clock status
+- factor-overlap flags
+- cash policy flags
+- required next actions
 
 ## Inaugural build rule
 If no prior report or state exists and no portfolio is provided:
@@ -245,6 +277,7 @@ Each run must scan across named investable benchmark families including where re
 - FTSE MIB / Italy
 - AEX / Netherlands
 - FTSE 100 / UK
+- SMI / Switzerland
 - S&P/TSX / Canada
 - ASX 200 / Australia
 - Nikkei 225 / Japan
@@ -263,6 +296,7 @@ The internal candidate process must actively consider at least one candidate fro
 - U.S. core leadership
 - continental Europe
 - UK
+- Switzerland
 - North America ex-U.S.
 - developed Asia-Pacific
 - Greater China
@@ -314,6 +348,7 @@ That means the system should think and write primarily in terms of benchmark fam
 - Nikkei 225
 - AEX
 - FTSE 100
+- SMI
 
 Tradable proxy tickers should remain visible where operational clarity matters, but should not become the dominant analytical label.
 
@@ -349,6 +384,8 @@ Use exactly one label:
 ## STEP 5A — Resolve candidate artifacts for publication
 If matching `index_candidate_ranking_YYMMDD.json` and `index_discovery_coverage_YYMMDD.json` exist, read them and use them by default for publication compression.
 If they do not exist, generate the equivalent internal ranking logic during the run.
+## STEP 5B — Apply capital re-underwriting discipline
+Apply `control/INDEX_CAPITAL_REUNDERWRITING_RULES.md` to current holdings and cash policy before final recommendations.
 
 ## STEP 6 — Score current positions
 ## STEP 7 — Generate new opportunity set
@@ -389,6 +426,15 @@ Use exactly this structure.
 ### Section 4 — Index Opportunity Board
 This section should, by default, be built from the highest-ranked published entries in `index_candidate_ranking_YYMMDD.json` if that artifact exists.
 
+### Section 10 — Current Position Review
+Where decision-relevant, include the capital re-underwriting summary:
+- Would initiate today?
+- Would initiate at current weight?
+- Thesis score
+- Implementation score
+- Best alternative
+- Required next action
+
 ### Section 11 — Best New Index Opportunities
 This section must contain both required subsections:
 - `### Long-side Opportunities`
@@ -399,9 +445,13 @@ The long-side subsection should, by default, surface the strongest non-published
 The defensive / inverse subsection should identify the strongest bearish, defensive, or inverse implementations for the current regime, explain what would trigger them, explain what would invalidate them, and keep them clearly separated from the preferred long-side opportunity set.
 
 ### Section 16 — Continuity Input for Next Run
-This section should, by default, use `index_discovery_coverage_YYMMDD.json` and `index_candidate_ranking_YYMMDD.json` to populate:
+This section should, by default, use `index_discovery_coverage_YYMMDD.json`, `index_candidate_ranking_YYMMDD.json`, and `index_recommendation_scorecard.csv` to populate:
 - watchlist / dynamic radar memory
 - strong challengers not published
+- positions under review
+- replaceable timers
+- best alternatives
+- cash policy note
 - what would most likely change the board next run
 - which defensive / inverse lane deserves elevation if the regime deteriorates
 
@@ -410,7 +460,7 @@ This section should, by default, use `index_discovery_coverage_YYMMDD.json` and 
 # 11. DUAL OUTPUT + GITHUB WRITE REQUIREMENT
 
 Present the full report in chat and also write the same report as a Markdown file to:
-- repository: `market-predictions/daily-index`
+- repository: `market-predictions/weekly-index`
 - folder: `output_indices/`
 
 ## Versioned file naming rule
@@ -439,3 +489,4 @@ Silently verify:
 11. Did I consume candidate artifacts by default when they existed?
 12. Did I preserve executive readability and report discipline?
 13. Did I include the required defensive / inverse subsection inside Section 11?
+14. Did I apply capital re-underwriting and preserve its memory in the scorecard?
