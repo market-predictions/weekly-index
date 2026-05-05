@@ -15,6 +15,12 @@ TARGET_SECTION_FILES = {
     16: "section16_continuity_input_{token}.md",
 }
 
+CLIENT_BOTTOM_LINE = """## 6. Bottom Line
+- The portfolio remains constructive but selective.
+- U.S. leadership remains the core engine, but concentration must be watched.
+- IWM and EEM remain funded but under review versus clearer challengers.
+- Inverse instruments are not base-case positions, but the hedge map is ready if breadth breaks."""
+
 CLIENT_COPY_REPLACEMENTS = {
     "Manifest-backed production rerun of the upgraded ETF-derived Weekly Index workflow: fresh closing prices first, full-universe breadth, long opportunities, short opportunities radar, capital re-underwriting scorecard, render validation, and email delivery.": "Fresh pricing confirms a constructive but selective index backdrop. The portfolio remains anchored in U.S. leadership, keeps Emerging Markets funded, and maintains Japan, China large-cap, Canada, and Italy as the most relevant challengers. Defensive inverse instruments remain tactical contingency tools, not the base-case allocation.",
     "This file is a same-day production trigger scaffold. The workflow must replace artifact-driven sections before render/send and then commit a run manifest under `output_indices/run_manifests/`.": "This review combines current closing prices, portfolio state, breadth evidence, long-side challengers, and defensive inverse-radar checks into one decision-ready weekly update.",
@@ -92,10 +98,15 @@ def replace_section(text: str, section_number: int, replacement: str) -> str:
     return "\n\n".join(part for part in parts if part)
 
 
+def force_client_bottom_line(text: str) -> str:
+    return replace_section(text, 6, CLIENT_BOTTOM_LINE)
+
+
 def polish_client_copy(text: str) -> str:
     polished = text
     for old, new in CLIENT_COPY_REPLACEMENTS.items():
         polished = polished.replace(old, new)
+    polished = force_client_bottom_line(polished)
     polished = re.sub(r"\n-\s*$", "", polished, flags=re.MULTILINE)
     polished = re.sub(r"\n{3,}", "\n\n", polished)
     return polished
