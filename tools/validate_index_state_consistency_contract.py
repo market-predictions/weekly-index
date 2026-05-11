@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import re
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -39,7 +40,6 @@ def _amount_variants(value: Any) -> set[str]:
 
 
 def _find_amounts(text: str) -> set[str]:
-    # captures obvious EUR-like values in prose and tables, including comma and dot decimals
     return set(re.findall(r"\b\d{1,3}(?:,\d{3})+(?:\.\d{2})\b|\b\d{5,6}\.\d{2}\b", text))
 
 
@@ -52,6 +52,22 @@ def _known_state_values(state: dict[str, Any]) -> set[str]:
         values |= _amount_variants(position.get("market_value_local"))
         values |= _amount_variants(position.get("latest_proxy_close"))
     return {v for v in values if v}
+
+
+def _report_date_from_name(path: Path) -> str | None:
+    match = REPORT_RE.match(path.name)
+    if not match:
+        return None
+    token = match.group(1)
+    return f"20{token[:2]}-{token[2:4]}-{token[4:6]}"
+
+
+def _allowed_early_dates(report_path: Path, requested_close: str) -> set[str]:
+    allowed = {requested_close} if requested_close else set()
+    report_date = _report_date_from_name(report_path)
+    if report_date:
+        allowed.add(report_date)
+    return allowed
 
 
 def validate() -> None:
@@ -68,16 +84,17 @@ def validate() -> None:
 
     if requested_close and requested_close not in text:
         raise RuntimeError(f"State consistency contract failed: requested close {requested_close} not visible in report {report_path.name}.")
-    if total_value is not None and not (_amount_variants(total_value) & set(text.split())):
-        if not any(v in text for v in _amount_variants(total_value)):
-            raise RuntimeError(f"State consistency contract failed: total NAV {total_value} not visible in report {report_path.name}.")
+    if total_value is not None and not any(v in text for v in _amount_variants(total_value)):
+        raise RuntimeError(f"State consistency contract failed: total NAV {total_value} not visible in report {report_path.name}.")
     if cash is not None and not any(v in text for v in _amount_variants(cash)):
         raise RuntimeError(f"State consistency contract failed: cash {cash} not visible in report {report_path.name}.")
 
-    stale_dates = sorted(set(re.findall(r"2026-\d{2}-\d{2}", text)) - {requested_close})
-    # Allow valuation-history dates in the equity curve table, but reject stale dates in the first three sections.
+    # Allow valuation-history dates later in the report and allow the report date
+    # itself in the header/executive area. Only block old pricing-basis leakage in
+    # early client-facing sections.
     early_text = "\n".join(text.splitlines()[:80])
-    stale_early_dates = sorted(set(re.findall(r"2026-\d{2}-\d{2}", early_text)) - {requested_close})
+    allowed_dates = _allowed_early_dates(report_path, requested_close)
+    stale_early_dates = sorted(set(re.findall(r"2026-\d{2}-\d{2}", early_text)) - allowed_dates)
     if stale_early_dates:
         raise RuntimeError(
             f"State consistency contract failed: stale pricing dates appear in executive/action sections: {', '.join(stale_early_dates)}"
