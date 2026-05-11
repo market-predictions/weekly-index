@@ -1,0 +1,44 @@
+{
+  "generated_at_utc": "2026-05-11T22:49:31.689669Z",
+  "report_date": "2026-05-11",
+  "report_token": "260512",
+  "rows": [
+    {
+      "candidate": "RWM",
+      "client_status": "Inactive / monitor only",
+      "invalidation": "Broad easing impulse plus improving small-cap relative strength.",
+      "max_role": "Defensive hedge only; not a long-side opportunity.",
+      "portfolio_use": "defensive_inverse_only",
+      "readiness": "inactive",
+      "regime_condition": "Small-cap breadth is not weak enough for an active inverse stance.",
+      "short_thesis": "Small caps remain vulnerable when breadth is weak and real rates are restrictive.",
+      "trigger": "IWM underperforms SPY while breadth and credit fail to improve.",
+      "underlying": "IWM / Russell 2000"
+    },
+    {
+      "candidate": "EUM",
+      "client_status": "Inactive / monitor only",
+      "invalidation": "USD weakens and China / EM breadth confirms upside.",
+      "max_role": "Defensive hedge only; not a long-side opportunity.",
+      "portfolio_use": "defensive_inverse_only",
+      "readiness": "inactive",
+      "regime_condition": "Dollar pressure is not strong enough to activate EM inverse readiness.",
+      "short_thesis": "EM remains vulnerable when USD pressure and China confidence risk rise.",
+      "trigger": "UUP strengthens while EEM breaks relative support.",
+      "underlying": "EEM / Emerging Markets"
+    },
+    {
+      "candidate": "PSQ",
+      "client_status": "Inactive / monitor only",
+      "invalidation": "QQQ leadership remains intact.",
+      "max_role": "Crash / drawdown hedge only; not a base-case allocation.",
+      "portfolio_use": "defensive_inverse_only",
+      "readiness": "inactive",
+      "regime_condition": "Nasdaq leadership remains intact.",
+      "short_thesis": "Nasdaq hedge only becomes relevant if mega-cap leadership breaks.",
+      "trigger": "QQQ loses relative strength versus SPY and breadth fails.",
+      "underlying": "QQQ / Nasdaq 100"
+    }
+  ],
+  "separation_rule": "These are defensive / inverse candidates only and must not appear in the long-side opportunity board."
+}

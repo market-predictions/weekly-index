@@ -1,0 +1,141 @@
+{
+  "central_banks": {
+    "boe": {
+      "index_implication": "UK is a diversification watchlist lane",
+      "likely_direction": "cautious easing bias",
+      "main_risk": "UK remains more defensive-yield than growth leadership",
+      "stance": "mixed growth / inflation",
+      "transfer_to_report": false
+    },
+    "boj": {
+      "index_implication": "Japan requires confirmation, not only structural reform narrative",
+      "likely_direction": "yen and yield shifts can affect global liquidity",
+      "main_risk": "Japan exposure can be volatile if yen/yield repricing accelerates",
+      "stance": "normalization risk",
+      "transfer_to_report": false
+    },
+    "ecb": {
+      "index_implication": "Europe stays on the board, but not as automatic capital",
+      "likely_direction": "policy support can help Europe only if earnings and price confirmation improve",
+      "main_risk": "Europe catch-up fails if global growth or currency support weakens",
+      "stance": "gradual easing bias",
+      "transfer_to_report": false
+    },
+    "fed": {
+      "index_implication": "prefer quality and confirmed leadership over weak breadth",
+      "likely_direction": "hold-to-ease path, but timing remains data-dependent",
+      "main_risk": "real-rate repricing pressures small caps, EM and speculative beta",
+      "stance": "restrictive / data-dependent",
+      "transfer_to_report": true
+    },
+    "pboc": {
+      "index_implication": "China / EM remain tactical unless price confirmation improves",
+      "likely_direction": "stimulus support is possible but confidence-sensitive",
+      "main_risk": "China and EM rallies can fail without durable policy credibility",
+      "stance": "targeted support",
+      "transfer_to_report": false
+    }
+  },
+  "defensive_inverse_adjustments": {
+    "EUM": {
+      "readiness": "inactive",
+      "reason": "Dollar pressure is not strong enough to activate EM inverse readiness.",
+      "underlying": "EEM / Emerging Markets"
+    },
+    "PSQ": {
+      "readiness": "inactive",
+      "reason": "Nasdaq leadership remains intact.",
+      "underlying": "QQQ / Nasdaq 100"
+    },
+    "RWM": {
+      "readiness": "inactive",
+      "reason": "Small-cap breadth is not weak enough for an active inverse stance.",
+      "underlying": "IWM / Russell 2000"
+    }
+  },
+  "generated_at_utc": "2026-05-11T22:49:31.505623Z",
+  "long_lane_adjustments": {
+    "em_broad": {
+      "reason": "A weaker dollar backdrop would improve EM timing.",
+      "score_adjustment": 0.05
+    },
+    "europe_large_cap": {
+      "reason": "Europe remains a diversification candidate, but price confirmation is still required.",
+      "score_adjustment": 0.05
+    },
+    "japan_equities": {
+      "reason": "Japan remains a valid non-U.S. developed diversification lane, subject to currency/yield volatility.",
+      "score_adjustment": 0.05
+    },
+    "us_small_cap": {
+      "reason": "Small-cap breadth and real-rate conditions remain insufficient for broad risk expansion.",
+      "score_adjustment": -0.12
+    },
+    "us_tech_leadership": {
+      "reason": "Nasdaq leadership remains the cleanest long-side index impulse.",
+      "score_adjustment": 0.12
+    }
+  },
+  "macro_signals": {
+    "credit": {
+      "hyg_20d_pct": -0.35
+    },
+    "duration": {
+      "tlt_20d_pct": -1.37
+    },
+    "equity_breadth": {
+      "iwm_vs_spy_20d_pct": -0.11,
+      "qqq_vs_spy_20d_pct": 7.78
+    },
+    "usd": {
+      "uup_20d_pct": -0.11
+    }
+  },
+  "portfolio_implications": [
+    "Do not treat narrow U.S. leadership as full global breadth confirmation.",
+    "Keep IWM and EM funding conditional on breadth, dollar and real-rate improvement.",
+    "Keep defensive / inverse candidates separate from the long-side opportunity board."
+  ],
+  "regime": {
+    "confidence": 0.64,
+    "current": "Rate-hike repricing / real-rate pressure",
+    "portfolio_implication": "Do not treat narrow U.S. leadership as full global breadth confirmation.",
+    "previous": "Unknown",
+    "what_changed": [
+      "Duration weakness keeps the bar high for small caps and rate-sensitive exposures.",
+      "Growth leadership remains visible versus broad U.S. beta."
+    ]
+  },
+  "region_implications": {
+    "Emerging Markets": "Higher hurdle when USD pressure is firm.",
+    "Europe": "Diversification candidate; requires price confirmation.",
+    "Japan": "Valid developed-market alternative; monitor yen/yield volatility.",
+    "US": "Leadership is investable but concentration must be explicit."
+  },
+  "report_date": "2026-05-11",
+  "report_digest": {
+    "central_bank_focus": "Fed real-rate risk remains the key policy filter for small caps, EM and speculative beta.",
+    "decision_implications": [
+      "Do not treat narrow U.S. leadership as full global breadth confirmation.",
+      "Keep IWM and EM funding conditional on breadth, dollar and real-rate improvement.",
+      "Keep defensive / inverse candidates separate from the long-side opportunity board."
+    ],
+    "headline": "Rate-hike repricing / real-rate pressure: stay selective and separate long opportunities from defensive / inverse readiness.",
+    "risk_watch": "A stronger USD or renewed rate repricing would raise the hurdle for EM, small caps and non-U.S. cyclicals.",
+    "top_changes": [
+      "Duration weakness keeps the bar high for small caps and rate-sensitive exposures.",
+      "Growth leadership remains visible versus broad U.S. beta."
+    ]
+  },
+  "report_token": "260512",
+  "report_transfer": {
+    "max_central_bank_or_policy_points": 2,
+    "max_portfolio_implications": 3,
+    "max_what_changed_bullets": 3,
+    "style_rule": "Transfer only decision-relevant macro information; do not dump the pack into the report."
+  },
+  "source_files": {
+    "macro_snapshot": "output_indices/research/index_macro_snapshot_260512.json",
+    "relative_strength_snapshot": "output_indices/research/index_relative_strength_snapshot_260512.json"
+  }
+}
