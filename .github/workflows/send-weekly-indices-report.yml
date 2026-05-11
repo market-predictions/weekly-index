@@ -99,6 +99,10 @@ jobs:
         run: |
           python -m pricing_indices.validate_report_artifact_alignment
 
+      - name: Validate index state consistency
+        run: |
+          python tools/validate_index_state_consistency_contract.py
+
       - name: Validate index report compactness
         run: |
           python tools/validate_index_compactness_contract.py
