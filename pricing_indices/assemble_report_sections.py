@@ -27,9 +27,9 @@ DISPLAY_NAME_OVERRIDES = {
 }
 
 STATUS_LABELS = {
-    "surfaced": "Surfaced",
-    "considered": "Considered",
-    "near_miss": "Near miss",
+    "surfaced": "Published",
+    "considered": "Reviewed",
+    "near_miss": "Close challenger, not funded",
     "ruled_out": "Lower priority this run",
     "published": "Published",
 }
@@ -39,6 +39,8 @@ REASON_LABELS = {
     "strong_challenger_not_published": "Strong challenger, not yet funded",
     "board_capacity": "Kept off the compact board by stronger candidates",
     "weak_relative_strength": "Relative strength not strong enough yet",
+    "fragile_macro_alignment": "Macro timing not strong enough yet",
+    "insufficient_immediate_priority": "Not urgent enough for capital this week",
     "below_board_cutoff": "Below the publication cutoff this run",
 }
 
@@ -55,6 +57,10 @@ def _client_reason(value: Any) -> str:
 
 def _read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _read_json_if_exists(path: Path) -> dict[str, Any]:
+    return _read_json(path) if path.exists() else {}
 
 
 def _write_text(path: Path, text: str) -> None:
@@ -144,6 +150,17 @@ def join_public_names(items: Any) -> str:
     return ", ".join(values) if values else "none"
 
 
+def _fmt_edge(value: Any) -> str:
+    try:
+        if value is None:
+            return "n/a"
+        number = float(value)
+    except (TypeError, ValueError):
+        return "n/a"
+    sign = "+" if number > 0 else ""
+    return f"{sign}{number:.2f}%"
+
+
 def build_section4(candidate_ranking: dict[str, Any], plan: dict[str, Any]) -> str:
     published = [c for c in candidate_ranking.get("candidates", []) if c.get("publish")]
     published = sorted(published, key=lambda x: (-float(x.get("board_score") or x.get("score") or 0.0), x.get("public_index_name") or ""))[:6]
@@ -159,9 +176,9 @@ def build_section4(candidate_ranking: dict[str, Any], plan: dict[str, Any]) -> s
             f"| {row.get('public_index_name')} | {row.get('public_index_name')} | {row.get('primary_proxy')} | {row.get('regional_group')} | {float(row.get('board_score') or row.get('score') or 0.0):.2f} | {status} | {why} |"
         )
 
-    near_miss_groups = [g for g in candidate_ranking.get("regional_group_status", []) if g.get("status") == "near_miss"]
-    if near_miss_groups:
-        strongest = near_miss_groups[0].get("strongest_candidate") or {}
+    close_groups = [g for g in candidate_ranking.get("regional_group_status", []) if g.get("status") == "near_miss"]
+    if close_groups:
+        strongest = close_groups[0].get("strongest_candidate") or {}
         if strongest:
             lines += [
                 "",
@@ -203,7 +220,42 @@ def build_section7(state: dict[str, Any], valuation_rows: list[dict[str, str]]) 
     return "\n".join(lines)
 
 
-def build_section11(candidate_ranking: dict[str, Any], coverage: dict[str, Any], plan: dict[str, Any]) -> str:
+def build_alternative_duel_table(duels: dict[str, Any]) -> str:
+    rows = duels.get("rows", []) or []
+    if not rows:
+        return "No alternative-duel artifact was available for this run."
+    lines = [
+        "### Alternative Duel Table",
+        "| Current exposure | Current proxy | Alternative / hedge | Alternative proxy | Type | 20d edge | 60d edge | Regime fit | Decision | Required trigger |",
+        "|---|---|---|---|---|---:|---:|---|---|---|",
+    ]
+    for row in rows[:12]:
+        duel_type = "Defensive / inverse" if row.get("duel_type") == "defensive_inverse" else "Long alternative"
+        lines.append(
+            f"| {row.get('current_name')} | {row.get('current_proxy')} | {row.get('alternative_name')} | {row.get('alternative_proxy')} | {duel_type} | {_fmt_edge(row.get('edge_20d_pct'))} | {_fmt_edge(row.get('edge_60d_pct'))} | {row.get('regime_fit')} | {row.get('decision')} | {row.get('required_trigger')} |"
+        )
+    return "\n".join(lines)
+
+
+def build_short_radar_table(short_radar: dict[str, Any]) -> str:
+    rows = short_radar.get("rows", []) or []
+    if not rows:
+        return "No defensive / inverse radar artifact was available for this run."
+    lines = [
+        "### Best Defensive / Inverse Opportunities",
+        "These instruments are defensive tools only. They are not part of the base-case long allocation.",
+        "",
+        "| Candidate | Underlying | Status | Short thesis | Trigger | Invalidation | Max role |",
+        "|---|---|---|---|---|---|---|",
+    ]
+    for row in rows:
+        lines.append(
+            f"| {row.get('candidate')} | {row.get('underlying')} | {row.get('client_status')} | {row.get('short_thesis')} | {row.get('trigger')} | {row.get('invalidation')} | {row.get('max_role')} |"
+        )
+    return "\n".join(lines)
+
+
+def build_section11(candidate_ranking: dict[str, Any], coverage: dict[str, Any], plan: dict[str, Any], duels: dict[str, Any], short_radar: dict[str, Any]) -> str:
     all_candidates = candidate_ranking.get("candidates", [])
     unpublished = [c for c in all_candidates if not c.get("publish")]
     unpublished = sorted(unpublished, key=lambda x: (-float(x.get("challenger_score") or x.get("score") or 0.0), x.get("public_index_name") or ""))
@@ -224,7 +276,6 @@ def build_section11(candidate_ranking: dict[str, Any], coverage: dict[str, Any],
             reason_code = _client_reason(row.get("reason_code_if_not_published") or "below_board_cutoff")
             lines += [
                 f"#### {idx}. {row.get('public_index_name')} ({row.get('primary_proxy')})",
-                "",
                 f"- Regional group: {row.get('regional_group')}",
                 f"- Challenger score: {float(row.get('challenger_score') or row.get('score') or 0.0):.2f}",
                 f"- Why it matters: {reason}",
@@ -234,35 +285,9 @@ def build_section11(candidate_ranking: dict[str, Any], coverage: dict[str, Any],
     else:
         lines += ["No non-published long-side challengers were available for this run.", ""]
 
+    lines += [build_alternative_duel_table(duels), "", build_short_radar_table(short_radar), ""]
+
     lines += [
-        "### Best Defensive / Inverse Opportunities",
-        "",
-        "#### 1. Short Russell 2000 via RWM",
-        "",
-        "- Why it matters: the Russell 2000 remains the weakest current held sleeve and is the cleanest bearish expression if tighter conditions and funding stress keep hurting small caps.",
-        "- Trigger: further relative breakdown in small-cap breadth.",
-        "- Invalidation: clear improvement in small-cap relative strength and easing inflation pressure.",
-        "",
-        "#### 2. Short Nasdaq 100 via PSQ",
-        "",
-        "- Why it matters: this is the cleanest hedge if U.S. growth leadership breaks under higher yields or earnings disappointment.",
-        "- Trigger: clear loss of Nasdaq 100 relative leadership or broad de-risking led by large-cap tech.",
-        "- Invalidation: renewed earnings-led strength in mega-cap growth and a calmer policy backdrop.",
-        "",
-        "#### 3. Short S&P 500 via SH",
-        "",
-        "- Why it matters: this is the broad-market hedge if selective resilience turns into a wider U.S. risk-off move.",
-        "- Trigger: policy or liquidity stress begins to hit the broader index rather than only the weakest sleeves.",
-        "- Invalidation: continued S&P 500 earnings resilience and broad participation in upside.",
-        "",
-        "#### 4. Short developed ex-U.S. via EFZ or short Emerging Markets via EUM",
-        "",
-        "- Why it matters: these are the cleaner non-U.S. hedge lanes if Europe or broader emerging markets deteriorate faster than expected.",
-        "- Trigger: renewed energy stress, worsening Europe data, or broad EM weakness.",
-        "- Invalidation: oil stabilizes, Europe sentiment improves, and EM breadth strengthens.",
-        "",
-        "**Important note:** these inverse instruments are defensive tools, not the base-case allocation. They are most appropriate as tactical hedges or bearish expressions under deterioration, not as default long-term holdings.",
-        "",
         "### Breadth checkpoint by regional bucket",
         "| Regional bucket | Strongest candidate | Proxy | Challenger score | Current status |",
         "|---|---|---|---:|---|",
@@ -379,6 +404,8 @@ def main() -> None:
     coverage_path = output_dir / f"index_discovery_coverage_{token}.json"
     state_path = output_dir / "index_portfolio_state.json"
     valuation_path = output_dir / "index_valuation_history.csv"
+    duel_path = output_dir / "research" / f"index_alternative_duels_{token}.json"
+    short_radar_path = output_dir / "research" / f"index_short_radar_{token}.json"
 
     if not ranking_path.exists():
         raise FileNotFoundError(f"Missing ranking artifact: {ranking_path}")
@@ -392,11 +419,13 @@ def main() -> None:
     plan, plan_source = _load_plan(output_dir, token)
     state = _read_json(state_path)
     valuation_rows = _read_valuation_history(valuation_path)
+    duels = _read_json_if_exists(duel_path)
+    short_radar = _read_json_if_exists(short_radar_path)
 
     assembled_dir = output_dir / "assembled"
     sec4 = build_section4(candidate_ranking, plan)
     sec7 = build_section7(state, valuation_rows)
-    sec11 = build_section11(candidate_ranking, coverage, plan)
+    sec11 = build_section11(candidate_ranking, coverage, plan, duels, short_radar)
     sec15 = build_section15(state)
     sec16 = build_section16(candidate_ranking, coverage, plan)
 
