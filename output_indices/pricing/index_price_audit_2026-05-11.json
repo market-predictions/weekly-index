@@ -1,0 +1,73 @@
+{
+  "run_date": "2026-05-11",
+  "requested_close_date": "2026-05-11",
+  "source_mode": "state_file",
+  "bootstrapped": false,
+  "holdings_count": 4,
+  "fresh_holdings_count": 4,
+  "carried_forward_holdings_count": 0,
+  "fresh_count_pct": 100.0,
+  "coverage_count_pct": 100.0,
+  "fresh_invested_weight_coverage_pct": 86.1,
+  "priced_invested_weight_coverage_pct": 86.1,
+  "decision": "update_covered_holdings_carry_unresolved",
+  "unresolved_tickers": [],
+  "fx_basis": {
+    "date": "2026-05-11",
+    "usd_per_eur": 1.1765,
+    "source": "ecb_reference"
+  },
+  "positions": [
+    {
+      "exposure_id": "us_large_cap",
+      "display_name": "S&P 500",
+      "benchmark_symbol": "^GSPC",
+      "primary_proxy": "SPY",
+      "shares": 44,
+      "proxy_close": 739.3,
+      "benchmark_close": 7412.8398,
+      "proxy_status": "fresh_close",
+      "benchmark_status": "fresh_close",
+      "market_value_eur": 27649.13
+    },
+    {
+      "exposure_id": "us_tech_leadership",
+      "display_name": "Nasdaq 100",
+      "benchmark_symbol": "^NDX",
+      "primary_proxy": "QQQ",
+      "shares": 48,
+      "proxy_close": 713.29,
+      "benchmark_close": 29320.6562,
+      "proxy_status": "fresh_close",
+      "benchmark_status": "fresh_close",
+      "market_value_eur": 29101.5
+    },
+    {
+      "exposure_id": "us_small_cap",
+      "display_name": "Russell 2000",
+      "benchmark_symbol": "^RUT",
+      "primary_proxy": "IWM",
+      "shares": 90,
+      "proxy_close": 285.33,
+      "benchmark_close": 2870.6404,
+      "proxy_status": "fresh_close",
+      "benchmark_status": "fresh_close",
+      "market_value_eur": 21827.2
+    },
+    {
+      "exposure_id": "em_broad",
+      "display_name": "Emerging Markets",
+      "benchmark_symbol": "EEM",
+      "primary_proxy": "EEM",
+      "shares": 309,
+      "proxy_close": 67.89,
+      "benchmark_close": 67.89,
+      "proxy_status": "fresh_close",
+      "benchmark_status": "fresh_close",
+      "market_value_eur": 17830.86
+    }
+  ],
+  "cash_eur": 15566.74,
+  "total_portfolio_value_eur": 111975.43,
+  "state_file": "output_indices/index_portfolio_state.json"
+}
