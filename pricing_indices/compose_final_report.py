@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 from pathlib import Path
+from typing import Any
 
 REPORT_RE = re.compile(r"weekly_indices_review_(\d{6})(?:_(\d{2}))?\.md$")
 SECTION_HEADER_RE = re.compile(r"^##\s+(\d+)\.\s+.*$", flags=re.MULTILINE)
@@ -31,7 +33,7 @@ CLIENT_COPY_REPLACEMENTS = {
     "Validate capital re-underwriting scorecard, render, email, and manifest commit-back.": "Re-underwrite weak or replaceable holdings against named alternatives before adding risk.",
     "Pricing coverage or FX freshness fails the hardened pricing gate.": "A stale pricing or FX input would weaken confidence in valuation and position sizing.",
     "Render or email delivery fails without a positive manifest/receipt.": "Report delivery or rendering issues would require operational follow-up, but do not change the market view.",
-    "pending live pricing pass": "2026-05-04",
+    "pending live pricing pass": "current pricing basis",
     "Hold pending artifact rebuild": "Hold",
     "Hold / replaceable pending artifact rebuild": "Hold under review",
     "pending artifact rebuild": "under review",
@@ -51,9 +53,28 @@ def _read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8")
 
 
+def _read_json(path: Path) -> dict[str, Any]:
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 def _write_text(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text.rstrip() + "\n", encoding="utf-8")
+
+
+def _money(value: Any) -> str:
+    try:
+        return f"{float(value):,.2f}"
+    except (TypeError, ValueError):
+        return "n/a"
+
+
+def _take(values: Any, limit: int = 3) -> list[str]:
+    if not isinstance(values, list):
+        return []
+    return [str(v).strip() for v in values if str(v).strip()][:limit]
 
 
 def latest_report_path(output_dir: Path) -> Path:
@@ -98,6 +119,74 @@ def replace_section(text: str, section_number: int, replacement: str) -> str:
     return "\n\n".join(part for part in parts if part)
 
 
+def _portfolio_state(output_dir: Path) -> dict[str, Any]:
+    return _read_json(output_dir / "index_portfolio_state.json")
+
+
+def _macro_pack(output_dir: Path) -> dict[str, Any]:
+    return _read_json(output_dir / "macro" / "latest.json")
+
+
+def build_executive_summary(output_dir: Path) -> str:
+    state = _portfolio_state(output_dir)
+    macro = _macro_pack(output_dir)
+    pricing = state.get("pricing_basis", {}) or {}
+    requested_close = pricing.get("requested_close_date") or "current close"
+    fx_date = pricing.get("fx_date") or requested_close
+    total_value = _money(state.get("total_portfolio_value_eur"))
+    cash = _money(state.get("cash_eur"))
+    regime = ((macro.get("regime") or {}).get("current")) or "Policy transition / mixed regime"
+    confidence = (macro.get("regime") or {}).get("confidence")
+    confidence_text = f"{float(confidence):.0%}" if isinstance(confidence, (int, float)) else "medium"
+    top_changes = _take((macro.get("report_digest") or {}).get("top_changes") or (macro.get("regime") or {}).get("what_changed"), 3)
+    implications = _take((macro.get("report_digest") or {}).get("decision_implications") or macro.get("portfolio_implications"), 3)
+    first_change = top_changes[0] if top_changes else "No full-regime break; selectivity remains more important than broad risk expansion."
+    first_implication = implications[0] if implications else "Keep the current implementation invested while forcing weak sleeves through direct alternative duels."
+
+    return f"""## 1. Executive Summary
+- **Current valuation basis:** portfolio NAV is EUR {total_value}, including EUR {cash} cash, rebuilt from the {requested_close} close and FX reference date {fx_date}.
+- **Primary regime:** {regime} ({confidence_text} confidence).
+- **What changed:** {first_change}
+- **Portfolio implication:** {first_implication}
+- **Main takeaway:** keep QQQ as the strongest earned sleeve, keep SPY under concentration review, and force IWM and EEM through named long-alternative and defensive-hedge duels before any new capital is assigned."""
+
+
+def build_action_snapshot(output_dir: Path) -> str:
+    state = _portfolio_state(output_dir)
+    positions = state.get("positions", []) or []
+    by_proxy = {str(p.get("primary_proxy") or "").upper(): p for p in positions}
+
+    def label(proxy: str, fallback: str) -> str:
+        p = by_proxy.get(proxy)
+        if not p:
+            return fallback
+        return f"{p.get('display_name') or fallback} via {proxy}"
+
+    return f"""## 2. Portfolio Action Snapshot
+| Recommendation | Tickers / notes |
+|---|---|
+| Add | None this run. Cash remains available, but no challenger clears the full pricing, regime and relative-strength hurdle yet. |
+| Hold | {label('SPY', 'S&P 500 via SPY')}; {label('QQQ', 'Nasdaq 100 via QQQ')} |
+| Hold but replaceable | {label('IWM', 'Russell 2000 via IWM')}; {label('EEM', 'Emerging Markets via EEM')} |
+| Reduce | None until the direct alternative-duel evidence produces a cleaner replacement or hedge trigger. |
+| Close | None this run. |
+
+### Best replacements to monitor
+- Japan large cap via EWJ
+- Canada broad via EWC
+- Greater China large cap via FXI
+
+### Top 3 actions this week
+1. Keep QQQ as the strongest core holding while leadership remains intact.
+2. Test SPY against QQQ overlap so U.S. exposure is not mistaken for full diversification.
+3. Force IWM and EEM through long-alternative and defensive/inverse comparisons before adding capital.
+
+### Top 3 risks this week
+1. Higher oil or sticky inflation delays easier policy and keeps pressure on weak breadth.
+2. SPY and QQQ remain a concentration cluster, not a diversified global allocation.
+3. IWM and EEM stay under review until breadth, USD and relative-strength evidence improve."""
+
+
 def force_client_bottom_line(text: str) -> str:
     return replace_section(text, 6, CLIENT_BOTTOM_LINE)
 
@@ -107,6 +196,8 @@ def polish_client_copy(text: str) -> str:
     for old, new in CLIENT_COPY_REPLACEMENTS.items():
         polished = polished.replace(old, new)
     polished = force_client_bottom_line(polished)
+    polished = re.sub(r"\b([A-Z]{2,5})(versus|together|and)\b", r"\1 \2", polished)
+    polished = re.sub(r"\b(and|versus)([A-Z]{2,5})\b", r"\1 \2", polished)
     polished = re.sub(r"\n-\s*$", "", polished, flags=re.MULTILINE)
     polished = re.sub(r"\n{3,}", "\n\n", polished)
     return polished
@@ -128,6 +219,11 @@ def main() -> None:
     assembled_dir = output_dir / "assembled"
     original_text = _read_text(report_path)
     composed_text = original_text
+
+    # Sections 1 and 2 are composed directly from current runtime state to avoid
+    # stale inherited prose such as old NAVs or old pricing dates.
+    composed_text = replace_section(composed_text, 1, build_executive_summary(output_dir))
+    composed_text = replace_section(composed_text, 2, build_action_snapshot(output_dir))
 
     for section_number, template in TARGET_SECTION_FILES.items():
         section_path = assembled_dir / template.format(token=token)
