@@ -962,7 +962,7 @@
     "report_file": "weekly_indices_review_260512.md",
     "requested_close_date": "2026-05-11"
   },
-  "generated_at_utc": "2026-05-11T22:49:31.689669Z",
+  "generated_at_utc": "2026-05-11T23:04:12.783238Z",
   "macro_policy_pack": {
     "central_banks": {
       "boe": {
@@ -1018,7 +1018,7 @@
         "underlying": "IWM / Russell 2000"
       }
     },
-    "generated_at_utc": "2026-05-11T22:49:31.505623Z",
+    "generated_at_utc": "2026-05-11T23:04:12.595843Z",
     "long_lane_adjustments": {
       "em_broad": {
         "reason": "A weaker dollar backdrop would improve EM timing.",
@@ -1548,7 +1548,7 @@
       "thesis_score": "3.30",
       "ticker": "IWM",
       "total_score": "",
-      "weeks_replaceable": "8",
+      "weeks_replaceable": "9",
       "weight_pct": "19.49",
       "would_initiate_at_current_weight": "No",
       "would_initiate_today": "Unresolved"
@@ -1580,7 +1580,7 @@
       "thesis_score": "3.30",
       "ticker": "EEM",
       "total_score": "",
-      "weeks_replaceable": "8",
+      "weeks_replaceable": "9",
       "weight_pct": "15.92",
       "would_initiate_at_current_weight": "No",
       "would_initiate_today": "Unresolved"
@@ -1881,11 +1881,11 @@
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "^FTSE",
-        "composite_score_raw": -0.020805,
-        "drawdown_from_120d_high": -0.058766,
+        "composite_score_raw": -0.023544,
+        "drawdown_from_120d_high": -0.062096,
         "exposure_id": "uk_large_cap",
-        "latest_close": 10269.429688,
-        "latest_date": "2026-05-11",
+        "latest_close": 10233.099609,
+        "latest_date": "2026-05-08",
         "percentile": 0.2222,
         "primary_proxy": "EWU",
         "public_index_name": "FTSE 100",
@@ -1893,10 +1893,10 @@
         "regional_group": "UK",
         "relative_strength_score": 0.44,
         "requested_close_date": "2026-05-11",
-        "return_120d": 0.058879,
-        "return_20d": -0.031232,
-        "return_60d": -0.019353,
-        "selected_data_date": "2026-05-11"
+        "return_120d": 0.043374,
+        "return_20d": -0.034932,
+        "return_60d": -0.011658,
+        "selected_data_date": "2026-05-08"
       },
       {
         "analysis_source_type": "benchmark",

@@ -176,53 +176,47 @@ The board remains intentionally compact. The strongest omitted regional challeng
 The strongest omitted regional challenger this run is **China large cap (FXI)**. It improves breadth and remains close enough to the live board to stay visible in the report.
 
 #### 1. China large cap (FXI)
-
 - Regional group: Greater China
 - Challenger score: 1.97
 - Why it matters: Ranks well internally but remains just below the current publication cutoff.
 - Why not on the board yet: Strong challenger, not yet funded
 
 #### 2. S&P/TSX 60 (EWC)
-
 - Regional group: North America ex-U.S.
 - Challenger score: 1.74
 - Why it matters: Ranks well internally but remains just below the current publication cutoff.
 - Why not on the board yet: Strong challenger, not yet funded
 
 #### 3. Hang Seng (EWH)
-
 - Regional group: Greater China
 - Challenger score: 1.42
 - Why it matters: Ranks well internally but remains just below the current publication cutoff.
 - Why not on the board yet: Kept off the compact board by stronger candidates
 
+### Alternative Duel Table
+| Current exposure | Current proxy | Alternative / hedge | Alternative proxy | Type | 20d edge | 60d edge | Regime fit | Decision | Required trigger |
+|---|---|---|---|---|---:|---:|---|---|---|
+| S&P 500 | SPY | Nasdaq 100 | QQQ | Long alternative | +7.86% | +10.28% | candidate | Alternative improving; keep replacement duel active. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
+| S&P 500 | SPY | Euro Stoxx 50 | FEZ | Long alternative | -7.39% | -10.73% | watchlist | Current exposure still leads; no replacement. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
+| S&P 500 | SPY | Nikkei 225 | EWJ | Long alternative | +9.76% | +7.02% | candidate | Alternative improving; keep replacement duel active. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
+| Nasdaq 100 | QQQ | S&P 500 | SPY | Long alternative | -7.86% | -10.28% | watchlist | Current exposure still leads; no replacement. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
+| Nasdaq 100 | QQQ | Russell 2000 | IWM | Long alternative | -8.01% | -9.03% | watchlist | Current exposure still leads; no replacement. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
+| Nasdaq 100 | QQQ | Inverse hedge for Nasdaq 100 | PSQ | Defensive / inverse | n/a | n/a | inactive | Not decision-grade this week — relative-strength proof incomplete. | Nasdaq leadership remains intact. |
+| Russell 2000 | IWM | S&P 500 | SPY | Long alternative | +0.15% | -1.25% | watchlist | Early improvement only; wait for 60d confirmation. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
+| Russell 2000 | IWM | Inverse hedge for Russell 2000 | RWM | Defensive / inverse | n/a | n/a | inactive | Not decision-grade this week — relative-strength proof incomplete. | Small-cap breadth is not weak enough for an active inverse stance. |
+| Emerging Markets | EEM | Nifty 50 | INDA | Long alternative | -10.42% | -17.27% | watchlist | Current exposure still leads; no replacement. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
+| Emerging Markets | EEM | China large cap | FXI | Long alternative | -1.46% | -8.03% | watchlist | Current exposure still leads; no replacement. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
+| Emerging Markets | EEM | S&P 500 | SPY | Long alternative | -3.52% | -3.06% | watchlist | Current exposure still leads; no replacement. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
+| Emerging Markets | EEM | Inverse hedge for Emerging Markets | EUM | Defensive / inverse | n/a | n/a | inactive | Not decision-grade this week — relative-strength proof incomplete. | Dollar pressure is not strong enough to activate EM inverse readiness. |
+
 ### Best Defensive / Inverse Opportunities
+These instruments are defensive tools only. They are not part of the base-case long allocation.
 
-#### 1. Short Russell 2000 via RWM
-
-- Why it matters: the Russell 2000 remains the weakest current held sleeve and is the cleanest bearish expression if tighter conditions and funding stress keep hurting small caps.
-- Trigger: further relative breakdown in small-cap breadth.
-- Invalidation: clear improvement in small-cap relative strength and easing inflation pressure.
-
-#### 2. Short Nasdaq 100 via PSQ
-
-- Why it matters: this is the cleanest hedge if U.S. growth leadership breaks under higher yields or earnings disappointment.
-- Trigger: clear loss of Nasdaq 100 relative leadership or broad de-risking led by large-cap tech.
-- Invalidation: renewed earnings-led strength in mega-cap growth and a calmer policy backdrop.
-
-#### 3. Short S&P 500 via SH
-
-- Why it matters: this is the broad-market hedge if selective resilience turns into a wider U.S. risk-off move.
-- Trigger: policy or liquidity stress begins to hit the broader index rather than only the weakest sleeves.
-- Invalidation: continued S&P 500 earnings resilience and broad participation in upside.
-
-#### 4. Short developed ex-U.S. via EFZ or short Emerging Markets via EUM
-
-- Why it matters: these are the cleaner non-U.S. hedge lanes if Europe or broader emerging markets deteriorate faster than expected.
-- Trigger: renewed energy stress, worsening Europe data, or broad EM weakness.
-- Invalidation: oil stabilizes, Europe sentiment improves, and EM breadth strengthens.
-
-**Important note:** these inverse instruments are defensive tools, not the base-case allocation. They are most appropriate as tactical hedges or bearish expressions under deterioration, not as default long-term holdings.
+| Candidate | Underlying | Status | Short thesis | Trigger | Invalidation | Max role |
+|---|---|---|---|---|---|---|
+| RWM | IWM / Russell 2000 | Inactive / monitor only | Small caps remain vulnerable when breadth is weak and real rates are restrictive. | IWM underperforms SPY while breadth and credit fail to improve. | Broad easing impulse plus improving small-cap relative strength. | Defensive hedge only; not a long-side opportunity. |
+| EUM | EEM / Emerging Markets | Inactive / monitor only | EM remains vulnerable when USD pressure and China confidence risk rise. | UUP strengthens while EEM breaks relative support. | USD weakens and China / EM breadth confirms upside. | Defensive hedge only; not a long-side opportunity. |
+| PSQ | QQQ / Nasdaq 100 | Inactive / monitor only | Nasdaq hedge only becomes relevant if mega-cap leadership breaks. | QQQ loses relative strength versus SPY and breadth fails. | QQQ leadership remains intact. | Crash / drawdown hedge only; not a base-case allocation. |
 
 ### Breadth checkpoint by regional bucket
 | Regional bucket | Strongest candidate | Proxy | Challenger score | Current status |
@@ -231,9 +225,9 @@ The strongest omitted regional challenger this run is **China large cap (FXI)**.
 | continental Europe | FTSE MIB | EWI | 1.38 | Lower priority this run |
 | UK | FTSE 100 | EWU | 0.84 | Lower priority this run |
 | Switzerland | SMI | EWL | 0.94 | Lower priority this run |
-| North America ex-U.S. | S&P/TSX 60 | EWC | 1.74 | Near miss |
+| North America ex-U.S. | S&P/TSX 60 | EWC | 1.74 | Close challenger, not funded |
 | developed Asia-Pacific | Nikkei 225 | EWJ | 2.70 | Published |
-| Greater China | China large cap | FXI | 1.97 | Near miss |
+| Greater China | China large cap | FXI | 1.97 | Close challenger, not funded |
 | India | Nifty 50 | INDA | 0.64 | Lower priority this run |
 | EM broad | Emerging Markets | EEM | 2.23 | Published |
 
@@ -248,9 +242,9 @@ The strongest omitted regional challenger this run is **China large cap (FXI)**.
 | S&P 500 | U.S. core leadership | SPY | Yes | 1.81 | Included on the board |
 | S&P/TSX 60 | North America ex-U.S. | EWC | No | 1.74 | Strong challenger, not yet funded |
 | Hang Seng | Greater China | EWH | No | 1.42 | Kept off the compact board by stronger candidates |
-| FTSE MIB | continental Europe | EWI | No | 1.38 | Fragile macro alignment |
-| AEX | continental Europe | EWN | No | 1.16 | Fragile macro alignment |
-| IBEX 35 | continental Europe | EWP | No | 1.05 | Fragile macro alignment |
+| FTSE MIB | continental Europe | EWI | No | 1.38 | Macro timing not strong enough yet |
+| AEX | continental Europe | EWN | No | 1.16 | Macro timing not strong enough yet |
+| IBEX 35 | continental Europe | EWP | No | 1.05 | Macro timing not strong enough yet |
 | DAX | continental Europe | EWG | No | 0.96 | Relative strength not strong enough yet |
 | SMI | Switzerland | EWL | No | 0.94 | Relative strength not strong enough yet |
 | FTSE 100 | UK | EWU | No | 0.84 | Relative strength not strong enough yet |
@@ -333,15 +327,15 @@ Reasons:
 ### Discovery coverage checkpoint
 | Regional group | Status | Strongest candidate | Proxy | Score |
 |---|---|---|---|---:|
-| U.S. core leadership | Surfaced | Nasdaq 100 | QQQ | 2.09 |
+| U.S. core leadership | Published | Nasdaq 100 | QQQ | 2.09 |
 | continental Europe | Lower priority this run | FTSE MIB | EWI | 1.38 |
 | UK | Lower priority this run | FTSE 100 | EWU | 0.84 |
 | Switzerland | Lower priority this run | SMI | EWL | 0.94 |
-| North America ex-U.S. | Near miss | S&P/TSX 60 | EWC | 1.74 |
-| developed Asia-Pacific | Surfaced | Nikkei 225 | EWJ | 2.70 |
-| Greater China | Near miss | China large cap | FXI | 1.97 |
+| North America ex-U.S. | Close challenger, not funded | S&P/TSX 60 | EWC | 1.74 |
+| developed Asia-Pacific | Published | Nikkei 225 | EWJ | 2.70 |
+| Greater China | Close challenger, not funded | China large cap | FXI | 1.97 |
 | India | Lower priority this run | Nifty 50 | INDA | 0.64 |
-| EM broad | Surfaced | Emerging Markets | EEM | 2.23 |
+| EM broad | Published | Emerging Markets | EEM | 2.23 |
 
 ### Lane continuity notes
 - Retained entries: none

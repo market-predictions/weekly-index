@@ -567,11 +567,11 @@
       "final_score": 0.71,
       "relative_strength_metrics": {
         "requested_close_date": "2026-05-11",
-        "selected_data_date": "2026-05-11",
-        "return_20d": -0.031232,
-        "return_60d": -0.019353,
-        "return_120d": 0.058879,
-        "drawdown_from_120d_high": -0.058766,
+        "selected_data_date": "2026-05-08",
+        "return_20d": -0.034932,
+        "return_60d": -0.011658,
+        "return_120d": 0.043374,
+        "drawdown_from_120d_high": -0.062096,
         "analysis_symbol": "^FTSE"
       },
       "evidence_notes": {
