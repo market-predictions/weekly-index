@@ -12,6 +12,13 @@ FORBIDDEN_CLIENT_TOKENS = [
     "fragile_macro_alignment",
     "insufficient_immediate_priority",
     "check-only",
+    "TBD",
+    "production workflow should refresh",
+    "workflow pricing",
+    "workflow artifact",
+    "live repo state",
+    "pricing/ranking rebuild",
+    "artifact rebuild",
 ]
 REPORT_RE = re.compile(r"weekly_indices_review_(\d{6})(?:_(\d{2}))?\.md$")
 
@@ -47,11 +54,22 @@ def validate() -> None:
         raise RuntimeError(f"Index compactness contract failed for {path.name}: raw artifact/process terms found: {', '.join(forbidden)}")
 
     section11 = _section(text, "## 11.")
+    lower11 = section11.lower()
     if section11:
-        lower11 = section11.lower()
-        if "long-side" in lower11 and "inverse" in lower11:
-            if "best defensive" not in lower11 and "defensive / inverse" not in lower11:
-                raise RuntimeError("Index compactness contract failed: inverse candidates appear near long board without clear defensive separation.")
+        if "long-side opportunities" not in lower11:
+            raise RuntimeError("Index compactness contract failed: Section 11 missing Long-side Opportunities.")
+        if "best defensive / inverse opportunities" not in lower11:
+            raise RuntimeError("Index compactness contract failed: Section 11 missing Best Defensive / Inverse Opportunities.")
+        if "alternative duel table" not in lower11:
+            raise RuntimeError("Index compactness contract failed: Section 11 missing Alternative Duel Table.")
+        long_part = lower11.split("best defensive / inverse opportunities", 1)[0]
+        inverse_terms = [" rwm", " eum", " psq", " sh", " efz", "short russell", "short nasdaq", "short s&p"]
+        leaked = [term.strip() for term in inverse_terms if term in long_part]
+        if leaked:
+            raise RuntimeError(
+                "Index compactness contract failed: inverse candidates appear in long-side portion of Section 11: "
+                + ", ".join(leaked)
+            )
 
     print(f"INDEX_COMPACTNESS_CONTRACT_OK | report={path.name}")
 
