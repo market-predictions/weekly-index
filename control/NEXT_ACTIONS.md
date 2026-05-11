@@ -53,6 +53,7 @@
 - Owner: `[ASSISTANT]`
 - Action:
   - confirm Section 11 contains `Long-side Opportunities`
+  - confirm Section 11 contains `Alternative Duel Table`
   - confirm Section 11 contains `Best Defensive / Inverse Opportunities`
   - confirm inverse candidates are separated from the long board
   - confirm triggers and invalidations are present
@@ -65,7 +66,7 @@
 ### 6. Confirm production workflow trigger behavior
 - Owner: `[JOINT]`
 - Action:
-  - confirm GitHub Actions triggers on canonical report pushes
+  - confirm GitHub Actions triggers on canonical report pushes and run-queue request files
   - confirm logs produce visible render/send/manifest evidence
   - avoid claiming delivery success without a real receipt
 - Done when: delivery status can be verified reliably.
@@ -77,6 +78,7 @@
   - confirm Section 7 latest row equals Section 15 total portfolio value
   - confirm `index_portfolio_state.json` matches report Section 15
   - confirm pricing audit is persisted under `output_indices/pricing/`
+  - confirm `tools/validate_index_state_consistency_contract.py` blocks stale NAV/pricing-date leakage in executive sections
 - Done when: stale prices cannot silently flatten, distort, or misstate the report.
 
 ### 8. Confirm scorecard validation blocks bad sends
@@ -87,11 +89,54 @@
   - ensure scorecard is written and committed back only after successful send
 - Done when: incomplete capital-discipline reports cannot be sent unnoticed.
 
+### 9. Port the robust layered close-price discovery model from weekly-etf
+- Owner: `[ASSISTANT]` + `[JOINT]` if provider secrets are required
+- Current status: not fully ported. Weekly Index currently has a pricing-first pass and benchmark/proxy contract, but it does not yet have the full ETF-style layered resolver with provider order, unresolved-cache fallback continuation, challenger/proxy refresh policy, and provider budget metadata.
+- Action:
+  - introduce an index-native layered close resolver for benchmark indices and tradable proxies
+  - support source fallback order such as Yahoo history, Twelve Data, FMP, Alpha Vantage, issuer/manual override where applicable
+  - continue fallback after unresolved cached rows instead of stopping early
+  - persist provider/source/status per benchmark and proxy close in `output_indices/pricing/`
+  - separate benchmark close authority from tradable-proxy valuation authority
+  - expose price-source diagnostics in the audit, not in the client report
+  - add a validator that hard-fails missing proxy closes for funded positions and warns on non-critical benchmark gaps
+- Done when: Weekly Index has the same operational robustness as Weekly ETF pricing while preserving benchmark-vs-proxy distinctions.
+
 ---
 
-## Phase 4 — improve explicit Index state quality
+## Phase 4 — make the report consume the new artifacts correctly
 
-### 9. Improve recommendation scorecard quality
+### 10. Validate artifact-driven Section 11
+- Owner: `[ASSISTANT]`
+- Action:
+  - confirm `research_indices/build_index_alternative_duels.py` creates usable direct-duel rows
+  - confirm `research_indices/build_index_short_radar.py` creates decision-grade inverse/defensive rows
+  - confirm `pricing_indices/assemble_report_sections.py` renders Section 11 from those artifacts
+  - confirm old hand-written short radar text no longer appears
+- Done when: Section 11 is artifact-driven and decision-grade.
+
+### 11. Tighten compactness and client-facing wording
+- Owner: `[ASSISTANT]`
+- Action:
+  - confirm `tools/validate_index_compactness_contract.py` blocks raw artifact terms and process terms
+  - remove `TBD`, `live repo state`, `pricing/ranking rebuild`, and workflow-process language from the client report
+  - preserve compact report style; do not add long macro dumps
+- Done when: report reads like a client report, not a workflow log.
+
+### 12. Fix remaining render polish issues
+- Owner: `[ASSISTANT]`
+- Action:
+  - fix missing spaces around linked tickers such as `IWMversus`, `EWJand`, `SPYand`, `QQQtogether`
+  - remove orphan bullet artifacts at the bottom of pages
+  - avoid repeated headers after the equity-curve image
+  - reduce equity-curve x-axis label overlap
+- Done when: PDF rendering looks premium and does not expose markdown/render artifacts.
+
+---
+
+## Phase 5 — improve explicit Index state quality
+
+### 13. Improve recommendation scorecard quality
 - Owner: `[ASSISTANT]`
 - Action:
   - add real 1-month and 3-month relative-strength values when reliable price history is available
@@ -100,7 +145,7 @@
   - improve consecutive-week replaceable history
 - Done when: scorecard becomes less heuristic and more data-backed.
 
-### 10. Move Index state beyond report-derived state over time
+### 14. Move Index state beyond report-derived state over time
 - Owner: `[ASSISTANT]`
 - Action:
   - validate the pricing subsystem in real runs
@@ -108,7 +153,7 @@
   - reduce dependence on report-derived state where safe
 - Done when: explicit state is less dependent on rendered report parsing.
 
-### 11. Improve factor and breadth model
+### 15. Improve factor and breadth model
 - Owner: `[ASSISTANT]`
 - Action:
   - make U.S. equity beta, mega-cap growth, small-cap financing sensitivity, non-U.S. exposure, EM/dollar sensitivity, and defensive/inverse readiness more data-backed
@@ -117,9 +162,9 @@
 
 ---
 
-## Phase 5 — keep AEX options preserved but parked
+## Phase 6 — keep AEX options preserved but parked
 
-### 12. Do not delete the AEX track
+### 16. Do not delete the AEX track
 - Owner: `[JOINT]`
 - Goal:
   - preserve files
@@ -131,4 +176,4 @@
 
 ## Current checkpoint
 
-**Weekly Index Review now has the key ETF lessons ported: pricing-first workflow, breadth discipline, short-opportunity radar, state artifact persistence, capital re-underwriting rules, and a recommendation scorecard memory layer. The next priority is to validate these rules in the next live report and ensure weak or replaceable positions produce explicit actions, alternatives, triggers, or override reasons.**
+**Weekly Index Review now has the key ETF lessons ported: pricing-first workflow, breadth discipline, short-opportunity radar, macro-policy pack, runtime state artifact, state-consistency validation, compactness validation, alternative-duel artifacts, and capital re-underwriting rules. The next priority is to validate the artifact-driven report in a fresh run and port the full robust layered close-price discovery model from weekly-etf into an index-native benchmark/proxy resolver.**
