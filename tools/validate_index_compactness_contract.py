@@ -21,6 +21,7 @@ FORBIDDEN_CLIENT_TOKENS = [
     "artifact rebuild",
 ]
 REPORT_RE = re.compile(r"weekly_indices_review_(\d{6})(?:_(\d{2}))?\.md$")
+INVERSE_TERMS = [" rwm", " eum", " psq", " sh", " efz", "short russell", "short nasdaq", "short s&p"]
 
 
 def _latest_report() -> Path | None:
@@ -43,6 +44,22 @@ def _section(text: str, heading: str) -> str:
     return text[start: next_heading if next_heading != -1 else len(text)]
 
 
+def _between(text: str, start_marker: str, end_markers: list[str]) -> str:
+    start = text.find(start_marker)
+    if start == -1:
+        return ""
+    start += len(start_marker)
+    candidates = [text.find(marker, start) for marker in end_markers]
+    candidates = [idx for idx in candidates if idx != -1]
+    end = min(candidates) if candidates else len(text)
+    return text[start:end]
+
+
+def _leaked_inverse_terms(text: str) -> list[str]:
+    lower = " " + text.lower().replace("|", " ").replace("\n", " ") + " "
+    return [term.strip() for term in INVERSE_TERMS if term in lower]
+
+
 def validate() -> None:
     path = _latest_report()
     if path is None:
@@ -62,13 +79,23 @@ def validate() -> None:
             raise RuntimeError("Index compactness contract failed: Section 11 missing Best Defensive / Inverse Opportunities.")
         if "alternative duel table" not in lower11:
             raise RuntimeError("Index compactness contract failed: Section 11 missing Alternative Duel Table.")
-        long_part = lower11.split("best defensive / inverse opportunities", 1)[0]
-        inverse_terms = [" rwm", " eum", " psq", " sh", " efz", "short russell", "short nasdaq", "short s&p"]
-        leaked = [term.strip() for term in inverse_terms if term in long_part]
+
+        # The Alternative Duel Table can explicitly include defensive/inverse duel
+        # rows as long as they are labelled as such. The long-side opportunity
+        # board is only the subsection before the Alternative Duel Table.
+        long_board = _between(lower11, "long-side opportunities", ["alternative duel table", "best defensive / inverse opportunities"])
+        leaked = _leaked_inverse_terms(long_board)
         if leaked:
             raise RuntimeError(
-                "Index compactness contract failed: inverse candidates appear in long-side portion of Section 11: "
+                "Index compactness contract failed: inverse candidates appear in long-side opportunity board: "
                 + ", ".join(leaked)
+            )
+
+        alternative_duel = _between(lower11, "alternative duel table", ["best defensive / inverse opportunities"])
+        defensive_rows_present = any(term in alternative_duel for term in [" rwm", " eum", " psq"])
+        if defensive_rows_present and "defensive / inverse" not in alternative_duel:
+            raise RuntimeError(
+                "Index compactness contract failed: inverse candidates in Alternative Duel Table must be explicitly labelled Defensive / inverse."
             )
 
     print(f"INDEX_COMPACTNESS_CONTRACT_OK | report={path.name}")
