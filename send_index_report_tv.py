@@ -24,7 +24,7 @@ TICKER_HEADER_HINTS = {
     "primary_proxy",
     "tickers / public names",
 }
-
+ACTION_SNAPSHOT_ORDER = ["Add", "Hold", "Hold but replaceable", "Reduce", "Close"]
 
 orig_build_report_html = _base.build_report_html
 
@@ -67,14 +67,24 @@ def linkify_tokens_in_text_md(text: str) -> str:
     return TOKEN_RE.sub(repl, text)
 
 
-def _append_escaped_prefix_preserving_terminal_space(out: list[str], prefix: str) -> None:
+def _append_escaped_prefix_preserving_edge_space(out: list[str], prefix: str) -> None:
     if not prefix:
         return
-    if prefix.endswith(" "):
-        out.append(_base.esc(prefix[:-1]))
-        out.append("&nbsp;")
-    else:
-        out.append(_base.esc(prefix))
+    leading = len(prefix) - len(prefix.lstrip(" "))
+    trailing = len(prefix) - len(prefix.rstrip(" "))
+    if leading:
+        out.append(" " * leading)
+    core_end = len(prefix) - trailing if trailing else len(prefix)
+    core = prefix[leading:core_end]
+    if core:
+        out.append(_base.esc(core))
+    if trailing:
+        out.append(" " * trailing)
+
+
+# Backward-compatible alias used by older function names in this file.
+def _append_escaped_prefix_preserving_terminal_space(out: list[str], prefix: str) -> None:
+    _append_escaped_prefix_preserving_edge_space(out, prefix)
 
 
 def linkify_inline_tickers_html(text: str) -> str:
@@ -85,10 +95,10 @@ def linkify_inline_tickers_html(text: str) -> str:
         token = match.group(1)
         if not is_probable_ticker(token):
             continue
-        _append_escaped_prefix_preserving_terminal_space(out, raw[last:match.start()])
+        _append_escaped_prefix_preserving_edge_space(out, raw[last:match.start()])
         out.append(ticker_anchor_html(token))
         last = match.end()
-    _append_escaped_prefix_preserving_terminal_space(out, raw[last:])
+    _append_escaped_prefix_preserving_edge_space(out, raw[last:])
     return "".join(out)
 
 
@@ -169,19 +179,54 @@ def render_markdown_block(text: str, image_src: str | None = None) -> str:
     return add_tradingview_targets(html)
 
 
+def _extract_action_table(lines: list[str]) -> dict[str, list[str]]:
+    """Read the state-driven Section 2 markdown table.
+
+    The old renderer expected subsections headed by `### Add` / `### Hold`.
+    The upgraded report now renders Section 2 as a table. Without this parser the
+    delivery layer showed every recommendation row as `None`, even though the
+    markdown report contained the right data.
+    """
+    groups: dict[str, list[str]] = {label: [] for label in ACTION_SNAPSHOT_ORDER}
+    for raw in lines:
+        stripped = raw.strip()
+        if not is_markdown_table_line(stripped) or "|---" in stripped or "Recommendation" in stripped:
+            continue
+        cells = [cell.strip() for cell in stripped.strip("|").split("|")]
+        if len(cells) < 2:
+            continue
+        label = _base.clean_md_inline(cells[0])
+        value = _base.clean_md_inline(cells[1])
+        if label in groups and value and value.lower() != "none":
+            groups[label] = [value]
+    return groups
+
+
+def _merge_action_groups(section_lines: list[str]) -> dict[str, list[str]]:
+    table_groups = _extract_action_table(section_lines)
+    sub_groups = _base.parse_subsections(section_lines)
+    merged: dict[str, list[str]] = {}
+    for label in ACTION_SNAPSHOT_ORDER:
+        merged[label] = table_groups.get(label) or sub_groups.get(label, []) or []
+    for title, items in sub_groups.items():
+        if title not in merged:
+            merged[title] = items
+    return merged
+
+
 def render_action_snapshot(section: dict) -> str:
-    groups = _base.parse_subsections(section["lines"])
-    order = ["Add", "Hold", "Hold but replaceable", "Reduce", "Close"]
+    groups = _merge_action_groups(section["lines"])
     rows = []
-    for label in order:
+    for label in ACTION_SNAPSHOT_ORDER:
         items = groups.get(label, [])
         val_html = ", ".join(linkify_inline_tickers_html(item) for item in items) if items else "None"
         rows.append(f"<tr><th>{_base.esc(label)}</th><td>{val_html}</td></tr>")
 
-    def block(title: str) -> str:
-        items = groups.get(title, [])
-        if not items:
+    def block(*titles: str) -> str:
+        title = next((candidate for candidate in titles if groups.get(candidate)), "")
+        if not title:
             return ""
+        items = groups.get(title, [])
         list_html = "".join(f"<li>{linkify_inline_tickers_html(item)}</li>" for item in items)
         return f"<div class='subblock'><div class='subblock-title'>{_base.esc(title)}</div><ul>{list_html}</ul></div>"
 
@@ -189,7 +234,7 @@ def render_action_snapshot(section: dict) -> str:
         f"<div class='panel panel-snapshot'>"
         f"{_base.section_header_html(section['number'], section['title'])}"
         f"<table class='snapshot-table'><thead><tr><th>Recommendation</th><th>Tickers / notes</th></tr></thead><tbody>{''.join(rows)}</tbody></table>"
-        f"{block('Best replacements to fund')}"
+        f"{block('Best replacements to monitor', 'Best replacements to fund')}"
         f"<div class='subgrid'>{block('Top 3 actions this week')}{block('Top 3 risks this week')}</div>"
         f"</div>"
     )
