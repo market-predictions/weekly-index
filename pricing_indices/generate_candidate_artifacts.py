@@ -13,27 +13,69 @@ PLAN_RE = re.compile(r"index_recommendation_plan_(\d{6})(?:_(\d{2}))?\.json$")
 
 GROUPS = {
     "U.S. core leadership": {"us_large_cap", "us_tech_leadership", "us_small_cap"},
+    "U.S. factor / style alternatives": {"us_equal_weight", "us_quality_factor", "us_min_vol_factor", "us_value_factor"},
     "continental Europe": {"europe_large_cap", "germany_cyclicals", "france_large_cap", "spain_large_cap", "italy_large_cap", "netherlands_large_cap"},
     "UK": {"uk_large_cap"},
     "Switzerland": {"switzerland_large_cap"},
     "North America ex-U.S.": {"canada_large_cap"},
     "developed Asia-Pacific": {"japan_equities", "australia_large_cap"},
+    "Korea / Taiwan": {"south_korea_large_cap", "taiwan_large_cap"},
     "Greater China": {"hong_kong_equities", "china_large_cap"},
     "India": {"india_large_cap"},
+    "Latin America": {"brazil_large_cap", "mexico_large_cap"},
+    "Africa": {"south_africa_large_cap"},
+    "ASEAN": {"indonesia_large_cap"},
+    "Middle East": {"saudi_large_cap"},
     "EM broad": {"em_broad"},
 }
 
 GROUP_BASE_SCORE = {
     "U.S. core leadership": 3.75,
+    "U.S. factor / style alternatives": 3.28,
     "continental Europe": 3.35,
     "UK": 3.10,
     "Switzerland": 3.12,
     "North America ex-U.S.": 3.05,
     "developed Asia-Pacific": 3.45,
+    "Korea / Taiwan": 3.30,
     "Greater China": 3.00,
     "India": 3.25,
+    "Latin America": 2.95,
+    "Africa": 2.70,
+    "ASEAN": 2.85,
+    "Middle East": 2.80,
     "EM broad": 3.20,
 }
+
+PROXY_ELIGIBILITY = {
+    "core_holding": "Funded or directly fundable if portfolio rules permit.",
+    "liquid_us_etf": "Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history.",
+    "liquid_country_etf": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.",
+    "specialist_country_etf": "Specialist country ETF proxy; review liquidity and spread before funding.",
+    "local_listing_reference": "Local listing useful for reference only; do not fund without ETF proxy confirmation.",
+}
+
+SPECIALIST_PROXIES = {"EZA", "EIDO", "KSA"}
+FACTOR_PROXIES = {"RSP", "QUAL", "USMV", "VLUE"}
+
+
+def proxy_eligibility(exposure: dict[str, Any], currently_held: bool) -> dict[str, str | bool]:
+    proxy = str(exposure.get("primary_proxy") or "").upper()
+    if currently_held:
+        tier = "core_holding"
+    elif proxy in FACTOR_PROXIES:
+        tier = "liquid_us_etf"
+    elif proxy in SPECIALIST_PROXIES:
+        tier = "specialist_country_etf"
+    elif proxy:
+        tier = "liquid_country_etf"
+    else:
+        tier = "local_listing_reference"
+    return {
+        "tier": tier,
+        "fundable_if_priced": tier != "local_listing_reference",
+        "note": PROXY_ELIGIBILITY[tier],
+    }
 
 
 def _read_json(path: Path) -> dict[str, Any]:
@@ -86,6 +128,29 @@ def regional_group(exposure_id: str) -> str:
     return "Other"
 
 
+def _catalog_by_id() -> dict[str, dict[str, Any]]:
+    return {item["exposure_id"]: item for item in ALL_EXPOSURES}
+
+
+def _candidate_base(exposure: dict[str, Any], held: bool, position: dict[str, Any]) -> dict[str, Any]:
+    eligibility = proxy_eligibility(exposure, held)
+    return {
+        "exposure_id": exposure["exposure_id"],
+        "portfolio_sleeve": exposure.get("portfolio_sleeve") or exposure["display_name"],
+        "public_index_name": exposure["display_name"],
+        "benchmark_symbol": exposure["benchmark_symbol"],
+        "benchmark_name": exposure.get("benchmark_name") or exposure["display_name"],
+        "primary_proxy": exposure["primary_proxy"],
+        "alternative_proxy": exposure.get("alternative_proxy"),
+        "regional_group": regional_group(exposure["exposure_id"]),
+        "region": exposure.get("region"),
+        "style": exposure.get("style"),
+        "currently_held": held,
+        "weight_pct": position.get("weight_pct"),
+        "proxy_eligibility": eligibility,
+    }
+
+
 def fallback_candidates(state: dict[str, Any], plan: dict[str, Any]) -> list[dict[str, Any]]:
     positions = {p.get("exposure_id"): p for p in (state.get("positions") or [])}
     best_new = {item.get("exposure_id"): item for item in (plan.get("best_new_opportunities") or [])}
@@ -111,18 +176,9 @@ def fallback_candidates(state: dict[str, Any], plan: dict[str, Any]) -> list[dic
             score += 0.10
 
         position = positions.get(exposure_id, {})
-        candidates.append(
+        candidate = _candidate_base(exposure, held, position)
+        candidate.update(
             {
-                "exposure_id": exposure_id,
-                "public_index_name": exposure["display_name"],
-                "benchmark_symbol": exposure["benchmark_symbol"],
-                "primary_proxy": exposure["primary_proxy"],
-                "alternative_proxy": exposure.get("alternative_proxy"),
-                "regional_group": group,
-                "region": exposure.get("region"),
-                "style": exposure.get("style"),
-                "currently_held": held,
-                "weight_pct": position.get("weight_pct"),
                 "score": round(min(score, 4.60), 2),
                 "board_score": round(min(score, 4.60), 2),
                 "challenger_score": round(min(score - (0.15 if held else 0.0), 4.60), 2),
@@ -137,6 +193,7 @@ def fallback_candidates(state: dict[str, Any], plan: dict[str, Any]) -> list[dic
                 "reason_code_if_not_published": "",
             }
         )
+        candidates.append(candidate)
     candidates.sort(key=lambda item: (-float(item["board_score"]), -float(item["challenger_score"]), item["public_index_name"]))
     return candidates
 
@@ -144,24 +201,18 @@ def fallback_candidates(state: dict[str, Any], plan: dict[str, Any]) -> list[dic
 def evidence_candidates(state: dict[str, Any], evidence: dict[str, Any]) -> list[dict[str, Any]]:
     positions = {p.get("exposure_id"): p for p in (state.get("positions") or [])}
     rows = evidence.get("rows") or []
+    catalog = _catalog_by_id()
     candidates: list[dict[str, Any]] = []
     for row in rows:
         exposure_id = row["exposure_id"]
+        exposure = catalog.get(exposure_id, row)
         position = positions.get(exposure_id, {})
+        held = bool(row.get("currently_held"))
         board_score = round(float(row.get("board_score") or row.get("final_score") or 0.0), 2)
         challenger_score = round(float(row.get("challenger_score") or board_score), 2)
-        candidates.append(
+        candidate = _candidate_base(exposure, held, position)
+        candidate.update(
             {
-                "exposure_id": exposure_id,
-                "public_index_name": row["public_index_name"],
-                "benchmark_symbol": row["benchmark_symbol"],
-                "primary_proxy": row["primary_proxy"],
-                "alternative_proxy": row.get("alternative_proxy"),
-                "regional_group": regional_group(exposure_id),
-                "region": row.get("region"),
-                "style": row.get("style"),
-                "currently_held": bool(row.get("currently_held")),
-                "weight_pct": position.get("weight_pct"),
                 "score": board_score,
                 "board_score": board_score,
                 "challenger_score": challenger_score,
@@ -177,12 +228,17 @@ def evidence_candidates(state: dict[str, Any], evidence: dict[str, Any]) -> list
                 "reason_code_if_not_published": "",
             }
         )
+        candidates.append(candidate)
     candidates.sort(key=lambda item: (-float(item["board_score"]), -float(item["challenger_score"]), item["public_index_name"]))
     return candidates
 
 
 def _group_limit(group: str) -> int:
-    return 3 if group == "U.S. core leadership" else 2
+    if group == "U.S. core leadership":
+        return 3
+    if group == "U.S. factor / style alternatives":
+        return 1
+    return 2
 
 
 def _can_add(candidate: dict[str, Any], selected: list[dict[str, Any]]) -> bool:
@@ -278,6 +334,8 @@ def build_coverage(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "status": "ruled_out",
                     "reason_if_ruled_out": "no_candidate_available",
                     "strongest_candidate": None,
+                    "candidate_count": 0,
+                    "eligible_proxy_count": 0,
                 }
             )
             continue
@@ -295,20 +353,26 @@ def build_coverage(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]:
         elif float(strongest.get("challenger_score") or 0.0) < 1.50:
             status = "ruled_out"
 
+        eligible_count = sum(1 for c in group_candidates if (c.get("proxy_eligibility") or {}).get("fundable_if_priced"))
         coverage.append(
             {
                 "group": group,
                 "status": status,
                 "reason_if_ruled_out": "score_below_relevance_threshold" if status == "ruled_out" else "",
+                "candidate_count": len(group_candidates),
+                "eligible_proxy_count": eligible_count,
                 "strongest_candidate": {
                     "exposure_id": strongest["exposure_id"],
+                    "portfolio_sleeve": strongest.get("portfolio_sleeve"),
                     "public_index_name": strongest["public_index_name"],
+                    "benchmark_name": strongest.get("benchmark_name"),
                     "primary_proxy": strongest["primary_proxy"],
                     "score": strongest["score"],
                     "board_score": strongest.get("board_score"),
                     "challenger_score": strongest.get("challenger_score"),
                     "publish": strongest["publish"],
                     "reason_code_if_not_published": strongest["reason_code_if_not_published"],
+                    "proxy_eligibility": strongest.get("proxy_eligibility"),
                 },
             }
         )
@@ -341,6 +405,13 @@ def main() -> None:
         "requested_close_date": evidence.get("requested_close_date") if evidence else None,
         "evidence_file": f"index_candidate_evidence_{token}.json" if evidence else None,
         "regional_group_status": coverage,
+        "scan_summary": {
+            "coverage_universe_count": len(candidates),
+            "regional_group_count": len(GROUPS),
+            "eligible_proxy_count": sum(1 for c in candidates if (c.get("proxy_eligibility") or {}).get("fundable_if_priced")),
+            "compact_board_limit": 5,
+            "rule": "Broad scan universe first; compact board second. Candidates require proxy eligibility, pricing, regime fit and relative-strength evidence before funding.",
+        },
         "candidates": candidates,
     }
     coverage_payload = {
@@ -348,6 +419,7 @@ def main() -> None:
         "report_file": latest_report.name,
         "requested_close_date": evidence.get("requested_close_date") if evidence else None,
         "evidence_file": f"index_candidate_evidence_{token}.json" if evidence else None,
+        "scan_summary": ranking_payload["scan_summary"],
         "groups": coverage,
     }
 
@@ -361,7 +433,7 @@ def main() -> None:
     evidence_mode = "candidate_evidence_artifact" if evidence else "fallback_regional_base_scores"
     print(
         f"CANDIDATE_ARTIFACTS_OK | report={latest_report.name} | ranking={ranking_path.name} | coverage={coverage_path.name} | "
-        f"surfaced_groups={surfaced} | near_miss_groups={near_miss} | mode={evidence_mode}"
+        f"scan_universe={len(candidates)} | surfaced_groups={surfaced} | near_miss_groups={near_miss} | mode={evidence_mode}"
     )
 
 
