@@ -64,7 +64,7 @@ The board remains intentionally compact. The strongest omitted regional challeng
 3. U.S. mega-cap leadership finally cracks after a record run.
 4. Russell 2000 continues to lag and confirms that breadth is weaker than it looks.
 5. EM weakens under a stronger dollar or renewed commodity stress.
-6. Workflow pricing, ranking, scorecard, render, or send validation fails.
+6. Pricing, ranking, scorecard, render, or send validation fails.
 
 ## 6. Bottom Line
 - The portfolio remains constructive but selective.
@@ -263,11 +263,11 @@ What would change this plan:
 
 | Ticker | Public index / exposure | Existing/New | Target Weight | Suggested Action | Conviction Tier | Total Score | Portfolio Role | Better Alternative Exists? | Short Reason |
 |---|---|---|---:|---|---|---:|---|---|---|
-| SPY | S&P 500 | Existing | TBD | Hold | Tier 1 | TBD | Core beta | Under review | Still valid, but overlap with QQQ must be tested |
-| QQQ | Nasdaq 100 | Existing | TBD | Hold | Tier 1 | TBD | Growth engine | No urgent need | Strongest current holding |
-| IWM | Russell 2000 | Existing | TBD | Hold under review | Tier 2 | TBD | Breadth diversifier | Yes: EWJ / RWM | Weakest current sleeve; requires direct duel |
-| EEM | Emerging Markets | Existing | TBD | Hold under review | Tier 2 | TBD | Non-U.S. risk sleeve | Yes: FXI / INDA / EUM | Must justify itself more clearly |
-| CASH | Residual cash | Existing | TBD | Hold | Tier 1 | — | Optionality | — | Meaningful reserve while alternatives are tested |
+| SPY | S&P 500 | Existing | Under review | Hold | Tier 1 | Under review | Core beta | Under review | Still valid, but overlap with QQQ must be tested |
+| QQQ | Nasdaq 100 | Existing | Under review | Hold | Tier 1 | Under review | Growth engine | No urgent need | Strongest current holding |
+| IWM | Russell 2000 | Existing | Under review | Hold under review | Tier 2 | Under review | Breadth diversifier | Yes: EWJ / RWM | Weakest current sleeve; requires direct duel |
+| EEM | Emerging Markets | Existing | Under review | Hold under review | Tier 2 | Under review | Non-U.S. risk sleeve | Yes: FXI / INDA / EUM | Must justify itself more clearly |
+| CASH | Residual cash | Existing | Under review | Hold | Tier 1 | — | Optionality | — | Meaningful reserve while alternatives are tested |
 
 ## 14. Position Changes Executed This Run
 
@@ -275,7 +275,7 @@ What would change this plan:
 
 Reasons:
 
-- The production workflow should refresh pricing, research, ranking, and scorecard first.
+- The the next review should confirm pricing, research, ranking, and scorecard first.
 - The current portfolio still needs the live alternative-duel outputs before a forced implementation change.
 - The higher-value fix this run is decision quality, not performative turnover.
 
