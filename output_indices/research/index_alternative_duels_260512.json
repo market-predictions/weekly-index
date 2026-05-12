@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-11T23:04:12.783238Z",
+  "generated_at_utc": "2026-05-12T06:08:00.124685Z",
   "methodology": "Direct alternative duels compare current implemented exposures against long alternatives; defensive/inverse rows remain separate from the long board.",
   "report_date": "2026-05-11",
   "report_token": "260512",
@@ -27,8 +27,8 @@
       "current_proxy": "SPY",
       "decision": "Current exposure still leads; no replacement.",
       "duel_type": "long_alternative",
-      "edge_20d_pct": -7.39,
-      "edge_60d_pct": -10.73,
+      "edge_20d_pct": -8.16,
+      "edge_60d_pct": -10.81,
       "regime_fit": "watchlist",
       "required_trigger": "Needs positive 60d edge plus portfolio-fit improvement before funding."
     },
@@ -41,8 +41,8 @@
       "current_proxy": "SPY",
       "decision": "Alternative improving; keep replacement duel active.",
       "duel_type": "long_alternative",
-      "edge_20d_pct": 9.76,
-      "edge_60d_pct": 7.02,
+      "edge_20d_pct": 9.18,
+      "edge_60d_pct": 7.49,
       "regime_fit": "candidate",
       "required_trigger": "Needs positive 60d edge plus portfolio-fit improvement before funding."
     },
@@ -125,8 +125,8 @@
       "current_proxy": "EEM",
       "decision": "Current exposure still leads; no replacement.",
       "duel_type": "long_alternative",
-      "edge_20d_pct": -10.42,
-      "edge_60d_pct": -17.27,
+      "edge_20d_pct": -11.0,
+      "edge_60d_pct": -18.86,
       "regime_fit": "watchlist",
       "required_trigger": "Needs positive 60d edge plus portfolio-fit improvement before funding."
     },
@@ -139,8 +139,8 @@
       "current_proxy": "EEM",
       "decision": "Current exposure still leads; no replacement.",
       "duel_type": "long_alternative",
-      "edge_20d_pct": -1.46,
-      "edge_60d_pct": -8.03,
+      "edge_20d_pct": -3.41,
+      "edge_60d_pct": -4.04,
       "regime_fit": "watchlist",
       "required_trigger": "Needs positive 60d edge plus portfolio-fit improvement before funding."
     },

@@ -42,9 +42,9 @@
         "exposure_id": "uk_large_cap",
         "public_index_name": "FTSE 100",
         "primary_proxy": "EWU",
-        "score": 0.71,
-        "board_score": 0.71,
-        "challenger_score": 0.84,
+        "score": 0.83,
+        "board_score": 0.83,
+        "challenger_score": 0.96,
         "publish": false,
         "reason_code_if_not_published": "weak_relative_strength"
       }
@@ -57,9 +57,9 @@
         "exposure_id": "switzerland_large_cap",
         "public_index_name": "SMI",
         "primary_proxy": "EWL",
-        "score": 0.76,
-        "board_score": 0.76,
-        "challenger_score": 0.94,
+        "score": 0.64,
+        "board_score": 0.64,
+        "challenger_score": 0.82,
         "publish": false,
         "reason_code_if_not_published": "weak_relative_strength"
       }

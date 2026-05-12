@@ -3,48 +3,35 @@
 > *This report is for informational and educational purposes only; please see the disclaimer at the end.*
 
 ## 1. Executive Summary
-
-- Primary regime: Policy Transition / Mixed Regime
-- Geopolitical regime: Broadening strategic friction
-- Main takeaway: Keep the current implementation invested, but stop treating all funded sleeves as equal. Nasdaq 100 remains the strongest current holding, SPY still works but must be reviewed against QQQ overlap, and both Russell 2000 and Emerging Markets remain funded only under active re-underwriting versus named alternatives and defensive hedges.
-
-This run starts from the latest verified live repo state, which still shows the portfolio on **EUR 109,869.46** with **EUR 15,566.74** cash as of the 2026-05-05 pricing basis. Since then, the macro tape has stayed constructive for U.S. large-cap leadership but less friendly for broad cyclical beta: U.S. stocks closed slightly higher again on May 11, with the S&P 500 and Nasdaq at fresh records, while stalled U.S.-Iran talks kept oil elevated and inflation fears alive. That combination strengthens QQQ and core U.S. quality, but keeps pressure on small caps, Europe, and any sleeve that needs easier policy or cheaper energy to work smoothly.
-
-The discipline message is straightforward: this portfolio is no longer allowed to hide behind four generic Holds. QQQ still clearly earns capital. SPY still earns capital, but under concentration review because it overlaps heavily with U.S. mega-cap leadership. IWM and EEM remain the two sleeves that must justify themselves against alternatives such as EWJ, EWC, FXI, INDA, RWM, and EUM.
+- **Current valuation basis:** portfolio NAV is EUR 111,975.43, including EUR 15,566.74 cash, rebuilt from the 2026-05-11 close and FX reference date 2026-05-11.
+- **Primary regime:** Rate-hike repricing / real-rate pressure (64% confidence).
+- **What changed:** Duration weakness keeps the bar high for small caps and rate-sensitive exposures.
+- **Portfolio implication:** Do not treat narrow U.S. leadership as full global breadth confirmation.
+- **Main takeaway:** keep QQQ as the strongest earned sleeve, keep SPY under concentration review, and force IWM and EEM through named long-alternative and defensive-hedge duels before any new capital is assigned.
 
 ## 2. Portfolio Action Snapshot
+| Recommendation | Tickers / notes |
+|---|---|
+| Add | None this run. Cash remains available, but no challenger clears the full pricing, regime and relative-strength hurdle yet. |
+| Hold | S&P 500 via SPY; Nasdaq 100 via QQQ |
+| Hold but replaceable | Russell 2000 via IWM; Emerging Markets via EEM |
+| Reduce | None until the direct alternative-duel evidence produces a cleaner replacement or hedge trigger. |
+| Close | None this run. |
 
-### Add
-- None this run.
-
-### Hold
-- S&P 500 via SPY
-- Nasdaq 100 via QQQ
-
-### Hold but replaceable
-- Russell 2000 via IWM
-- Emerging Markets via EEM
-
-### Reduce
-- None before the fresh pricing/ranking rebuild.
-
-### Close
-- None before the fresh pricing/ranking rebuild.
-
-### Best replacements to fund
+### Best replacements to monitor
 - Japan large cap via EWJ
 - Canada broad via EWC
 - Greater China large cap via FXI
 
 ### Top 3 actions this week
-- Rebuild fresh pricing, research, ranking, and scorecard from the workflow.
-- Force the alternative duel for IWM versus RWM / EWJ and EEM versus EUM / FXI / INDA.
-- Keep the long board and defensive/inverse board clearly separated.
+1. Keep QQQ as the strongest core holding while leadership remains intact.
+2. Test SPY against QQQ overlap so U.S. exposure is not mistaken for full diversification.
+3. Force IWM and EEM through long-alternative and defensive/inverse comparisons before adding capital.
 
 ### Top 3 risks this week
-- Higher oil keeps inflation pressure alive and delays easier policy.
-- SPY and QQQ together remain a concentration cluster, not true diversification.
-- IWM and EEM stay under review and cannot remain vague indefinitely.
+1. Higher oil or sticky inflation delays easier policy and keeps pressure on weak breadth.
+2. SPY and QQQ remain a concentration cluster, not a diversified global allocation.
+3. IWM and EEM stay under review until breadth, USD and relative-strength evidence improve.
 
 ## 3. Global Regime Dashboard
 
@@ -187,25 +174,25 @@ The strongest omitted regional challenger this run is **China large cap (FXI)**.
 - Why it matters: Ranks well internally but remains just below the current publication cutoff.
 - Why not on the board yet: Strong challenger, not yet funded
 
-#### 3. Hang Seng (EWH)
-- Regional group: Greater China
-- Challenger score: 1.42
+#### 3. FTSE MIB (EWI)
+- Regional group: continental Europe
+- Challenger score: 1.38
 - Why it matters: Ranks well internally but remains just below the current publication cutoff.
-- Why not on the board yet: Kept off the compact board by stronger candidates
+- Why not on the board yet: Macro timing not strong enough yet
 
 ### Alternative Duel Table
 | Current exposure | Current proxy | Alternative / hedge | Alternative proxy | Type | 20d edge | 60d edge | Regime fit | Decision | Required trigger |
 |---|---|---|---|---|---:|---:|---|---|---|
 | S&P 500 | SPY | Nasdaq 100 | QQQ | Long alternative | +7.86% | +10.28% | candidate | Alternative improving; keep replacement duel active. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
-| S&P 500 | SPY | Euro Stoxx 50 | FEZ | Long alternative | -7.39% | -10.73% | watchlist | Current exposure still leads; no replacement. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
-| S&P 500 | SPY | Nikkei 225 | EWJ | Long alternative | +9.76% | +7.02% | candidate | Alternative improving; keep replacement duel active. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
+| S&P 500 | SPY | Euro Stoxx 50 | FEZ | Long alternative | -8.16% | -10.81% | watchlist | Current exposure still leads; no replacement. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
+| S&P 500 | SPY | Nikkei 225 | EWJ | Long alternative | +9.18% | +7.49% | candidate | Alternative improving; keep replacement duel active. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
 | Nasdaq 100 | QQQ | S&P 500 | SPY | Long alternative | -7.86% | -10.28% | watchlist | Current exposure still leads; no replacement. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
 | Nasdaq 100 | QQQ | Russell 2000 | IWM | Long alternative | -8.01% | -9.03% | watchlist | Current exposure still leads; no replacement. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
 | Nasdaq 100 | QQQ | Inverse hedge for Nasdaq 100 | PSQ | Defensive / inverse | n/a | n/a | inactive | Not decision-grade this week — relative-strength proof incomplete. | Nasdaq leadership remains intact. |
 | Russell 2000 | IWM | S&P 500 | SPY | Long alternative | +0.15% | -1.25% | watchlist | Early improvement only; wait for 60d confirmation. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
 | Russell 2000 | IWM | Inverse hedge for Russell 2000 | RWM | Defensive / inverse | n/a | n/a | inactive | Not decision-grade this week — relative-strength proof incomplete. | Small-cap breadth is not weak enough for an active inverse stance. |
-| Emerging Markets | EEM | Nifty 50 | INDA | Long alternative | -10.42% | -17.27% | watchlist | Current exposure still leads; no replacement. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
-| Emerging Markets | EEM | China large cap | FXI | Long alternative | -1.46% | -8.03% | watchlist | Current exposure still leads; no replacement. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
+| Emerging Markets | EEM | Nifty 50 | INDA | Long alternative | -11.00% | -18.86% | watchlist | Current exposure still leads; no replacement. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
+| Emerging Markets | EEM | China large cap | FXI | Long alternative | -3.41% | -4.04% | watchlist | Current exposure still leads; no replacement. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
 | Emerging Markets | EEM | S&P 500 | SPY | Long alternative | -3.52% | -3.06% | watchlist | Current exposure still leads; no replacement. | Needs positive 60d edge plus portfolio-fit improvement before funding. |
 | Emerging Markets | EEM | Inverse hedge for Emerging Markets | EUM | Defensive / inverse | n/a | n/a | inactive | Not decision-grade this week — relative-strength proof incomplete. | Dollar pressure is not strong enough to activate EM inverse readiness. |
 
@@ -223,8 +210,8 @@ These instruments are defensive tools only. They are not part of the base-case l
 |---|---|---|---:|---|
 | U.S. core leadership | Nasdaq 100 | QQQ | 2.09 | Published |
 | continental Europe | FTSE MIB | EWI | 1.38 | Lower priority this run |
-| UK | FTSE 100 | EWU | 0.84 | Lower priority this run |
-| Switzerland | SMI | EWL | 0.94 | Lower priority this run |
+| UK | FTSE 100 | EWU | 0.96 | Lower priority this run |
+| Switzerland | SMI | EWL | 0.82 | Lower priority this run |
 | North America ex-U.S. | S&P/TSX 60 | EWC | 1.74 | Close challenger, not funded |
 | developed Asia-Pacific | Nikkei 225 | EWJ | 2.70 | Published |
 | Greater China | China large cap | FXI | 1.97 | Close challenger, not funded |
@@ -241,17 +228,17 @@ These instruments are defensive tools only. They are not part of the base-case l
 | China large cap | Greater China | FXI | No | 1.97 | Strong challenger, not yet funded |
 | S&P 500 | U.S. core leadership | SPY | Yes | 1.81 | Included on the board |
 | S&P/TSX 60 | North America ex-U.S. | EWC | No | 1.74 | Strong challenger, not yet funded |
-| Hang Seng | Greater China | EWH | No | 1.42 | Kept off the compact board by stronger candidates |
 | FTSE MIB | continental Europe | EWI | No | 1.38 | Macro timing not strong enough yet |
+| Hang Seng | Greater China | EWH | No | 1.31 | Relative strength not strong enough yet |
 | AEX | continental Europe | EWN | No | 1.16 | Macro timing not strong enough yet |
+| DAX | continental Europe | EWG | No | 1.07 | Macro timing not strong enough yet |
 | IBEX 35 | continental Europe | EWP | No | 1.05 | Macro timing not strong enough yet |
-| DAX | continental Europe | EWG | No | 0.96 | Relative strength not strong enough yet |
-| SMI | Switzerland | EWL | No | 0.94 | Relative strength not strong enough yet |
-| FTSE 100 | UK | EWU | No | 0.84 | Relative strength not strong enough yet |
-| ASX 200 | developed Asia-Pacific | EWA | No | 0.74 | Relative strength not strong enough yet |
+| FTSE 100 | UK | EWU | No | 0.96 | Relative strength not strong enough yet |
+| ASX 200 | developed Asia-Pacific | EWA | No | 0.85 | Relative strength not strong enough yet |
+| SMI | Switzerland | EWL | No | 0.82 | Relative strength not strong enough yet |
 | Euro Stoxx 50 | continental Europe | FEZ | No | 0.72 | Relative strength not strong enough yet |
 | Nifty 50 | India | INDA | No | 0.64 | Relative strength not strong enough yet |
-| CAC 40 | continental Europe | EWQ | No | 0.38 | Relative strength not strong enough yet |
+| CAC 40 | continental Europe | EWQ | No | 0.27 | Relative strength not strong enough yet |
 
 ## 12. Portfolio Rotation Plan
 
@@ -317,20 +304,20 @@ Reasons:
 |---|---|---|---|---|
 | China large cap | Greater China | FXI | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
 | S&P/TSX 60 | North America ex-U.S. | EWC | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
-| Hang Seng | Greater China | EWH | Watchlist | Broad discovery keeps it visible even though it did not make the compact board. |
 | FTSE MIB | continental Europe | EWI | Watchlist | Broad discovery keeps it visible even though it did not make the compact board. |
+| Hang Seng | Greater China | EWH | Watchlist | Broad discovery keeps it visible even though it did not make the compact board. |
 | AEX | continental Europe | EWN | Watchlist | Broad discovery keeps it visible even though it did not make the compact board. |
-| IBEX 35 | continental Europe | EWP | Watchlist | Broad discovery keeps it visible even though it did not make the compact board. |
 | DAX | continental Europe | EWG | Watchlist | Improves breadth or fills an important portfolio gap without forcing a low-conviction rotation. |
-| SMI | Switzerland | EWL | Watchlist | Broad discovery keeps it visible even though it did not make the compact board. |
+| IBEX 35 | continental Europe | EWP | Watchlist | Broad discovery keeps it visible even though it did not make the compact board. |
+| FTSE 100 | UK | EWU | Watchlist | Broad discovery keeps it visible even though it did not make the compact board. |
 
 ### Discovery coverage checkpoint
 | Regional group | Status | Strongest candidate | Proxy | Score |
 |---|---|---|---|---:|
 | U.S. core leadership | Published | Nasdaq 100 | QQQ | 2.09 |
 | continental Europe | Lower priority this run | FTSE MIB | EWI | 1.38 |
-| UK | Lower priority this run | FTSE 100 | EWU | 0.84 |
-| Switzerland | Lower priority this run | SMI | EWL | 0.94 |
+| UK | Lower priority this run | FTSE 100 | EWU | 0.96 |
+| Switzerland | Lower priority this run | SMI | EWL | 0.82 |
 | North America ex-U.S. | Close challenger, not funded | S&P/TSX 60 | EWC | 1.74 |
 | developed Asia-Pacific | Published | Nikkei 225 | EWJ | 2.70 |
 | Greater China | Close challenger, not funded | China large cap | FXI | 1.97 |

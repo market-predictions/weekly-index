@@ -42,9 +42,9 @@
         "exposure_id": "uk_large_cap",
         "public_index_name": "FTSE 100",
         "primary_proxy": "EWU",
-        "score": 0.71,
-        "board_score": 0.71,
-        "challenger_score": 0.84,
+        "score": 0.83,
+        "board_score": 0.83,
+        "challenger_score": 0.96,
         "publish": false,
         "reason_code_if_not_published": "weak_relative_strength"
       }
@@ -57,9 +57,9 @@
         "exposure_id": "switzerland_large_cap",
         "public_index_name": "SMI",
         "primary_proxy": "EWL",
-        "score": 0.76,
-        "board_score": 0.76,
-        "challenger_score": 0.94,
+        "score": 0.64,
+        "board_score": 0.64,
+        "challenger_score": 0.82,
         "publish": false,
         "reason_code_if_not_published": "weak_relative_strength"
       }
@@ -404,42 +404,6 @@
       "reason_code_if_not_published": "strong_challenger_not_published"
     },
     {
-      "exposure_id": "hong_kong_equities",
-      "public_index_name": "Hang Seng",
-      "benchmark_symbol": "^HSI",
-      "primary_proxy": "EWH",
-      "alternative_proxy": "2800.HK",
-      "regional_group": "Greater China",
-      "region": "Hong Kong",
-      "style": "large cap",
-      "currently_held": false,
-      "weight_pct": null,
-      "score": 1.29,
-      "board_score": 1.29,
-      "challenger_score": 1.42,
-      "relative_strength_score": 0.89,
-      "regime_alignment_score": 0.33,
-      "implementation_priority_score": 0.0,
-      "diversification_score": 0.2,
-      "continuity_bonus": 0.0,
-      "fragility_penalty": 0.0,
-      "evidence_notes": {
-        "regime_alignment": [
-          "broad equity risk appetite is supportive",
-          "broader EM confirmation is supportive"
-        ],
-        "implementation_priority": [],
-        "diversification": [
-          "adds a new regional sleeve"
-        ],
-        "continuity": [],
-        "fragility": []
-      },
-      "evidence_source": "candidate_evidence_artifact",
-      "publish": false,
-      "reason_code_if_not_published": "board_capacity"
-    },
-    {
       "exposure_id": "italy_large_cap",
       "public_index_name": "FTSE MIB",
       "benchmark_symbol": "FTSEMIB.MI",
@@ -476,6 +440,42 @@
       "evidence_source": "candidate_evidence_artifact",
       "publish": false,
       "reason_code_if_not_published": "fragile_macro_alignment"
+    },
+    {
+      "exposure_id": "hong_kong_equities",
+      "public_index_name": "Hang Seng",
+      "benchmark_symbol": "^HSI",
+      "primary_proxy": "EWH",
+      "alternative_proxy": "2800.HK",
+      "regional_group": "Greater China",
+      "region": "Hong Kong",
+      "style": "large cap",
+      "currently_held": false,
+      "weight_pct": null,
+      "score": 1.18,
+      "board_score": 1.18,
+      "challenger_score": 1.31,
+      "relative_strength_score": 0.78,
+      "regime_alignment_score": 0.33,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.2,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "broader EM confirmation is supportive"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve"
+        ],
+        "continuity": [],
+        "fragility": []
+      },
+      "evidence_source": "candidate_evidence_artifact",
+      "publish": false,
+      "reason_code_if_not_published": "weak_relative_strength"
     },
     {
       "exposure_id": "netherlands_large_cap",
@@ -564,10 +564,10 @@
       "style": "cyclical",
       "currently_held": false,
       "weight_pct": null,
-      "score": 0.78,
-      "board_score": 0.78,
-      "challenger_score": 0.96,
-      "relative_strength_score": 0.78,
+      "score": 0.89,
+      "board_score": 0.89,
+      "challenger_score": 1.07,
+      "relative_strength_score": 0.89,
       "regime_alignment_score": 0.05,
       "implementation_priority_score": 0.0,
       "diversification_score": 0.28,
@@ -591,45 +591,7 @@
       },
       "evidence_source": "candidate_evidence_artifact",
       "publish": false,
-      "reason_code_if_not_published": "weak_relative_strength"
-    },
-    {
-      "exposure_id": "switzerland_large_cap",
-      "public_index_name": "SMI",
-      "benchmark_symbol": "^SSMI",
-      "primary_proxy": "EWL",
-      "alternative_proxy": "CSSMI.SW",
-      "regional_group": "Switzerland",
-      "region": "Switzerland",
-      "style": "large cap defensive quality",
-      "currently_held": false,
-      "weight_pct": null,
-      "score": 0.76,
-      "board_score": 0.76,
-      "challenger_score": 0.94,
-      "relative_strength_score": 0.56,
-      "regime_alignment_score": 0.15,
-      "implementation_priority_score": 0.0,
-      "diversification_score": 0.28,
-      "continuity_bonus": 0.0,
-      "fragility_penalty": 0.05,
-      "evidence_notes": {
-        "regime_alignment": [
-          "broad equity risk appetite is supportive"
-        ],
-        "implementation_priority": [],
-        "diversification": [
-          "adds a new regional sleeve",
-          "adds a differentiated style bucket"
-        ],
-        "continuity": [],
-        "fragility": [
-          "commodity pressure modestly affects Swiss exporters"
-        ]
-      },
-      "evidence_source": "candidate_evidence_artifact",
-      "publish": false,
-      "reason_code_if_not_published": "weak_relative_strength"
+      "reason_code_if_not_published": "fragile_macro_alignment"
     },
     {
       "exposure_id": "uk_large_cap",
@@ -642,10 +604,10 @@
       "style": "large cap",
       "currently_held": false,
       "weight_pct": null,
-      "score": 0.71,
-      "board_score": 0.71,
-      "challenger_score": 0.84,
-      "relative_strength_score": 0.44,
+      "score": 0.83,
+      "board_score": 0.83,
+      "challenger_score": 0.96,
+      "relative_strength_score": 0.56,
       "regime_alignment_score": 0.2,
       "implementation_priority_score": 0.0,
       "diversification_score": 0.2,
@@ -678,10 +640,10 @@
       "style": "large cap",
       "currently_held": false,
       "weight_pct": null,
-      "score": 0.61,
-      "board_score": 0.61,
-      "challenger_score": 0.74,
-      "relative_strength_score": 0.22,
+      "score": 0.72,
+      "board_score": 0.72,
+      "challenger_score": 0.85,
+      "relative_strength_score": 0.33,
       "regime_alignment_score": 0.32,
       "implementation_priority_score": 0.0,
       "diversification_score": 0.2,
@@ -699,6 +661,44 @@
         ],
         "continuity": [],
         "fragility": []
+      },
+      "evidence_source": "candidate_evidence_artifact",
+      "publish": false,
+      "reason_code_if_not_published": "weak_relative_strength"
+    },
+    {
+      "exposure_id": "switzerland_large_cap",
+      "public_index_name": "SMI",
+      "benchmark_symbol": "^SSMI",
+      "primary_proxy": "EWL",
+      "alternative_proxy": "CSSMI.SW",
+      "regional_group": "Switzerland",
+      "region": "Switzerland",
+      "style": "large cap defensive quality",
+      "currently_held": false,
+      "weight_pct": null,
+      "score": 0.64,
+      "board_score": 0.64,
+      "challenger_score": 0.82,
+      "relative_strength_score": 0.44,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.28,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.05,
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve",
+          "adds a differentiated style bucket"
+        ],
+        "continuity": [],
+        "fragility": [
+          "commodity pressure modestly affects Swiss exporters"
+        ]
       },
       "evidence_source": "candidate_evidence_artifact",
       "publish": false,
@@ -789,10 +789,10 @@
       "style": "large cap",
       "currently_held": false,
       "weight_pct": null,
-      "score": 0.25,
-      "board_score": 0.25,
-      "challenger_score": 0.38,
-      "relative_strength_score": 0.33,
+      "score": 0.14,
+      "board_score": 0.14,
+      "challenger_score": 0.27,
+      "relative_strength_score": 0.22,
       "regime_alignment_score": 0.0,
       "implementation_priority_score": 0.0,
       "diversification_score": 0.2,
