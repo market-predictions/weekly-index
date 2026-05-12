@@ -53,8 +53,29 @@
       "underlying": "IWM / Russell 2000"
     }
   },
-  "generated_at_utc": "2026-05-12T21:01:59.869804Z",
+  "generated_at_utc": "2026-05-12T22:06:47.439577Z",
+  "geopolitical_regime": {
+    "confidence": 0.6,
+    "current": "Rates and energy-sensitive geopolitical risk",
+    "main_channels": [
+      "energy",
+      "defense spending",
+      "China/Taiwan risk",
+      "USD liquidity",
+      "supply-chain concentration"
+    ],
+    "portfolio_implication": "Treat oil, rates and defense/geopolitical shocks as risk filters for small caps, EM and Europe.",
+    "transfer_to_report": true
+  },
   "long_lane_adjustments": {
+    "australia_large_cap": {
+      "reason": "Australia is commodity and China-sensitive; require confirmation when USD or China stress rises.",
+      "score_adjustment": 0.03
+    },
+    "brazil_large_cap": {
+      "reason": "Brazil needs commodity support and a friendlier dollar backdrop before promotion.",
+      "score_adjustment": 0.02
+    },
     "em_broad": {
       "reason": "A weaker dollar backdrop would improve EM timing.",
       "score_adjustment": 0.05
@@ -63,8 +84,40 @@
       "reason": "Europe remains a diversification candidate, but price confirmation is still required.",
       "score_adjustment": 0.05
     },
+    "indonesia_large_cap": {
+      "reason": "Indonesia adds ASEAN domestic-demand beta but remains liquidity and USD-sensitive.",
+      "score_adjustment": 0.02
+    },
     "japan_equities": {
       "reason": "Japan remains a valid non-U.S. developed diversification lane, subject to currency/yield volatility.",
+      "score_adjustment": 0.05
+    },
+    "mexico_large_cap": {
+      "reason": "Mexico adds nearshoring exposure, but still requires price confirmation versus broad EM.",
+      "score_adjustment": 0.02
+    },
+    "saudi_large_cap": {
+      "reason": "Saudi exposure is energy and domestic-reform sensitive; use as a specialist Middle East lane.",
+      "score_adjustment": 0.02
+    },
+    "south_korea_large_cap": {
+      "reason": "Korea adds semiconductor/export-cycle exposure, but needs global tech and currency confirmation.",
+      "score_adjustment": 0.04
+    },
+    "taiwan_large_cap": {
+      "reason": "Taiwan is a high-quality semiconductor lane but carries supply-chain and geopolitical concentration risk.",
+      "score_adjustment": 0.05
+    },
+    "us_equal_weight": {
+      "reason": "Equal weight is the cleanest test of U.S. breadth improvement beyond mega-cap concentration.",
+      "score_adjustment": -0.04
+    },
+    "us_min_vol_factor": {
+      "reason": "Minimum volatility becomes more useful if risk appetite deteriorates.",
+      "score_adjustment": 0.0
+    },
+    "us_quality_factor": {
+      "reason": "Quality can preserve U.S. exposure while reducing weaker balance-sheet beta.",
       "score_adjustment": 0.05
     },
     "us_small_cap": {
@@ -74,6 +127,10 @@
     "us_tech_leadership": {
       "reason": "Nasdaq leadership remains the cleanest long-side index impulse.",
       "score_adjustment": 0.12
+    },
+    "us_value_factor": {
+      "reason": "Value needs evidence of broadening, rates stability and cyclical participation.",
+      "score_adjustment": -0.02
     }
   },
   "macro_signals": {
@@ -108,10 +165,16 @@
     ]
   },
   "region_implications": {
+    "ASEAN": "Indonesia is a specialist domestic-demand and commodity lane; keep behind liquid core proxies unless signal improves.",
+    "Australia": "Commodity, banks and China-sensitive developed-market lane; needs commodity and China confirmation.",
     "Emerging Markets": "Higher hurdle when USD pressure is firm.",
     "Europe": "Diversification candidate; requires price confirmation.",
     "Japan": "Valid developed-market alternative; monitor yen/yield volatility.",
-    "US": "Leadership is investable but concentration must be explicit."
+    "Korea / Taiwan": "Semiconductor supply-chain leadership can support the AI/tech regime, but geopolitical and currency risk must be explicit.",
+    "Latin America": "Brazil and Mexico deserve scan coverage, but funding requires USD, commodities and domestic policy confirmation.",
+    "Middle East": "Saudi Arabia is an energy/reform specialist lane rather than a broad market replacement.",
+    "US": "Leadership is investable but concentration must be explicit.",
+    "US factors": "Equal weight, quality, minimum volatility and value should be used to test breadth and factor rotation without adding new region risk."
   },
   "report_date": "2026-05-12",
   "report_digest": {
@@ -121,6 +184,7 @@
       "Keep IWM and EM funding conditional on breadth, dollar and real-rate improvement.",
       "Keep defensive / inverse candidates separate from the long-side opportunity board."
     ],
+    "geopolitical_focus": "Treat oil, rates and defense/geopolitical shocks as risk filters for small caps, EM and Europe.",
     "headline": "Risk-on narrow US mega-cap leadership: stay selective and separate long opportunities from defensive / inverse readiness.",
     "risk_watch": "A stronger USD or renewed rate repricing would raise the hurdle for EM, small caps and non-U.S. cyclicals.",
     "top_changes": [

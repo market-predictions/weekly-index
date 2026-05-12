@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-12T21:02:00.085030Z",
+  "generated_at_utc": "2026-05-12T22:06:47.601924Z",
   "methodology": "Direct alternative duels compare current implemented exposures against long alternatives. Funding requires relative-strength evidence plus portfolio-fit improvement; defensive/inverse rows remain separate from the long board.",
   "report_date": "2026-05-12",
   "report_token": "260512",
@@ -28,8 +28,8 @@
       "current_proxy": "SPY",
       "decision": "Current exposure still leads; no replacement.",
       "duel_type": "long_alternative",
-      "edge_20d_pct": -7.86,
-      "edge_60d_pct": -11.64,
+      "edge_20d_pct": -6.74,
+      "edge_60d_pct": -10.58,
       "momentum_state": "not_confirmed",
       "regime_fit": "watchlist",
       "required_trigger": "Needs both 20d and 60d relative-strength improvement before funding. Europe can improve regional diversification, but funding requires evidence that earnings and policy support are strong enough to offset weaker momentum."
