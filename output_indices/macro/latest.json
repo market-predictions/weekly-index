@@ -48,12 +48,12 @@
       "underlying": "QQQ / Nasdaq 100"
     },
     "RWM": {
-      "readiness": "inactive",
-      "reason": "Small-cap breadth is not weak enough for an active inverse stance.",
+      "readiness": "watchlist",
+      "reason": "Small-cap breadth remains weak versus SPY.",
       "underlying": "IWM / Russell 2000"
     }
   },
-  "generated_at_utc": "2026-05-12T19:13:18.262299Z",
+  "generated_at_utc": "2026-05-12T20:39:59.933559Z",
   "long_lane_adjustments": {
     "em_broad": {
       "reason": "A weaker dollar backdrop would improve EM timing.",
@@ -78,17 +78,17 @@
   },
   "macro_signals": {
     "credit": {
-      "hyg_20d_pct": -0.35
+      "hyg_20d_pct": -0.78
     },
     "duration": {
-      "tlt_20d_pct": -1.37
+      "tlt_20d_pct": -2.55
     },
     "equity_breadth": {
-      "iwm_vs_spy_20d_pct": -0.11,
-      "qqq_vs_spy_20d_pct": 7.78
+      "iwm_vs_spy_20d_pct": -1.14,
+      "qqq_vs_spy_20d_pct": 6.21
     },
     "usd": {
-      "uup_20d_pct": -0.11
+      "uup_20d_pct": 0.48
     }
   },
   "portfolio_implications": [
@@ -97,13 +97,14 @@
     "Keep defensive / inverse candidates separate from the long-side opportunity board."
   ],
   "regime": {
-    "confidence": 0.64,
-    "current": "Rate-hike repricing / real-rate pressure",
+    "confidence": 0.72,
+    "current": "Risk-on narrow US mega-cap leadership",
     "portfolio_implication": "Do not treat narrow U.S. leadership as full global breadth confirmation.",
     "previous": "Unknown",
     "what_changed": [
-      "Duration weakness keeps the bar high for small caps and rate-sensitive exposures.",
-      "Growth leadership remains visible versus broad U.S. beta."
+      "Nasdaq leadership is stronger than small-cap breadth, so risk appetite remains narrow rather than broad.",
+      "Growth leadership remains visible versus broad U.S. beta.",
+      "Small-cap breadth is still not confirming broad risk-on participation."
     ]
   },
   "region_implications": {
@@ -112,7 +113,7 @@
     "Japan": "Valid developed-market alternative; monitor yen/yield volatility.",
     "US": "Leadership is investable but concentration must be explicit."
   },
-  "report_date": "2026-05-11",
+  "report_date": "2026-05-12",
   "report_digest": {
     "central_bank_focus": "Fed real-rate risk remains the key policy filter for small caps, EM and speculative beta.",
     "decision_implications": [
@@ -120,11 +121,12 @@
       "Keep IWM and EM funding conditional on breadth, dollar and real-rate improvement.",
       "Keep defensive / inverse candidates separate from the long-side opportunity board."
     ],
-    "headline": "Rate-hike repricing / real-rate pressure: stay selective and separate long opportunities from defensive / inverse readiness.",
+    "headline": "Risk-on narrow US mega-cap leadership: stay selective and separate long opportunities from defensive / inverse readiness.",
     "risk_watch": "A stronger USD or renewed rate repricing would raise the hurdle for EM, small caps and non-U.S. cyclicals.",
     "top_changes": [
-      "Duration weakness keeps the bar high for small caps and rate-sensitive exposures.",
-      "Growth leadership remains visible versus broad U.S. beta."
+      "Nasdaq leadership is stronger than small-cap breadth, so risk appetite remains narrow rather than broad.",
+      "Growth leadership remains visible versus broad U.S. beta.",
+      "Small-cap breadth is still not confirming broad risk-on participation."
     ]
   },
   "report_token": "260512",

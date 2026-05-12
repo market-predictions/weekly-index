@@ -1,7 +1,7 @@
 {
   "report_date_token": "260512",
   "report_file": "weekly_indices_review_260512.md",
-  "requested_close_date": "2026-05-11",
+  "requested_close_date": "2026-05-12",
   "evidence_file": "index_candidate_evidence_260512.json",
   "groups": [
     {
@@ -27,9 +27,9 @@
         "exposure_id": "italy_large_cap",
         "public_index_name": "FTSE MIB",
         "primary_proxy": "EWI",
-        "score": 1.25,
-        "board_score": 1.25,
-        "challenger_score": 1.38,
+        "score": 1.1,
+        "board_score": 1.1,
+        "challenger_score": 1.23,
         "publish": false,
         "reason_code_if_not_published": "fragile_macro_alignment"
       }
@@ -42,9 +42,9 @@
         "exposure_id": "uk_large_cap",
         "public_index_name": "FTSE 100",
         "primary_proxy": "EWU",
-        "score": 0.83,
-        "board_score": 0.83,
-        "challenger_score": 0.96,
+        "score": 1.05,
+        "board_score": 1.05,
+        "challenger_score": 1.18,
         "publish": false,
         "reason_code_if_not_published": "weak_relative_strength"
       }
@@ -57,9 +57,9 @@
         "exposure_id": "switzerland_large_cap",
         "public_index_name": "SMI",
         "primary_proxy": "EWL",
-        "score": 0.64,
-        "board_score": 0.64,
-        "challenger_score": 0.82,
+        "score": 0.87,
+        "board_score": 0.87,
+        "challenger_score": 1.05,
         "publish": false,
         "reason_code_if_not_published": "weak_relative_strength"
       }
