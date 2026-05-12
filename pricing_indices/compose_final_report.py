@@ -138,6 +138,9 @@ def build_executive_summary(output_dir: Path) -> str:
     regime = ((macro.get("regime") or {}).get("current")) or "Policy transition / mixed regime"
     confidence = (macro.get("regime") or {}).get("confidence")
     confidence_text = f"{float(confidence):.0%}" if isinstance(confidence, (int, float)) else "medium"
+    geo = macro.get("geopolitical_regime") or {}
+    geo_current = geo.get("current") or "Moderate monitoring regime"
+    geo_implication = geo.get("portfolio_implication") or "No geopolitical channel is strong enough to override price, breadth and proxy evidence this week."
     top_changes = _take((macro.get("report_digest") or {}).get("top_changes") or (macro.get("regime") or {}).get("what_changed"), 3)
     implications = _take((macro.get("report_digest") or {}).get("decision_implications") or macro.get("portfolio_implications"), 3)
     first_change = top_changes[0] if top_changes else "No full-regime break; selectivity remains more important than broad risk expansion."
@@ -146,6 +149,8 @@ def build_executive_summary(output_dir: Path) -> str:
     return f"""## 1. Executive Summary
 - **Current valuation basis:** portfolio NAV is EUR {total_value}, including EUR {cash} cash, rebuilt from the {requested_close} close and FX reference date {fx_date}.
 - **Primary regime:** {regime} ({confidence_text} confidence).
+- **Geopolitical regime:** {geo_current}.
+- **Geopolitical implication:** {geo_implication}
 - **What changed:** {first_change}
 - **Portfolio implication:** {first_implication}
 - **Main takeaway:** keep QQQ as the strongest earned sleeve, keep SPY under concentration review, and force IWM and EEM through named long-alternative and defensive-hedge duels before any new capital is assigned."""
@@ -220,8 +225,6 @@ def main() -> None:
     original_text = _read_text(report_path)
     composed_text = original_text
 
-    # Sections 1 and 2 are composed directly from current runtime state to avoid
-    # stale inherited prose such as old NAVs or old pricing dates.
     composed_text = replace_section(composed_text, 1, build_executive_summary(output_dir))
     composed_text = replace_section(composed_text, 2, build_action_snapshot(output_dir))
 
