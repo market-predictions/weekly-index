@@ -95,6 +95,10 @@ jobs:
         run: |
           python -m pricing_indices.compose_final_report --in-place
 
+      - name: Scrub client-facing scaffold/process language
+        run: |
+          python tools/scrub_index_client_report.py
+
       - name: Validate report-vs-ranking reconciliation
         run: |
           python -m pricing_indices.validate_report_artifact_alignment
