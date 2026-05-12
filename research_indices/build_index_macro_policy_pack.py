@@ -85,6 +85,32 @@ def classify_regime(macro_snapshot: dict[str, Any]) -> tuple[str, float, list[st
     return regime, confidence, changes[:3]
 
 
+def geopolitical_regime_for_macro(regime: str, uup: float, tlt: float) -> dict[str, Any]:
+    if uup > 1.25:
+        current = "Elevated USD / policy-friction risk"
+        implication = "Keep EM, China, Korea/Taiwan and commodity-sensitive regions on a higher evidence hurdle until USD pressure eases."
+        confidence = 0.62
+    elif tlt < -1.00:
+        current = "Rates and energy-sensitive geopolitical risk"
+        implication = "Treat oil, rates and defense/geopolitical shocks as risk filters for small caps, EM and Europe."
+        confidence = 0.60
+    elif "narrow" in regime.lower():
+        current = "Elevated but not portfolio-overriding"
+        implication = "Geopolitical risk is a filter, not a standalone allocation driver this week; concentration and breadth remain more important."
+        confidence = 0.58
+    else:
+        current = "Moderate monitoring regime"
+        implication = "No geopolitical channel is strong enough to override price, breadth and proxy evidence this week."
+        confidence = 0.55
+    return {
+        "current": current,
+        "confidence": confidence,
+        "main_channels": ["energy", "defense spending", "China/Taiwan risk", "USD liquidity", "supply-chain concentration"],
+        "portfolio_implication": implication,
+        "transfer_to_report": True,
+    }
+
+
 def central_banks_for_regime(regime: str) -> dict[str, dict[str, Any]]:
     return {
         "fed": {
@@ -129,7 +155,6 @@ def build_pack(output_dir: Path, token: str, requested_close_date: str) -> dict[
     macro_path = _latest_research_file(output_dir, "index_macro_snapshot", token)
     rs_path = _latest_research_file(output_dir, "index_relative_strength_snapshot", token)
     macro = _read_json(macro_path) if macro_path else {}
-    rs = _read_json(rs_path) if rs_path else {}
     regime, confidence, what_changed = classify_regime(macro)
 
     qqq_vs_spy = _series_return(macro, "QQQ") - _series_return(macro, "SPY")
@@ -137,6 +162,7 @@ def build_pack(output_dir: Path, token: str, requested_close_date: str) -> dict[
     uup = _series_return(macro, "UUP")
     tlt = _series_return(macro, "TLT")
     hyg = _series_return(macro, "HYG")
+    geopolitical = geopolitical_regime_for_macro(regime, uup, tlt)
 
     long_adjustments = {
         "us_tech_leadership": {
@@ -158,6 +184,50 @@ def build_pack(output_dir: Path, token: str, requested_close_date: str) -> dict[
         "japan_equities": {
             "score_adjustment": 0.05,
             "reason": "Japan remains a valid non-U.S. developed diversification lane, subject to currency/yield volatility.",
+        },
+        "australia_large_cap": {
+            "score_adjustment": -0.03 if uup > 1.25 else 0.03,
+            "reason": "Australia is commodity and China-sensitive; require confirmation when USD or China stress rises.",
+        },
+        "south_korea_large_cap": {
+            "score_adjustment": 0.04 if qqq_vs_spy > 0 else -0.02,
+            "reason": "Korea adds semiconductor/export-cycle exposure, but needs global tech and currency confirmation.",
+        },
+        "taiwan_large_cap": {
+            "score_adjustment": 0.05 if qqq_vs_spy > 0 else -0.03,
+            "reason": "Taiwan is a high-quality semiconductor lane but carries supply-chain and geopolitical concentration risk.",
+        },
+        "brazil_large_cap": {
+            "score_adjustment": -0.04 if uup > 1.25 else 0.02,
+            "reason": "Brazil needs commodity support and a friendlier dollar backdrop before promotion.",
+        },
+        "mexico_large_cap": {
+            "score_adjustment": 0.02,
+            "reason": "Mexico adds nearshoring exposure, but still requires price confirmation versus broad EM.",
+        },
+        "indonesia_large_cap": {
+            "score_adjustment": -0.02 if uup > 1.25 else 0.02,
+            "reason": "Indonesia adds ASEAN domestic-demand beta but remains liquidity and USD-sensitive.",
+        },
+        "saudi_large_cap": {
+            "score_adjustment": 0.02,
+            "reason": "Saudi exposure is energy and domestic-reform sensitive; use as a specialist Middle East lane.",
+        },
+        "us_equal_weight": {
+            "score_adjustment": -0.04 if iwm_vs_spy < -1.0 else 0.07,
+            "reason": "Equal weight is the cleanest test of U.S. breadth improvement beyond mega-cap concentration.",
+        },
+        "us_quality_factor": {
+            "score_adjustment": 0.05,
+            "reason": "Quality can preserve U.S. exposure while reducing weaker balance-sheet beta.",
+        },
+        "us_min_vol_factor": {
+            "score_adjustment": 0.03 if "defensive" in regime.lower() else 0.00,
+            "reason": "Minimum volatility becomes more useful if risk appetite deteriorates.",
+        },
+        "us_value_factor": {
+            "score_adjustment": 0.03 if iwm_vs_spy > -0.5 else -0.02,
+            "reason": "Value needs evidence of broadening, rates stability and cyclical participation.",
         },
     }
 
@@ -212,6 +282,7 @@ def build_pack(output_dir: Path, token: str, requested_close_date: str) -> dict[
             "what_changed": what_changed,
             "portfolio_implication": implications[0],
         },
+        "geopolitical_regime": geopolitical,
         "central_banks": central_banks_for_regime(regime),
         "macro_signals": {
             "equity_breadth": {"qqq_vs_spy_20d_pct": round(qqq_vs_spy, 2), "iwm_vs_spy_20d_pct": round(iwm_vs_spy, 2)},
@@ -221,8 +292,14 @@ def build_pack(output_dir: Path, token: str, requested_close_date: str) -> dict[
         },
         "region_implications": {
             "US": "Leadership is investable but concentration must be explicit.",
+            "US factors": "Equal weight, quality, minimum volatility and value should be used to test breadth and factor rotation without adding new region risk.",
             "Europe": "Diversification candidate; requires price confirmation.",
             "Japan": "Valid developed-market alternative; monitor yen/yield volatility.",
+            "Australia": "Commodity, banks and China-sensitive developed-market lane; needs commodity and China confirmation.",
+            "Korea / Taiwan": "Semiconductor supply-chain leadership can support the AI/tech regime, but geopolitical and currency risk must be explicit.",
+            "Latin America": "Brazil and Mexico deserve scan coverage, but funding requires USD, commodities and domestic policy confirmation.",
+            "ASEAN": "Indonesia is a specialist domestic-demand and commodity lane; keep behind liquid core proxies unless signal improves.",
+            "Middle East": "Saudi Arabia is an energy/reform specialist lane rather than a broad market replacement.",
             "Emerging Markets": "Higher hurdle when USD pressure is firm.",
         },
         "long_lane_adjustments": long_adjustments,
@@ -233,6 +310,7 @@ def build_pack(output_dir: Path, token: str, requested_close_date: str) -> dict[
             "top_changes": what_changed[:3],
             "decision_implications": implications[:3],
             "central_bank_focus": "Fed real-rate risk remains the key policy filter for small caps, EM and speculative beta.",
+            "geopolitical_focus": geopolitical["portfolio_implication"],
             "risk_watch": "A stronger USD or renewed rate repricing would raise the hurdle for EM, small caps and non-U.S. cyclicals.",
         },
         "report_transfer": {
