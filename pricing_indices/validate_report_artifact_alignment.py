@@ -33,7 +33,24 @@ def token_from_report(report_path: Path) -> str:
 
 
 def normalize_name(value: str) -> str:
+    value = str(value or "")
+    value = re.sub(r"\[([^\]]+)\]\([^\)]+\)", r"\1", value)
+    value = value.replace("**", "").replace("`", "")
     return re.sub(r"\s+", " ", value.strip().lower())
+
+
+def _candidate_display_name(row: dict) -> str:
+    return str(row.get("portfolio_sleeve") or row.get("public_index_name") or row.get("benchmark_name") or "")
+
+
+def _candidate_aliases(row: dict) -> set[str]:
+    aliases = {
+        normalize_name(row.get("portfolio_sleeve")),
+        normalize_name(row.get("public_index_name")),
+        normalize_name(row.get("benchmark_name")),
+        normalize_name(row.get("display_name")),
+    }
+    return {alias for alias in aliases if alias}
 
 
 def extract_section(md_text: str, section_number: int) -> str:
@@ -59,7 +76,7 @@ def extract_first_table_first_column(section_text: str) -> list[str]:
             cells = [cell.strip() for cell in stripped.strip("|").split("|")]
             if not cells or all(set(cell) <= {"-", ":"} for cell in cells):
                 continue
-            if cells[0].lower() == "exposure":
+            if normalize_name(cells[0]) in {"exposure", "portfolio sleeve"}:
                 continue
             values.append(cells[0])
         elif in_table:
@@ -78,6 +95,33 @@ def _find_numeric_label(section_text: str, label: str) -> float:
 def _ensure_contains(section_text: str, required: str, context: str) -> None:
     if required not in section_text:
         raise RuntimeError(f"{context} does not contain required value: {required}")
+
+
+def _validate_section4_board_alignment(report_names: set[str], published_rows: list[dict]) -> None:
+    # Section 4 used to display public index names. It now displays portfolio
+    # sleeves, with benchmark index in the second column. The alignment contract
+    # should validate the same published candidates, not force a single label.
+    expected_primary = {normalize_name(_candidate_display_name(row)) for row in published_rows}
+    expected_primary = {name for name in expected_primary if name}
+    if report_names == expected_primary:
+        return
+
+    unmatched_report = set(report_names)
+    unmatched_artifact: list[str] = []
+    for row in published_rows:
+        aliases = _candidate_aliases(row)
+        matched = aliases & unmatched_report
+        if matched:
+            unmatched_report -= matched
+        else:
+            unmatched_artifact.append(_candidate_display_name(row))
+
+    if unmatched_report or unmatched_artifact:
+        raise RuntimeError(
+            "Section 4 board entries do not reconcile with publish=true ranking entries. "
+            f"report={sorted(report_names)} expected_primary={sorted(expected_primary)} "
+            f"unmatched_report={sorted(unmatched_report)} unmatched_artifact={sorted(normalize_name(x) for x in unmatched_artifact)}"
+        )
 
 
 def main() -> None:
@@ -106,16 +150,8 @@ def main() -> None:
     section16 = extract_section(report_text, 16)
 
     report_board_names = {normalize_name(name) for name in extract_first_table_first_column(section4)}
-    artifact_board_names = {
-        normalize_name(str(row.get("public_index_name")))
-        for row in ranking.get("candidates", [])
-        if row.get("publish")
-    }
-    if report_board_names != artifact_board_names:
-        raise RuntimeError(
-            "Section 4 board entries do not reconcile with publish=true ranking entries. "
-            f"report={sorted(report_board_names)} artifact={sorted(artifact_board_names)}"
-        )
+    published_rows = [row for row in ranking.get("candidates", []) if row.get("publish")]
+    _validate_section4_board_alignment(report_board_names, published_rows)
 
     unpublished = [row for row in ranking.get("candidates", []) if not row.get("publish")]
     unpublished.sort(key=lambda row: (-float(row.get("challenger_score") or row.get("score") or 0.0), row.get("public_index_name") or ""))
