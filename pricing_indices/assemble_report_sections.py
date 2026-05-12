@@ -161,19 +161,39 @@ def _fmt_edge(value: Any) -> str:
     return f"{sign}{number:.2f}%"
 
 
+def _portfolio_sleeve(row: dict[str, Any]) -> str:
+    return str(row.get("portfolio_sleeve") or row.get("public_index_name") or "").strip()
+
+
+def _benchmark_name(row: dict[str, Any]) -> str:
+    return str(row.get("benchmark_name") or row.get("public_index_name") or "").strip()
+
+
+def _eligibility_note(row: dict[str, Any]) -> str:
+    eligibility = row.get("proxy_eligibility") or {}
+    note = eligibility.get("note") if isinstance(eligibility, dict) else None
+    return str(note or "Proxy eligibility requires current pricing and sufficient history.")
+
+
 def build_section4(candidate_ranking: dict[str, Any], plan: dict[str, Any]) -> str:
     published = [c for c in candidate_ranking.get("candidates", []) if c.get("publish")]
     published = sorted(published, key=lambda x: (-float(x.get("board_score") or x.get("score") or 0.0), x.get("public_index_name") or ""))[:6]
+    summary = candidate_ranking.get("scan_summary") or {}
 
     lines = [f"## 4. {SECTION4_NAME}", ""]
-    lines.append("| Exposure | Benchmark / public index | Implementation proxy | Regional group | Score | Status | Why it is on the board |")
+    if summary:
+        lines.append(
+            f"The scan covers **{summary.get('coverage_universe_count', 'multiple')} exposures** across **{summary.get('regional_group_count', 'multiple')} regional/style buckets**. The board remains compact by design; broader coverage is shown later in the universe checkpoint."
+        )
+        lines.append("")
+    lines.append("| Portfolio sleeve | Benchmark index | Tradable proxy | Regional / style bucket | Score | Status | Why it is on the board |")
     lines.append("|---|---|---|---|---:|---|---|")
     for row in published:
         status = "Funded" if row.get("currently_held") else "Surfaced"
         fallback_reason = "Ranks high enough internally to remain on the compact published board."
         why = exposure_reason(str(row.get("exposure_id")), plan, fallback_reason)
         lines.append(
-            f"| {row.get('public_index_name')} | {row.get('public_index_name')} | {row.get('primary_proxy')} | {row.get('regional_group')} | {float(row.get('board_score') or row.get('score') or 0.0):.2f} | {status} | {why} |"
+            f"| {_portfolio_sleeve(row)} | {_benchmark_name(row)} | {row.get('primary_proxy')} | {row.get('regional_group')} | {float(row.get('board_score') or row.get('score') or 0.0):.2f} | {status} | {why} |"
         )
 
     close_groups = [g for g in candidate_ranking.get("regional_group_status", []) if g.get("status") == "near_miss"]
@@ -261,7 +281,7 @@ def build_section11(candidate_ranking: dict[str, Any], coverage: dict[str, Any],
     unpublished = sorted(unpublished, key=lambda x: (-float(x.get("challenger_score") or x.get("score") or 0.0), x.get("public_index_name") or ""))
     coverage_groups = coverage.get("groups") or []
     strongest_omitted = unpublished[0] if unpublished else None
-    picked: list[dict[str, Any]] = unpublished[:3]
+    picked: list[dict[str, Any]] = unpublished[:4]
 
     lines = [f"## 11. {SECTION11_NAME}", "", "### Long-side Opportunities", ""]
     if strongest_omitted:
@@ -276,8 +296,10 @@ def build_section11(candidate_ranking: dict[str, Any], coverage: dict[str, Any],
             reason_code = _client_reason(row.get("reason_code_if_not_published") or "below_board_cutoff")
             lines += [
                 f"#### {idx}. {row.get('public_index_name')} ({row.get('primary_proxy')})",
-                f"- Regional group: {row.get('regional_group')}",
+                f"- Portfolio sleeve: {_portfolio_sleeve(row)}",
+                f"- Regional / style bucket: {row.get('regional_group')}",
                 f"- Challenger score: {float(row.get('challenger_score') or row.get('score') or 0.0):.2f}",
+                f"- Proxy eligibility: {_eligibility_note(row)}",
                 f"- Why it matters: {reason}",
                 f"- Why not on the board yet: {reason_code}",
                 "",
@@ -289,8 +311,8 @@ def build_section11(candidate_ranking: dict[str, Any], coverage: dict[str, Any],
 
     lines += [
         "### Breadth checkpoint by regional bucket",
-        "| Regional bucket | Strongest candidate | Proxy | Challenger score | Current status |",
-        "|---|---|---|---:|---|",
+        "| Regional / style bucket | Strongest candidate | Proxy | Candidate count | Eligible proxies | Challenger score | Current status |",
+        "|---|---|---|---:|---:|---:|---|",
     ]
     for group in coverage_groups:
         cand = group.get("strongest_candidate") or {}
@@ -298,21 +320,21 @@ def build_section11(candidate_ranking: dict[str, Any], coverage: dict[str, Any],
             continue
         status = "Published" if cand.get("publish") else _client_status(group.get("status"))
         lines.append(
-            f"| {group.get('group')} | {cand.get('public_index_name')} | {cand.get('primary_proxy')} | {float(cand.get('challenger_score') or cand.get('score') or 0.0):.2f} | {status} |"
+            f"| {group.get('group')} | {cand.get('public_index_name')} | {cand.get('primary_proxy')} | {int(group.get('candidate_count') or 0)} | {int(group.get('eligible_proxy_count') or 0)} | {float(cand.get('challenger_score') or cand.get('score') or 0.0):.2f} | {status} |"
         )
 
     lines += [
         "",
         "### Universe scan checkpoint",
-        "| Exposure | Regional group | Proxy | Published? | Challenger score | Why not on the board yet |",
-        "|---|---|---|---|---:|---|",
+        "| Portfolio sleeve | Benchmark index | Regional / style bucket | Tradable proxy | Proxy eligibility | Published? | Challenger score | Why not on the board yet |",
+        "|---|---|---|---|---|---|---:|---|",
     ]
     for row in sorted(all_candidates, key=lambda x: (-float(x.get('challenger_score') or x.get('score') or 0.0), x.get('public_index_name') or '')):
         published = "Yes" if row.get("publish") else "No"
         reason_key = "published" if row.get("publish") else (row.get("reason_code_if_not_published") or "below_board_cutoff")
         reason = _client_reason(reason_key)
         lines.append(
-            f"| {row.get('public_index_name')} | {row.get('regional_group')} | {row.get('primary_proxy')} | {published} | {float(row.get('challenger_score') or row.get('score') or 0.0):.2f} | {reason} |"
+            f"| {_portfolio_sleeve(row)} | {_benchmark_name(row)} | {row.get('regional_group')} | {row.get('primary_proxy')} | {_eligibility_note(row)} | {published} | {float(row.get('challenger_score') or row.get('score') or 0.0):.2f} | {reason} |"
         )
 
     return "\n".join(lines).rstrip()
@@ -353,13 +375,13 @@ def build_section16(candidate_ranking: dict[str, Any], coverage: dict[str, Any],
     lines = [f"## 16. {SECTION16_NAME}", ""]
     lines += [
         "### Watchlist / dynamic radar memory",
-        "| Theme | Regional group | Primary Proxy | Status | Why it stays visible |",
+        "| Theme | Regional / style bucket | Primary proxy | Status | Why it stays visible |",
         "|---|---|---|---|---|",
     ]
     watch_candidates = sorted(
         [c for c in candidate_ranking.get("candidates", []) if not c.get("publish")],
         key=lambda x: (-float(x.get("challenger_score") or x.get("score") or 0.0), x.get("public_index_name") or ""),
-    )[:8]
+    )[:10]
     for row in watch_candidates:
         status = "Strong challenger" if row.get("reason_code_if_not_published") == "strong_challenger_not_published" else "Watchlist"
         why = exposure_reason(str(row.get("exposure_id")), plan, "Broad discovery keeps it visible even though it did not make the compact board.")
@@ -370,13 +392,13 @@ def build_section16(candidate_ranking: dict[str, Any], coverage: dict[str, Any],
     lines += [
         "",
         "### Discovery coverage checkpoint",
-        "| Regional group | Status | Strongest candidate | Proxy | Score |",
-        "|---|---|---|---|---:|",
+        "| Regional / style bucket | Status | Candidates scanned | Eligible proxies | Strongest candidate | Proxy | Score |",
+        "|---|---|---:|---:|---|---|---:|",
     ]
     for group in coverage.get("groups") or []:
         cand = group.get("strongest_candidate") or {}
         lines.append(
-            f"| {group.get('group')} | {_client_status(group.get('status'))} | {cand.get('public_index_name', '—')} | {cand.get('primary_proxy', '—')} | {float(cand.get('challenger_score') or cand.get('score') or 0.0):.2f} |"
+            f"| {group.get('group')} | {_client_status(group.get('status'))} | {int(group.get('candidate_count') or 0)} | {int(group.get('eligible_proxy_count') or 0)} | {cand.get('public_index_name', '—')} | {cand.get('primary_proxy', '—')} | {float(cand.get('challenger_score') or cand.get('score') or 0.0):.2f} |"
         )
 
     lines += [
