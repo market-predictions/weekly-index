@@ -59,6 +59,64 @@ def _edge(candidate: dict[str, Any], current: dict[str, Any], key: str) -> float
     return round((c - h) * 100.0, 2)
 
 
+def _momentum_state(edge_20d: float | None, edge_60d: float | None) -> str:
+    if edge_20d is None or edge_60d is None:
+        return "incomplete"
+    if edge_20d > 0 and edge_60d > 0:
+        return "confirmed"
+    if edge_20d <= 0 and edge_60d > 0:
+        return "long_term_positive_short_term_soft"
+    if edge_20d > 0 and edge_60d <= 0:
+        return "early_improvement"
+    return "not_confirmed"
+
+
+def _portfolio_fit_risk(current_exposure_id: str, alternative_exposure_id: str) -> str:
+    pair = (current_exposure_id, alternative_exposure_id)
+    if pair == ("us_large_cap", "us_tech_leadership"):
+        return "QQQ increases U.S. mega-cap / technology concentration, so funding requires explicit concentration room versus the SPY/QQQ overlap limit."
+    if pair == ("us_large_cap", "japan_equities"):
+        return "Japan can improve regional diversification, but funding requires confirmation that currency and yield volatility do not overwhelm the diversification benefit."
+    if pair == ("us_large_cap", "europe_large_cap"):
+        return "Europe can improve regional diversification, but funding requires evidence that earnings and policy support are strong enough to offset weaker momentum."
+    if pair == ("us_tech_leadership", "us_large_cap"):
+        return "SPY lowers concentration versus QQQ, but funding only makes sense if broader U.S. participation improves."
+    if pair == ("us_tech_leadership", "us_small_cap"):
+        return "IWM improves breadth exposure, but funding requires small-cap breadth and real-rate conditions to improve."
+    if pair == ("us_small_cap", "us_large_cap"):
+        return "SPY is the cleaner U.S. risk sleeve if small-cap breadth remains weak."
+    if current_exposure_id == "em_broad" and alternative_exposure_id == "india_large_cap":
+        return "India improves structural growth quality versus broad EM, but funding requires valuation and concentration discipline."
+    if current_exposure_id == "em_broad" and alternative_exposure_id == "china_large_cap":
+        return "China can recover quickly, but funding requires policy credibility and price confirmation, not only mean-reversion potential."
+    if current_exposure_id == "em_broad" and alternative_exposure_id == "us_large_cap":
+        return "SPY reduces EM/USD risk, but funding would reduce non-U.S. diversification."
+    if current_exposure_id == "europe_large_cap":
+        return "Funding requires proof that the narrower European alternative improves risk-adjusted exposure versus broad Europe."
+    if current_exposure_id == "japan_equities":
+        return "Funding requires proof that the alternative improves diversification without weakening the portfolio's non-U.S. developed-market balance."
+    return "Funding requires portfolio-fit improvement, not only a better relative-strength print."
+
+
+def _required_trigger(
+    current_exposure_id: str,
+    alternative_exposure_id: str,
+    edge_20d: float | None,
+    edge_60d: float | None,
+) -> str:
+    state = _momentum_state(edge_20d, edge_60d)
+    fit = _portfolio_fit_risk(current_exposure_id, alternative_exposure_id)
+    if state == "incomplete":
+        return "Relative-strength proof is incomplete; refresh pricing history before making this duel fundable."
+    if state == "confirmed":
+        return f"Momentum proof is present. {fit}"
+    if state == "long_term_positive_short_term_soft":
+        return f"60d proof is positive, but short-term momentum must stabilize before funding. {fit}"
+    if state == "early_improvement":
+        return f"Early improvement only; needs positive 60d confirmation before funding. {fit}"
+    return f"Needs both 20d and 60d relative-strength improvement before funding. {fit}"
+
+
 def _decision(edge_20d: float | None, edge_60d: float | None, regime_fit: str, is_defensive: bool) -> str:
     if edge_20d is None or edge_60d is None:
         return "Not decision-grade this week — relative-strength proof incomplete."
@@ -66,9 +124,12 @@ def _decision(edge_20d: float | None, edge_60d: float | None, regime_fit: str, i
         if regime_fit == "watchlist" and (edge_20d > 0 or edge_60d > 0):
             return "Defensive hedge watch — only usable if trigger confirms."
         return "Defensive only; not a base-case allocation."
-    if edge_60d >= 3.0:
+    state = _momentum_state(edge_20d, edge_60d)
+    if state == "confirmed":
         return "Alternative improving; keep replacement duel active."
-    if edge_20d > 0 and edge_60d <= 0:
+    if state == "long_term_positive_short_term_soft":
+        return "Longer-term edge positive, but short-term momentum must stabilize."
+    if state == "early_improvement":
         return "Early improvement only; wait for 60d confirmation."
     return "Current exposure still leads; no replacement."
 
@@ -99,9 +160,10 @@ def build_duels(state: dict[str, Any]) -> dict[str, Any]:
                 "duel_type": "long_alternative",
                 "edge_20d_pct": edge_20d,
                 "edge_60d_pct": edge_60d,
+                "momentum_state": _momentum_state(edge_20d, edge_60d),
                 "regime_fit": "candidate" if edge_60d is not None and edge_60d > 0 else "watchlist",
                 "decision": _decision(edge_20d, edge_60d, "candidate", False),
-                "required_trigger": "Needs positive 60d edge plus portfolio-fit improvement before funding.",
+                "required_trigger": _required_trigger(exposure_id, alt_id, edge_20d, edge_60d),
             })
         if exposure_id in DEFENSIVE_PROXY_MAP:
             proxy = DEFENSIVE_PROXY_MAP[exposure_id]
@@ -116,6 +178,7 @@ def build_duels(state: dict[str, Any]) -> dict[str, Any]:
                 "duel_type": "defensive_inverse",
                 "edge_20d_pct": None,
                 "edge_60d_pct": None,
+                "momentum_state": "defensive_trigger_based",
                 "regime_fit": readiness,
                 "decision": _decision(None, None, readiness, True),
                 "required_trigger": (defensive.get(proxy) or {}).get("reason", "Requires confirmed breakdown before use."),
@@ -125,7 +188,7 @@ def build_duels(state: dict[str, Any]) -> dict[str, Any]:
         "generated_at_utc": state.get("generated_at_utc"),
         "report_token": state.get("report_token"),
         "report_date": state.get("report_date"),
-        "methodology": "Direct alternative duels compare current implemented exposures against long alternatives; defensive/inverse rows remain separate from the long board.",
+        "methodology": "Direct alternative duels compare current implemented exposures against long alternatives. Funding requires relative-strength evidence plus portfolio-fit improvement; defensive/inverse rows remain separate from the long board.",
         "rows": rows,
     }
 
