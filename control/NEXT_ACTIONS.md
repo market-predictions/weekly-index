@@ -46,7 +46,7 @@
   - IWM breadth validity and RWM defensive comparison
   - EEM dollar/EM validity and EUM defensive comparison
   - cash reserve versus actionable challengers
-  - whether Japan, Europe, UK, Switzerland, Canada, Australia, Greater China, India, or EM broad deserve funded capital
+  - whether Japan, Europe, UK, Switzerland, Canada, Australia, Greater China, India, Korea/Taiwan, LatAm, ASEAN, Middle East, or EM broad deserve funded capital
 - Done when: no weak or replaceable holding remains vague.
 
 ### 5. Validate short opportunities radar in Section 11
@@ -89,18 +89,21 @@
   - ensure scorecard is written and committed back only after successful send
 - Done when: incomplete capital-discipline reports cannot be sent unnoticed.
 
-### 9. Port the robust layered close-price discovery model from weekly-etf
+### 9. Validate layered close-price discovery model
 - Owner: `[ASSISTANT]` + `[JOINT]` if provider secrets are required
-- Current status: not fully ported. Weekly Index currently has a pricing-first pass and benchmark/proxy contract, but it does not yet have the full ETF-style layered resolver with provider order, unresolved-cache fallback continuation, challenger/proxy refresh policy, and provider budget metadata.
+- Current status: implemented as `layered_close_discovery_v1` in the Weekly Index pricing subsystem; needs validation in the next live run.
+- Implemented behavior:
+  - source fallback order: Yahoo history → Twelve Data → FMP → Alpha Vantage → carried-forward prior valid close
+  - separate benchmark close and tradable-proxy close retrieval
+  - provider/source/status diagnostics persisted in `output_indices/pricing/index_price_audit_*.json`
+  - per-holding performance metrics persisted into `output_indices/index_portfolio_state.json`
+  - pricing contract validates layered model, provider order, price-source diagnostics, and performance metric presence
 - Action:
-  - introduce an index-native layered close resolver for benchmark indices and tradable proxies
-  - support source fallback order such as Yahoo history, Twelve Data, FMP, Alpha Vantage, issuer/manual override where applicable
-  - continue fallback after unresolved cached rows instead of stopping early
-  - persist provider/source/status per benchmark and proxy close in `output_indices/pricing/`
-  - separate benchmark close authority from tradable-proxy valuation authority
-  - expose price-source diagnostics in the audit, not in the client report
-  - add a validator that hard-fails missing proxy closes for funded positions and warns on non-critical benchmark gaps
-- Done when: Weekly Index has the same operational robustness as Weekly ETF pricing while preserving benchmark-vs-proxy distinctions.
+  - run a fresh report and inspect pricing audit source distribution
+  - verify Twelve Data/FMP/Alpha Vantage fallbacks are used when Yahoo fails or is incomplete
+  - confirm hard failure for missing proxy closes on funded positions
+  - confirm benchmark gaps are visible without corrupting valuation authority
+- Done when: Weekly Index pricing is operationally as robust as Weekly ETF while preserving benchmark-vs-proxy distinctions.
 
 ---
 
@@ -132,11 +135,21 @@
   - reduce equity-curve x-axis label overlap
 - Done when: PDF rendering looks premium and does not expose markdown/render artifacts.
 
+### 13. Validate ETF-style tradable proxy performance table
+- Owner: `[ASSISTANT]`
+- Current status: implemented in the composer as `Tradable Proxy Performance` inside Section 15.
+- Action:
+  - confirm table appears in the next report
+  - confirm each funded proxy has 1w, 1m, 3m, since-entry, P/L EUR, and contribution fields
+  - confirm values come from `index_portfolio_state.json` performance metrics
+  - confirm `tools/validate_index_state_consistency_contract.py` blocks missing performance rows or missing required columns
+- Done when: Weekly Index has ETF-style per-position performance visibility.
+
 ---
 
 ## Phase 5 — improve explicit Index state quality
 
-### 13. Improve recommendation scorecard quality
+### 14. Improve recommendation scorecard quality
 - Owner: `[ASSISTANT]`
 - Action:
   - add real 1-month and 3-month relative-strength values when reliable price history is available
@@ -145,7 +158,7 @@
   - improve consecutive-week replaceable history
 - Done when: scorecard becomes less heuristic and more data-backed.
 
-### 14. Move Index state beyond report-derived state over time
+### 15. Move Index state beyond report-derived state over time
 - Owner: `[ASSISTANT]`
 - Action:
   - validate the pricing subsystem in real runs
@@ -153,7 +166,7 @@
   - reduce dependence on report-derived state where safe
 - Done when: explicit state is less dependent on rendered report parsing.
 
-### 15. Improve factor and breadth model
+### 16. Improve factor and breadth model
 - Owner: `[ASSISTANT]`
 - Action:
   - make U.S. equity beta, mega-cap growth, small-cap financing sensitivity, non-U.S. exposure, EM/dollar sensitivity, and defensive/inverse readiness more data-backed
@@ -164,7 +177,7 @@
 
 ## Phase 6 — keep AEX options preserved but parked
 
-### 16. Do not delete the AEX track
+### 17. Do not delete the AEX track
 - Owner: `[JOINT]`
 - Goal:
   - preserve files
@@ -176,4 +189,4 @@
 
 ## Current checkpoint
 
-**Weekly Index Review now has the key ETF lessons ported: pricing-first workflow, breadth discipline, short-opportunity radar, macro-policy pack, runtime state artifact, state-consistency validation, compactness validation, alternative-duel artifacts, and capital re-underwriting rules. The next priority is to validate the artifact-driven report in a fresh run and port the full robust layered close-price discovery model from weekly-etf into an index-native benchmark/proxy resolver.**
+**Weekly Index Review now has the key ETF lessons ported: pricing-first workflow, breadth discipline, short-opportunity radar, macro-policy pack, runtime state artifact, state-consistency validation, compactness validation, alternative-duel artifacts, capital re-underwriting rules, ETF-style tradable proxy performance table, and a first implementation of layered close-price discovery. The next priority is to validate these in a fresh run and inspect the pricing audit, Section 15 performance table, render quality, and delivery manifest.**
