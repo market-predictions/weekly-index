@@ -46,6 +46,7 @@ CLIENT_COPY_REPLACEMENTS = {
     "None before workflow artifact rebuild.": "None.",
     "No delivery success should be claimed without workflow evidence or manifest evidence.": "Maintain discipline: do not confuse operational noise with investment evidence.",
     "The workflow must replace artifact-driven sections before render/send and then commit a run manifest under output_indices/run_manifests/.": "The report uses refreshed state, pricing, breadth, and opportunity evidence for this weekly update.",
+    "layered_close_discovery_v1": "persisted pricing audit",
 }
 
 
@@ -217,12 +218,10 @@ def build_tradable_proxy_performance_table(output_dir: Path) -> str:
     positions = state.get("positions", []) or []
     if not positions:
         return ""
-    pricing = state.get("pricing_basis", {}) or {}
-    model = pricing.get("pricing_model") or "pricing layer"
     lines = [
         "",
         "### Tradable Proxy Performance",
-        f"Performance is calculated on the tradable ETF proxies used for valuation, using the `{model}` pricing layer where available.",
+        "Performance is calculated on the tradable ETF proxies used for portfolio valuation. Benchmark index prices remain the analysis reference; tradable proxy closes drive market value, P/L and contribution.",
         "",
         "| Portfolio sleeve | Benchmark index | Tradable proxy | Weight % | 1w return | 1m return | 3m return | Since-entry | P/L EUR | Contribution % |",
         "|---|---|---|---:|---:|---:|---:|---:|---:|---:|",
