@@ -88,9 +88,9 @@
         "public_index_name": "FTSE 100",
         "benchmark_name": "FTSE 100 Index",
         "primary_proxy": "EWU",
-        "score": 0.89,
-        "board_score": 0.89,
-        "challenger_score": 1.02,
+        "score": 1.03,
+        "board_score": 1.03,
+        "challenger_score": 1.16,
         "publish": false,
         "reason_code_if_not_published": "weak_relative_strength",
         "proxy_eligibility": {
@@ -112,9 +112,9 @@
         "public_index_name": "SMI",
         "benchmark_name": "Swiss Market Index",
         "primary_proxy": "EWL",
-        "score": 0.68,
-        "board_score": 0.68,
-        "challenger_score": 0.86,
+        "score": 0.89,
+        "board_score": 0.89,
+        "challenger_score": 1.07,
         "publish": false,
         "reason_code_if_not_published": "weak_relative_strength",
         "proxy_eligibility": {
@@ -256,9 +256,9 @@
         "public_index_name": "Mexico large cap",
         "benchmark_name": "S&P/BMV IPC Index",
         "primary_proxy": "EWW",
-        "score": 1.28,
-        "board_score": 1.28,
-        "challenger_score": 1.46,
+        "score": 1.35,
+        "board_score": 1.35,
+        "challenger_score": 1.53,
         "publish": false,
         "reason_code_if_not_published": "strong_challenger_not_published",
         "proxy_eligibility": {
@@ -328,9 +328,9 @@
         "public_index_name": "Saudi Arabia large cap",
         "benchmark_name": "Tadawul All Share Index",
         "primary_proxy": "KSA",
-        "score": 0.8,
-        "board_score": 0.8,
-        "challenger_score": 0.98,
+        "score": 0.73,
+        "board_score": 0.73,
+        "challenger_score": 0.91,
         "publish": false,
         "reason_code_if_not_published": "weak_relative_strength",
         "proxy_eligibility": {
@@ -898,6 +898,49 @@
       "reason_code_if_not_published": "strong_challenger_not_published"
     },
     {
+      "exposure_id": "hong_kong_equities",
+      "portfolio_sleeve": "Hong Kong large-cap China-linked equities",
+      "public_index_name": "Hang Seng",
+      "benchmark_symbol": "^HSI",
+      "benchmark_name": "Hang Seng Index",
+      "primary_proxy": "EWH",
+      "alternative_proxy": "2800.HK",
+      "regional_group": "Greater China",
+      "region": "Hong Kong",
+      "style": "large cap",
+      "currently_held": false,
+      "weight_pct": null,
+      "proxy_eligibility": {
+        "tier": "liquid_country_etf",
+        "fundable_if_priced": true,
+        "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit."
+      },
+      "score": 1.37,
+      "board_score": 1.37,
+      "challenger_score": 1.5,
+      "relative_strength_score": 0.97,
+      "regime_alignment_score": 0.33,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.2,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "broader EM confirmation is supportive"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve"
+        ],
+        "continuity": [],
+        "fragility": []
+      },
+      "evidence_source": "candidate_evidence_artifact",
+      "publish": false,
+      "reason_code_if_not_published": "strong_challenger_not_published"
+    },
+    {
       "exposure_id": "mexico_large_cap",
       "portfolio_sleeve": "Mexico nearshoring / industrial beta",
       "public_index_name": "Mexico large cap",
@@ -915,10 +958,10 @@
         "fundable_if_priced": true,
         "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit."
       },
-      "score": 1.28,
-      "board_score": 1.28,
-      "challenger_score": 1.46,
-      "relative_strength_score": 1.03,
+      "score": 1.35,
+      "board_score": 1.35,
+      "challenger_score": 1.53,
+      "relative_strength_score": 1.1,
       "regime_alignment_score": 0.15,
       "implementation_priority_score": 0.0,
       "diversification_score": 0.28,
@@ -939,49 +982,6 @@
       "evidence_source": "candidate_evidence_artifact",
       "publish": false,
       "reason_code_if_not_published": "strong_challenger_not_published"
-    },
-    {
-      "exposure_id": "hong_kong_equities",
-      "portfolio_sleeve": "Hong Kong large-cap China-linked equities",
-      "public_index_name": "Hang Seng",
-      "benchmark_symbol": "^HSI",
-      "benchmark_name": "Hang Seng Index",
-      "primary_proxy": "EWH",
-      "alternative_proxy": "2800.HK",
-      "regional_group": "Greater China",
-      "region": "Hong Kong",
-      "style": "large cap",
-      "currently_held": false,
-      "weight_pct": null,
-      "proxy_eligibility": {
-        "tier": "liquid_country_etf",
-        "fundable_if_priced": true,
-        "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit."
-      },
-      "score": 1.16,
-      "board_score": 1.16,
-      "challenger_score": 1.29,
-      "relative_strength_score": 0.76,
-      "regime_alignment_score": 0.33,
-      "implementation_priority_score": 0.0,
-      "diversification_score": 0.2,
-      "continuity_bonus": 0.0,
-      "fragility_penalty": 0.0,
-      "evidence_notes": {
-        "regime_alignment": [
-          "broad equity risk appetite is supportive",
-          "broader EM confirmation is supportive"
-        ],
-        "implementation_priority": [],
-        "diversification": [
-          "adds a new regional sleeve"
-        ],
-        "continuity": [],
-        "fragility": []
-      },
-      "evidence_source": "candidate_evidence_artifact",
-      "publish": false,
-      "reason_code_if_not_published": "weak_relative_strength"
     },
     {
       "exposure_id": "italy_large_cap",
@@ -1047,10 +1047,10 @@
         "fundable_if_priced": true,
         "note": "Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history."
       },
-      "score": 1.04,
-      "board_score": 1.04,
-      "challenger_score": 1.14,
-      "relative_strength_score": 0.83,
+      "score": 1.11,
+      "board_score": 1.11,
+      "challenger_score": 1.21,
+      "relative_strength_score": 0.9,
       "regime_alignment_score": 0.15,
       "implementation_priority_score": 0.0,
       "diversification_score": 0.16,
@@ -1090,10 +1090,10 @@
         "fundable_if_priced": true,
         "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit."
       },
-      "score": 0.89,
-      "board_score": 0.89,
-      "challenger_score": 1.02,
-      "relative_strength_score": 0.62,
+      "score": 1.03,
+      "board_score": 1.03,
+      "challenger_score": 1.16,
+      "relative_strength_score": 0.76,
       "regime_alignment_score": 0.2,
       "implementation_priority_score": 0.0,
       "diversification_score": 0.2,
@@ -1110,6 +1110,51 @@
         ],
         "continuity": [],
         "fragility": []
+      },
+      "evidence_source": "candidate_evidence_artifact",
+      "publish": false,
+      "reason_code_if_not_published": "weak_relative_strength"
+    },
+    {
+      "exposure_id": "switzerland_large_cap",
+      "portfolio_sleeve": "Switzerland defensive quality",
+      "public_index_name": "SMI",
+      "benchmark_symbol": "^SSMI",
+      "benchmark_name": "Swiss Market Index",
+      "primary_proxy": "EWL",
+      "alternative_proxy": "CSSMI.SW",
+      "regional_group": "Switzerland",
+      "region": "Switzerland",
+      "style": "large cap defensive quality",
+      "currently_held": false,
+      "weight_pct": null,
+      "proxy_eligibility": {
+        "tier": "liquid_country_etf",
+        "fundable_if_priced": true,
+        "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit."
+      },
+      "score": 0.89,
+      "board_score": 0.89,
+      "challenger_score": 1.07,
+      "relative_strength_score": 0.69,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.28,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.05,
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve",
+          "adds a differentiated style bucket"
+        ],
+        "continuity": [],
+        "fragility": [
+          "commodity pressure modestly affects Swiss exporters"
+        ]
       },
       "evidence_source": "candidate_evidence_artifact",
       "publish": false,
@@ -1133,10 +1178,10 @@
         "fundable_if_priced": true,
         "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit."
       },
-      "score": 0.87,
-      "board_score": 0.87,
-      "challenger_score": 1.0,
-      "relative_strength_score": 1.1,
+      "score": 0.8,
+      "board_score": 0.8,
+      "challenger_score": 0.93,
+      "relative_strength_score": 1.03,
       "regime_alignment_score": -0.15,
       "implementation_priority_score": 0.0,
       "diversification_score": 0.2,
@@ -1160,49 +1205,6 @@
       "evidence_source": "candidate_evidence_artifact",
       "publish": false,
       "reason_code_if_not_published": "fragile_macro_alignment"
-    },
-    {
-      "exposure_id": "saudi_large_cap",
-      "portfolio_sleeve": "Saudi Arabia energy / Gulf reform beta",
-      "public_index_name": "Saudi Arabia large cap",
-      "benchmark_symbol": "^TASI.SR",
-      "benchmark_name": "Tadawul All Share Index",
-      "primary_proxy": "KSA",
-      "alternative_proxy": "KSA",
-      "regional_group": "Middle East",
-      "region": "Saudi Arabia",
-      "style": "large cap energy / financials",
-      "currently_held": false,
-      "weight_pct": null,
-      "proxy_eligibility": {
-        "tier": "specialist_country_etf",
-        "fundable_if_priced": true,
-        "note": "Specialist country ETF proxy; review liquidity and spread before funding."
-      },
-      "score": 0.8,
-      "board_score": 0.8,
-      "challenger_score": 0.98,
-      "relative_strength_score": 0.55,
-      "regime_alignment_score": 0.15,
-      "implementation_priority_score": 0.0,
-      "diversification_score": 0.28,
-      "continuity_bonus": 0.0,
-      "fragility_penalty": 0.0,
-      "evidence_notes": {
-        "regime_alignment": [
-          "broad equity risk appetite is supportive"
-        ],
-        "implementation_priority": [],
-        "diversification": [
-          "adds a new regional sleeve",
-          "adds a differentiated style bucket"
-        ],
-        "continuity": [],
-        "fragility": []
-      },
-      "evidence_source": "candidate_evidence_artifact",
-      "publish": false,
-      "reason_code_if_not_published": "weak_relative_strength"
     },
     {
       "exposure_id": "australia_large_cap",
@@ -1249,6 +1251,49 @@
       "reason_code_if_not_published": "weak_relative_strength"
     },
     {
+      "exposure_id": "saudi_large_cap",
+      "portfolio_sleeve": "Saudi Arabia energy / Gulf reform beta",
+      "public_index_name": "Saudi Arabia large cap",
+      "benchmark_symbol": "^TASI.SR",
+      "benchmark_name": "Tadawul All Share Index",
+      "primary_proxy": "KSA",
+      "alternative_proxy": "KSA",
+      "regional_group": "Middle East",
+      "region": "Saudi Arabia",
+      "style": "large cap energy / financials",
+      "currently_held": false,
+      "weight_pct": null,
+      "proxy_eligibility": {
+        "tier": "specialist_country_etf",
+        "fundable_if_priced": true,
+        "note": "Specialist country ETF proxy; review liquidity and spread before funding."
+      },
+      "score": 0.73,
+      "board_score": 0.73,
+      "challenger_score": 0.91,
+      "relative_strength_score": 0.48,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.28,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve",
+          "adds a differentiated style bucket"
+        ],
+        "continuity": [],
+        "fragility": []
+      },
+      "evidence_source": "candidate_evidence_artifact",
+      "publish": false,
+      "reason_code_if_not_published": "weak_relative_strength"
+    },
+    {
       "exposure_id": "spain_large_cap",
       "portfolio_sleeve": "Spain domestic-cycle / financial beta",
       "public_index_name": "IBEX 35",
@@ -1266,10 +1311,10 @@
         "fundable_if_priced": true,
         "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit."
       },
-      "score": 0.74,
-      "board_score": 0.74,
-      "challenger_score": 0.87,
-      "relative_strength_score": 0.97,
+      "score": 0.6,
+      "board_score": 0.6,
+      "challenger_score": 0.73,
+      "relative_strength_score": 0.83,
       "regime_alignment_score": -0.15,
       "implementation_priority_score": 0.0,
       "diversification_score": 0.2,
@@ -1295,16 +1340,16 @@
       "reason_code_if_not_published": "fragile_macro_alignment"
     },
     {
-      "exposure_id": "germany_cyclicals",
-      "portfolio_sleeve": "Germany cyclical industrial beta",
-      "public_index_name": "DAX",
-      "benchmark_symbol": "^GDAXI",
-      "benchmark_name": "DAX Index",
-      "primary_proxy": "EWG",
-      "alternative_proxy": "EXS1.DE",
-      "regional_group": "continental Europe",
-      "region": "Europe",
-      "style": "cyclical",
+      "exposure_id": "brazil_large_cap",
+      "portfolio_sleeve": "Brazil commodity / rates-sensitive LatAm beta",
+      "public_index_name": "Brazil large cap",
+      "benchmark_symbol": "^BVSP",
+      "benchmark_name": "Bovespa Index",
+      "primary_proxy": "EWZ",
+      "alternative_proxy": "BOVA11.SA",
+      "regional_group": "Latin America",
+      "region": "Brazil",
+      "style": "large cap commodity / financials",
       "currently_held": false,
       "weight_pct": null,
       "proxy_eligibility": {
@@ -1312,62 +1357,15 @@
         "fundable_if_priced": true,
         "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit."
       },
-      "score": 0.7,
-      "board_score": 0.7,
-      "challenger_score": 0.88,
-      "relative_strength_score": 0.9,
-      "regime_alignment_score": -0.15,
-      "implementation_priority_score": 0.0,
-      "diversification_score": 0.28,
-      "continuity_bonus": 0.0,
-      "fragility_penalty": 0.15,
-      "evidence_notes": {
-        "regime_alignment": [
-          "broad equity risk appetite is supportive",
-          "Europe confirmation is fading",
-          "commodity pressure can challenge Europe"
-        ],
-        "implementation_priority": [],
-        "diversification": [
-          "adds a new regional sleeve",
-          "adds a differentiated style bucket"
-        ],
-        "continuity": [],
-        "fragility": [
-          "commodity pressure adds European fragility"
-        ]
-      },
-      "evidence_source": "candidate_evidence_artifact",
-      "publish": false,
-      "reason_code_if_not_published": "fragile_macro_alignment"
-    },
-    {
-      "exposure_id": "switzerland_large_cap",
-      "portfolio_sleeve": "Switzerland defensive quality",
-      "public_index_name": "SMI",
-      "benchmark_symbol": "^SSMI",
-      "benchmark_name": "Swiss Market Index",
-      "primary_proxy": "EWL",
-      "alternative_proxy": "CSSMI.SW",
-      "regional_group": "Switzerland",
-      "region": "Switzerland",
-      "style": "large cap defensive quality",
-      "currently_held": false,
-      "weight_pct": null,
-      "proxy_eligibility": {
-        "tier": "liquid_country_etf",
-        "fundable_if_priced": true,
-        "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit."
-      },
-      "score": 0.68,
-      "board_score": 0.68,
-      "challenger_score": 0.86,
-      "relative_strength_score": 0.48,
+      "score": 0.59,
+      "board_score": 0.59,
+      "challenger_score": 0.77,
+      "relative_strength_score": 0.34,
       "regime_alignment_score": 0.15,
       "implementation_priority_score": 0.0,
       "diversification_score": 0.28,
       "continuity_bonus": 0.0,
-      "fragility_penalty": 0.05,
+      "fragility_penalty": 0.0,
       "evidence_notes": {
         "regime_alignment": [
           "broad equity risk appetite is supportive"
@@ -1378,9 +1376,7 @@
           "adds a differentiated style bucket"
         ],
         "continuity": [],
-        "fragility": [
-          "commodity pressure modestly affects Swiss exporters"
-        ]
+        "fragility": []
       },
       "evidence_source": "candidate_evidence_artifact",
       "publish": false,
@@ -1421,49 +1417,6 @@
         "implementation_priority": [],
         "diversification": [
           "adds a new regional sleeve"
-        ],
-        "continuity": [],
-        "fragility": []
-      },
-      "evidence_source": "candidate_evidence_artifact",
-      "publish": false,
-      "reason_code_if_not_published": "weak_relative_strength"
-    },
-    {
-      "exposure_id": "brazil_large_cap",
-      "portfolio_sleeve": "Brazil commodity / rates-sensitive LatAm beta",
-      "public_index_name": "Brazil large cap",
-      "benchmark_symbol": "^BVSP",
-      "benchmark_name": "Bovespa Index",
-      "primary_proxy": "EWZ",
-      "alternative_proxy": "BOVA11.SA",
-      "regional_group": "Latin America",
-      "region": "Brazil",
-      "style": "large cap commodity / financials",
-      "currently_held": false,
-      "weight_pct": null,
-      "proxy_eligibility": {
-        "tier": "liquid_country_etf",
-        "fundable_if_priced": true,
-        "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit."
-      },
-      "score": 0.53,
-      "board_score": 0.53,
-      "challenger_score": 0.71,
-      "relative_strength_score": 0.28,
-      "regime_alignment_score": 0.15,
-      "implementation_priority_score": 0.0,
-      "diversification_score": 0.28,
-      "continuity_bonus": 0.0,
-      "fragility_penalty": 0.0,
-      "evidence_notes": {
-        "regime_alignment": [
-          "broad equity risk appetite is supportive"
-        ],
-        "implementation_priority": [],
-        "diversification": [
-          "adds a new regional sleeve",
-          "adds a differentiated style bucket"
         ],
         "continuity": [],
         "fragility": []
@@ -1516,16 +1469,16 @@
       "reason_code_if_not_published": "weak_relative_strength"
     },
     {
-      "exposure_id": "europe_large_cap",
-      "portfolio_sleeve": "Europe broad large-cap core",
-      "public_index_name": "Euro Stoxx 50",
-      "benchmark_symbol": "^STOXX50E",
-      "benchmark_name": "EURO STOXX 50 Index",
-      "primary_proxy": "FEZ",
-      "alternative_proxy": "VGK",
+      "exposure_id": "germany_cyclicals",
+      "portfolio_sleeve": "Germany cyclical industrial beta",
+      "public_index_name": "DAX",
+      "benchmark_symbol": "^GDAXI",
+      "benchmark_name": "DAX Index",
+      "primary_proxy": "EWG",
+      "alternative_proxy": "EXS1.DE",
       "regional_group": "continental Europe",
       "region": "Europe",
-      "style": "large cap",
+      "style": "cyclical",
       "currently_held": false,
       "weight_pct": null,
       "proxy_eligibility": {
@@ -1533,13 +1486,13 @@
         "fundable_if_priced": true,
         "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit."
       },
-      "score": 0.46,
-      "board_score": 0.46,
-      "challenger_score": 0.59,
-      "relative_strength_score": 0.69,
+      "score": 0.42,
+      "board_score": 0.42,
+      "challenger_score": 0.6,
+      "relative_strength_score": 0.62,
       "regime_alignment_score": -0.15,
       "implementation_priority_score": 0.0,
-      "diversification_score": 0.2,
+      "diversification_score": 0.28,
       "continuity_bonus": 0.0,
       "fragility_penalty": 0.15,
       "evidence_notes": {
@@ -1550,7 +1503,8 @@
         ],
         "implementation_priority": [],
         "diversification": [
-          "adds a new regional sleeve"
+          "adds a new regional sleeve",
+          "adds a differentiated style bucket"
         ],
         "continuity": [],
         "fragility": [
@@ -1605,6 +1559,52 @@
       "reason_code_if_not_published": "weak_relative_strength"
     },
     {
+      "exposure_id": "europe_large_cap",
+      "portfolio_sleeve": "Europe broad large-cap core",
+      "public_index_name": "Euro Stoxx 50",
+      "benchmark_symbol": "^STOXX50E",
+      "benchmark_name": "EURO STOXX 50 Index",
+      "primary_proxy": "FEZ",
+      "alternative_proxy": "VGK",
+      "regional_group": "continental Europe",
+      "region": "Europe",
+      "style": "large cap",
+      "currently_held": false,
+      "weight_pct": null,
+      "proxy_eligibility": {
+        "tier": "liquid_country_etf",
+        "fundable_if_priced": true,
+        "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit."
+      },
+      "score": 0.32,
+      "board_score": 0.32,
+      "challenger_score": 0.45,
+      "relative_strength_score": 0.55,
+      "regime_alignment_score": -0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.2,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.15,
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "Europe confirmation is fading",
+          "commodity pressure can challenge Europe"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve"
+        ],
+        "continuity": [],
+        "fragility": [
+          "commodity pressure adds European fragility"
+        ]
+      },
+      "evidence_source": "candidate_evidence_artifact",
+      "publish": false,
+      "reason_code_if_not_published": "weak_relative_strength"
+    },
+    {
       "exposure_id": "france_large_cap",
       "portfolio_sleeve": "France consumer / industrial Europe",
       "public_index_name": "CAC 40",
@@ -1622,10 +1622,10 @@
         "fundable_if_priced": true,
         "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit."
       },
-      "score": 0.11,
-      "board_score": 0.11,
-      "challenger_score": 0.24,
-      "relative_strength_score": 0.34,
+      "score": 0.05,
+      "board_score": 0.05,
+      "challenger_score": 0.18,
+      "relative_strength_score": 0.28,
       "regime_alignment_score": -0.15,
       "implementation_priority_score": 0.0,
       "diversification_score": 0.2,

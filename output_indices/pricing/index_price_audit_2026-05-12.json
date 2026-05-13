@@ -1,6 +1,14 @@
 {
-  "run_date": "2026-05-12",
+  "run_date": "2026-05-13",
   "requested_close_date": "2026-05-12",
+  "pricing_model": "layered_close_discovery_v1",
+  "provider_order": [
+    "yahoo_chart",
+    "twelve_data_time_series",
+    "fmp_historical_price_full",
+    "alpha_vantage_daily_adjusted",
+    "carry_forward_prior_valid_close"
+  ],
   "source_mode": "state_file",
   "bootstrapped": false,
   "holdings_count": 4,
@@ -28,6 +36,34 @@
       "benchmark_close": 7400.96,
       "proxy_status": "fresh_close",
       "benchmark_status": "fresh_close",
+      "proxy_source": "yahoo_chart",
+      "benchmark_source": "yahoo_chart",
+      "proxy_attempts": [
+        {
+          "provider": "yahoo_chart",
+          "status": "ok",
+          "selected_date": "2026-05-12"
+        }
+      ],
+      "benchmark_attempts": [
+        {
+          "provider": "yahoo_chart",
+          "status": "ok",
+          "selected_date": "2026-05-12"
+        }
+      ],
+      "performance": {
+        "proxy": "SPY",
+        "as_of": "2026-05-12",
+        "latest_close": 738.18,
+        "one_week_return_pct": 1.99,
+        "one_month_return_pct": 8.64,
+        "three_month_return_pct": 6.68,
+        "since_entry_return_pct": 11.88,
+        "pnl_local": 3447.84,
+        "pnl_eur": 2937.33,
+        "contribution_pct": 2.64
+      },
       "market_value_eur": 27670.74
     },
     {
@@ -37,9 +73,37 @@
       "primary_proxy": "QQQ",
       "shares": 48,
       "proxy_close": 707.24,
-      "benchmark_close": 29064.7988,
+      "benchmark_close": 29064.8008,
       "proxy_status": "fresh_close",
       "benchmark_status": "fresh_close",
+      "proxy_source": "yahoo_chart",
+      "benchmark_source": "yahoo_chart",
+      "proxy_attempts": [
+        {
+          "provider": "yahoo_chart",
+          "status": "ok",
+          "selected_date": "2026-05-12"
+        }
+      ],
+      "benchmark_attempts": [
+        {
+          "provider": "yahoo_chart",
+          "status": "ok",
+          "selected_date": "2026-05-12"
+        }
+      ],
+      "performance": {
+        "proxy": "QQQ",
+        "as_of": "2026-05-12",
+        "latest_close": 707.24,
+        "one_week_return_pct": 3.76,
+        "one_month_return_pct": 15.74,
+        "three_month_return_pct": 15.35,
+        "since_entry_return_pct": 15.74,
+        "pnl_local": 4616.16,
+        "pnl_eur": 3932.66,
+        "contribution_pct": 3.54
+      },
       "market_value_eur": 28921.04
     },
     {
@@ -49,9 +113,37 @@
       "primary_proxy": "IWM",
       "shares": 90,
       "proxy_close": 282.57,
-      "benchmark_close": 2842.8311,
+      "benchmark_close": 2842.8301,
       "proxy_status": "fresh_close",
       "benchmark_status": "fresh_close",
+      "proxy_source": "yahoo_chart",
+      "benchmark_source": "yahoo_chart",
+      "proxy_attempts": [
+        {
+          "provider": "yahoo_chart",
+          "status": "ok",
+          "selected_date": "2026-05-12"
+        }
+      ],
+      "benchmark_attempts": [
+        {
+          "provider": "yahoo_chart",
+          "status": "ok",
+          "selected_date": "2026-05-12"
+        }
+      ],
+      "performance": {
+        "proxy": "IWM",
+        "as_of": "2026-05-12",
+        "latest_close": 282.57,
+        "one_week_return_pct": 0.0,
+        "one_month_return_pct": 8.14,
+        "three_month_return_pct": 6.65,
+        "since_entry_return_pct": 7.95,
+        "pnl_local": 1872.9,
+        "pnl_eur": 1595.59,
+        "contribution_pct": 1.44
+      },
       "market_value_eur": 21665.79
     },
     {
@@ -64,6 +156,34 @@
       "benchmark_close": 65.82,
       "proxy_status": "fresh_close",
       "benchmark_status": "fresh_close",
+      "proxy_source": "yahoo_chart",
+      "benchmark_source": "yahoo_chart",
+      "proxy_attempts": [
+        {
+          "provider": "yahoo_chart",
+          "status": "ok",
+          "selected_date": "2026-05-12"
+        }
+      ],
+      "benchmark_attempts": [
+        {
+          "provider": "yahoo_chart",
+          "status": "ok",
+          "selected_date": "2026-05-12"
+        }
+      ],
+      "performance": {
+        "proxy": "EEM",
+        "as_of": "2026-05-12",
+        "latest_close": 65.82,
+        "one_week_return_pct": 0.64,
+        "one_month_return_pct": 8.69,
+        "three_month_return_pct": 6.92,
+        "since_entry_return_pct": 15.01,
+        "pnl_local": 2654.31,
+        "pnl_eur": 2261.3,
+        "contribution_pct": 2.03
+      },
       "market_value_eur": 17326.96
     }
   ],

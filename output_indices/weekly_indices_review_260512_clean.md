@@ -202,15 +202,15 @@ The strongest omitted regional challenger this run is **KOSPI 200 / Korea large 
 | Current exposure | Current proxy | Alternative / hedge | Alternative proxy | Type | 20d edge | 60d edge | Regime fit | Decision | Required trigger |
 |---|---|---|---|---|---:|---:|---|---|---|
 | S&P 500 | SPY | Nasdaq 100 | QQQ | Long alternative | +6.25% | +9.25% | candidate | Alternative improving; keep replacement duel active. | Momentum proof is present. QQQ increases U.S. mega-cap / technology concentration, so funding requires explicit concentration room versus the SPY/QQQ overlap limit. |
-| S&P 500 | SPY | Euro Stoxx 50 | FEZ | Long alternative | -6.74% | -10.58% | watchlist | Current exposure still leads; no replacement. | Needs both 20d and 60d relative-strength improvement before funding. Europe can improve regional diversification, but funding requires evidence that earnings and policy support are strong enough to offset weaker momentum. |
-| S&P 500 | SPY | Nikkei 225 | EWJ | Long alternative | +10.60% | +7.72% | candidate | Alternative improving; keep replacement duel active. | Momentum proof is present. Japan can improve regional diversification, but funding requires confirmation that currency and yield volatility do not overwhelm the diversification benefit. |
+| S&P 500 | SPY | Euro Stoxx 50 | FEZ | Long alternative | -7.86% | -11.64% | watchlist | Current exposure still leads; no replacement. | Needs both 20d and 60d relative-strength improvement before funding. Europe can improve regional diversification, but funding requires evidence that earnings and policy support are strong enough to offset weaker momentum. |
+| S&P 500 | SPY | Nikkei 225 | EWJ | Long alternative | +5.20% | +7.38% | candidate | Alternative improving; keep replacement duel active. | Momentum proof is present. Japan can improve regional diversification, but funding requires confirmation that currency and yield volatility do not overwhelm the diversification benefit. |
 | Nasdaq 100 | QQQ | S&P 500 | SPY | Long alternative | -6.25% | -9.25% | watchlist | Current exposure still leads; no replacement. | Needs both 20d and 60d relative-strength improvement before funding. SPY lowers concentration versus QQQ, but funding only makes sense if broader U.S. participation improves. |
 | Nasdaq 100 | QQQ | Russell 2000 | IWM | Long alternative | -7.40% | -10.11% | watchlist | Current exposure still leads; no replacement. | Needs both 20d and 60d relative-strength improvement before funding. IWM improves breadth exposure, but funding requires small-cap breadth and real-rate conditions to improve. |
 | Nasdaq 100 | QQQ | Inverse hedge for Nasdaq 100 | PSQ | Defensive / inverse | n/a | n/a | inactive | Not decision-grade this week — relative-strength proof incomplete. | Nasdaq leadership remains intact. |
 | Russell 2000 | IWM | S&P 500 | SPY | Long alternative | +1.15% | +0.85% | candidate | Alternative improving; keep replacement duel active. | Momentum proof is present. SPY is the cleaner U.S. risk sleeve if small-cap breadth remains weak. |
 | Russell 2000 | IWM | Inverse hedge for Russell 2000 | RWM | Defensive / inverse | n/a | n/a | watchlist | Not decision-grade this week — relative-strength proof incomplete. | Small-cap breadth remains weak versus SPY. |
-| Emerging Markets | EEM | Nifty 50 | INDA | Long alternative | -5.58% | -15.00% | watchlist | Current exposure still leads; no replacement. | Needs both 20d and 60d relative-strength improvement before funding. India improves structural growth quality versus broad EM, but funding requires valuation and concentration discipline. |
-| Emerging Markets | EEM | China large cap | FXI | Long alternative | +2.00% | -0.18% | watchlist | Early improvement only; wait for 60d confirmation. | Early improvement only; needs positive 60d confirmation before funding. China can recover quickly, but funding requires policy credibility and price confirmation, not only mean-reversion potential. |
+| Emerging Markets | EEM | Nifty 50 | INDA | Long alternative | -8.54% | -17.31% | watchlist | Current exposure still leads; no replacement. | Needs both 20d and 60d relative-strength improvement before funding. India improves structural growth quality versus broad EM, but funding requires valuation and concentration discipline. |
+| Emerging Markets | EEM | China large cap | FXI | Long alternative | +2.61% | -1.51% | watchlist | Early improvement only; wait for 60d confirmation. | Early improvement only; needs positive 60d confirmation before funding. China can recover quickly, but funding requires policy credibility and price confirmation, not only mean-reversion potential. |
 | Emerging Markets | EEM | S&P 500 | SPY | Long alternative | +0.47% | +0.57% | candidate | Alternative improving; keep replacement duel active. | Momentum proof is present. SPY reduces EM/USD risk, but funding would reduce non-U.S. diversification. |
 | Emerging Markets | EEM | Inverse hedge for Emerging Markets | EUM | Defensive / inverse | n/a | n/a | inactive | Not decision-grade this week — relative-strength proof incomplete. | Dollar pressure is not strong enough to activate EM inverse readiness. |
 
@@ -229,17 +229,17 @@ These instruments are defensive tools only. They are not part of the base-case l
 | U.S. core leadership | Nasdaq 100 | QQQ | 3 | 3 | 1.92 | Published |
 | U.S. factor / style alternatives | U.S. Value Factor | VLUE | 4 | 4 | 2.17 | Close challenger, not funded |
 | continental Europe | FTSE MIB | EWI | 6 | 6 | 1.28 | Lower priority this run |
-| UK | FTSE 100 | EWU | 1 | 1 | 1.02 | Lower priority this run |
-| Switzerland | SMI | EWL | 1 | 1 | 0.86 | Lower priority this run |
+| UK | FTSE 100 | EWU | 1 | 1 | 1.16 | Lower priority this run |
+| Switzerland | SMI | EWL | 1 | 1 | 1.07 | Lower priority this run |
 | North America ex-U.S. | S&P/TSX 60 | EWC | 1 | 1 | 1.76 | Close challenger, not funded |
 | developed Asia-Pacific | Nikkei 225 | EWJ | 2 | 2 | 2.49 | Published |
 | Korea / Taiwan | KOSPI 200 / Korea large cap | EWY | 2 | 2 | 2.43 | Close challenger, not funded |
 | Greater China | China large cap | FXI | 2 | 2 | 1.98 | Close challenger, not funded |
 | India | Nifty 50 | INDA | 1 | 1 | 0.67 | Lower priority this run |
-| Latin America | Mexico large cap | EWW | 2 | 2 | 1.46 | Close challenger, not funded |
+| Latin America | Mexico large cap | EWW | 2 | 2 | 1.53 | Close challenger, not funded |
 | Africa | South Africa large cap | EZA | 1 | 1 | 0.64 | Lower priority this run |
 | ASEAN | Indonesia large cap | EIDO | 1 | 1 | 0.50 | Lower priority this run |
-| Middle East | Saudi Arabia large cap | KSA | 1 | 1 | 0.98 | Lower priority this run |
+| Middle East | Saudi Arabia large cap | KSA | 1 | 1 | 0.91 | Lower priority this run |
 | EM broad | Emerging Markets | EEM | 1 | 1 | 2.11 | Published |
 
 ### Universe scan checkpoint
@@ -256,24 +256,24 @@ These instruments are defensive tools only. They are not part of the base-case l
 | U.S. large-cap core beta | S&P 500 Index | U.S. core leadership | SPY | Funded or directly fundable if portfolio rules permit. | Yes | 1.67 | Included on the board |
 | U.S. quality factor | MSCI USA Quality proxy benchmark | U.S. factor / style alternatives | QUAL | Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history. | No | 1.62 | Strong challenger, not yet funded |
 | U.S. small-cap breadth | Russell 2000 Index | U.S. core leadership | IWM | Funded or directly fundable if portfolio rules permit. | Yes | 1.54 | Included on the board |
+| Mexico nearshoring / industrial beta | S&P/BMV IPC Index | Latin America | EWW | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.53 | Strong challenger, not yet funded |
+| Hong Kong large-cap China-linked equities | Hang Seng Index | Greater China | EWH | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.50 | Strong challenger, not yet funded |
 | U.S. equal-weight breadth | S&P 500 Equal Weight Index | U.S. factor / style alternatives | RSP | Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history. | No | 1.48 | Strong challenger, not yet funded |
-| Mexico nearshoring / industrial beta | S&P/BMV IPC Index | Latin America | EWW | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.46 | Strong challenger, not yet funded |
-| Hong Kong large-cap China-linked equities | Hang Seng Index | Greater China | EWH | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.29 | Relative strength not strong enough yet |
 | Italy high-beta Europe financial / industrial beta | FTSE MIB Index | continental Europe | EWI | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.28 | Macro timing not strong enough yet |
-| U.S. minimum-volatility defensive equity | MSCI USA Minimum Volatility proxy benchmark | U.S. factor / style alternatives | USMV | Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history. | No | 1.14 | Macro timing not strong enough yet |
-| UK defensive yield / energy / financials | FTSE 100 Index | UK | EWU | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.02 | Relative strength not strong enough yet |
-| Netherlands technology / global industrial tilt | AEX Index | continental Europe | EWN | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.00 | Macro timing not strong enough yet |
-| Saudi Arabia energy / Gulf reform beta | Tadawul All Share Index | Middle East | KSA | Specialist country ETF proxy; review liquidity and spread before funding. | No | 0.98 | Relative strength not strong enough yet |
+| U.S. minimum-volatility defensive equity | MSCI USA Minimum Volatility proxy benchmark | U.S. factor / style alternatives | USMV | Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history. | No | 1.21 | Macro timing not strong enough yet |
+| UK defensive yield / energy / financials | FTSE 100 Index | UK | EWU | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.16 | Relative strength not strong enough yet |
+| Switzerland defensive quality | Swiss Market Index | Switzerland | EWL | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.07 | Relative strength not strong enough yet |
+| Netherlands technology / global industrial tilt | AEX Index | continental Europe | EWN | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.93 | Macro timing not strong enough yet |
 | Australia resources / banks / China sensitivity | S&P/ASX 200 Index | developed Asia-Pacific | EWA | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.93 | Relative strength not strong enough yet |
-| Germany cyclical industrial beta | DAX Index | continental Europe | EWG | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.88 | Macro timing not strong enough yet |
-| Spain domestic-cycle / financial beta | IBEX 35 Index | continental Europe | EWP | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.87 | Macro timing not strong enough yet |
-| Switzerland defensive quality | Swiss Market Index | Switzerland | EWL | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.86 | Relative strength not strong enough yet |
-| Brazil commodity / rates-sensitive LatAm beta | Bovespa Index | Latin America | EWZ | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.71 | Relative strength not strong enough yet |
+| Saudi Arabia energy / Gulf reform beta | Tadawul All Share Index | Middle East | KSA | Specialist country ETF proxy; review liquidity and spread before funding. | No | 0.91 | Relative strength not strong enough yet |
+| Brazil commodity / rates-sensitive LatAm beta | Bovespa Index | Latin America | EWZ | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.77 | Relative strength not strong enough yet |
+| Spain domestic-cycle / financial beta | IBEX 35 Index | continental Europe | EWP | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.73 | Macro timing not strong enough yet |
 | India domestic growth / reform compounder | Nifty 50 Index | India | INDA | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.67 | Relative strength not strong enough yet |
 | South Africa resources / EM value beta | JSE Top 40 Index | Africa | EZA | Specialist country ETF proxy; review liquidity and spread before funding. | No | 0.64 | Relative strength not strong enough yet |
-| Europe broad large-cap core | EURO STOXX 50 Index | continental Europe | FEZ | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.59 | Relative strength not strong enough yet |
+| Germany cyclical industrial beta | DAX Index | continental Europe | EWG | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.60 | Relative strength not strong enough yet |
 | Indonesia domestic demand / commodities | Jakarta Composite Index | ASEAN | EIDO | Specialist country ETF proxy; review liquidity and spread before funding. | No | 0.50 | Relative strength not strong enough yet |
-| France consumer / industrial Europe | CAC 40 Index | continental Europe | EWQ | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.24 | Relative strength not strong enough yet |
+| Europe broad large-cap core | EURO STOXX 50 Index | continental Europe | FEZ | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.45 | Relative strength not strong enough yet |
+| France consumer / industrial Europe | CAC 40 Index | continental Europe | EWQ | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.18 | Relative strength not strong enough yet |
 
 ## 12. Portfolio Rotation Plan
 
@@ -332,6 +332,16 @@ Reasons:
 | EEM | Emerging Markets | 309 | 65.82 | USD | 20338.38 | 17326.96 | 15.59 |
 | CASH | Residual cash | - | 1.00 | EUR | 15566.74 | 15566.74 | 14.01 |
 
+### Tradable Proxy Performance
+Performance is calculated on the tradable ETF proxies used for valuation, using the `layered_close_discovery_v1` pricing layer where available.
+
+| Portfolio sleeve | Benchmark index | Tradable proxy | Weight % | 1w return | 1m return | 3m return | Since-entry | P/L EUR | Contribution % |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|
+| S&P 500 | S&P 500 Index | SPY | 24.89 | +1.99% | +8.64% | +6.68% | +11.88% | 2,937.33 | +2.64% |
+| Nasdaq 100 | Nasdaq 100 Index | QQQ | 26.02 | +3.76% | +15.74% | +15.35% | +15.74% | 3,932.66 | +3.54% |
+| Russell 2000 | Russell 2000 Index | IWM | 19.49 | 0.00% | +8.14% | +6.65% | +7.95% | 1,595.59 | +1.44% |
+| Emerging Markets | Emerging Markets Proxy Benchmark | EEM | 15.59 | +0.64% | +8.69% | +6.92% | +15.01% | 2,261.30 | +2.03% |
+
 ## 16. Continuity Input for Next Run
 
 ### Watchlist / dynamic radar memory
@@ -343,9 +353,9 @@ Reasons:
 | China large cap | Greater China | FXI | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
 | S&P/TSX 60 | North America ex-U.S. | EWC | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
 | U.S. Quality Factor | U.S. factor / style alternatives | QUAL | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
-| S&P 500 Equal Weight | U.S. factor / style alternatives | RSP | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
 | Mexico large cap | Latin America | EWW | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
-| Hang Seng | Greater China | EWH | Watchlist | Broad discovery keeps it visible even though it did not make the compact board. |
+| Hang Seng | Greater China | EWH | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
+| S&P 500 Equal Weight | U.S. factor / style alternatives | RSP | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
 | FTSE MIB | continental Europe | EWI | Watchlist | Broad discovery keeps it visible even though it did not make the compact board. |
 
 ### Discovery coverage checkpoint
@@ -354,17 +364,17 @@ Reasons:
 | U.S. core leadership | Published | 3 | 3 | Nasdaq 100 | QQQ | 1.92 |
 | U.S. factor / style alternatives | Close challenger, not funded | 4 | 4 | U.S. Value Factor | VLUE | 2.17 |
 | continental Europe | Lower priority this run | 6 | 6 | FTSE MIB | EWI | 1.28 |
-| UK | Lower priority this run | 1 | 1 | FTSE 100 | EWU | 1.02 |
-| Switzerland | Lower priority this run | 1 | 1 | SMI | EWL | 0.86 |
+| UK | Lower priority this run | 1 | 1 | FTSE 100 | EWU | 1.16 |
+| Switzerland | Lower priority this run | 1 | 1 | SMI | EWL | 1.07 |
 | North America ex-U.S. | Close challenger, not funded | 1 | 1 | S&P/TSX 60 | EWC | 1.76 |
 | developed Asia-Pacific | Published | 2 | 2 | Nikkei 225 | EWJ | 2.49 |
 | Korea / Taiwan | Close challenger, not funded | 2 | 2 | KOSPI 200 / Korea large cap | EWY | 2.43 |
 | Greater China | Close challenger, not funded | 2 | 2 | China large cap | FXI | 1.98 |
 | India | Lower priority this run | 1 | 1 | Nifty 50 | INDA | 0.67 |
-| Latin America | Close challenger, not funded | 2 | 2 | Mexico large cap | EWW | 1.46 |
+| Latin America | Close challenger, not funded | 2 | 2 | Mexico large cap | EWW | 1.53 |
 | Africa | Lower priority this run | 1 | 1 | South Africa large cap | EZA | 0.64 |
 | ASEAN | Lower priority this run | 1 | 1 | Indonesia large cap | EIDO | 0.50 |
-| Middle East | Lower priority this run | 1 | 1 | Saudi Arabia large cap | KSA | 0.98 |
+| Middle East | Lower priority this run | 1 | 1 | Saudi Arabia large cap | KSA | 0.91 |
 | EM broad | Published | 1 | 1 | Emerging Markets | EEM | 2.11 |
 
 ### Lane continuity notes
