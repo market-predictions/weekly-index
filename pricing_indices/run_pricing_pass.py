@@ -11,10 +11,10 @@ from pathlib import Path
 from typing import Any
 
 from .catalog import BY_PROXY, DEFAULT_EXPOSURES
-from .data_sources import fetch_ecb_usd_per_eur, fetch_yahoo_close
+from .data_sources import fetch_ecb_usd_per_eur, fetch_layered_close
 
 REPORT_RE = re.compile(r"weekly_indices_review_(\d{6})(?:_(\d{2}))?\.md$")
-US_REGULAR_CLOSE_UTC = time(hour=20, minute=15)  # conservative buffer after 16:00 ET during DST season
+US_REGULAR_CLOSE_UTC = time(hour=20, minute=15)
 
 
 def latest_report_file(output_dir: Path) -> Path | None:
@@ -45,17 +45,10 @@ def latest_completed_us_close_date(now_utc: datetime | None = None) -> str:
     return previous_business_day(today - timedelta(days=1)).isoformat()
 
 
-def requested_close_from_today(today: date) -> str:
-    d = today
-    while d.weekday() >= 5:
-        d -= timedelta(days=1)
-    return d.isoformat()
-
-
 def _to_float(text: str | None) -> float | None:
     if text is None:
         return None
-    raw = text.replace(",", "").replace("%", "").strip()
+    raw = str(text).replace(",", "").replace("%", "").strip()
     if not raw or raw == "-":
         return None
     try:
@@ -71,6 +64,57 @@ def _read_json(path: Path) -> dict[str, Any]:
 def _write_json(path: Path, payload: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def _return_pct(current: float | None, previous: float | None) -> float | None:
+    if current is None or previous is None or previous <= 0:
+        return None
+    return round(((current / previous) - 1.0) * 100.0, 2)
+
+
+def _row_on_or_before(rows: list[dict[str, Any]], target_date: str) -> dict[str, Any] | None:
+    eligible = [row for row in rows if str(row.get("date", ""))[:10] <= target_date and row.get("close") is not None]
+    if not eligible:
+        return None
+    eligible.sort(key=lambda row: str(row.get("date")))
+    return eligible[-1]
+
+
+def _close_days_before(rows: list[dict[str, Any]], requested_close_date: str, days: int) -> float | None:
+    try:
+        target = (date.fromisoformat(requested_close_date) - timedelta(days=days)).isoformat()
+    except ValueError:
+        return None
+    row = _row_on_or_before(rows, target)
+    return _to_float(row.get("close")) if row else None
+
+
+def build_performance_snapshot(
+    pos: dict[str, Any],
+    rows: list[dict[str, Any]],
+    requested_close_date: str,
+    usd_per_eur: float,
+    latest_proxy_close: float | None,
+) -> dict[str, Any]:
+    latest = latest_proxy_close
+    one_week_close = _close_days_before(rows, requested_close_date, 7)
+    one_month_close = _close_days_before(rows, requested_close_date, 30)
+    three_month_close = _close_days_before(rows, requested_close_date, 90)
+    avg_entry = _to_float(pos.get("avg_entry_proxy"))
+    shares = int(pos.get("shares") or 0)
+    pnl_local = round((latest - avg_entry) * shares, 2) if latest is not None and avg_entry is not None else None
+    pnl_eur = round(pnl_local / usd_per_eur, 2) if pnl_local is not None and usd_per_eur else None
+    return {
+        "proxy": pos.get("primary_proxy"),
+        "as_of": requested_close_date,
+        "latest_close": latest,
+        "one_week_return_pct": _return_pct(latest, one_week_close),
+        "one_month_return_pct": _return_pct(latest, one_month_close),
+        "three_month_return_pct": _return_pct(latest, three_month_close),
+        "since_entry_return_pct": _return_pct(latest, avg_entry),
+        "pnl_local": pnl_local,
+        "pnl_eur": pnl_eur,
+    }
 
 
 def parse_section15_from_report(md_text: str) -> tuple[list[dict[str, Any]], float | None]:
@@ -109,7 +153,7 @@ def parse_section15_from_report(md_text: str) -> tuple[list[dict[str, Any]], flo
                     "region": meta.get("region", "Unknown"),
                     "style": meta.get("style", "Unknown"),
                     "direction": "long",
-                    "shares": int(_to_float(parts[1]) or 0),
+                    "shares": int(_to_float(parts[2] if len(parts) > 2 else parts[1]) or 0),
                     "proxy_currency": parts[4] or "USD",
                     "avg_entry_proxy": _to_float(parts[3]),
                     "latest_proxy_close": _to_float(parts[3]),
@@ -130,8 +174,8 @@ def bootstrap_positions(starting_capital_eur: float, requested_close_date: str, 
     positions: list[dict[str, Any]] = []
     invested_eur = 0.0
     for item in DEFAULT_EXPOSURES:
-        proxy = fetch_yahoo_close(item["primary_proxy"], requested_close_date)
-        benchmark = fetch_yahoo_close(item["benchmark_symbol"], requested_close_date)
+        proxy = fetch_layered_close(item["primary_proxy"], requested_close_date)
+        benchmark = fetch_layered_close(item["benchmark_symbol"], requested_close_date)
         budget_eur = starting_capital_eur * (float(item["target_weight_pct"]) / 100.0)
         budget_usd = budget_eur * usd_per_eur
         shares = math.floor(budget_usd / proxy["close"])
@@ -142,6 +186,7 @@ def bootstrap_positions(starting_capital_eur: float, requested_close_date: str, 
             {
                 "exposure_id": item["exposure_id"],
                 "display_name": item["display_name"],
+                "portfolio_sleeve": item.get("portfolio_sleeve"),
                 "benchmark_symbol": item["benchmark_symbol"],
                 "benchmark_name": item["benchmark_name"],
                 "primary_proxy": item["primary_proxy"],
@@ -208,6 +253,8 @@ def build_state_payload(as_of: str, requested_close_date: str, fx_basis: dict[st
             "fx_basis": fx_basis.get("source"),
             "fx_date": fx_basis.get("date"),
             "price_audit_file": f"output_indices/pricing/index_price_audit_{requested_close_date}.json",
+            "pricing_model": "layered_close_discovery_v1",
+            "provider_order": ["yahoo_chart", "twelve_data_time_series", "fmp_historical_price_full", "alpha_vantage_daily_adjusted", "carry_forward_prior_valid_close"],
         },
         "constraints": {
             "max_position_size_pct": 25.0,
@@ -260,13 +307,21 @@ def main() -> None:
         previous_benchmark = pos.get("latest_benchmark_close")
         proxy_status = "carried_forward"
         benchmark_status = "carried_forward"
+        proxy_source = "carry_forward_prior_valid_close"
+        benchmark_source = "carry_forward_prior_valid_close"
+        proxy_attempts: list[dict[str, Any]] = []
+        benchmark_attempts: list[dict[str, Any]] = []
+        proxy_rows: list[dict[str, Any]] = []
         is_fresh_proxy = False
 
         try:
-            proxy_quote = fetch_yahoo_close(pos["primary_proxy"], requested_close_date)
+            proxy_quote = fetch_layered_close(pos["primary_proxy"], requested_close_date)
             pos["latest_proxy_close"] = round(float(proxy_quote["close"]), 4)
             pos["proxy_currency"] = proxy_quote.get("currency") or pos.get("proxy_currency") or "USD"
             proxy_status = "fresh_close"
+            proxy_source = str(proxy_quote.get("source") or "layered_close")
+            proxy_attempts = proxy_quote.get("attempts", []) or []
+            proxy_rows = proxy_quote.get("rows", []) or []
             is_fresh_proxy = True
             fresh_count += 1
         except Exception as exc:  # noqa: BLE001
@@ -274,29 +329,34 @@ def main() -> None:
                 unresolved.append(pos["primary_proxy"])
                 pos["latest_proxy_close"] = None
                 proxy_status = f"unresolved: {exc}"
+                proxy_source = "unresolved"
             else:
                 carried_forward_count += 1
                 pos["latest_proxy_close"] = previous_proxy
-                proxy_status = "carried_forward"
+                proxy_status = "carried_forward_prior_valid_close"
 
         try:
-            benchmark_quote = fetch_yahoo_close(pos["benchmark_symbol"], requested_close_date)
+            benchmark_quote = fetch_layered_close(pos["benchmark_symbol"], requested_close_date)
             pos["latest_benchmark_close"] = round(float(benchmark_quote["close"]), 4)
             benchmark_status = "fresh_close"
+            benchmark_source = str(benchmark_quote.get("source") or "layered_close")
+            benchmark_attempts = benchmark_quote.get("attempts", []) or []
         except Exception as exc:  # noqa: BLE001
             if previous_benchmark is None:
                 pos["latest_benchmark_close"] = None
                 benchmark_status = f"unresolved: {exc}"
+                benchmark_source = "unresolved"
             else:
                 pos["latest_benchmark_close"] = previous_benchmark
-                benchmark_status = "carried_forward"
+                benchmark_status = "carried_forward_prior_valid_close"
 
         shares = int(pos.get("shares") or 0)
-        latest_proxy_close = pos.get("latest_proxy_close") or 0.0
+        latest_proxy_close = _to_float(pos.get("latest_proxy_close")) or 0.0
         market_value_local = round(shares * float(latest_proxy_close), 2)
         market_value_eur = round(market_value_local / usd_per_eur, 2) if usd_per_eur else 0.0
         pos["market_value_local"] = market_value_local
         pos["market_value_eur"] = market_value_eur
+        pos["performance"] = build_performance_snapshot(pos, proxy_rows, requested_close_date, usd_per_eur, latest_proxy_close)
         total_value_eur += market_value_eur
         if latest_proxy_close:
             priced_market_value_eur += market_value_eur
@@ -314,12 +374,22 @@ def main() -> None:
                 "benchmark_close": pos.get("latest_benchmark_close"),
                 "proxy_status": proxy_status,
                 "benchmark_status": benchmark_status,
+                "proxy_source": proxy_source,
+                "benchmark_source": benchmark_source,
+                "proxy_attempts": proxy_attempts,
+                "benchmark_attempts": benchmark_attempts,
+                "performance": pos.get("performance"),
                 "market_value_eur": market_value_eur,
             }
         )
 
     for pos in positions:
         pos["weight_pct"] = round((float(pos.get("market_value_eur") or 0.0) / total_value_eur) * 100.0, 2) if total_value_eur else 0.0
+        perf = pos.get("performance") or {}
+        pnl_eur = _to_float(perf.get("pnl_eur"))
+        pos["contribution_pct"] = round((pnl_eur / total_value_eur) * 100.0, 2) if pnl_eur is not None and total_value_eur else None
+        perf["contribution_pct"] = pos["contribution_pct"]
+        pos["performance"] = perf
 
     holdings_count = len(positions)
     fresh_count_pct = round((fresh_count / holdings_count) * 100.0, 2) if holdings_count else 0.0
@@ -338,6 +408,8 @@ def main() -> None:
     audit_payload = {
         "run_date": run_date,
         "requested_close_date": requested_close_date,
+        "pricing_model": "layered_close_discovery_v1",
+        "provider_order": ["yahoo_chart", "twelve_data_time_series", "fmp_historical_price_full", "alpha_vantage_daily_adjusted", "carry_forward_prior_valid_close"],
         "source_mode": source_mode,
         "bootstrapped": bootstrapped,
         "holdings_count": holdings_count,
@@ -377,7 +449,7 @@ def main() -> None:
         f"PRICING_PASS_OK | requested_close={requested_close_date} | "
         f"holdings={holdings_count} | fresh={fresh_count} | carried={carried_forward_count} | "
         f"fresh_weight_coverage={fresh_invested_weight_coverage_pct:.2f} | "
-        f"priced_weight_coverage={priced_invested_weight_coverage_pct:.2f} | audit={audit_path.name} | source_mode={source_mode}"
+        f"priced_weight_coverage={priced_invested_weight_coverage_pct:.2f} | audit={audit_path.name} | pricing_model=layered_close_discovery_v1 | source_mode={source_mode}"
     )
 
 
