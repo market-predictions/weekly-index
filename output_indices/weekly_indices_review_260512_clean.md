@@ -333,7 +333,7 @@ Reasons:
 | CASH | Residual cash | - | 1.00 | EUR | 15566.74 | 15566.74 | 14.01 |
 
 ### Tradable Proxy Performance
-Performance is calculated on the tradable ETF proxies used for valuation, using the `layered_close_discovery_v1` pricing layer where available.
+Performance is calculated on the tradable ETF proxies used for portfolio valuation. Benchmark index prices remain the analysis reference; tradable proxy closes drive market value, P/L and contribution.
 
 | Portfolio sleeve | Benchmark index | Tradable proxy | Weight % | 1w return | 1m return | 3m return | Since-entry | P/L EUR | Contribution % |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
