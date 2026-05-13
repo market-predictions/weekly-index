@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import json
 import re
-from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -51,6 +50,8 @@ def _known_state_values(state: dict[str, Any]) -> set[str]:
         values |= _amount_variants(position.get("market_value_eur"))
         values |= _amount_variants(position.get("market_value_local"))
         values |= _amount_variants(position.get("latest_proxy_close"))
+        performance = position.get("performance") or {}
+        values |= _amount_variants(performance.get("pnl_eur"))
     return {v for v in values if v}
 
 
@@ -89,9 +90,24 @@ def validate() -> None:
     if cash is not None and not any(v in text for v in _amount_variants(cash)):
         raise RuntimeError(f"State consistency contract failed: cash {cash} not visible in report {report_path.name}.")
 
-    # Allow valuation-history dates later in the report and allow the report date
-    # itself in the header/executive area. Only block old pricing-basis leakage in
-    # early client-facing sections.
+    positions = state.get("positions") or []
+    if positions:
+        if "Tradable Proxy Performance" not in text:
+            raise RuntimeError("State consistency contract failed: missing Tradable Proxy Performance table.")
+        if "1w return" not in text or "Since-entry" not in text or "Contribution %" not in text:
+            raise RuntimeError("State consistency contract failed: Tradable Proxy Performance table is missing required columns.")
+        missing_perf = []
+        for position in positions:
+            proxy = str(position.get("primary_proxy") or "").strip()
+            performance = position.get("performance") or {}
+            if proxy and proxy not in text:
+                missing_perf.append(f"{proxy}:not_visible")
+            for field in ["one_week_return_pct", "one_month_return_pct", "three_month_return_pct", "since_entry_return_pct", "contribution_pct"]:
+                if field not in performance:
+                    missing_perf.append(f"{proxy or position.get('exposure_id')}:{field}")
+        if missing_perf:
+            raise RuntimeError("State consistency contract failed: performance state/report mismatch: " + ", ".join(missing_perf))
+
     early_text = "\n".join(text.splitlines()[:80])
     allowed_dates = _allowed_early_dates(report_path, requested_close)
     stale_early_dates = sorted(set(re.findall(r"2026-\d{2}-\d{2}", early_text)) - allowed_dates)
@@ -113,7 +129,7 @@ def validate() -> None:
         )
 
     print(
-        f"INDEX_STATE_CONSISTENCY_OK | report={report_path.name} | requested_close={requested_close} | total_nav={total_value} | cash={cash}"
+        f"INDEX_STATE_CONSISTENCY_OK | report={report_path.name} | requested_close={requested_close} | total_nav={total_value} | cash={cash} | performance_rows={len(positions)}"
     )
 
 
