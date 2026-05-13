@@ -71,6 +71,26 @@ def _money(value: Any) -> str:
         return "n/a"
 
 
+def _fmt_pct(value: Any) -> str:
+    try:
+        if value is None:
+            return "n/a"
+        number = float(value)
+    except (TypeError, ValueError):
+        return "n/a"
+    sign = "+" if number > 0 else ""
+    return f"{sign}{number:.2f}%"
+
+
+def _fmt_eur(value: Any) -> str:
+    try:
+        if value is None:
+            return "n/a"
+        return f"{float(value):,.2f}"
+    except (TypeError, ValueError):
+        return "n/a"
+
+
 def _take(values: Any, limit: int = 3) -> list[str]:
     if not isinstance(values, list):
         return []
@@ -192,6 +212,34 @@ def build_action_snapshot(output_dir: Path) -> str:
 3. IWM and EEM stay under review until breadth, USD and relative-strength evidence improve."""
 
 
+def build_tradable_proxy_performance_table(output_dir: Path) -> str:
+    state = _portfolio_state(output_dir)
+    positions = state.get("positions", []) or []
+    if not positions:
+        return ""
+    pricing = state.get("pricing_basis", {}) or {}
+    model = pricing.get("pricing_model") or "pricing layer"
+    lines = [
+        "",
+        "### Tradable Proxy Performance",
+        f"Performance is calculated on the tradable ETF proxies used for valuation, using the `{model}` pricing layer where available.",
+        "",
+        "| Portfolio sleeve | Benchmark index | Tradable proxy | Weight % | 1w return | 1m return | 3m return | Since-entry | P/L EUR | Contribution % |",
+        "|---|---|---|---:|---:|---:|---:|---:|---:|---:|",
+    ]
+    for pos in positions:
+        perf = pos.get("performance") or {}
+        sleeve = pos.get("portfolio_sleeve") or pos.get("display_name") or pos.get("exposure_id")
+        benchmark = pos.get("benchmark_name") or pos.get("display_name") or pos.get("benchmark_symbol")
+        lines.append(
+            f"| {sleeve} | {benchmark} | {pos.get('primary_proxy')} | {float(pos.get('weight_pct') or 0.0):.2f} | "
+            f"{_fmt_pct(perf.get('one_week_return_pct'))} | {_fmt_pct(perf.get('one_month_return_pct'))} | "
+            f"{_fmt_pct(perf.get('three_month_return_pct'))} | {_fmt_pct(perf.get('since_entry_return_pct'))} | "
+            f"{_fmt_eur(perf.get('pnl_eur'))} | {_fmt_pct(perf.get('contribution_pct'))} |"
+        )
+    return "\n".join(lines)
+
+
 def force_client_bottom_line(text: str) -> str:
     return replace_section(text, 6, CLIENT_BOTTOM_LINE)
 
@@ -233,6 +281,8 @@ def main() -> None:
         if not section_path.exists():
             raise FileNotFoundError(f"Missing assembled section block: {section_path}")
         replacement = _read_text(section_path)
+        if section_number == 15:
+            replacement = replacement.rstrip() + "\n" + build_tradable_proxy_performance_table(output_dir)
         composed_text = replace_section(composed_text, section_number, replacement)
 
     composed_text = polish_client_copy(composed_text)
