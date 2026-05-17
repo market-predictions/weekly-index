@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import re
+
 import send_index_report as _base
 import send_index_report_tv  # noqa: F401 - applies TradingView/ticker rendering patches
 
@@ -70,6 +72,22 @@ ANALYST_DISTINCTION_CSS = """
     .analyst-hero ~ .panel tr:nth-child(even) td {
       background: #F7FBFB;
     }
+    .inline-list {
+      margin: 0 0 12px 0;
+      padding: 0;
+    }
+    .inline-list-item {
+      display: block;
+      margin: 0 0 5px 0;
+      padding: 0;
+      font-size: 14px;
+      line-height: 1.58;
+      font-weight: 400;
+    }
+    .inline-list-marker {
+      font-weight: 400;
+      margin-right: 4px;
+    }
     @media print {
       .analyst-hero {
         page-break-before: always;
@@ -78,9 +96,46 @@ ANALYST_DISTINCTION_CSS = """
     }
 """
 
+LI_RE = re.compile(r"<li>(.*?)</li>", re.DOTALL | re.IGNORECASE)
+UL_RE = re.compile(r"<ul>(.*?)</ul>", re.DOTALL | re.IGNORECASE)
+OL_RE = re.compile(r"<ol>(.*?)</ol>", re.DOTALL | re.IGNORECASE)
+
+
+def _clean_li_inner(inner: str) -> str:
+    inner = inner.strip()
+    if inner.startswith("<p>") and inner.endswith("</p>"):
+        inner = inner[3:-4].strip()
+    return inner
+
+
+def _convert_list_block(content: str, ordered: bool) -> str:
+    items = LI_RE.findall(content)
+    if not items:
+        return content
+    rows = []
+    for idx, item in enumerate(items, start=1):
+        marker = f"{idx}." if ordered else "•"
+        rows.append(
+            "<div class='inline-list-item'>"
+            f"<span class='inline-list-marker'>{marker}</span>"
+            f"{_clean_li_inner(item)}"
+            "</div>"
+        )
+    return "<div class='inline-list'>" + "".join(rows) + "</div>"
+
+
+def _inline_native_lists(html: str) -> str:
+    previous = None
+    current = html
+    while previous != current:
+        previous = current
+        current = UL_RE.sub(lambda m: _convert_list_block(m.group(1), ordered=False), current)
+        current = OL_RE.sub(lambda m: _convert_list_block(m.group(1), ordered=True), current)
+    return current
+
 
 def _inject_css(html: str) -> str:
-    if "analyst-hero" in html and "#0F5B5C" in html:
+    if "analyst-hero" in html and "#0F5B5C" in html and "inline-list-item" in html:
         return html
     return html.replace("</style>", ANALYST_DISTINCTION_CSS + "\n        </style>", 1)
 
@@ -98,6 +153,7 @@ def _mark_analyst_hero(html: str) -> str:
 def build_report_html(md_text: str, report_date_str: str, image_src: str | None = None, render_mode: str = "email") -> str:
     html = _ORIG_BUILD_REPORT_HTML(md_text, report_date_str, image_src=image_src, render_mode=render_mode)
     html = _mark_analyst_hero(html)
+    html = _inline_native_lists(html)
     html = _inject_css(html)
     return html
 
