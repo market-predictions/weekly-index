@@ -32,6 +32,8 @@ REPLACEMENTS = {
     "weak_relative_strength": "weak relative strength",
     "fragile_macro_alignment": "macro timing not strong enough",
     "insufficient_immediate_priority": "not urgent enough for capital this week",
+    "The the next review": "The next review",
+    "the the next review": "the next review",
 }
 
 REGEX_REPLACEMENTS = [
@@ -43,7 +45,8 @@ REGEX_REPLACEMENTS = [
     (re.compile(r"\bTBD\b"), "Under review"),
     (re.compile(r"\b([A-Z]{2,5})(versus|together|and)\b"), r"\1 \2"),
     (re.compile(r"\b(and|versus)([A-Z]{2,5})\b"), r"\1 \2"),
-    (re.compile(r"\n-\s*$", re.M), ""),
+    (re.compile(r"\b[Tt]he\s+the\s+"), "The "),
+    (re.compile(r"^\s*(?:[-*+]|\d+\.)\s*$", re.M), ""),
     (re.compile(r"\n{3,}"), "\n\n"),
 ]
 
