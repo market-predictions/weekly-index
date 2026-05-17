@@ -138,6 +138,10 @@ jobs:
         run: |
           python tools/validate_index_render_polish.py
 
+      - name: Validate ticker links
+        run: |
+          python tools/validate_index_ticker_links.py
+
       - name: Send email if SMTP secrets are configured
         env:
           MRKT_RPRTS_SUBJECT_PREFIX: Weekly Indices Review
