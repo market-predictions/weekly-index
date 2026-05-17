@@ -95,6 +95,10 @@ jobs:
         run: |
           python -m pricing_indices.compose_final_report --in-place
 
+      - name: Move proxy performance table after equity graph
+        run: |
+          python tools/index_section7_probe.py
+
       - name: Scrub client-facing scaffold/process language
         run: |
           python tools/scrub_index_client_report.py
