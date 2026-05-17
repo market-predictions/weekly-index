@@ -320,7 +320,7 @@ What would change this plan:
 
 Reasons:
 
-- The the next review should confirm pricing, research, ranking, and scorecard first.
+- The next review should confirm pricing, research, ranking, and scorecard first.
 - The current portfolio still needs the live alternative-duel outputs before a forced implementation change.
 - The higher-value fix this run is decision quality, not performative turnover.
 
