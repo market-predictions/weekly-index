@@ -38,8 +38,8 @@
   },
   "defensive_inverse_adjustments": {
     "EUM": {
-      "readiness": "inactive",
-      "reason": "Dollar pressure is not strong enough to activate EM inverse readiness.",
+      "readiness": "watchlist",
+      "reason": "Dollar pressure is a headwind for EM.",
       "underlying": "EEM / Emerging Markets"
     },
     "PSQ": {
@@ -53,10 +53,10 @@
       "underlying": "IWM / Russell 2000"
     }
   },
-  "generated_at_utc": "2026-05-13T11:21:31.712864Z",
+  "generated_at_utc": "2026-05-17T07:38:15.445532Z",
   "geopolitical_regime": {
-    "confidence": 0.6,
-    "current": "Rates and energy-sensitive geopolitical risk",
+    "confidence": 0.62,
+    "current": "Elevated USD / policy-friction risk",
     "main_channels": [
       "energy",
       "defense spending",
@@ -64,21 +64,21 @@
       "USD liquidity",
       "supply-chain concentration"
     ],
-    "portfolio_implication": "Treat oil, rates and defense/geopolitical shocks as risk filters for small caps, EM and Europe.",
+    "portfolio_implication": "Keep EM, China, Korea/Taiwan and commodity-sensitive regions on a higher evidence hurdle until USD pressure eases.",
     "transfer_to_report": true
   },
   "long_lane_adjustments": {
     "australia_large_cap": {
       "reason": "Australia is commodity and China-sensitive; require confirmation when USD or China stress rises.",
-      "score_adjustment": 0.03
+      "score_adjustment": -0.03
     },
     "brazil_large_cap": {
       "reason": "Brazil needs commodity support and a friendlier dollar backdrop before promotion.",
-      "score_adjustment": 0.02
+      "score_adjustment": -0.04
     },
     "em_broad": {
-      "reason": "A weaker dollar backdrop would improve EM timing.",
-      "score_adjustment": 0.05
+      "reason": "Dollar pressure keeps EM broad under a higher evidence hurdle.",
+      "score_adjustment": -0.1
     },
     "europe_large_cap": {
       "reason": "Europe remains a diversification candidate, but price confirmation is still required.",
@@ -86,7 +86,7 @@
     },
     "indonesia_large_cap": {
       "reason": "Indonesia adds ASEAN domestic-demand beta but remains liquidity and USD-sensitive.",
-      "score_adjustment": 0.02
+      "score_adjustment": -0.02
     },
     "japan_equities": {
       "reason": "Japan remains a valid non-U.S. developed diversification lane, subject to currency/yield volatility.",
@@ -135,17 +135,17 @@
   },
   "macro_signals": {
     "credit": {
-      "hyg_20d_pct": -0.78
+      "hyg_20d_pct": -1.48
     },
     "duration": {
-      "tlt_20d_pct": -2.55
+      "tlt_20d_pct": -3.92
     },
     "equity_breadth": {
-      "iwm_vs_spy_20d_pct": -1.14,
-      "qqq_vs_spy_20d_pct": 6.21
+      "iwm_vs_spy_20d_pct": -3.43,
+      "qqq_vs_spy_20d_pct": 5.17
     },
     "usd": {
-      "uup_20d_pct": 0.48
+      "uup_20d_pct": 1.5
     }
   },
   "portfolio_implications": [
@@ -176,7 +176,7 @@
     "US": "Leadership is investable but concentration must be explicit.",
     "US factors": "Equal weight, quality, minimum volatility and value should be used to test breadth and factor rotation without adding new region risk."
   },
-  "report_date": "2026-05-12",
+  "report_date": "2026-05-15",
   "report_digest": {
     "central_bank_focus": "Fed real-rate risk remains the key policy filter for small caps, EM and speculative beta.",
     "decision_implications": [
@@ -184,7 +184,7 @@
       "Keep IWM and EM funding conditional on breadth, dollar and real-rate improvement.",
       "Keep defensive / inverse candidates separate from the long-side opportunity board."
     ],
-    "geopolitical_focus": "Treat oil, rates and defense/geopolitical shocks as risk filters for small caps, EM and Europe.",
+    "geopolitical_focus": "Keep EM, China, Korea/Taiwan and commodity-sensitive regions on a higher evidence hurdle until USD pressure eases.",
     "headline": "Risk-on narrow US mega-cap leadership: stay selective and separate long opportunities from defensive / inverse readiness.",
     "risk_watch": "A stronger USD or renewed rate repricing would raise the hurdle for EM, small caps and non-U.S. cyclicals.",
     "top_changes": [

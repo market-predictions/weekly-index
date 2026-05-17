@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-05-13T11:21:31.892863Z",
-  "report_date": "2026-05-12",
+  "generated_at_utc": "2026-05-17T07:38:15.647863Z",
+  "report_date": "2026-05-15",
   "report_token": "260512",
   "rows": [
     {
@@ -17,12 +17,12 @@
     },
     {
       "candidate": "EUM",
-      "client_status": "Inactive / monitor only",
+      "client_status": "Watchlist",
       "invalidation": "USD weakens and China / EM breadth confirms upside.",
       "max_role": "Defensive hedge only; not a long-side opportunity.",
       "portfolio_use": "defensive_inverse_only",
-      "readiness": "inactive",
-      "regime_condition": "Dollar pressure is not strong enough to activate EM inverse readiness.",
+      "readiness": "watchlist",
+      "regime_condition": "Dollar pressure is a headwind for EM.",
       "short_thesis": "EM remains vulnerable when USD pressure and China confidence risk rise.",
       "trigger": "UUP strengthens while EEM breaks relative support.",
       "underlying": "EEM / Emerging Markets"

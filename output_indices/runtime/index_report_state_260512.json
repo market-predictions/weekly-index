@@ -2,55 +2,11 @@
   "candidate_ranking": {
     "candidates": [
       {
-        "alternative_proxy": "VWO",
-        "benchmark_name": "Emerging Markets Proxy Benchmark",
-        "benchmark_symbol": "EEM",
-        "board_score": 2.76,
-        "challenger_score": 2.11,
-        "continuity_bonus": 0.0,
-        "currently_held": true,
-        "diversification_score": 0.0,
-        "evidence_notes": {
-          "continuity": [],
-          "diversification": [],
-          "fragility": [],
-          "implementation_priority": [
-            "already implemented in the live model portfolio",
-            "already serves as the funded non-U.S. sleeve"
-          ],
-          "regime_alignment": [
-            "broad equity risk appetite is supportive",
-            "EM confirmation is supportive"
-          ]
-        },
-        "evidence_source": "candidate_evidence_artifact",
-        "exposure_id": "em_broad",
-        "fragility_penalty": 0.0,
-        "implementation_priority_score": 0.65,
-        "portfolio_sleeve": "Broad emerging-market equity",
-        "primary_proxy": "EEM",
-        "proxy_eligibility": {
-          "fundable_if_priced": true,
-          "note": "Funded or directly fundable if portfolio rules permit.",
-          "tier": "core_holding"
-        },
-        "public_index_name": "Emerging Markets",
-        "publish": true,
-        "reason_code_if_not_published": "",
-        "regime_alignment_score": 0.45,
-        "region": "Emerging Markets",
-        "regional_group": "EM broad",
-        "relative_strength_score": 1.66,
-        "score": 2.76,
-        "style": "broad equity",
-        "weight_pct": 15.59
-      },
-      {
         "alternative_proxy": "QQQM",
         "benchmark_name": "Nasdaq 100 Index",
         "benchmark_symbol": "^NDX",
-        "board_score": 2.72,
-        "challenger_score": 1.92,
+        "board_score": 2.79,
+        "challenger_score": 1.99,
         "continuity_bonus": 0.0,
         "currently_held": true,
         "diversification_score": 0.0,
@@ -87,17 +43,17 @@
         "regime_alignment_score": 0.4,
         "region": "US",
         "regional_group": "U.S. core leadership",
-        "relative_strength_score": 1.72,
-        "score": 2.72,
+        "relative_strength_score": 1.79,
+        "score": 2.79,
         "style": "large-cap growth",
-        "weight_pct": 26.02
+        "weight_pct": 26.23
       },
       {
         "alternative_proxy": "VOO",
         "benchmark_name": "S&P 500 Index",
         "benchmark_symbol": "^GSPC",
-        "board_score": 2.47,
-        "challenger_score": 1.67,
+        "board_score": 2.61,
+        "challenger_score": 1.81,
         "continuity_bonus": 0.0,
         "currently_held": true,
         "diversification_score": 0.0,
@@ -130,53 +86,10 @@
         "regime_alignment_score": 0.15,
         "region": "US",
         "regional_group": "U.S. core leadership",
-        "relative_strength_score": 1.52,
-        "score": 2.47,
+        "relative_strength_score": 1.66,
+        "score": 2.61,
         "style": "large cap",
-        "weight_pct": 24.89
-      },
-      {
-        "alternative_proxy": "DXJ",
-        "benchmark_name": "Nikkei 225 Index",
-        "benchmark_symbol": "^N225",
-        "board_score": 2.36,
-        "challenger_score": 2.49,
-        "continuity_bonus": 0.0,
-        "currently_held": false,
-        "diversification_score": 0.2,
-        "evidence_notes": {
-          "continuity": [],
-          "diversification": [
-            "adds a new regional sleeve"
-          ],
-          "fragility": [],
-          "implementation_priority": [],
-          "regime_alignment": [
-            "broad equity risk appetite is supportive",
-            "Japan confirmation is supportive"
-          ]
-        },
-        "evidence_source": "candidate_evidence_artifact",
-        "exposure_id": "japan_equities",
-        "fragility_penalty": 0.0,
-        "implementation_priority_score": 0.0,
-        "portfolio_sleeve": "Japan developed equity",
-        "primary_proxy": "EWJ",
-        "proxy_eligibility": {
-          "fundable_if_priced": true,
-          "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.",
-          "tier": "liquid_country_etf"
-        },
-        "public_index_name": "Nikkei 225",
-        "publish": true,
-        "reason_code_if_not_published": "",
-        "regime_alignment_score": 0.5,
-        "region": "Japan",
-        "regional_group": "developed Asia-Pacific",
-        "relative_strength_score": 1.79,
-        "score": 2.36,
-        "style": "broad equity",
-        "weight_pct": null
+        "weight_pct": 25.07
       },
       {
         "alternative_proxy": "069500.KS",
@@ -211,8 +124,8 @@
           "tier": "liquid_country_etf"
         },
         "public_index_name": "KOSPI 200 / Korea large cap",
-        "publish": false,
-        "reason_code_if_not_published": "strong_challenger_not_published",
+        "publish": true,
+        "reason_code_if_not_published": "",
         "regime_alignment_score": 0.15,
         "region": "South Korea",
         "regional_group": "Korea / Taiwan",
@@ -220,51 +133,6 @@
         "score": 2.25,
         "style": "large cap technology / exporters",
         "weight_pct": null
-      },
-      {
-        "alternative_proxy": "VTWO",
-        "benchmark_name": "Russell 2000 Index",
-        "benchmark_symbol": "^RUT",
-        "board_score": 2.24,
-        "challenger_score": 1.54,
-        "continuity_bonus": 0.0,
-        "currently_held": true,
-        "diversification_score": 0.0,
-        "evidence_notes": {
-          "continuity": [],
-          "diversification": [],
-          "fragility": [
-            "rates/duration backdrop is not supportive"
-          ],
-          "implementation_priority": [
-            "already implemented in the live model portfolio",
-            "adds funded breadth diversification"
-          ],
-          "regime_alignment": [
-            "broad equity risk appetite is supportive"
-          ]
-        },
-        "evidence_source": "candidate_evidence_artifact",
-        "exposure_id": "us_small_cap",
-        "fragility_penalty": 0.2,
-        "implementation_priority_score": 0.7,
-        "portfolio_sleeve": "U.S. small-cap breadth",
-        "primary_proxy": "IWM",
-        "proxy_eligibility": {
-          "fundable_if_priced": true,
-          "note": "Funded or directly fundable if portfolio rules permit.",
-          "tier": "core_holding"
-        },
-        "public_index_name": "Russell 2000",
-        "publish": true,
-        "reason_code_if_not_published": "",
-        "regime_alignment_score": 0.15,
-        "region": "US",
-        "regional_group": "U.S. core leadership",
-        "relative_strength_score": 1.59,
-        "score": 2.24,
-        "style": "small cap",
-        "weight_pct": 19.49
       },
       {
         "alternative_proxy": "0050.TW",
@@ -310,6 +178,53 @@
         "weight_pct": null
       },
       {
+        "alternative_proxy": "VWO",
+        "benchmark_name": "Emerging Markets Proxy Benchmark",
+        "benchmark_symbol": "EEM",
+        "board_score": 2.14,
+        "challenger_score": 1.49,
+        "continuity_bonus": 0.0,
+        "currently_held": true,
+        "diversification_score": 0.0,
+        "evidence_notes": {
+          "continuity": [],
+          "diversification": [],
+          "fragility": [
+            "dollar strength is a fragility factor"
+          ],
+          "implementation_priority": [
+            "already implemented in the live model portfolio",
+            "already serves as the funded non-U.S. sleeve"
+          ],
+          "regime_alignment": [
+            "broad equity risk appetite is supportive",
+            "EM confirmation is supportive",
+            "dollar pressure is a headwind"
+          ]
+        },
+        "evidence_source": "candidate_evidence_artifact",
+        "exposure_id": "em_broad",
+        "fragility_penalty": 0.3,
+        "implementation_priority_score": 0.65,
+        "portfolio_sleeve": "Broad emerging-market equity",
+        "primary_proxy": "EEM",
+        "proxy_eligibility": {
+          "fundable_if_priced": true,
+          "note": "Funded or directly fundable if portfolio rules permit.",
+          "tier": "core_holding"
+        },
+        "public_index_name": "Emerging Markets",
+        "publish": true,
+        "reason_code_if_not_published": "",
+        "regime_alignment_score": 0.2,
+        "region": "Emerging Markets",
+        "regional_group": "EM broad",
+        "relative_strength_score": 1.59,
+        "score": 2.14,
+        "style": "broad equity",
+        "weight_pct": 15.5
+      },
+      {
         "alternative_proxy": "IWD",
         "benchmark_name": "MSCI USA Value proxy benchmark",
         "benchmark_symbol": "VLUE",
@@ -353,11 +268,11 @@
         "weight_pct": null
       },
       {
-        "alternative_proxy": "MCHI",
-        "benchmark_name": "CSI 300 Index",
-        "benchmark_symbol": "000300.SS",
-        "board_score": 1.85,
-        "challenger_score": 1.98,
+        "alternative_proxy": "DXJ",
+        "benchmark_name": "Nikkei 225 Index",
+        "benchmark_symbol": "^N225",
+        "board_score": 1.94,
+        "challenger_score": 2.07,
         "continuity_bonus": 0.0,
         "currently_held": false,
         "diversification_score": 0.2,
@@ -369,31 +284,76 @@
           "fragility": [],
           "implementation_priority": [],
           "regime_alignment": [
-            "broad equity risk appetite is supportive",
-            "broader EM confirmation is supportive"
+            "broad equity risk appetite is supportive"
           ]
         },
         "evidence_source": "candidate_evidence_artifact",
-        "exposure_id": "china_large_cap",
+        "exposure_id": "japan_equities",
         "fragility_penalty": 0.0,
         "implementation_priority_score": 0.0,
-        "portfolio_sleeve": "Mainland China policy beta",
-        "primary_proxy": "FXI",
+        "portfolio_sleeve": "Japan developed equity",
+        "primary_proxy": "EWJ",
         "proxy_eligibility": {
           "fundable_if_priced": true,
           "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.",
           "tier": "liquid_country_etf"
         },
-        "public_index_name": "China large cap",
+        "public_index_name": "Nikkei 225",
         "publish": false,
         "reason_code_if_not_published": "strong_challenger_not_published",
-        "regime_alignment_score": 0.33,
-        "region": "China",
-        "regional_group": "Greater China",
-        "relative_strength_score": 1.45,
-        "score": 1.85,
-        "style": "large cap",
+        "regime_alignment_score": 0.15,
+        "region": "Japan",
+        "regional_group": "developed Asia-Pacific",
+        "relative_strength_score": 1.72,
+        "score": 1.94,
+        "style": "broad equity",
         "weight_pct": null
+      },
+      {
+        "alternative_proxy": "VTWO",
+        "benchmark_name": "Russell 2000 Index",
+        "benchmark_symbol": "^RUT",
+        "board_score": 1.75,
+        "challenger_score": 1.05,
+        "continuity_bonus": 0.0,
+        "currently_held": true,
+        "diversification_score": 0.0,
+        "evidence_notes": {
+          "continuity": [],
+          "diversification": [],
+          "fragility": [
+            "rates/duration backdrop is not supportive"
+          ],
+          "implementation_priority": [
+            "already implemented in the live model portfolio",
+            "adds funded breadth diversification"
+          ],
+          "regime_alignment": [
+            "broad equity risk appetite is supportive",
+            "small-cap breadth is weak"
+          ]
+        },
+        "evidence_source": "candidate_evidence_artifact",
+        "exposure_id": "us_small_cap",
+        "fragility_penalty": 0.2,
+        "implementation_priority_score": 0.7,
+        "portfolio_sleeve": "U.S. small-cap breadth",
+        "primary_proxy": "IWM",
+        "proxy_eligibility": {
+          "fundable_if_priced": true,
+          "note": "Funded or directly fundable if portfolio rules permit.",
+          "tier": "core_holding"
+        },
+        "public_index_name": "Russell 2000",
+        "publish": true,
+        "reason_code_if_not_published": "",
+        "regime_alignment_score": -0.2,
+        "region": "US",
+        "regional_group": "U.S. core leadership",
+        "relative_strength_score": 1.45,
+        "score": 1.75,
+        "style": "small cap",
+        "weight_pct": 19.26
       },
       {
         "alternative_proxy": "XIU.TO",
@@ -443,8 +403,8 @@
         "alternative_proxy": "SPHQ",
         "benchmark_name": "MSCI USA Quality proxy benchmark",
         "benchmark_symbol": "QUAL",
-        "board_score": 1.52,
-        "challenger_score": 1.62,
+        "board_score": 1.59,
+        "challenger_score": 1.69,
         "continuity_bonus": 0.0,
         "currently_held": false,
         "diversification_score": 0.16,
@@ -477,8 +437,8 @@
         "regime_alignment_score": 0.15,
         "region": "US",
         "regional_group": "U.S. factor / style alternatives",
-        "relative_strength_score": 1.31,
-        "score": 1.52,
+        "relative_strength_score": 1.38,
+        "score": 1.59,
         "style": "quality factor",
         "weight_pct": null
       },
@@ -486,8 +446,8 @@
         "alternative_proxy": "RSP",
         "benchmark_name": "S&P 500 Equal Weight Index",
         "benchmark_symbol": "^SPXEW",
-        "board_score": 1.38,
-        "challenger_score": 1.48,
+        "board_score": 1.31,
+        "challenger_score": 1.41,
         "continuity_bonus": 0.0,
         "currently_held": false,
         "diversification_score": 0.16,
@@ -520,17 +480,17 @@
         "regime_alignment_score": 0.15,
         "region": "US",
         "regional_group": "U.S. factor / style alternatives",
-        "relative_strength_score": 1.17,
-        "score": 1.38,
+        "relative_strength_score": 1.1,
+        "score": 1.31,
         "style": "equal weight / breadth",
         "weight_pct": null
       },
       {
-        "alternative_proxy": "2800.HK",
-        "benchmark_name": "Hang Seng Index",
-        "benchmark_symbol": "^HSI",
-        "board_score": 1.37,
-        "challenger_score": 1.5,
+        "alternative_proxy": "IMIB.MI",
+        "benchmark_name": "FTSE MIB Index",
+        "benchmark_symbol": "FTSEMIB.MI",
+        "board_score": 1.29,
+        "challenger_score": 1.42,
         "continuity_bonus": 0.0,
         "currently_held": false,
         "diversification_score": 0.2,
@@ -539,41 +499,178 @@
           "diversification": [
             "adds a new regional sleeve"
           ],
-          "fragility": [],
+          "fragility": [
+            "commodity pressure adds European fragility"
+          ],
           "implementation_priority": [],
           "regime_alignment": [
             "broad equity risk appetite is supportive",
-            "broader EM confirmation is supportive"
+            "Europe confirmation is fading",
+            "commodity pressure can challenge Europe"
           ]
         },
         "evidence_source": "candidate_evidence_artifact",
-        "exposure_id": "hong_kong_equities",
-        "fragility_penalty": 0.0,
+        "exposure_id": "italy_large_cap",
+        "fragility_penalty": 0.15,
         "implementation_priority_score": 0.0,
-        "portfolio_sleeve": "Hong Kong large-cap China-linked equities",
-        "primary_proxy": "EWH",
+        "portfolio_sleeve": "Italy high-beta Europe financial / industrial beta",
+        "primary_proxy": "EWI",
         "proxy_eligibility": {
           "fundable_if_priced": true,
           "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.",
           "tier": "liquid_country_etf"
         },
-        "public_index_name": "Hang Seng",
+        "public_index_name": "FTSE MIB",
         "publish": false,
         "reason_code_if_not_published": "strong_challenger_not_published",
-        "regime_alignment_score": 0.33,
-        "region": "Hong Kong",
-        "regional_group": "Greater China",
-        "relative_strength_score": 0.97,
-        "score": 1.37,
+        "regime_alignment_score": -0.15,
+        "region": "Europe",
+        "regional_group": "continental Europe",
+        "relative_strength_score": 1.52,
+        "score": 1.29,
         "style": "large cap",
+        "weight_pct": null
+      },
+      {
+        "alternative_proxy": "MCHI",
+        "benchmark_name": "CSI 300 Index",
+        "benchmark_symbol": "000300.SS",
+        "board_score": 1.23,
+        "challenger_score": 1.36,
+        "continuity_bonus": 0.0,
+        "currently_held": false,
+        "diversification_score": 0.2,
+        "evidence_notes": {
+          "continuity": [],
+          "diversification": [
+            "adds a new regional sleeve"
+          ],
+          "fragility": [
+            "dollar strength is a fragility factor"
+          ],
+          "implementation_priority": [],
+          "regime_alignment": [
+            "broad equity risk appetite is supportive",
+            "broader EM confirmation is supportive",
+            "dollar pressure is a headwind"
+          ]
+        },
+        "evidence_source": "candidate_evidence_artifact",
+        "exposure_id": "china_large_cap",
+        "fragility_penalty": 0.3,
+        "implementation_priority_score": 0.0,
+        "portfolio_sleeve": "Mainland China policy beta",
+        "primary_proxy": "FXI",
+        "proxy_eligibility": {
+          "fundable_if_priced": true,
+          "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.",
+          "tier": "liquid_country_etf"
+        },
+        "public_index_name": "China large cap",
+        "publish": false,
+        "reason_code_if_not_published": "strong_challenger_not_published",
+        "regime_alignment_score": 0.15,
+        "region": "China",
+        "regional_group": "Greater China",
+        "relative_strength_score": 1.31,
+        "score": 1.23,
+        "style": "large cap",
+        "weight_pct": null
+      },
+      {
+        "alternative_proxy": "SPLV",
+        "benchmark_name": "MSCI USA Minimum Volatility proxy benchmark",
+        "benchmark_symbol": "USMV",
+        "board_score": 1.18,
+        "challenger_score": 1.28,
+        "continuity_bonus": 0.0,
+        "currently_held": false,
+        "diversification_score": 0.16,
+        "evidence_notes": {
+          "continuity": [],
+          "diversification": [
+            "broadens opportunity within an already held region",
+            "adds a differentiated style bucket"
+          ],
+          "fragility": [],
+          "implementation_priority": [],
+          "regime_alignment": [
+            "broad equity risk appetite is supportive"
+          ]
+        },
+        "evidence_source": "candidate_evidence_artifact",
+        "exposure_id": "us_min_vol_factor",
+        "fragility_penalty": 0.0,
+        "implementation_priority_score": 0.0,
+        "portfolio_sleeve": "U.S. minimum-volatility defensive equity",
+        "primary_proxy": "USMV",
+        "proxy_eligibility": {
+          "fundable_if_priced": true,
+          "note": "Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history.",
+          "tier": "liquid_us_etf"
+        },
+        "public_index_name": "U.S. Minimum Volatility",
+        "publish": false,
+        "reason_code_if_not_published": "strong_challenger_not_published",
+        "regime_alignment_score": 0.15,
+        "region": "US",
+        "regional_group": "U.S. factor / style alternatives",
+        "relative_strength_score": 0.97,
+        "score": 1.18,
+        "style": "minimum volatility",
+        "weight_pct": null
+      },
+      {
+        "alternative_proxy": "CSSMI.SW",
+        "benchmark_name": "Swiss Market Index",
+        "benchmark_symbol": "^SSMI",
+        "board_score": 1.1,
+        "challenger_score": 1.28,
+        "continuity_bonus": 0.0,
+        "currently_held": false,
+        "diversification_score": 0.28,
+        "evidence_notes": {
+          "continuity": [],
+          "diversification": [
+            "adds a new regional sleeve",
+            "adds a differentiated style bucket"
+          ],
+          "fragility": [
+            "commodity pressure modestly affects Swiss exporters"
+          ],
+          "implementation_priority": [],
+          "regime_alignment": [
+            "broad equity risk appetite is supportive"
+          ]
+        },
+        "evidence_source": "candidate_evidence_artifact",
+        "exposure_id": "switzerland_large_cap",
+        "fragility_penalty": 0.05,
+        "implementation_priority_score": 0.0,
+        "portfolio_sleeve": "Switzerland defensive quality",
+        "primary_proxy": "EWL",
+        "proxy_eligibility": {
+          "fundable_if_priced": true,
+          "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.",
+          "tier": "liquid_country_etf"
+        },
+        "public_index_name": "SMI",
+        "publish": false,
+        "reason_code_if_not_published": "strong_challenger_not_published",
+        "regime_alignment_score": 0.15,
+        "region": "Switzerland",
+        "regional_group": "Switzerland",
+        "relative_strength_score": 0.9,
+        "score": 1.1,
+        "style": "large cap defensive quality",
         "weight_pct": null
       },
       {
         "alternative_proxy": "NAFTRAC.MX",
         "benchmark_name": "S&P/BMV IPC Index",
         "benchmark_symbol": "^MXX",
-        "board_score": 1.35,
-        "challenger_score": 1.53,
+        "board_score": 1.08,
+        "challenger_score": 1.26,
         "continuity_bonus": 0.0,
         "currently_held": false,
         "diversification_score": 0.28,
@@ -606,194 +703,17 @@
         "regime_alignment_score": 0.15,
         "region": "Mexico",
         "regional_group": "Latin America",
-        "relative_strength_score": 1.1,
-        "score": 1.35,
+        "relative_strength_score": 0.83,
+        "score": 1.08,
         "style": "large cap industrial / financials",
-        "weight_pct": null
-      },
-      {
-        "alternative_proxy": "IMIB.MI",
-        "benchmark_name": "FTSE MIB Index",
-        "benchmark_symbol": "FTSEMIB.MI",
-        "board_score": 1.15,
-        "challenger_score": 1.28,
-        "continuity_bonus": 0.0,
-        "currently_held": false,
-        "diversification_score": 0.2,
-        "evidence_notes": {
-          "continuity": [],
-          "diversification": [
-            "adds a new regional sleeve"
-          ],
-          "fragility": [
-            "commodity pressure adds European fragility"
-          ],
-          "implementation_priority": [],
-          "regime_alignment": [
-            "broad equity risk appetite is supportive",
-            "Europe confirmation is fading",
-            "commodity pressure can challenge Europe"
-          ]
-        },
-        "evidence_source": "candidate_evidence_artifact",
-        "exposure_id": "italy_large_cap",
-        "fragility_penalty": 0.15,
-        "implementation_priority_score": 0.0,
-        "portfolio_sleeve": "Italy high-beta Europe financial / industrial beta",
-        "primary_proxy": "EWI",
-        "proxy_eligibility": {
-          "fundable_if_priced": true,
-          "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.",
-          "tier": "liquid_country_etf"
-        },
-        "public_index_name": "FTSE MIB",
-        "publish": false,
-        "reason_code_if_not_published": "fragile_macro_alignment",
-        "regime_alignment_score": -0.15,
-        "region": "Europe",
-        "regional_group": "continental Europe",
-        "relative_strength_score": 1.38,
-        "score": 1.15,
-        "style": "large cap",
-        "weight_pct": null
-      },
-      {
-        "alternative_proxy": "SPLV",
-        "benchmark_name": "MSCI USA Minimum Volatility proxy benchmark",
-        "benchmark_symbol": "USMV",
-        "board_score": 1.11,
-        "challenger_score": 1.21,
-        "continuity_bonus": 0.0,
-        "currently_held": false,
-        "diversification_score": 0.16,
-        "evidence_notes": {
-          "continuity": [],
-          "diversification": [
-            "broadens opportunity within an already held region",
-            "adds a differentiated style bucket"
-          ],
-          "fragility": [],
-          "implementation_priority": [],
-          "regime_alignment": [
-            "broad equity risk appetite is supportive"
-          ]
-        },
-        "evidence_source": "candidate_evidence_artifact",
-        "exposure_id": "us_min_vol_factor",
-        "fragility_penalty": 0.0,
-        "implementation_priority_score": 0.0,
-        "portfolio_sleeve": "U.S. minimum-volatility defensive equity",
-        "primary_proxy": "USMV",
-        "proxy_eligibility": {
-          "fundable_if_priced": true,
-          "note": "Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history.",
-          "tier": "liquid_us_etf"
-        },
-        "public_index_name": "U.S. Minimum Volatility",
-        "publish": false,
-        "reason_code_if_not_published": "fragile_macro_alignment",
-        "regime_alignment_score": 0.15,
-        "region": "US",
-        "regional_group": "U.S. factor / style alternatives",
-        "relative_strength_score": 0.9,
-        "score": 1.11,
-        "style": "minimum volatility",
-        "weight_pct": null
-      },
-      {
-        "alternative_proxy": "ISF.L",
-        "benchmark_name": "FTSE 100 Index",
-        "benchmark_symbol": "^FTSE",
-        "board_score": 1.03,
-        "challenger_score": 1.16,
-        "continuity_bonus": 0.0,
-        "currently_held": false,
-        "diversification_score": 0.2,
-        "evidence_notes": {
-          "continuity": [],
-          "diversification": [
-            "adds a new regional sleeve"
-          ],
-          "fragility": [],
-          "implementation_priority": [],
-          "regime_alignment": [
-            "broad equity risk appetite is supportive",
-            "risk appetite modestly supports the UK large-cap sleeve"
-          ]
-        },
-        "evidence_source": "candidate_evidence_artifact",
-        "exposure_id": "uk_large_cap",
-        "fragility_penalty": 0.0,
-        "implementation_priority_score": 0.0,
-        "portfolio_sleeve": "UK defensive yield / energy / financials",
-        "primary_proxy": "EWU",
-        "proxy_eligibility": {
-          "fundable_if_priced": true,
-          "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.",
-          "tier": "liquid_country_etf"
-        },
-        "public_index_name": "FTSE 100",
-        "publish": false,
-        "reason_code_if_not_published": "weak_relative_strength",
-        "regime_alignment_score": 0.2,
-        "region": "UK",
-        "regional_group": "UK",
-        "relative_strength_score": 0.76,
-        "score": 1.03,
-        "style": "large cap",
-        "weight_pct": null
-      },
-      {
-        "alternative_proxy": "CSSMI.SW",
-        "benchmark_name": "Swiss Market Index",
-        "benchmark_symbol": "^SSMI",
-        "board_score": 0.89,
-        "challenger_score": 1.07,
-        "continuity_bonus": 0.0,
-        "currently_held": false,
-        "diversification_score": 0.28,
-        "evidence_notes": {
-          "continuity": [],
-          "diversification": [
-            "adds a new regional sleeve",
-            "adds a differentiated style bucket"
-          ],
-          "fragility": [
-            "commodity pressure modestly affects Swiss exporters"
-          ],
-          "implementation_priority": [],
-          "regime_alignment": [
-            "broad equity risk appetite is supportive"
-          ]
-        },
-        "evidence_source": "candidate_evidence_artifact",
-        "exposure_id": "switzerland_large_cap",
-        "fragility_penalty": 0.05,
-        "implementation_priority_score": 0.0,
-        "portfolio_sleeve": "Switzerland defensive quality",
-        "primary_proxy": "EWL",
-        "proxy_eligibility": {
-          "fundable_if_priced": true,
-          "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.",
-          "tier": "liquid_country_etf"
-        },
-        "public_index_name": "SMI",
-        "publish": false,
-        "reason_code_if_not_published": "weak_relative_strength",
-        "regime_alignment_score": 0.15,
-        "region": "Switzerland",
-        "regional_group": "Switzerland",
-        "relative_strength_score": 0.69,
-        "score": 0.89,
-        "style": "large cap defensive quality",
         "weight_pct": null
       },
       {
         "alternative_proxy": "IAEX.AS",
         "benchmark_name": "AEX Index",
         "benchmark_symbol": "^AEX",
-        "board_score": 0.8,
-        "challenger_score": 0.93,
+        "board_score": 0.94,
+        "challenger_score": 1.07,
         "continuity_bonus": 0.0,
         "currently_held": false,
         "diversification_score": 0.2,
@@ -825,12 +745,55 @@
         },
         "public_index_name": "AEX",
         "publish": false,
-        "reason_code_if_not_published": "fragile_macro_alignment",
+        "reason_code_if_not_published": "strong_challenger_not_published",
         "regime_alignment_score": -0.15,
         "region": "Europe",
         "regional_group": "continental Europe",
-        "relative_strength_score": 1.03,
-        "score": 0.8,
+        "relative_strength_score": 1.17,
+        "score": 0.94,
+        "style": "large cap",
+        "weight_pct": null
+      },
+      {
+        "alternative_proxy": "ISF.L",
+        "benchmark_name": "FTSE 100 Index",
+        "benchmark_symbol": "^FTSE",
+        "board_score": 0.89,
+        "challenger_score": 1.02,
+        "continuity_bonus": 0.0,
+        "currently_held": false,
+        "diversification_score": 0.2,
+        "evidence_notes": {
+          "continuity": [],
+          "diversification": [
+            "adds a new regional sleeve"
+          ],
+          "fragility": [],
+          "implementation_priority": [],
+          "regime_alignment": [
+            "broad equity risk appetite is supportive",
+            "risk appetite modestly supports the UK large-cap sleeve"
+          ]
+        },
+        "evidence_source": "candidate_evidence_artifact",
+        "exposure_id": "uk_large_cap",
+        "fragility_penalty": 0.0,
+        "implementation_priority_score": 0.0,
+        "portfolio_sleeve": "UK defensive yield / energy / financials",
+        "primary_proxy": "EWU",
+        "proxy_eligibility": {
+          "fundable_if_priced": true,
+          "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.",
+          "tier": "liquid_country_etf"
+        },
+        "public_index_name": "FTSE 100",
+        "publish": false,
+        "reason_code_if_not_published": "strong_challenger_not_published",
+        "regime_alignment_score": 0.2,
+        "region": "UK",
+        "regional_group": "UK",
+        "relative_strength_score": 0.62,
+        "score": 0.89,
         "style": "large cap",
         "weight_pct": null
       },
@@ -838,8 +801,8 @@
         "alternative_proxy": "STW.AX",
         "benchmark_name": "S&P/ASX 200 Index",
         "benchmark_symbol": "^AXJO",
-        "board_score": 0.8,
-        "challenger_score": 0.93,
+        "board_score": 0.87,
+        "challenger_score": 1.0,
         "continuity_bonus": 0.0,
         "currently_held": false,
         "diversification_score": 0.2,
@@ -869,12 +832,12 @@
         },
         "public_index_name": "ASX 200",
         "publish": false,
-        "reason_code_if_not_published": "weak_relative_strength",
+        "reason_code_if_not_published": "strong_challenger_not_published",
         "regime_alignment_score": 0.32,
         "region": "Australia",
         "regional_group": "developed Asia-Pacific",
-        "relative_strength_score": 0.41,
-        "score": 0.8,
+        "relative_strength_score": 0.48,
+        "score": 0.87,
         "style": "large cap",
         "weight_pct": null
       },
@@ -882,8 +845,8 @@
         "alternative_proxy": "KSA",
         "benchmark_name": "Tadawul All Share Index",
         "benchmark_symbol": "^TASI.SR",
-        "board_score": 0.73,
-        "challenger_score": 0.91,
+        "board_score": 0.8,
+        "challenger_score": 0.98,
         "continuity_bonus": 0.0,
         "currently_held": false,
         "diversification_score": 0.28,
@@ -912,12 +875,12 @@
         },
         "public_index_name": "Saudi Arabia large cap",
         "publish": false,
-        "reason_code_if_not_published": "weak_relative_strength",
+        "reason_code_if_not_published": "strong_challenger_not_published",
         "regime_alignment_score": 0.15,
         "region": "Saudi Arabia",
         "regional_group": "Middle East",
-        "relative_strength_score": 0.48,
-        "score": 0.73,
+        "relative_strength_score": 0.55,
+        "score": 0.8,
         "style": "large cap energy / financials",
         "weight_pct": null
       },
@@ -925,8 +888,8 @@
         "alternative_proxy": "IBEX.MC",
         "benchmark_name": "IBEX 35 Index",
         "benchmark_symbol": "^IBEX",
-        "board_score": 0.6,
-        "challenger_score": 0.73,
+        "board_score": 0.8,
+        "challenger_score": 0.93,
         "continuity_bonus": 0.0,
         "currently_held": false,
         "diversification_score": 0.2,
@@ -958,150 +921,21 @@
         },
         "public_index_name": "IBEX 35",
         "publish": false,
-        "reason_code_if_not_published": "fragile_macro_alignment",
+        "reason_code_if_not_published": "strong_challenger_not_published",
         "regime_alignment_score": -0.15,
         "region": "Europe",
         "regional_group": "continental Europe",
-        "relative_strength_score": 0.83,
-        "score": 0.6,
+        "relative_strength_score": 1.03,
+        "score": 0.8,
         "style": "large cap",
-        "weight_pct": null
-      },
-      {
-        "alternative_proxy": "BOVA11.SA",
-        "benchmark_name": "Bovespa Index",
-        "benchmark_symbol": "^BVSP",
-        "board_score": 0.59,
-        "challenger_score": 0.77,
-        "continuity_bonus": 0.0,
-        "currently_held": false,
-        "diversification_score": 0.28,
-        "evidence_notes": {
-          "continuity": [],
-          "diversification": [
-            "adds a new regional sleeve",
-            "adds a differentiated style bucket"
-          ],
-          "fragility": [],
-          "implementation_priority": [],
-          "regime_alignment": [
-            "broad equity risk appetite is supportive"
-          ]
-        },
-        "evidence_source": "candidate_evidence_artifact",
-        "exposure_id": "brazil_large_cap",
-        "fragility_penalty": 0.0,
-        "implementation_priority_score": 0.0,
-        "portfolio_sleeve": "Brazil commodity / rates-sensitive LatAm beta",
-        "primary_proxy": "EWZ",
-        "proxy_eligibility": {
-          "fundable_if_priced": true,
-          "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.",
-          "tier": "liquid_country_etf"
-        },
-        "public_index_name": "Brazil large cap",
-        "publish": false,
-        "reason_code_if_not_published": "weak_relative_strength",
-        "regime_alignment_score": 0.15,
-        "region": "Brazil",
-        "regional_group": "Latin America",
-        "relative_strength_score": 0.34,
-        "score": 0.59,
-        "style": "large cap commodity / financials",
-        "weight_pct": null
-      },
-      {
-        "alternative_proxy": "INDY",
-        "benchmark_name": "Nifty 50 Index",
-        "benchmark_symbol": "^NSEI",
-        "board_score": 0.54,
-        "challenger_score": 0.67,
-        "continuity_bonus": 0.0,
-        "currently_held": false,
-        "diversification_score": 0.2,
-        "evidence_notes": {
-          "continuity": [],
-          "diversification": [
-            "adds a new regional sleeve"
-          ],
-          "fragility": [],
-          "implementation_priority": [],
-          "regime_alignment": [
-            "broad equity risk appetite is supportive",
-            "broader EM confirmation is supportive"
-          ]
-        },
-        "evidence_source": "candidate_evidence_artifact",
-        "exposure_id": "india_large_cap",
-        "fragility_penalty": 0.0,
-        "implementation_priority_score": 0.0,
-        "portfolio_sleeve": "India domestic growth / reform compounder",
-        "primary_proxy": "INDA",
-        "proxy_eligibility": {
-          "fundable_if_priced": true,
-          "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.",
-          "tier": "liquid_country_etf"
-        },
-        "public_index_name": "Nifty 50",
-        "publish": false,
-        "reason_code_if_not_published": "weak_relative_strength",
-        "regime_alignment_score": 0.33,
-        "region": "India",
-        "regional_group": "India",
-        "relative_strength_score": 0.14,
-        "score": 0.54,
-        "style": "large cap",
-        "weight_pct": null
-      },
-      {
-        "alternative_proxy": "STX40.JO",
-        "benchmark_name": "JSE Top 40 Index",
-        "benchmark_symbol": "^JTOPI",
-        "board_score": 0.46,
-        "challenger_score": 0.64,
-        "continuity_bonus": 0.0,
-        "currently_held": false,
-        "diversification_score": 0.28,
-        "evidence_notes": {
-          "continuity": [],
-          "diversification": [
-            "adds a new regional sleeve",
-            "adds a differentiated style bucket"
-          ],
-          "fragility": [],
-          "implementation_priority": [],
-          "regime_alignment": [
-            "broad equity risk appetite is supportive"
-          ]
-        },
-        "evidence_source": "candidate_evidence_artifact",
-        "exposure_id": "south_africa_large_cap",
-        "fragility_penalty": 0.0,
-        "implementation_priority_score": 0.0,
-        "portfolio_sleeve": "South Africa resources / EM value beta",
-        "primary_proxy": "EZA",
-        "proxy_eligibility": {
-          "fundable_if_priced": true,
-          "note": "Specialist country ETF proxy; review liquidity and spread before funding.",
-          "tier": "specialist_country_etf"
-        },
-        "public_index_name": "South Africa large cap",
-        "publish": false,
-        "reason_code_if_not_published": "weak_relative_strength",
-        "regime_alignment_score": 0.15,
-        "region": "South Africa",
-        "regional_group": "Africa",
-        "relative_strength_score": 0.21,
-        "score": 0.46,
-        "style": "large cap resources / financials",
         "weight_pct": null
       },
       {
         "alternative_proxy": "EXS1.DE",
         "benchmark_name": "DAX Index",
         "benchmark_symbol": "^GDAXI",
-        "board_score": 0.42,
-        "challenger_score": 0.6,
+        "board_score": 0.56,
+        "challenger_score": 0.74,
         "continuity_bonus": 0.0,
         "currently_held": false,
         "diversification_score": 0.28,
@@ -1138,9 +972,187 @@
         "regime_alignment_score": -0.15,
         "region": "Europe",
         "regional_group": "continental Europe",
-        "relative_strength_score": 0.62,
-        "score": 0.42,
+        "relative_strength_score": 0.76,
+        "score": 0.56,
         "style": "cyclical",
+        "weight_pct": null
+      },
+      {
+        "alternative_proxy": "BOVA11.SA",
+        "benchmark_name": "Bovespa Index",
+        "benchmark_symbol": "^BVSP",
+        "board_score": 0.53,
+        "challenger_score": 0.71,
+        "continuity_bonus": 0.0,
+        "currently_held": false,
+        "diversification_score": 0.28,
+        "evidence_notes": {
+          "continuity": [],
+          "diversification": [
+            "adds a new regional sleeve",
+            "adds a differentiated style bucket"
+          ],
+          "fragility": [],
+          "implementation_priority": [],
+          "regime_alignment": [
+            "broad equity risk appetite is supportive"
+          ]
+        },
+        "evidence_source": "candidate_evidence_artifact",
+        "exposure_id": "brazil_large_cap",
+        "fragility_penalty": 0.0,
+        "implementation_priority_score": 0.0,
+        "portfolio_sleeve": "Brazil commodity / rates-sensitive LatAm beta",
+        "primary_proxy": "EWZ",
+        "proxy_eligibility": {
+          "fundable_if_priced": true,
+          "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.",
+          "tier": "liquid_country_etf"
+        },
+        "public_index_name": "Brazil large cap",
+        "publish": false,
+        "reason_code_if_not_published": "weak_relative_strength",
+        "regime_alignment_score": 0.15,
+        "region": "Brazil",
+        "regional_group": "Latin America",
+        "relative_strength_score": 0.28,
+        "score": 0.53,
+        "style": "large cap commodity / financials",
+        "weight_pct": null
+      },
+      {
+        "alternative_proxy": "VGK",
+        "benchmark_name": "EURO STOXX 50 Index",
+        "benchmark_symbol": "^STOXX50E",
+        "board_score": 0.46,
+        "challenger_score": 0.59,
+        "continuity_bonus": 0.0,
+        "currently_held": false,
+        "diversification_score": 0.2,
+        "evidence_notes": {
+          "continuity": [],
+          "diversification": [
+            "adds a new regional sleeve"
+          ],
+          "fragility": [
+            "commodity pressure adds European fragility"
+          ],
+          "implementation_priority": [],
+          "regime_alignment": [
+            "broad equity risk appetite is supportive",
+            "Europe confirmation is fading",
+            "commodity pressure can challenge Europe"
+          ]
+        },
+        "evidence_source": "candidate_evidence_artifact",
+        "exposure_id": "europe_large_cap",
+        "fragility_penalty": 0.15,
+        "implementation_priority_score": 0.0,
+        "portfolio_sleeve": "Europe broad large-cap core",
+        "primary_proxy": "FEZ",
+        "proxy_eligibility": {
+          "fundable_if_priced": true,
+          "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.",
+          "tier": "liquid_country_etf"
+        },
+        "public_index_name": "Euro Stoxx 50",
+        "publish": false,
+        "reason_code_if_not_published": "weak_relative_strength",
+        "regime_alignment_score": -0.15,
+        "region": "Europe",
+        "regional_group": "continental Europe",
+        "relative_strength_score": 0.69,
+        "score": 0.46,
+        "style": "large cap",
+        "weight_pct": null
+      },
+      {
+        "alternative_proxy": "STX40.JO",
+        "benchmark_name": "JSE Top 40 Index",
+        "benchmark_symbol": "^JTOPI",
+        "board_score": 0.39,
+        "challenger_score": 0.57,
+        "continuity_bonus": 0.0,
+        "currently_held": false,
+        "diversification_score": 0.28,
+        "evidence_notes": {
+          "continuity": [],
+          "diversification": [
+            "adds a new regional sleeve",
+            "adds a differentiated style bucket"
+          ],
+          "fragility": [],
+          "implementation_priority": [],
+          "regime_alignment": [
+            "broad equity risk appetite is supportive"
+          ]
+        },
+        "evidence_source": "candidate_evidence_artifact",
+        "exposure_id": "south_africa_large_cap",
+        "fragility_penalty": 0.0,
+        "implementation_priority_score": 0.0,
+        "portfolio_sleeve": "South Africa resources / EM value beta",
+        "primary_proxy": "EZA",
+        "proxy_eligibility": {
+          "fundable_if_priced": true,
+          "note": "Specialist country ETF proxy; review liquidity and spread before funding.",
+          "tier": "specialist_country_etf"
+        },
+        "public_index_name": "South Africa large cap",
+        "publish": false,
+        "reason_code_if_not_published": "weak_relative_strength",
+        "regime_alignment_score": 0.15,
+        "region": "South Africa",
+        "regional_group": "Africa",
+        "relative_strength_score": 0.14,
+        "score": 0.39,
+        "style": "large cap resources / financials",
+        "weight_pct": null
+      },
+      {
+        "alternative_proxy": "2800.HK",
+        "benchmark_name": "Hang Seng Index",
+        "benchmark_symbol": "^HSI",
+        "board_score": 0.33,
+        "challenger_score": 0.46,
+        "continuity_bonus": 0.0,
+        "currently_held": false,
+        "diversification_score": 0.2,
+        "evidence_notes": {
+          "continuity": [],
+          "diversification": [
+            "adds a new regional sleeve"
+          ],
+          "fragility": [
+            "dollar strength is a fragility factor"
+          ],
+          "implementation_priority": [],
+          "regime_alignment": [
+            "broad equity risk appetite is supportive",
+            "broader EM confirmation is supportive",
+            "dollar pressure is a headwind"
+          ]
+        },
+        "evidence_source": "candidate_evidence_artifact",
+        "exposure_id": "hong_kong_equities",
+        "fragility_penalty": 0.3,
+        "implementation_priority_score": 0.0,
+        "portfolio_sleeve": "Hong Kong large-cap China-linked equities",
+        "primary_proxy": "EWH",
+        "proxy_eligibility": {
+          "fundable_if_priced": true,
+          "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.",
+          "tier": "liquid_country_etf"
+        },
+        "public_index_name": "Hang Seng",
+        "publish": false,
+        "reason_code_if_not_published": "weak_relative_strength",
+        "regime_alignment_score": 0.15,
+        "region": "Hong Kong",
+        "regional_group": "Greater China",
+        "relative_strength_score": 0.41,
+        "score": 0.33,
+        "style": "large cap",
         "weight_pct": null
       },
       {
@@ -1187,11 +1199,11 @@
         "weight_pct": null
       },
       {
-        "alternative_proxy": "VGK",
-        "benchmark_name": "EURO STOXX 50 Index",
-        "benchmark_symbol": "^STOXX50E",
-        "board_score": 0.32,
-        "challenger_score": 0.45,
+        "alternative_proxy": "INDY",
+        "benchmark_name": "Nifty 50 Index",
+        "benchmark_symbol": "^NSEI",
+        "board_score": 0.13,
+        "challenger_score": 0.26,
         "continuity_bonus": 0.0,
         "currently_held": false,
         "diversification_score": 0.2,
@@ -1201,34 +1213,34 @@
             "adds a new regional sleeve"
           ],
           "fragility": [
-            "commodity pressure adds European fragility"
+            "dollar strength is a fragility factor"
           ],
           "implementation_priority": [],
           "regime_alignment": [
             "broad equity risk appetite is supportive",
-            "Europe confirmation is fading",
-            "commodity pressure can challenge Europe"
+            "broader EM confirmation is supportive",
+            "dollar pressure is a headwind"
           ]
         },
         "evidence_source": "candidate_evidence_artifact",
-        "exposure_id": "europe_large_cap",
-        "fragility_penalty": 0.15,
+        "exposure_id": "india_large_cap",
+        "fragility_penalty": 0.3,
         "implementation_priority_score": 0.0,
-        "portfolio_sleeve": "Europe broad large-cap core",
-        "primary_proxy": "FEZ",
+        "portfolio_sleeve": "India domestic growth / reform compounder",
+        "primary_proxy": "INDA",
         "proxy_eligibility": {
           "fundable_if_priced": true,
           "note": "Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.",
           "tier": "liquid_country_etf"
         },
-        "public_index_name": "Euro Stoxx 50",
+        "public_index_name": "Nifty 50",
         "publish": false,
         "reason_code_if_not_published": "weak_relative_strength",
-        "regime_alignment_score": -0.15,
-        "region": "Europe",
-        "regional_group": "continental Europe",
-        "relative_strength_score": 0.55,
-        "score": 0.32,
+        "regime_alignment_score": 0.15,
+        "region": "India",
+        "regional_group": "India",
+        "relative_strength_score": 0.21,
+        "score": 0.13,
         "style": "large cap",
         "weight_pct": null
       },
@@ -1236,8 +1248,8 @@
         "alternative_proxy": "CAC.PA",
         "benchmark_name": "CAC 40 Index",
         "benchmark_symbol": "^FCHI",
-        "board_score": 0.05,
-        "challenger_score": 0.18,
+        "board_score": 0.11,
+        "challenger_score": 0.24,
         "continuity_bonus": 0.0,
         "currently_held": false,
         "diversification_score": 0.2,
@@ -1273,8 +1285,8 @@
         "regime_alignment_score": -0.15,
         "region": "Europe",
         "regional_group": "continental Europe",
-        "relative_strength_score": 0.28,
-        "score": 0.05,
+        "relative_strength_score": 0.34,
+        "score": 0.11,
         "style": "large cap",
         "weight_pct": null
       }
@@ -1289,8 +1301,8 @@
         "status": "surfaced",
         "strongest_candidate": {
           "benchmark_name": "Nasdaq 100 Index",
-          "board_score": 2.72,
-          "challenger_score": 1.92,
+          "board_score": 2.79,
+          "challenger_score": 1.99,
           "exposure_id": "us_tech_leadership",
           "portfolio_sleeve": "U.S. mega-cap growth leadership",
           "primary_proxy": "QQQ",
@@ -1302,7 +1314,7 @@
           "public_index_name": "Nasdaq 100",
           "publish": true,
           "reason_code_if_not_published": "",
-          "score": 2.72
+          "score": 2.79
         }
       },
       {
@@ -1333,12 +1345,12 @@
         "candidate_count": 6,
         "eligible_proxy_count": 6,
         "group": "continental Europe",
-        "reason_if_ruled_out": "score_below_relevance_threshold",
-        "status": "ruled_out",
+        "reason_if_ruled_out": "",
+        "status": "near_miss",
         "strongest_candidate": {
           "benchmark_name": "FTSE MIB Index",
-          "board_score": 1.15,
-          "challenger_score": 1.28,
+          "board_score": 1.29,
+          "challenger_score": 1.42,
           "exposure_id": "italy_large_cap",
           "portfolio_sleeve": "Italy high-beta Europe financial / industrial beta",
           "primary_proxy": "EWI",
@@ -1349,20 +1361,20 @@
           },
           "public_index_name": "FTSE MIB",
           "publish": false,
-          "reason_code_if_not_published": "fragile_macro_alignment",
-          "score": 1.15
+          "reason_code_if_not_published": "strong_challenger_not_published",
+          "score": 1.29
         }
       },
       {
         "candidate_count": 1,
         "eligible_proxy_count": 1,
         "group": "UK",
-        "reason_if_ruled_out": "score_below_relevance_threshold",
-        "status": "ruled_out",
+        "reason_if_ruled_out": "",
+        "status": "near_miss",
         "strongest_candidate": {
           "benchmark_name": "FTSE 100 Index",
-          "board_score": 1.03,
-          "challenger_score": 1.16,
+          "board_score": 0.89,
+          "challenger_score": 1.02,
           "exposure_id": "uk_large_cap",
           "portfolio_sleeve": "UK defensive yield / energy / financials",
           "primary_proxy": "EWU",
@@ -1373,20 +1385,20 @@
           },
           "public_index_name": "FTSE 100",
           "publish": false,
-          "reason_code_if_not_published": "weak_relative_strength",
-          "score": 1.03
+          "reason_code_if_not_published": "strong_challenger_not_published",
+          "score": 0.89
         }
       },
       {
         "candidate_count": 1,
         "eligible_proxy_count": 1,
         "group": "Switzerland",
-        "reason_if_ruled_out": "score_below_relevance_threshold",
-        "status": "ruled_out",
+        "reason_if_ruled_out": "",
+        "status": "near_miss",
         "strongest_candidate": {
           "benchmark_name": "Swiss Market Index",
-          "board_score": 0.89,
-          "challenger_score": 1.07,
+          "board_score": 1.1,
+          "challenger_score": 1.28,
           "exposure_id": "switzerland_large_cap",
           "portfolio_sleeve": "Switzerland defensive quality",
           "primary_proxy": "EWL",
@@ -1397,8 +1409,8 @@
           },
           "public_index_name": "SMI",
           "publish": false,
-          "reason_code_if_not_published": "weak_relative_strength",
-          "score": 0.89
+          "reason_code_if_not_published": "strong_challenger_not_published",
+          "score": 1.1
         }
       },
       {
@@ -1430,11 +1442,11 @@
         "eligible_proxy_count": 2,
         "group": "developed Asia-Pacific",
         "reason_if_ruled_out": "",
-        "status": "surfaced",
+        "status": "near_miss",
         "strongest_candidate": {
           "benchmark_name": "Nikkei 225 Index",
-          "board_score": 2.36,
-          "challenger_score": 2.49,
+          "board_score": 1.94,
+          "challenger_score": 2.07,
           "exposure_id": "japan_equities",
           "portfolio_sleeve": "Japan developed equity",
           "primary_proxy": "EWJ",
@@ -1444,9 +1456,9 @@
             "tier": "liquid_country_etf"
           },
           "public_index_name": "Nikkei 225",
-          "publish": true,
-          "reason_code_if_not_published": "",
-          "score": 2.36
+          "publish": false,
+          "reason_code_if_not_published": "strong_challenger_not_published",
+          "score": 1.94
         }
       },
       {
@@ -1454,7 +1466,7 @@
         "eligible_proxy_count": 2,
         "group": "Korea / Taiwan",
         "reason_if_ruled_out": "",
-        "status": "near_miss",
+        "status": "surfaced",
         "strongest_candidate": {
           "benchmark_name": "KOSPI 200 Index",
           "board_score": 2.25,
@@ -1468,8 +1480,8 @@
             "tier": "liquid_country_etf"
           },
           "public_index_name": "KOSPI 200 / Korea large cap",
-          "publish": false,
-          "reason_code_if_not_published": "strong_challenger_not_published",
+          "publish": true,
+          "reason_code_if_not_published": "",
           "score": 2.25
         }
       },
@@ -1481,8 +1493,8 @@
         "status": "near_miss",
         "strongest_candidate": {
           "benchmark_name": "CSI 300 Index",
-          "board_score": 1.85,
-          "challenger_score": 1.98,
+          "board_score": 1.23,
+          "challenger_score": 1.36,
           "exposure_id": "china_large_cap",
           "portfolio_sleeve": "Mainland China policy beta",
           "primary_proxy": "FXI",
@@ -1494,7 +1506,7 @@
           "public_index_name": "China large cap",
           "publish": false,
           "reason_code_if_not_published": "strong_challenger_not_published",
-          "score": 1.85
+          "score": 1.23
         }
       },
       {
@@ -1505,8 +1517,8 @@
         "status": "ruled_out",
         "strongest_candidate": {
           "benchmark_name": "Nifty 50 Index",
-          "board_score": 0.54,
-          "challenger_score": 0.67,
+          "board_score": 0.13,
+          "challenger_score": 0.26,
           "exposure_id": "india_large_cap",
           "portfolio_sleeve": "India domestic growth / reform compounder",
           "primary_proxy": "INDA",
@@ -1518,7 +1530,7 @@
           "public_index_name": "Nifty 50",
           "publish": false,
           "reason_code_if_not_published": "weak_relative_strength",
-          "score": 0.54
+          "score": 0.13
         }
       },
       {
@@ -1529,8 +1541,8 @@
         "status": "near_miss",
         "strongest_candidate": {
           "benchmark_name": "S&P/BMV IPC Index",
-          "board_score": 1.35,
-          "challenger_score": 1.53,
+          "board_score": 1.08,
+          "challenger_score": 1.26,
           "exposure_id": "mexico_large_cap",
           "portfolio_sleeve": "Mexico nearshoring / industrial beta",
           "primary_proxy": "EWW",
@@ -1542,7 +1554,7 @@
           "public_index_name": "Mexico large cap",
           "publish": false,
           "reason_code_if_not_published": "strong_challenger_not_published",
-          "score": 1.35
+          "score": 1.08
         }
       },
       {
@@ -1553,8 +1565,8 @@
         "status": "ruled_out",
         "strongest_candidate": {
           "benchmark_name": "JSE Top 40 Index",
-          "board_score": 0.46,
-          "challenger_score": 0.64,
+          "board_score": 0.39,
+          "challenger_score": 0.57,
           "exposure_id": "south_africa_large_cap",
           "portfolio_sleeve": "South Africa resources / EM value beta",
           "primary_proxy": "EZA",
@@ -1566,7 +1578,7 @@
           "public_index_name": "South Africa large cap",
           "publish": false,
           "reason_code_if_not_published": "weak_relative_strength",
-          "score": 0.46
+          "score": 0.39
         }
       },
       {
@@ -1597,12 +1609,12 @@
         "candidate_count": 1,
         "eligible_proxy_count": 1,
         "group": "Middle East",
-        "reason_if_ruled_out": "score_below_relevance_threshold",
-        "status": "ruled_out",
+        "reason_if_ruled_out": "",
+        "status": "near_miss",
         "strongest_candidate": {
           "benchmark_name": "Tadawul All Share Index",
-          "board_score": 0.73,
-          "challenger_score": 0.91,
+          "board_score": 0.8,
+          "challenger_score": 0.98,
           "exposure_id": "saudi_large_cap",
           "portfolio_sleeve": "Saudi Arabia energy / Gulf reform beta",
           "primary_proxy": "KSA",
@@ -1613,8 +1625,8 @@
           },
           "public_index_name": "Saudi Arabia large cap",
           "publish": false,
-          "reason_code_if_not_published": "weak_relative_strength",
-          "score": 0.73
+          "reason_code_if_not_published": "strong_challenger_not_published",
+          "score": 0.8
         }
       },
       {
@@ -1625,8 +1637,8 @@
         "status": "surfaced",
         "strongest_candidate": {
           "benchmark_name": "Emerging Markets Proxy Benchmark",
-          "board_score": 2.76,
-          "challenger_score": 2.11,
+          "board_score": 2.14,
+          "challenger_score": 1.49,
           "exposure_id": "em_broad",
           "portfolio_sleeve": "Broad emerging-market equity",
           "primary_proxy": "EEM",
@@ -1638,13 +1650,13 @@
           "public_index_name": "Emerging Markets",
           "publish": true,
           "reason_code_if_not_published": "",
-          "score": 2.76
+          "score": 2.14
         }
       }
     ],
     "report_date_token": "260512",
     "report_file": "weekly_indices_review_260512.md",
-    "requested_close_date": "2026-05-12",
+    "requested_close_date": "2026-05-15",
     "scan_summary": {
       "compact_board_limit": 5,
       "coverage_universe_count": 29,
@@ -1664,8 +1676,8 @@
         "status": "surfaced",
         "strongest_candidate": {
           "benchmark_name": "Nasdaq 100 Index",
-          "board_score": 2.72,
-          "challenger_score": 1.92,
+          "board_score": 2.79,
+          "challenger_score": 1.99,
           "exposure_id": "us_tech_leadership",
           "portfolio_sleeve": "U.S. mega-cap growth leadership",
           "primary_proxy": "QQQ",
@@ -1677,7 +1689,7 @@
           "public_index_name": "Nasdaq 100",
           "publish": true,
           "reason_code_if_not_published": "",
-          "score": 2.72
+          "score": 2.79
         }
       },
       {
@@ -1708,12 +1720,12 @@
         "candidate_count": 6,
         "eligible_proxy_count": 6,
         "group": "continental Europe",
-        "reason_if_ruled_out": "score_below_relevance_threshold",
-        "status": "ruled_out",
+        "reason_if_ruled_out": "",
+        "status": "near_miss",
         "strongest_candidate": {
           "benchmark_name": "FTSE MIB Index",
-          "board_score": 1.15,
-          "challenger_score": 1.28,
+          "board_score": 1.29,
+          "challenger_score": 1.42,
           "exposure_id": "italy_large_cap",
           "portfolio_sleeve": "Italy high-beta Europe financial / industrial beta",
           "primary_proxy": "EWI",
@@ -1724,20 +1736,20 @@
           },
           "public_index_name": "FTSE MIB",
           "publish": false,
-          "reason_code_if_not_published": "fragile_macro_alignment",
-          "score": 1.15
+          "reason_code_if_not_published": "strong_challenger_not_published",
+          "score": 1.29
         }
       },
       {
         "candidate_count": 1,
         "eligible_proxy_count": 1,
         "group": "UK",
-        "reason_if_ruled_out": "score_below_relevance_threshold",
-        "status": "ruled_out",
+        "reason_if_ruled_out": "",
+        "status": "near_miss",
         "strongest_candidate": {
           "benchmark_name": "FTSE 100 Index",
-          "board_score": 1.03,
-          "challenger_score": 1.16,
+          "board_score": 0.89,
+          "challenger_score": 1.02,
           "exposure_id": "uk_large_cap",
           "portfolio_sleeve": "UK defensive yield / energy / financials",
           "primary_proxy": "EWU",
@@ -1748,20 +1760,20 @@
           },
           "public_index_name": "FTSE 100",
           "publish": false,
-          "reason_code_if_not_published": "weak_relative_strength",
-          "score": 1.03
+          "reason_code_if_not_published": "strong_challenger_not_published",
+          "score": 0.89
         }
       },
       {
         "candidate_count": 1,
         "eligible_proxy_count": 1,
         "group": "Switzerland",
-        "reason_if_ruled_out": "score_below_relevance_threshold",
-        "status": "ruled_out",
+        "reason_if_ruled_out": "",
+        "status": "near_miss",
         "strongest_candidate": {
           "benchmark_name": "Swiss Market Index",
-          "board_score": 0.89,
-          "challenger_score": 1.07,
+          "board_score": 1.1,
+          "challenger_score": 1.28,
           "exposure_id": "switzerland_large_cap",
           "portfolio_sleeve": "Switzerland defensive quality",
           "primary_proxy": "EWL",
@@ -1772,8 +1784,8 @@
           },
           "public_index_name": "SMI",
           "publish": false,
-          "reason_code_if_not_published": "weak_relative_strength",
-          "score": 0.89
+          "reason_code_if_not_published": "strong_challenger_not_published",
+          "score": 1.1
         }
       },
       {
@@ -1805,11 +1817,11 @@
         "eligible_proxy_count": 2,
         "group": "developed Asia-Pacific",
         "reason_if_ruled_out": "",
-        "status": "surfaced",
+        "status": "near_miss",
         "strongest_candidate": {
           "benchmark_name": "Nikkei 225 Index",
-          "board_score": 2.36,
-          "challenger_score": 2.49,
+          "board_score": 1.94,
+          "challenger_score": 2.07,
           "exposure_id": "japan_equities",
           "portfolio_sleeve": "Japan developed equity",
           "primary_proxy": "EWJ",
@@ -1819,9 +1831,9 @@
             "tier": "liquid_country_etf"
           },
           "public_index_name": "Nikkei 225",
-          "publish": true,
-          "reason_code_if_not_published": "",
-          "score": 2.36
+          "publish": false,
+          "reason_code_if_not_published": "strong_challenger_not_published",
+          "score": 1.94
         }
       },
       {
@@ -1829,7 +1841,7 @@
         "eligible_proxy_count": 2,
         "group": "Korea / Taiwan",
         "reason_if_ruled_out": "",
-        "status": "near_miss",
+        "status": "surfaced",
         "strongest_candidate": {
           "benchmark_name": "KOSPI 200 Index",
           "board_score": 2.25,
@@ -1843,8 +1855,8 @@
             "tier": "liquid_country_etf"
           },
           "public_index_name": "KOSPI 200 / Korea large cap",
-          "publish": false,
-          "reason_code_if_not_published": "strong_challenger_not_published",
+          "publish": true,
+          "reason_code_if_not_published": "",
           "score": 2.25
         }
       },
@@ -1856,8 +1868,8 @@
         "status": "near_miss",
         "strongest_candidate": {
           "benchmark_name": "CSI 300 Index",
-          "board_score": 1.85,
-          "challenger_score": 1.98,
+          "board_score": 1.23,
+          "challenger_score": 1.36,
           "exposure_id": "china_large_cap",
           "portfolio_sleeve": "Mainland China policy beta",
           "primary_proxy": "FXI",
@@ -1869,7 +1881,7 @@
           "public_index_name": "China large cap",
           "publish": false,
           "reason_code_if_not_published": "strong_challenger_not_published",
-          "score": 1.85
+          "score": 1.23
         }
       },
       {
@@ -1880,8 +1892,8 @@
         "status": "ruled_out",
         "strongest_candidate": {
           "benchmark_name": "Nifty 50 Index",
-          "board_score": 0.54,
-          "challenger_score": 0.67,
+          "board_score": 0.13,
+          "challenger_score": 0.26,
           "exposure_id": "india_large_cap",
           "portfolio_sleeve": "India domestic growth / reform compounder",
           "primary_proxy": "INDA",
@@ -1893,7 +1905,7 @@
           "public_index_name": "Nifty 50",
           "publish": false,
           "reason_code_if_not_published": "weak_relative_strength",
-          "score": 0.54
+          "score": 0.13
         }
       },
       {
@@ -1904,8 +1916,8 @@
         "status": "near_miss",
         "strongest_candidate": {
           "benchmark_name": "S&P/BMV IPC Index",
-          "board_score": 1.35,
-          "challenger_score": 1.53,
+          "board_score": 1.08,
+          "challenger_score": 1.26,
           "exposure_id": "mexico_large_cap",
           "portfolio_sleeve": "Mexico nearshoring / industrial beta",
           "primary_proxy": "EWW",
@@ -1917,7 +1929,7 @@
           "public_index_name": "Mexico large cap",
           "publish": false,
           "reason_code_if_not_published": "strong_challenger_not_published",
-          "score": 1.35
+          "score": 1.08
         }
       },
       {
@@ -1928,8 +1940,8 @@
         "status": "ruled_out",
         "strongest_candidate": {
           "benchmark_name": "JSE Top 40 Index",
-          "board_score": 0.46,
-          "challenger_score": 0.64,
+          "board_score": 0.39,
+          "challenger_score": 0.57,
           "exposure_id": "south_africa_large_cap",
           "portfolio_sleeve": "South Africa resources / EM value beta",
           "primary_proxy": "EZA",
@@ -1941,7 +1953,7 @@
           "public_index_name": "South Africa large cap",
           "publish": false,
           "reason_code_if_not_published": "weak_relative_strength",
-          "score": 0.46
+          "score": 0.39
         }
       },
       {
@@ -1972,12 +1984,12 @@
         "candidate_count": 1,
         "eligible_proxy_count": 1,
         "group": "Middle East",
-        "reason_if_ruled_out": "score_below_relevance_threshold",
-        "status": "ruled_out",
+        "reason_if_ruled_out": "",
+        "status": "near_miss",
         "strongest_candidate": {
           "benchmark_name": "Tadawul All Share Index",
-          "board_score": 0.73,
-          "challenger_score": 0.91,
+          "board_score": 0.8,
+          "challenger_score": 0.98,
           "exposure_id": "saudi_large_cap",
           "portfolio_sleeve": "Saudi Arabia energy / Gulf reform beta",
           "primary_proxy": "KSA",
@@ -1988,8 +2000,8 @@
           },
           "public_index_name": "Saudi Arabia large cap",
           "publish": false,
-          "reason_code_if_not_published": "weak_relative_strength",
-          "score": 0.73
+          "reason_code_if_not_published": "strong_challenger_not_published",
+          "score": 0.8
         }
       },
       {
@@ -2000,8 +2012,8 @@
         "status": "surfaced",
         "strongest_candidate": {
           "benchmark_name": "Emerging Markets Proxy Benchmark",
-          "board_score": 2.76,
-          "challenger_score": 2.11,
+          "board_score": 2.14,
+          "challenger_score": 1.49,
           "exposure_id": "em_broad",
           "portfolio_sleeve": "Broad emerging-market equity",
           "primary_proxy": "EEM",
@@ -2013,13 +2025,13 @@
           "public_index_name": "Emerging Markets",
           "publish": true,
           "reason_code_if_not_published": "",
-          "score": 2.76
+          "score": 2.14
         }
       }
     ],
     "report_date_token": "260512",
     "report_file": "weekly_indices_review_260512.md",
-    "requested_close_date": "2026-05-12",
+    "requested_close_date": "2026-05-15",
     "scan_summary": {
       "compact_board_limit": 5,
       "coverage_universe_count": 29,
@@ -2028,7 +2040,7 @@
       "rule": "Broad scan universe first; compact board second. Candidates require proxy eligibility, pricing, regime fit and relative-strength evidence before funding."
     }
   },
-  "generated_at_utc": "2026-05-13T11:21:31.892863Z",
+  "generated_at_utc": "2026-05-17T07:38:15.647863Z",
   "macro_policy_pack": {
     "central_banks": {
       "boe": {
@@ -2069,8 +2081,8 @@
     },
     "defensive_inverse_adjustments": {
       "EUM": {
-        "readiness": "inactive",
-        "reason": "Dollar pressure is not strong enough to activate EM inverse readiness.",
+        "readiness": "watchlist",
+        "reason": "Dollar pressure is a headwind for EM.",
         "underlying": "EEM / Emerging Markets"
       },
       "PSQ": {
@@ -2084,10 +2096,10 @@
         "underlying": "IWM / Russell 2000"
       }
     },
-    "generated_at_utc": "2026-05-13T11:21:31.712864Z",
+    "generated_at_utc": "2026-05-17T07:38:15.445532Z",
     "geopolitical_regime": {
-      "confidence": 0.6,
-      "current": "Rates and energy-sensitive geopolitical risk",
+      "confidence": 0.62,
+      "current": "Elevated USD / policy-friction risk",
       "main_channels": [
         "energy",
         "defense spending",
@@ -2095,21 +2107,21 @@
         "USD liquidity",
         "supply-chain concentration"
       ],
-      "portfolio_implication": "Treat oil, rates and defense/geopolitical shocks as risk filters for small caps, EM and Europe.",
+      "portfolio_implication": "Keep EM, China, Korea/Taiwan and commodity-sensitive regions on a higher evidence hurdle until USD pressure eases.",
       "transfer_to_report": true
     },
     "long_lane_adjustments": {
       "australia_large_cap": {
         "reason": "Australia is commodity and China-sensitive; require confirmation when USD or China stress rises.",
-        "score_adjustment": 0.03
+        "score_adjustment": -0.03
       },
       "brazil_large_cap": {
         "reason": "Brazil needs commodity support and a friendlier dollar backdrop before promotion.",
-        "score_adjustment": 0.02
+        "score_adjustment": -0.04
       },
       "em_broad": {
-        "reason": "A weaker dollar backdrop would improve EM timing.",
-        "score_adjustment": 0.05
+        "reason": "Dollar pressure keeps EM broad under a higher evidence hurdle.",
+        "score_adjustment": -0.1
       },
       "europe_large_cap": {
         "reason": "Europe remains a diversification candidate, but price confirmation is still required.",
@@ -2117,7 +2129,7 @@
       },
       "indonesia_large_cap": {
         "reason": "Indonesia adds ASEAN domestic-demand beta but remains liquidity and USD-sensitive.",
-        "score_adjustment": 0.02
+        "score_adjustment": -0.02
       },
       "japan_equities": {
         "reason": "Japan remains a valid non-U.S. developed diversification lane, subject to currency/yield volatility.",
@@ -2166,17 +2178,17 @@
     },
     "macro_signals": {
       "credit": {
-        "hyg_20d_pct": -0.78
+        "hyg_20d_pct": -1.48
       },
       "duration": {
-        "tlt_20d_pct": -2.55
+        "tlt_20d_pct": -3.92
       },
       "equity_breadth": {
-        "iwm_vs_spy_20d_pct": -1.14,
-        "qqq_vs_spy_20d_pct": 6.21
+        "iwm_vs_spy_20d_pct": -3.43,
+        "qqq_vs_spy_20d_pct": 5.17
       },
       "usd": {
-        "uup_20d_pct": 0.48
+        "uup_20d_pct": 1.5
       }
     },
     "portfolio_implications": [
@@ -2207,7 +2219,7 @@
       "US": "Leadership is investable but concentration must be explicit.",
       "US factors": "Equal weight, quality, minimum volatility and value should be used to test breadth and factor rotation without adding new region risk."
     },
-    "report_date": "2026-05-12",
+    "report_date": "2026-05-15",
     "report_digest": {
       "central_bank_focus": "Fed real-rate risk remains the key policy filter for small caps, EM and speculative beta.",
       "decision_implications": [
@@ -2215,7 +2227,7 @@
         "Keep IWM and EM funding conditional on breadth, dollar and real-rate improvement.",
         "Keep defensive / inverse candidates separate from the long-side opportunity board."
       ],
-      "geopolitical_focus": "Treat oil, rates and defense/geopolitical shocks as risk filters for small caps, EM and Europe.",
+      "geopolitical_focus": "Keep EM, China, Korea/Taiwan and commodity-sensitive regions on a higher evidence hurdle until USD pressure eases.",
       "headline": "Risk-on narrow US mega-cap leadership: stay selective and separate long opportunities from defensive / inverse readiness.",
       "risk_watch": "A stronger USD or renewed rate repricing would raise the hurdle for EM, small caps and non-U.S. cyclicals.",
       "top_changes": [
@@ -2238,142 +2250,142 @@
   },
   "macro_snapshot": {
     "market_signals": {
-      "breadth_confirmation": "mixed",
+      "breadth_confirmation": "headwind",
       "commodity_pressure": "supportive",
-      "credit_support": "mixed",
-      "dollar_pressure": "mixed",
+      "credit_support": "headwind",
+      "dollar_pressure": "supportive",
       "duration_support": "headwind",
       "em_confirmation": "supportive",
       "equity_risk_appetite": "supportive",
       "europe_confirmation": "headwind",
       "growth_leadership": "supportive",
-      "japan_confirmation": "supportive"
+      "japan_confirmation": "mixed"
     },
     "notes": [
       "This snapshot is market-derived and should support, not replace, final macro and geopolitical judgment.",
       "Phase 1.1 pins all market-derived research to the same resolved requested close date as the pricing pass."
     ],
-    "requested_close_date": "2026-05-12",
-    "risk_on_score": 0.9,
+    "requested_close_date": "2026-05-15",
+    "risk_on_score": -0.05,
     "series": {
       "DBC": {
         "currency": "USD",
         "label": "commodity pressure",
-        "latest_close": 31.690001,
-        "requested_close_date": "2026-05-12",
-        "return_20d": 0.098821,
-        "return_60d": 0.327052,
-        "selected_data_date": "2026-05-12",
+        "latest_close": 31.190001,
+        "requested_close_date": "2026-05-15",
+        "return_20d": 0.10251,
+        "return_60d": 0.276709,
+        "selected_data_date": "2026-05-15",
         "source": "yahoo_chart",
         "symbol": "DBC"
       },
       "EEM": {
         "currency": "USD",
         "label": "EM confirmation",
-        "latest_close": 65.82,
-        "requested_close_date": "2026-05-12",
-        "return_20d": 0.057519,
-        "return_60d": 0.076898,
-        "selected_data_date": "2026-05-12",
+        "latest_close": 65.07,
+        "requested_close_date": "2026-05-15",
+        "return_20d": 0.02247,
+        "return_60d": 0.066022,
+        "selected_data_date": "2026-05-15",
         "source": "yahoo_chart",
         "symbol": "EEM"
       },
       "EWJ": {
         "currency": "USD",
         "label": "Japan confirmation",
-        "latest_close": 92.059998,
-        "requested_close_date": "2026-05-12",
-        "return_20d": 0.029639,
-        "return_60d": -0.019073,
-        "selected_data_date": "2026-05-12",
+        "latest_close": 91.07,
+        "requested_close_date": "2026-05-15",
+        "return_20d": 0.009757,
+        "return_60d": -0.001425,
+        "selected_data_date": "2026-05-15",
         "source": "yahoo_chart",
         "symbol": "EWJ"
       },
       "FEZ": {
         "currency": "USD",
         "label": "continental Europe confirmation",
-        "latest_close": 65.959999,
-        "requested_close_date": "2026-05-12",
-        "return_20d": -0.017429,
-        "return_60d": -0.023394,
-        "selected_data_date": "2026-05-12",
+        "latest_close": 64.949997,
+        "requested_close_date": "2026-05-15",
+        "return_20d": -0.039343,
+        "return_60d": -0.041753,
+        "selected_data_date": "2026-05-15",
         "source": "yahoo_chart",
         "symbol": "FEZ"
       },
       "GLD": {
         "currency": "USD",
         "label": "defensive inflation hedge",
-        "latest_close": 432.929993,
-        "requested_close_date": "2026-05-12",
-        "return_20d": -0.02732,
-        "return_60d": -0.064178,
-        "selected_data_date": "2026-05-12",
+        "latest_close": 417.290009,
+        "requested_close_date": "2026-05-15",
+        "return_20d": -0.064225,
+        "return_60d": -0.091979,
+        "selected_data_date": "2026-05-15",
         "source": "yahoo_chart",
         "symbol": "GLD"
       },
       "HYG": {
         "currency": "USD",
         "label": "credit support",
-        "latest_close": 79.870003,
-        "requested_close_date": "2026-05-12",
-        "return_20d": -0.007826,
-        "return_60d": -0.012121,
-        "selected_data_date": "2026-05-12",
+        "latest_close": 79.459999,
+        "requested_close_date": "2026-05-15",
+        "return_20d": -0.014755,
+        "return_60d": -0.018285,
+        "selected_data_date": "2026-05-15",
         "source": "yahoo_chart",
         "symbol": "HYG"
       },
       "IWM": {
         "currency": "USD",
         "label": "small-cap breadth",
-        "latest_close": 282.570007,
-        "requested_close_date": "2026-05-12",
-        "return_20d": 0.051541,
-        "return_60d": 0.074574,
-        "selected_data_date": "2026-05-12",
+        "latest_close": 277.600006,
+        "requested_close_date": "2026-05-15",
+        "return_20d": 0.006599,
+        "return_60d": 0.049131,
+        "selected_data_date": "2026-05-15",
         "source": "yahoo_chart",
         "symbol": "IWM"
       },
       "QQQ": {
         "currency": "USD",
         "label": "growth leadership",
-        "latest_close": 707.23999,
-        "requested_close_date": "2026-05-12",
-        "return_20d": 0.125103,
-        "return_60d": 0.174973,
-        "selected_data_date": "2026-05-12",
+        "latest_close": 708.929993,
+        "requested_close_date": "2026-05-15",
+        "return_20d": 0.092595,
+        "return_60d": 0.174756,
+        "selected_data_date": "2026-05-15",
         "source": "yahoo_chart",
         "symbol": "QQQ"
       },
       "SPY": {
         "currency": "USD",
         "label": "U.S. large-cap risk appetite",
-        "latest_close": 738.179993,
-        "requested_close_date": "2026-05-12",
-        "return_20d": 0.062955,
-        "return_60d": 0.082772,
-        "selected_data_date": "2026-05-12",
+        "latest_close": 739.169983,
+        "requested_close_date": "2026-05-15",
+        "return_20d": 0.040879,
+        "return_60d": 0.0799,
+        "selected_data_date": "2026-05-15",
         "source": "yahoo_chart",
         "symbol": "SPY"
       },
       "TLT": {
         "currency": "USD",
         "label": "duration support",
-        "latest_close": 84.989998,
-        "requested_close_date": "2026-05-12",
-        "return_20d": -0.025456,
-        "return_60d": -0.05272,
-        "selected_data_date": "2026-05-12",
+        "latest_close": 83.660004,
+        "requested_close_date": "2026-05-15",
+        "return_20d": -0.039164,
+        "return_60d": -0.066503,
+        "selected_data_date": "2026-05-15",
         "source": "yahoo_chart",
         "symbol": "TLT"
       },
       "UUP": {
         "currency": "USD",
         "label": "dollar pressure",
-        "latest_close": 27.450001,
-        "requested_close_date": "2026-05-12",
-        "return_20d": 0.004758,
-        "return_60d": 0.02349,
-        "selected_data_date": "2026-05-12",
+        "latest_close": 27.77,
+        "requested_close_date": "2026-05-15",
+        "return_20d": 0.014985,
+        "return_60d": 0.023968,
+        "selected_data_date": "2026-05-15",
         "source": "yahoo_chart",
         "symbol": "UUP"
       }
@@ -2391,7 +2403,7 @@
       "max_position_size_pct": 25.0,
       "max_positions": 8
     },
-    "total_portfolio_value_eur": 111151.27
+    "total_portfolio_value_eur": 111578.74
   },
   "positions": [
     {
@@ -2399,27 +2411,27 @@
       "avg_entry_proxy": 659.82,
       "benchmark_name": "S&P 500 Index",
       "benchmark_symbol": "^GSPC",
-      "contribution_pct": 2.64,
+      "contribution_pct": 2.69,
       "current_status": "hold",
       "direction": "long",
       "display_name": "S&P 500",
       "exposure_id": "us_large_cap",
-      "latest_benchmark_close": 7400.96,
-      "latest_proxy_close": 738.18,
-      "market_value_eur": 27670.74,
-      "market_value_local": 32479.92,
+      "latest_benchmark_close": 7408.5,
+      "latest_proxy_close": 739.17,
+      "market_value_eur": 27969.97,
+      "market_value_local": 32523.48,
       "original_thesis": "Core U.S. large-cap anchor in a mixed regime",
       "performance": {
-        "as_of": "2026-05-12",
-        "contribution_pct": 2.64,
-        "latest_close": 738.18,
-        "one_month_return_pct": 8.64,
-        "one_week_return_pct": 1.99,
-        "pnl_eur": 2937.33,
-        "pnl_local": 3447.84,
+        "as_of": "2026-05-15",
+        "contribution_pct": 2.69,
+        "latest_close": 739.17,
+        "one_month_return_pct": 5.6,
+        "one_week_return_pct": 0.21,
+        "pnl_eur": 3002.58,
+        "pnl_local": 3491.4,
         "proxy": "SPY",
-        "since_entry_return_pct": 11.88,
-        "three_month_return_pct": 6.68
+        "since_entry_return_pct": 12.03,
+        "three_month_return_pct": 8.42
       },
       "primary_proxy": "SPY",
       "proxy_currency": "USD",
@@ -2427,34 +2439,34 @@
       "role": "core beta",
       "shares": 44,
       "style": "large cap",
-      "weight_pct": 24.89
+      "weight_pct": 25.07
     },
     {
       "alternative_proxy": "QQQM",
       "avg_entry_proxy": 611.07,
       "benchmark_name": "Nasdaq 100 Index",
       "benchmark_symbol": "^NDX",
-      "contribution_pct": 3.54,
+      "contribution_pct": 3.62,
       "current_status": "hold",
       "direction": "long",
       "display_name": "Nasdaq 100",
       "exposure_id": "us_tech_leadership",
-      "latest_benchmark_close": 29064.8008,
-      "latest_proxy_close": 707.24,
-      "market_value_eur": 28921.04,
-      "market_value_local": 33947.52,
+      "latest_benchmark_close": 29125.1992,
+      "latest_proxy_close": 708.93,
+      "market_value_eur": 29264.4,
+      "market_value_local": 34028.64,
       "original_thesis": "Technology leadership remains the best growth engine",
       "performance": {
-        "as_of": "2026-05-12",
-        "contribution_pct": 3.54,
-        "latest_close": 707.24,
-        "one_month_return_pct": 15.74,
-        "one_week_return_pct": 3.76,
-        "pnl_eur": 3932.66,
-        "pnl_local": 4616.16,
+        "as_of": "2026-05-15",
+        "contribution_pct": 3.62,
+        "latest_close": 708.93,
+        "one_month_return_pct": 11.22,
+        "one_week_return_pct": -0.32,
+        "pnl_eur": 4039.63,
+        "pnl_local": 4697.28,
         "proxy": "QQQ",
-        "since_entry_return_pct": 15.74,
-        "three_month_return_pct": 15.35
+        "since_entry_return_pct": 16.01,
+        "three_month_return_pct": 17.78
       },
       "primary_proxy": "QQQ",
       "proxy_currency": "USD",
@@ -2462,34 +2474,34 @@
       "role": "growth engine",
       "shares": 48,
       "style": "large-cap growth",
-      "weight_pct": 26.02
+      "weight_pct": 26.23
     },
     {
       "alternative_proxy": "VTWO",
       "avg_entry_proxy": 261.76,
       "benchmark_name": "Russell 2000 Index",
       "benchmark_symbol": "^RUT",
-      "contribution_pct": 1.44,
+      "contribution_pct": 1.1,
       "current_status": "hold",
       "direction": "long",
       "display_name": "Russell 2000",
       "exposure_id": "us_small_cap",
-      "latest_benchmark_close": 2842.8301,
-      "latest_proxy_close": 282.57,
-      "market_value_eur": 21665.79,
-      "market_value_local": 25431.3,
+      "latest_benchmark_close": 2793.3,
+      "latest_proxy_close": 277.6,
+      "market_value_eur": 21486.07,
+      "market_value_local": 24984.0,
       "original_thesis": "Small-cap breadth diversifier",
       "performance": {
-        "as_of": "2026-05-12",
-        "contribution_pct": 1.44,
-        "latest_close": 282.57,
-        "one_month_return_pct": 8.14,
-        "one_week_return_pct": 0.0,
-        "pnl_eur": 1595.59,
-        "pnl_local": 1872.9,
+        "as_of": "2026-05-15",
+        "contribution_pct": 1.1,
+        "latest_close": 277.6,
+        "one_month_return_pct": 3.05,
+        "one_week_return_pct": -2.31,
+        "pnl_eur": 1226.01,
+        "pnl_local": 1425.6,
         "proxy": "IWM",
-        "since_entry_return_pct": 7.95,
-        "three_month_return_pct": 6.65
+        "since_entry_return_pct": 6.05,
+        "three_month_return_pct": 5.57
       },
       "primary_proxy": "IWM",
       "proxy_currency": "USD",
@@ -2497,34 +2509,34 @@
       "role": "breadth diversifier",
       "shares": 90,
       "style": "small cap",
-      "weight_pct": 19.49
+      "weight_pct": 19.26
     },
     {
       "alternative_proxy": "VWO",
       "avg_entry_proxy": 57.23,
       "benchmark_name": "Emerging Markets Proxy Benchmark",
       "benchmark_symbol": "EEM",
-      "contribution_pct": 2.03,
+      "contribution_pct": 1.87,
       "current_status": "hold",
       "direction": "long",
       "display_name": "Emerging Markets",
       "exposure_id": "em_broad",
-      "latest_benchmark_close": 65.82,
-      "latest_proxy_close": 65.82,
-      "market_value_eur": 17326.96,
-      "market_value_local": 20338.38,
+      "latest_benchmark_close": 65.07,
+      "latest_proxy_close": 65.07,
+      "market_value_eur": 17291.56,
+      "market_value_local": 20106.63,
       "original_thesis": "Measured non-U.S. risk sleeve",
       "performance": {
-        "as_of": "2026-05-12",
-        "contribution_pct": 2.03,
-        "latest_close": 65.82,
-        "one_month_return_pct": 8.69,
-        "one_week_return_pct": 0.64,
-        "pnl_eur": 2261.3,
-        "pnl_local": 2654.31,
+        "as_of": "2026-05-15",
+        "contribution_pct": 1.87,
+        "latest_close": 65.07,
+        "one_month_return_pct": 4.61,
+        "one_week_return_pct": -4.22,
+        "pnl_eur": 2083.38,
+        "pnl_local": 2422.56,
         "proxy": "EEM",
-        "since_entry_return_pct": 15.01,
-        "three_month_return_pct": 6.92
+        "since_entry_return_pct": 13.7,
+        "three_month_return_pct": 6.46
       },
       "primary_proxy": "EEM",
       "proxy_currency": "USD",
@@ -2532,7 +2544,7 @@
       "role": "non-U.S. risk sleeve",
       "shares": 309,
       "style": "broad equity",
-      "weight_pct": 15.59
+      "weight_pct": 15.5
     }
   ],
   "pricing_audit": {
@@ -2543,11 +2555,11 @@
     "decision": "update_covered_holdings_carry_unresolved",
     "fresh_count_pct": 100.0,
     "fresh_holdings_count": 4,
-    "fresh_invested_weight_coverage_pct": 85.99,
+    "fresh_invested_weight_coverage_pct": 86.05,
     "fx_basis": {
-      "date": "2026-05-12",
+      "date": "2026-05-15",
       "source": "ecb_reference",
-      "usd_per_eur": 1.1738
+      "usd_per_eur": 1.1628
     },
     "holdings_count": 4,
     "positions": [
@@ -2555,38 +2567,38 @@
         "benchmark_attempts": [
           {
             "provider": "yahoo_chart",
-            "selected_date": "2026-05-12",
+            "selected_date": "2026-05-15",
             "status": "ok"
           }
         ],
-        "benchmark_close": 7400.96,
+        "benchmark_close": 7408.5,
         "benchmark_source": "yahoo_chart",
         "benchmark_status": "fresh_close",
         "benchmark_symbol": "^GSPC",
         "display_name": "S&P 500",
         "exposure_id": "us_large_cap",
-        "market_value_eur": 27670.74,
+        "market_value_eur": 27969.97,
         "performance": {
-          "as_of": "2026-05-12",
-          "contribution_pct": 2.64,
-          "latest_close": 738.18,
-          "one_month_return_pct": 8.64,
-          "one_week_return_pct": 1.99,
-          "pnl_eur": 2937.33,
-          "pnl_local": 3447.84,
+          "as_of": "2026-05-15",
+          "contribution_pct": 2.69,
+          "latest_close": 739.17,
+          "one_month_return_pct": 5.6,
+          "one_week_return_pct": 0.21,
+          "pnl_eur": 3002.58,
+          "pnl_local": 3491.4,
           "proxy": "SPY",
-          "since_entry_return_pct": 11.88,
-          "three_month_return_pct": 6.68
+          "since_entry_return_pct": 12.03,
+          "three_month_return_pct": 8.42
         },
         "primary_proxy": "SPY",
         "proxy_attempts": [
           {
             "provider": "yahoo_chart",
-            "selected_date": "2026-05-12",
+            "selected_date": "2026-05-15",
             "status": "ok"
           }
         ],
-        "proxy_close": 738.18,
+        "proxy_close": 739.17,
         "proxy_source": "yahoo_chart",
         "proxy_status": "fresh_close",
         "shares": 44
@@ -2595,38 +2607,38 @@
         "benchmark_attempts": [
           {
             "provider": "yahoo_chart",
-            "selected_date": "2026-05-12",
+            "selected_date": "2026-05-15",
             "status": "ok"
           }
         ],
-        "benchmark_close": 29064.8008,
+        "benchmark_close": 29125.1992,
         "benchmark_source": "yahoo_chart",
         "benchmark_status": "fresh_close",
         "benchmark_symbol": "^NDX",
         "display_name": "Nasdaq 100",
         "exposure_id": "us_tech_leadership",
-        "market_value_eur": 28921.04,
+        "market_value_eur": 29264.4,
         "performance": {
-          "as_of": "2026-05-12",
-          "contribution_pct": 3.54,
-          "latest_close": 707.24,
-          "one_month_return_pct": 15.74,
-          "one_week_return_pct": 3.76,
-          "pnl_eur": 3932.66,
-          "pnl_local": 4616.16,
+          "as_of": "2026-05-15",
+          "contribution_pct": 3.62,
+          "latest_close": 708.93,
+          "one_month_return_pct": 11.22,
+          "one_week_return_pct": -0.32,
+          "pnl_eur": 4039.63,
+          "pnl_local": 4697.28,
           "proxy": "QQQ",
-          "since_entry_return_pct": 15.74,
-          "three_month_return_pct": 15.35
+          "since_entry_return_pct": 16.01,
+          "three_month_return_pct": 17.78
         },
         "primary_proxy": "QQQ",
         "proxy_attempts": [
           {
             "provider": "yahoo_chart",
-            "selected_date": "2026-05-12",
+            "selected_date": "2026-05-15",
             "status": "ok"
           }
         ],
-        "proxy_close": 707.24,
+        "proxy_close": 708.93,
         "proxy_source": "yahoo_chart",
         "proxy_status": "fresh_close",
         "shares": 48
@@ -2635,38 +2647,38 @@
         "benchmark_attempts": [
           {
             "provider": "yahoo_chart",
-            "selected_date": "2026-05-12",
+            "selected_date": "2026-05-15",
             "status": "ok"
           }
         ],
-        "benchmark_close": 2842.8301,
+        "benchmark_close": 2793.3,
         "benchmark_source": "yahoo_chart",
         "benchmark_status": "fresh_close",
         "benchmark_symbol": "^RUT",
         "display_name": "Russell 2000",
         "exposure_id": "us_small_cap",
-        "market_value_eur": 21665.79,
+        "market_value_eur": 21486.07,
         "performance": {
-          "as_of": "2026-05-12",
-          "contribution_pct": 1.44,
-          "latest_close": 282.57,
-          "one_month_return_pct": 8.14,
-          "one_week_return_pct": 0.0,
-          "pnl_eur": 1595.59,
-          "pnl_local": 1872.9,
+          "as_of": "2026-05-15",
+          "contribution_pct": 1.1,
+          "latest_close": 277.6,
+          "one_month_return_pct": 3.05,
+          "one_week_return_pct": -2.31,
+          "pnl_eur": 1226.01,
+          "pnl_local": 1425.6,
           "proxy": "IWM",
-          "since_entry_return_pct": 7.95,
-          "three_month_return_pct": 6.65
+          "since_entry_return_pct": 6.05,
+          "three_month_return_pct": 5.57
         },
         "primary_proxy": "IWM",
         "proxy_attempts": [
           {
             "provider": "yahoo_chart",
-            "selected_date": "2026-05-12",
+            "selected_date": "2026-05-15",
             "status": "ok"
           }
         ],
-        "proxy_close": 282.57,
+        "proxy_close": 277.6,
         "proxy_source": "yahoo_chart",
         "proxy_status": "fresh_close",
         "shares": 90
@@ -2675,44 +2687,44 @@
         "benchmark_attempts": [
           {
             "provider": "yahoo_chart",
-            "selected_date": "2026-05-12",
+            "selected_date": "2026-05-15",
             "status": "ok"
           }
         ],
-        "benchmark_close": 65.82,
+        "benchmark_close": 65.07,
         "benchmark_source": "yahoo_chart",
         "benchmark_status": "fresh_close",
         "benchmark_symbol": "EEM",
         "display_name": "Emerging Markets",
         "exposure_id": "em_broad",
-        "market_value_eur": 17326.96,
+        "market_value_eur": 17291.56,
         "performance": {
-          "as_of": "2026-05-12",
-          "contribution_pct": 2.03,
-          "latest_close": 65.82,
-          "one_month_return_pct": 8.69,
-          "one_week_return_pct": 0.64,
-          "pnl_eur": 2261.3,
-          "pnl_local": 2654.31,
+          "as_of": "2026-05-15",
+          "contribution_pct": 1.87,
+          "latest_close": 65.07,
+          "one_month_return_pct": 4.61,
+          "one_week_return_pct": -4.22,
+          "pnl_eur": 2083.38,
+          "pnl_local": 2422.56,
           "proxy": "EEM",
-          "since_entry_return_pct": 15.01,
-          "three_month_return_pct": 6.92
+          "since_entry_return_pct": 13.7,
+          "three_month_return_pct": 6.46
         },
         "primary_proxy": "EEM",
         "proxy_attempts": [
           {
             "provider": "yahoo_chart",
-            "selected_date": "2026-05-12",
+            "selected_date": "2026-05-15",
             "status": "ok"
           }
         ],
-        "proxy_close": 65.82,
+        "proxy_close": 65.07,
         "proxy_source": "yahoo_chart",
         "proxy_status": "fresh_close",
         "shares": 309
       }
     ],
-    "priced_invested_weight_coverage_pct": 85.99,
+    "priced_invested_weight_coverage_pct": 86.05,
     "pricing_model": "layered_close_discovery_v1",
     "provider_order": [
       "yahoo_chart",
@@ -2721,11 +2733,11 @@
       "alpha_vantage_daily_adjusted",
       "carry_forward_prior_valid_close"
     ],
-    "requested_close_date": "2026-05-12",
-    "run_date": "2026-05-13",
+    "requested_close_date": "2026-05-15",
+    "run_date": "2026-05-17",
     "source_mode": "state_file",
     "state_file": "output_indices/index_portfolio_state.json",
-    "total_portfolio_value_eur": 111151.27,
+    "total_portfolio_value_eur": 111578.74,
     "unresolved_tickers": []
   },
   "recommendation_scorecard": [
@@ -2900,592 +2912,592 @@
         120
       ]
     },
-    "requested_close_date": "2026-05-12",
+    "requested_close_date": "2026-05-15",
     "rows": [
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "^KS200",
-        "composite_score_raw": 0.535135,
-        "drawdown_from_120d_high": -0.023138,
+        "composite_score_raw": 0.459229,
+        "drawdown_from_120d_high": -0.064979,
         "exposure_id": "south_korea_large_cap",
-        "latest_close": 1183.410034,
-        "latest_date": "2026-05-12",
+        "latest_close": 1162.390015,
+        "latest_date": "2026-05-15",
         "percentile": 1.0,
         "primary_proxy": "EWY",
         "public_index_name": "KOSPI 200 / Korea large cap",
         "region": "South Korea",
         "regional_group": "South Korea",
         "relative_strength_score": 2.0,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 1.016959,
-        "return_20d": 0.346651,
-        "return_60d": 0.515366,
-        "selected_data_date": "2026-05-12"
+        "requested_close_date": "2026-05-15",
+        "return_120d": 1.015763,
+        "return_20d": 0.268154,
+        "return_60d": 0.424009,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "^TWII",
-        "composite_score_raw": 0.295639,
-        "drawdown_from_120d_high": -0.000846,
+        "composite_score_raw": 0.244834,
+        "drawdown_from_120d_high": -0.018158,
         "exposure_id": "taiwan_large_cap",
-        "latest_close": 41898.320312,
-        "latest_date": "2026-05-12",
+        "latest_close": 41172.359375,
+        "latest_date": "2026-05-15",
         "percentile": 0.9655,
         "primary_proxy": "EWT",
         "public_index_name": "MSCI Taiwan / Taiwan large cap",
         "region": "Taiwan",
         "regional_group": "Taiwan",
         "relative_strength_score": 1.93,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.501762,
-        "return_20d": 0.181656,
-        "return_60d": 0.324889,
-        "selected_data_date": "2026-05-12"
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.481822,
+        "return_20d": 0.10881,
+        "return_60d": 0.294677,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "VLUE",
-        "composite_score_raw": 0.230464,
-        "drawdown_from_120d_high": -0.015984,
+        "composite_score_raw": 0.209549,
+        "drawdown_from_120d_high": -0.029213,
         "exposure_id": "us_value_factor",
-        "latest_close": 182.229996,
-        "latest_date": "2026-05-12",
+        "latest_close": 179.779999,
+        "latest_date": "2026-05-15",
         "percentile": 0.931,
         "primary_proxy": "VLUE",
         "public_index_name": "U.S. Value Factor",
         "region": "US",
         "regional_group": "US",
         "relative_strength_score": 1.86,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.419237,
-        "return_20d": 0.175526,
-        "return_60d": 0.202362,
-        "selected_data_date": "2026-05-12"
-      },
-      {
-        "analysis_source_type": "benchmark",
-        "analysis_symbol": "^N225",
-        "composite_score_raw": 0.155483,
-        "drawdown_from_120d_high": -0.001453,
-        "exposure_id": "japan_equities",
-        "latest_close": 62742.570312,
-        "latest_date": "2026-05-12",
-        "percentile": 0.8966,
-        "primary_proxy": "EWJ",
-        "public_index_name": "Nikkei 225",
-        "region": "Japan",
-        "regional_group": "Japan",
-        "relative_strength_score": 1.79,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.247953,
-        "return_20d": 0.114266,
-        "return_60d": 0.156467,
-        "selected_data_date": "2026-05-12"
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.442047,
+        "return_20d": 0.136266,
+        "return_60d": 0.187607,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "^NDX",
-        "composite_score_raw": 0.150074,
-        "drawdown_from_120d_high": -0.008726,
+        "composite_score_raw": 0.141551,
+        "drawdown_from_120d_high": -0.015385,
         "exposure_id": "us_tech_leadership",
-        "latest_close": 29064.800781,
-        "latest_date": "2026-05-12",
-        "percentile": 0.8621,
+        "latest_close": 29125.199219,
+        "latest_date": "2026-05-15",
+        "percentile": 0.8966,
         "primary_proxy": "QQQ",
         "public_index_name": "Nasdaq 100",
         "region": "US",
         "regional_group": "US",
+        "relative_strength_score": 1.79,
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.210806,
+        "return_20d": 0.091959,
+        "return_60d": 0.174529,
+        "selected_data_date": "2026-05-15"
+      },
+      {
+        "analysis_source_type": "benchmark",
+        "analysis_symbol": "^N225",
+        "composite_score_raw": 0.096599,
+        "drawdown_from_120d_high": -0.029441,
+        "exposure_id": "japan_equities",
+        "latest_close": 61409.289062,
+        "latest_date": "2026-05-15",
+        "percentile": 0.8621,
+        "primary_proxy": "EWJ",
+        "public_index_name": "Nikkei 225",
+        "region": "Japan",
+        "regional_group": "Japan",
         "relative_strength_score": 1.72,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.171972,
-        "return_20d": 0.124712,
-        "return_60d": 0.175155,
-        "selected_data_date": "2026-05-12"
-      },
-      {
-        "analysis_source_type": "benchmark",
-        "analysis_symbol": "EEM",
-        "composite_score_raw": 0.088943,
-        "drawdown_from_120d_high": -0.031204,
-        "exposure_id": "em_broad",
-        "latest_close": 65.82,
-        "latest_date": "2026-05-12",
-        "percentile": 0.8276,
-        "primary_proxy": "EEM",
-        "public_index_name": "Emerging Markets",
-        "region": "Emerging Markets",
-        "regional_group": "Emerging Markets",
-        "relative_strength_score": 1.66,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.211931,
-        "return_20d": 0.057519,
-        "return_60d": 0.076898,
-        "selected_data_date": "2026-05-12"
-      },
-      {
-        "analysis_source_type": "benchmark",
-        "analysis_symbol": "^RUT",
-        "composite_score_raw": 0.088538,
-        "drawdown_from_120d_high": -0.015221,
-        "exposure_id": "us_small_cap",
-        "latest_close": 2842.830078,
-        "latest_date": "2026-05-12",
-        "percentile": 0.7931,
-        "primary_proxy": "IWM",
-        "public_index_name": "Russell 2000",
-        "region": "US",
-        "regional_group": "US",
-        "relative_strength_score": 1.59,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.214169,
-        "return_20d": 0.050694,
-        "return_60d": 0.074104,
-        "selected_data_date": "2026-05-12"
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.202611,
+        "return_20d": 0.086837,
+        "return_60d": 0.065397,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "^GSPC",
-        "composite_score_raw": 0.078437,
-        "drawdown_from_120d_high": -0.001603,
+        "composite_score_raw": 0.069846,
+        "drawdown_from_120d_high": -0.012363,
         "exposure_id": "us_large_cap",
-        "latest_close": 7400.959961,
-        "latest_date": "2026-05-12",
-        "percentile": 0.7586,
+        "latest_close": 7408.5,
+        "latest_date": "2026-05-15",
+        "percentile": 0.8276,
         "primary_proxy": "SPY",
         "public_index_name": "S&P 500",
         "region": "US",
         "regional_group": "US",
-        "relative_strength_score": 1.52,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.109188,
-        "return_20d": 0.06223,
-        "return_60d": 0.082618,
-        "selected_data_date": "2026-05-12"
+        "relative_strength_score": 1.66,
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.133013,
+        "return_20d": 0.039635,
+        "return_60d": 0.079659,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
-        "analysis_symbol": "000300.SS",
-        "composite_score_raw": 0.070612,
-        "drawdown_from_120d_high": -0.000765,
-        "exposure_id": "china_large_cap",
-        "latest_close": 4948.049805,
-        "latest_date": "2026-05-12",
-        "percentile": 0.7241,
-        "primary_proxy": "FXI",
-        "public_index_name": "China large cap",
-        "region": "China",
-        "regional_group": "China",
-        "relative_strength_score": 1.45,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.057549,
-        "return_20d": 0.08362,
-        "return_60d": 0.061788,
-        "selected_data_date": "2026-05-12"
+        "analysis_symbol": "EEM",
+        "composite_score_raw": 0.069809,
+        "drawdown_from_120d_high": -0.042243,
+        "exposure_id": "em_broad",
+        "latest_close": 65.07,
+        "latest_date": "2026-05-15",
+        "percentile": 0.7931,
+        "primary_proxy": "EEM",
+        "public_index_name": "Emerging Markets",
+        "region": "Emerging Markets",
+        "regional_group": "Emerging Markets",
+        "relative_strength_score": 1.59,
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.225193,
+        "return_20d": 0.02247,
+        "return_60d": 0.066022,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "FTSEMIB.MI",
-        "composite_score_raw": 0.050909,
-        "drawdown_from_120d_high": -0.014206,
+        "composite_score_raw": 0.061412,
+        "drawdown_from_120d_high": -0.018661,
         "exposure_id": "italy_large_cap",
-        "latest_close": 48991.0,
-        "latest_date": "2026-05-12",
-        "percentile": 0.6897,
+        "latest_close": 49116.0,
+        "latest_date": "2026-05-15",
+        "percentile": 0.7586,
         "primary_proxy": "EWI",
         "public_index_name": "FTSE MIB",
         "region": "Europe",
         "regional_group": "Europe",
-        "relative_strength_score": 1.38,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.094649,
-        "return_20d": 0.030804,
-        "return_60d": 0.059884,
-        "selected_data_date": "2026-05-12"
+        "relative_strength_score": 1.52,
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.146525,
+        "return_20d": 0.022675,
+        "return_60d": 0.073245,
+        "selected_data_date": "2026-05-15"
+      },
+      {
+        "analysis_source_type": "benchmark",
+        "analysis_symbol": "^RUT",
+        "composite_score_raw": 0.055377,
+        "drawdown_from_120d_high": -0.032379,
+        "exposure_id": "us_small_cap",
+        "latest_close": 2793.300049,
+        "latest_date": "2026-05-15",
+        "percentile": 0.7241,
+        "primary_proxy": "IWM",
+        "public_index_name": "Russell 2000",
+        "region": "US",
+        "regional_group": "US",
+        "relative_strength_score": 1.45,
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.211786,
+        "return_20d": 0.005906,
+        "return_60d": 0.048107,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "QUAL",
-        "composite_score_raw": 0.049372,
-        "drawdown_from_120d_high": -0.000855,
+        "composite_score_raw": 0.040935,
+        "drawdown_from_120d_high": -0.009041,
         "exposure_id": "us_quality_factor",
-        "latest_close": 210.389999,
-        "latest_date": "2026-05-12",
-        "percentile": 0.6552,
+        "latest_close": 210.449997,
+        "latest_date": "2026-05-15",
+        "percentile": 0.6897,
         "primary_proxy": "QUAL",
         "public_index_name": "U.S. Quality Factor",
         "region": "US",
         "regional_group": "US",
+        "relative_strength_score": 1.38,
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.111375,
+        "return_20d": 0.01706,
+        "return_60d": 0.036546,
+        "selected_data_date": "2026-05-15"
+      },
+      {
+        "analysis_source_type": "benchmark",
+        "analysis_symbol": "000300.SS",
+        "composite_score_raw": 0.03508,
+        "drawdown_from_120d_high": -0.027759,
+        "exposure_id": "china_large_cap",
+        "latest_close": 4859.589844,
+        "latest_date": "2026-05-15",
+        "percentile": 0.6552,
+        "primary_proxy": "FXI",
+        "public_index_name": "China large cap",
+        "region": "China",
+        "regional_group": "China",
         "relative_strength_score": 1.31,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.093958,
-        "return_20d": 0.035027,
-        "return_60d": 0.042825,
-        "selected_data_date": "2026-05-12"
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.045993,
+        "return_20d": 0.033674,
+        "return_60d": 0.046513,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "^GSPTSE",
-        "composite_score_raw": 0.042239,
-        "drawdown_from_120d_high": -0.007255,
+        "composite_score_raw": 0.016019,
+        "drawdown_from_120d_high": -0.020494,
         "exposure_id": "canada_large_cap",
-        "latest_close": 34290.699219,
-        "latest_date": "2026-05-12",
+        "latest_close": 33833.398438,
+        "latest_date": "2026-05-15",
         "percentile": 0.6207,
         "primary_proxy": "EWC",
         "public_index_name": "S&P/TSX 60",
         "region": "Canada",
         "regional_group": "Canada",
         "relative_strength_score": 1.24,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.141634,
-        "return_20d": 0.005522,
-        "return_60d": 0.036797,
-        "selected_data_date": "2026-05-12"
-      },
-      {
-        "analysis_source_type": "benchmark",
-        "analysis_symbol": "^SPXEW",
-        "composite_score_raw": 0.029735,
-        "drawdown_from_120d_high": -0.005726,
-        "exposure_id": "us_equal_weight",
-        "latest_close": 8250.110352,
-        "latest_date": "2026-05-12",
-        "percentile": 0.5862,
-        "primary_proxy": "RSP",
-        "public_index_name": "S&P 500 Equal Weight",
-        "region": "US",
-        "regional_group": "US",
-        "relative_strength_score": 1.17,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.102271,
-        "return_20d": 0.019563,
-        "return_60d": 0.004635,
-        "selected_data_date": "2026-05-12"
-      },
-      {
-        "analysis_source_type": "benchmark",
-        "analysis_symbol": "^MXX",
-        "composite_score_raw": 0.012504,
-        "drawdown_from_120d_high": -0.021853,
-        "exposure_id": "mexico_large_cap",
-        "latest_close": 70036.65625,
-        "latest_date": "2026-05-12",
-        "percentile": 0.5517,
-        "primary_proxy": "EWW",
-        "public_index_name": "Mexico large cap",
-        "region": "Mexico",
-        "regional_group": "Mexico",
-        "relative_strength_score": 1.1,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.108339,
-        "return_20d": 0.006344,
-        "return_60d": -0.021853,
-        "selected_data_date": "2026-05-12"
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.121771,
+        "return_20d": -0.014933,
+        "return_60d": 0.007096,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "^AEX",
-        "composite_score_raw": 0.003612,
-        "drawdown_from_120d_high": -0.031025,
+        "composite_score_raw": 0.014452,
+        "drawdown_from_120d_high": -0.02036,
         "exposure_id": "netherlands_large_cap",
-        "latest_close": 999.440002,
-        "latest_date": "2026-05-12",
-        "percentile": 0.5172,
+        "latest_close": 1010.440002,
+        "latest_date": "2026-05-15",
+        "percentile": 0.5862,
         "primary_proxy": "EWN",
         "public_index_name": "AEX",
         "region": "Europe",
         "regional_group": "Europe",
-        "relative_strength_score": 1.03,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.057195,
-        "return_20d": -0.012587,
-        "return_60d": 0.011548,
-        "selected_data_date": "2026-05-12"
+        "relative_strength_score": 1.17,
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.080765,
+        "return_20d": -0.006167,
+        "return_60d": 0.014702,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
-        "analysis_symbol": "^HSI",
-        "composite_score_raw": -0.004942,
-        "drawdown_from_120d_high": -0.05793,
-        "exposure_id": "hong_kong_equities",
-        "latest_close": 26347.910156,
-        "latest_date": "2026-05-12",
-        "percentile": 0.4828,
-        "primary_proxy": "EWH",
-        "public_index_name": "Hang Seng",
-        "region": "Hong Kong",
-        "regional_group": "Hong Kong",
-        "relative_strength_score": 0.97,
-        "requested_close_date": "2026-05-12",
-        "return_120d": -0.013054,
-        "return_20d": 0.026775,
-        "return_60d": -0.007983,
-        "selected_data_date": "2026-05-12"
-      },
-      {
-        "analysis_source_type": "benchmark",
-        "analysis_symbol": "USMV",
-        "composite_score_raw": -0.00737,
-        "drawdown_from_120d_high": -0.033943,
-        "exposure_id": "us_min_vol_factor",
-        "latest_close": 94.489998,
-        "latest_date": "2026-05-12",
-        "percentile": 0.4483,
-        "primary_proxy": "USMV",
-        "public_index_name": "U.S. Minimum Volatility",
+        "analysis_symbol": "^SPXEW",
+        "composite_score_raw": 0.01115,
+        "drawdown_from_120d_high": -0.017057,
+        "exposure_id": "us_equal_weight",
+        "latest_close": 8156.089844,
+        "latest_date": "2026-05-15",
+        "percentile": 0.5517,
+        "primary_proxy": "RSP",
+        "public_index_name": "S&P 500 Equal Weight",
         "region": "US",
         "regional_group": "US",
-        "relative_strength_score": 0.9,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.008324,
-        "return_20d": 0.008754,
-        "return_60d": -0.017673,
-        "selected_data_date": "2026-05-12"
+        "relative_strength_score": 1.1,
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.106137,
+        "return_20d": -0.009087,
+        "return_60d": -0.007363,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "^IBEX",
-        "composite_score_raw": -0.010217,
-        "drawdown_from_120d_high": -0.049901,
+        "composite_score_raw": -0.00711,
+        "drawdown_from_120d_high": -0.047247,
         "exposure_id": "spain_large_cap",
-        "latest_close": 17573.599609,
-        "latest_date": "2026-05-12",
-        "percentile": 0.4138,
+        "latest_close": 17622.699219,
+        "latest_date": "2026-05-15",
+        "percentile": 0.5172,
         "primary_proxy": "EWP",
         "public_index_name": "IBEX 35",
         "region": "Europe",
         "regional_group": "Europe",
-        "relative_strength_score": 0.83,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.086628,
-        "return_20d": -0.024978,
-        "return_60d": -0.018065,
-        "selected_data_date": "2026-05-12"
+        "relative_strength_score": 1.03,
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.102183,
+        "return_20d": -0.025805,
+        "return_60d": -0.018529,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
-        "analysis_symbol": "^FTSE",
-        "composite_score_raw": -0.017757,
-        "drawdown_from_120d_high": -0.059144,
-        "exposure_id": "uk_large_cap",
-        "latest_close": 10265.299805,
-        "latest_date": "2026-05-12",
-        "percentile": 0.3793,
-        "primary_proxy": "EWU",
-        "public_index_name": "FTSE 100",
-        "region": "UK",
-        "regional_group": "UK",
-        "relative_strength_score": 0.76,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.060969,
-        "return_20d": -0.03002,
-        "return_60d": -0.01318,
-        "selected_data_date": "2026-05-12"
+        "analysis_symbol": "USMV",
+        "composite_score_raw": -0.007568,
+        "drawdown_from_120d_high": -0.031796,
+        "exposure_id": "us_min_vol_factor",
+        "latest_close": 94.699997,
+        "latest_date": "2026-05-15",
+        "percentile": 0.4828,
+        "primary_proxy": "USMV",
+        "public_index_name": "U.S. Minimum Volatility",
+        "region": "US",
+        "regional_group": "US",
+        "relative_strength_score": 0.97,
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.022347,
+        "return_20d": -0.001687,
+        "return_60d": -0.014055,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "^SSMI",
-        "composite_score_raw": -0.019196,
-        "drawdown_from_120d_high": -0.063847,
+        "composite_score_raw": -0.013209,
+        "drawdown_from_120d_high": -0.056666,
         "exposure_id": "switzerland_large_cap",
-        "latest_close": 13119.530273,
-        "latest_date": "2026-05-12",
-        "percentile": 0.3448,
+        "latest_close": 13220.169922,
+        "latest_date": "2026-05-15",
+        "percentile": 0.4483,
         "primary_proxy": "EWL",
         "public_index_name": "SMI",
         "region": "Switzerland",
         "regional_group": "Switzerland",
-        "relative_strength_score": 0.69,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.025465,
-        "return_20d": -0.002007,
-        "return_60d": -0.030332,
-        "selected_data_date": "2026-05-12"
+        "relative_strength_score": 0.9,
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.046371,
+        "return_20d": 4.5e-05,
+        "return_60d": -0.031915,
+        "selected_data_date": "2026-05-15"
+      },
+      {
+        "analysis_source_type": "benchmark",
+        "analysis_symbol": "^MXX",
+        "composite_score_raw": -0.014639,
+        "drawdown_from_120d_high": -0.050625,
+        "exposure_id": "mexico_large_cap",
+        "latest_close": 67976.5,
+        "latest_date": "2026-05-15",
+        "percentile": 0.4138,
+        "primary_proxy": "EWW",
+        "public_index_name": "Mexico large cap",
+        "region": "Mexico",
+        "regional_group": "Mexico",
+        "relative_strength_score": 0.83,
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.09667,
+        "return_20d": -0.016188,
+        "return_60d": -0.047325,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "^GDAXI",
-        "composite_score_raw": -0.020869,
-        "drawdown_from_120d_high": -0.057659,
+        "composite_score_raw": -0.023391,
+        "drawdown_from_120d_high": -0.057831,
         "exposure_id": "germany_cyclicals",
-        "latest_close": 23954.929688,
-        "latest_date": "2026-05-12",
-        "percentile": 0.3103,
+        "latest_close": 23950.570312,
+        "latest_date": "2026-05-15",
+        "percentile": 0.3793,
         "primary_proxy": "EWG",
         "public_index_name": "DAX",
         "region": "Europe",
         "regional_group": "Europe",
-        "relative_strength_score": 0.62,
-        "requested_close_date": "2026-05-12",
-        "return_120d": -0.003606,
-        "return_20d": 0.00895,
-        "return_60d": -0.036123,
-        "selected_data_date": "2026-05-12"
+        "relative_strength_score": 0.76,
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.033219,
+        "return_20d": -0.008442,
+        "return_60d": -0.041916,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "^STOXX50E",
-        "composite_score_raw": -0.03026,
-        "drawdown_from_120d_high": -0.059104,
+        "composite_score_raw": -0.023864,
+        "drawdown_from_120d_high": -0.055976,
         "exposure_id": "europe_large_cap",
-        "latest_close": 5808.450195,
-        "latest_date": "2026-05-12",
-        "percentile": 0.2759,
+        "latest_close": 5827.759766,
+        "latest_date": "2026-05-15",
+        "percentile": 0.3448,
         "primary_proxy": "FEZ",
         "public_index_name": "Euro Stoxx 50",
         "region": "Europe",
         "regional_group": "Europe",
-        "relative_strength_score": 0.55,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.003653,
-        "return_20d": -0.016354,
-        "return_60d": -0.033743,
-        "selected_data_date": "2026-05-12"
+        "relative_strength_score": 0.69,
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.023533,
+        "return_20d": -0.018952,
+        "return_60d": -0.025276,
+        "selected_data_date": "2026-05-15"
+      },
+      {
+        "analysis_source_type": "benchmark",
+        "analysis_symbol": "^FTSE",
+        "composite_score_raw": -0.027825,
+        "drawdown_from_120d_high": -0.065551,
+        "exposure_id": "uk_large_cap",
+        "latest_close": 10195.400391,
+        "latest_date": "2026-05-15",
+        "percentile": 0.3103,
+        "primary_proxy": "EWU",
+        "public_index_name": "FTSE 100",
+        "region": "UK",
+        "regional_group": "UK",
+        "relative_strength_score": 0.62,
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.07008,
+        "return_20d": -0.037262,
+        "return_60d": -0.034179,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "^TASI.SR",
-        "composite_score_raw": -0.032098,
-        "drawdown_from_120d_high": -0.047443,
+        "composite_score_raw": -0.037457,
+        "drawdown_from_120d_high": -0.051222,
         "exposure_id": "saudi_large_cap",
-        "latest_close": 11039.230469,
-        "latest_date": "2026-05-12",
-        "percentile": 0.2414,
+        "latest_close": 10995.44043,
+        "latest_date": "2026-05-14",
+        "percentile": 0.2759,
         "primary_proxy": "KSA",
         "public_index_name": "Saudi Arabia large cap",
         "region": "Saudi Arabia",
         "regional_group": "Saudi Arabia",
-        "relative_strength_score": 0.48,
-        "requested_close_date": "2026-05-12",
-        "return_120d": -0.001077,
-        "return_20d": -0.038912,
-        "return_60d": -0.013954,
-        "selected_data_date": "2026-05-12"
+        "relative_strength_score": 0.55,
+        "requested_close_date": "2026-05-15",
+        "return_120d": -0.000294,
+        "return_20d": -0.048357,
+        "return_60d": -0.015411,
+        "selected_data_date": "2026-05-14"
       },
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "^AXJO",
-        "composite_score_raw": -0.035428,
-        "drawdown_from_120d_high": -0.057389,
+        "composite_score_raw": -0.041037,
+        "drawdown_from_120d_high": -0.061727,
         "exposure_id": "australia_large_cap",
-        "latest_close": 8670.700195,
-        "latest_date": "2026-05-12",
-        "percentile": 0.2069,
+        "latest_close": 8630.799805,
+        "latest_date": "2026-05-15",
+        "percentile": 0.2414,
         "primary_proxy": "EWA",
         "public_index_name": "ASX 200",
         "region": "Australia",
         "regional_group": "Australia",
-        "relative_strength_score": 0.41,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.003972,
-        "return_20d": -0.033453,
-        "return_60d": -0.027687,
-        "selected_data_date": "2026-05-12"
+        "relative_strength_score": 0.48,
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.009132,
+        "return_20d": -0.035331,
+        "return_60d": -0.041768,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
-        "analysis_symbol": "^BVSP",
-        "composite_score_raw": -0.039039,
-        "drawdown_from_120d_high": -0.092194,
-        "exposure_id": "brazil_large_cap",
-        "latest_close": 180342.0,
-        "latest_date": "2026-05-12",
-        "percentile": 0.1724,
-        "primary_proxy": "EWZ",
-        "public_index_name": "Brazil large cap",
-        "region": "Brazil",
-        "regional_group": "Brazil",
-        "relative_strength_score": 0.34,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.143221,
-        "return_20d": -0.086062,
-        "return_60d": -0.030049,
-        "selected_data_date": "2026-05-12"
+        "analysis_symbol": "^HSI",
+        "composite_score_raw": -0.043021,
+        "drawdown_from_120d_high": -0.071702,
+        "exposure_id": "hong_kong_equities",
+        "latest_close": 25962.730469,
+        "latest_date": "2026-05-15",
+        "percentile": 0.2069,
+        "primary_proxy": "EWH",
+        "public_index_name": "Hang Seng",
+        "region": "Hong Kong",
+        "regional_group": "Hong Kong",
+        "relative_strength_score": 0.41,
+        "requested_close_date": "2026-05-15",
+        "return_120d": -0.022946,
+        "return_20d": -0.016349,
+        "return_60d": -0.047812,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "^FCHI",
-        "composite_score_raw": -0.047422,
-        "drawdown_from_120d_high": -0.074355,
+        "composite_score_raw": -0.050228,
+        "drawdown_from_120d_high": -0.07753,
         "exposure_id": "france_large_cap",
-        "latest_close": 7979.919922,
-        "latest_date": "2026-05-12",
-        "percentile": 0.1379,
+        "latest_close": 7952.549805,
+        "latest_date": "2026-05-15",
+        "percentile": 0.1724,
         "primary_proxy": "EWQ",
         "public_index_name": "CAC 40",
         "region": "Europe",
         "regional_group": "Europe",
-        "relative_strength_score": 0.28,
-        "requested_close_date": "2026-05-12",
-        "return_120d": -0.017133,
-        "return_20d": -0.03109,
-        "return_60d": -0.043239,
-        "selected_data_date": "2026-05-12"
+        "relative_strength_score": 0.34,
+        "requested_close_date": "2026-05-15",
+        "return_120d": -0.003573,
+        "return_20d": -0.037536,
+        "return_60d": -0.048904,
+        "selected_data_date": "2026-05-15"
       },
       {
-        "analysis_source_type": "proxy",
-        "analysis_symbol": "EZA",
-        "composite_score_raw": -0.052225,
-        "drawdown_from_120d_high": -0.133456,
-        "exposure_id": "south_africa_large_cap",
-        "latest_close": 70.709999,
-        "latest_date": "2026-05-12",
-        "percentile": 0.1034,
-        "primary_proxy": "EZA",
-        "public_index_name": "South Africa large cap",
-        "region": "South Africa",
-        "regional_group": "South Africa",
-        "relative_strength_score": 0.21,
-        "requested_close_date": "2026-05-12",
-        "return_120d": 0.069258,
-        "return_20d": -0.039919,
-        "return_60d": -0.061206,
-        "selected_data_date": "2026-05-12"
+        "analysis_source_type": "benchmark",
+        "analysis_symbol": "^BVSP",
+        "composite_score_raw": -0.060515,
+        "drawdown_from_120d_high": -0.107587,
+        "exposure_id": "brazil_large_cap",
+        "latest_close": 177284.0,
+        "latest_date": "2026-05-15",
+        "percentile": 0.1379,
+        "primary_proxy": "EWZ",
+        "public_index_name": "Brazil large cap",
+        "region": "Brazil",
+        "regional_group": "Brazil",
+        "relative_strength_score": 0.28,
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.123907,
+        "return_20d": -0.10344,
+        "return_60d": -0.049232,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "^NSEI",
-        "composite_score_raw": -0.087912,
-        "drawdown_from_120d_high": -0.112008,
+        "composite_score_raw": -0.078251,
+        "drawdown_from_120d_high": -0.101982,
         "exposure_id": "india_large_cap",
-        "latest_close": 23379.550781,
-        "latest_date": "2026-05-12",
-        "percentile": 0.069,
+        "latest_close": 23643.5,
+        "latest_date": "2026-05-15",
+        "percentile": 0.1034,
         "primary_proxy": "INDA",
         "public_index_name": "Nifty 50",
         "region": "India",
         "regional_group": "India",
+        "relative_strength_score": 0.21,
+        "requested_close_date": "2026-05-15",
+        "return_120d": -0.091105,
+        "return_20d": -0.022865,
+        "return_60d": -0.083841,
+        "selected_data_date": "2026-05-15"
+      },
+      {
+        "analysis_source_type": "proxy",
+        "analysis_symbol": "EZA",
+        "composite_score_raw": -0.106894,
+        "drawdown_from_120d_high": -0.17451,
+        "exposure_id": "south_africa_large_cap",
+        "latest_close": 67.360001,
+        "latest_date": "2026-05-15",
+        "percentile": 0.069,
+        "primary_proxy": "EZA",
+        "public_index_name": "South Africa large cap",
+        "region": "South Africa",
+        "regional_group": "South Africa",
         "relative_strength_score": 0.14,
-        "requested_close_date": "2026-05-12",
-        "return_120d": -0.09647,
-        "return_20d": -0.027902,
-        "return_60d": -0.096174,
-        "selected_data_date": "2026-05-12"
+        "requested_close_date": "2026-05-15",
+        "return_120d": 0.037425,
+        "return_20d": -0.097293,
+        "return_60d": -0.101986,
+        "selected_data_date": "2026-05-15"
       },
       {
         "analysis_source_type": "benchmark",
         "analysis_symbol": "^JKSE",
-        "composite_score_raw": -0.178725,
-        "drawdown_from_120d_high": -0.249138,
+        "composite_score_raw": -0.206981,
+        "drawdown_from_120d_high": -0.26398,
         "exposure_id": "indonesia_large_cap",
-        "latest_close": 6858.898926,
-        "latest_date": "2026-05-12",
+        "latest_close": 6723.319824,
+        "latest_date": "2026-05-13",
         "percentile": 0.0345,
         "primary_proxy": "EIDO",
         "public_index_name": "Indonesia large cap",
         "region": "Indonesia",
         "regional_group": "Indonesia",
         "relative_strength_score": 0.07,
-        "requested_close_date": "2026-05-12",
-        "return_120d": -0.175467,
-        "return_20d": -0.085503,
-        "return_60d": -0.158078,
-        "selected_data_date": "2026-05-12"
+        "requested_close_date": "2026-05-15",
+        "return_120d": -0.193562,
+        "return_20d": -0.124106,
+        "return_60d": -0.170358,
+        "selected_data_date": "2026-05-13"
       }
     ],
     "universe_size": 29
   },
-  "report_date": "2026-05-12",
+  "report_date": "2026-05-15",
   "report_token": "260512",
   "source_files": {
     "candidate_ranking": "output_indices/index_candidate_ranking_260512.json",
@@ -3493,7 +3505,7 @@
     "macro_policy_pack": "output_indices/macro/latest.json",
     "macro_snapshot": "output_indices/research/index_macro_snapshot_260512.json",
     "portfolio_state": "output_indices/index_portfolio_state.json",
-    "pricing_audit": "output_indices/pricing/index_price_audit_2026-05-12.json",
+    "pricing_audit": "output_indices/pricing/index_price_audit_2026-05-15.json",
     "relative_strength": "output_indices/research/index_relative_strength_snapshot_260512.json",
     "scorecard": "output_indices/index_recommendation_scorecard.csv"
   },
