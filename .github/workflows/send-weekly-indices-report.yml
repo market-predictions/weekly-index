@@ -126,6 +126,10 @@ jobs:
       - name: Validate HTML/PDF render before send
         run: python send_index_report_tv.py --validate-only
 
+      - name: Validate rendered report polish
+        run: |
+          python tools/validate_index_render_polish.py
+
       - name: Send email if SMTP secrets are configured
         env:
           MRKT_RPRTS_SUBJECT_PREFIX: Weekly Indices Review
