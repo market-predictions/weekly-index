@@ -56,6 +56,20 @@ ANALYST_DISTINCTION_CSS = """
     .analyst-hero ~ .panel th {
       background: #E8EDF2;
     }
+    .analyst-hero ~ .panel .position-card,
+    .analyst-hero ~ .panel .subblock,
+    .analyst-hero ~ .panel .chart-wrap {
+      background: #EAF0F5;
+      border-color: #C4CED8;
+    }
+    .analyst-hero ~ .panel .position-card-title,
+    .analyst-hero ~ .panel .subblock-title,
+    .analyst-hero ~ .panel h3 {
+      color: #24384D;
+    }
+    .analyst-hero ~ .panel tr:nth-child(even) td {
+      background: #F7FAFC;
+    }
     @media print {
       .analyst-hero {
         page-break-before: always;
