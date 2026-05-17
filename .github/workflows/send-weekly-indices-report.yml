@@ -107,6 +107,10 @@ jobs:
         run: |
           python tools/scrub_index_client_report.py
 
+      - name: Validate canonical markdown polish
+        run: |
+          python tools/validate_index_markdown_polish.py
+
       - name: Validate report-vs-ranking reconciliation
         run: |
           python -m pricing_indices.validate_report_artifact_alignment
