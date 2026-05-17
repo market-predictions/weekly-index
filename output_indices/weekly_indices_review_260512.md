@@ -101,6 +101,16 @@ The board remains intentionally compact. The strongest omitted regional challeng
 
 `EQUITY_CURVE_CHART_PLACEHOLDER`
 
+### Tradable Proxy Performance
+Performance is calculated on the tradable ETF proxies used for portfolio valuation. Benchmark index prices remain the analysis reference; tradable proxy closes drive market value, P/L and contribution.
+
+| Portfolio sleeve | Benchmark index | Tradable proxy | Weight % | 1w return | 1m return | 3m return | Since-entry | P/L EUR | Contribution % |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|
+| S&P 500 | S&P 500 Index | SPY | 25.07 | +0.21% | +5.60% | +8.42% | +12.03% | 3,002.58 | +2.69% |
+| Nasdaq 100 | Nasdaq 100 Index | QQQ | 26.23 | -0.32% | +11.22% | +17.78% | +16.01% | 4,039.63 | +3.62% |
+| Russell 2000 | Russell 2000 Index | IWM | 19.26 | -2.31% | +3.05% | +5.57% | +6.05% | 1,226.01 | +1.10% |
+| Emerging Markets | Emerging Markets Proxy Benchmark | EEM | 15.50 | -4.22% | +4.61% | +6.46% | +13.70% | 2,083.38 | +1.87% |
+
 ## 8. Regional / Style Allocation Map
 
 | Region / style bucket | Current view | Comment |
@@ -331,16 +341,6 @@ Reasons:
 | IWM | Russell 2000 | 90 | 277.60 | USD | 24984.00 | 21486.07 | 19.26 |
 | EEM | Emerging Markets | 309 | 65.07 | USD | 20106.63 | 17291.56 | 15.50 |
 | CASH | Residual cash | - | 1.00 | EUR | 15566.74 | 15566.74 | 13.95 |
-
-### Tradable Proxy Performance
-Performance is calculated on the tradable ETF proxies used for portfolio valuation. Benchmark index prices remain the analysis reference; tradable proxy closes drive market value, P/L and contribution.
-
-| Portfolio sleeve | Benchmark index | Tradable proxy | Weight % | 1w return | 1m return | 3m return | Since-entry | P/L EUR | Contribution % |
-|---|---|---|---:|---:|---:|---:|---:|---:|---:|
-| S&P 500 | S&P 500 Index | SPY | 25.07 | +0.21% | +5.60% | +8.42% | +12.03% | 3,002.58 | +2.69% |
-| Nasdaq 100 | Nasdaq 100 Index | QQQ | 26.23 | -0.32% | +11.22% | +17.78% | +16.01% | 4,039.63 | +3.62% |
-| Russell 2000 | Russell 2000 Index | IWM | 19.26 | -2.31% | +3.05% | +5.57% | +6.05% | 1,226.01 | +1.10% |
-| Emerging Markets | Emerging Markets Proxy Benchmark | EEM | 15.50 | -4.22% | +4.61% | +6.46% | +13.70% | 2,083.38 | +1.87% |
 
 ## 16. Continuity Input for Next Run
 
