@@ -99,6 +99,10 @@ jobs:
         run: |
           python tools/move_index_performance_table_to_section7.py
 
+      - name: Validate proxy performance table placement
+        run: |
+          python tools/validate_index_performance_table_placement.py
+
       - name: Scrub client-facing scaffold/process language
         run: |
           python tools/scrub_index_client_report.py
