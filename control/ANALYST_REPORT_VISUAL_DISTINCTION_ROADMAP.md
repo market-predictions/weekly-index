@@ -1,28 +1,35 @@
-# Analyst Report Visual Distinction Roadmap
+# Analyst Report Visual Distinction Baseline
 
-## Current issue
-The Weekly Index PDF contains an Investor Report followed by an Analyst Report, but the visual transition is too soft. Readers should immediately understand that the Investor Report has ended and the Analyst Report has started.
+## Status
+Frozen as the current Weekly Index design baseline after PDF review on 2026-05-17.
 
-## Recommended change
-Add a clear visual boundary between the two report modes.
+## Decision
+The Weekly Index report uses explicit visual mode separation between the Investor Report and Analyst Report.
 
-## Design direction
-Use a distinct premium Analyst Report palette that harmonizes with the existing executive report style but is clearly different from the Investor Report.
+The Investor Report keeps the warm executive investor identity. The Analyst Report uses a distinct petrol-teal institutional analyst identity.
 
-Recommended Analyst palette:
-- Primary analyst header: `#2F4A66` deep slate blue
-- Dark analyst accent: `#24384D`
+## Final Analyst palette
+- Primary analyst header and section badges: `#0F5B5C` deep petrol-teal
+- Dark analyst accent / text accent: `#0B4446`
 - Premium divider accent: `#C9A96A`
-- Light analyst panel background: `#F4F6F8`
+- Analyst panel background: `#F5F8F8`
+- Analyst table header background: `#E4EEEE`
+- Nested analyst cards: `#FFFFFF`
+- Nested analyst card border: `#D6E1E1`
+- Even analyst table rows: `#F7FBFB`
 - Header text: `#FFFFFF`
 
-## Implementation roadmap
-1. Add a hard page break before the Analyst Report in PDF output.
+## Render behavior
+1. Force a hard page break before the Analyst Report.
 2. Add a dedicated Analyst Report transition header.
-3. Use the slate-blue Analyst palette for the Analyst header and section-number badges.
+3. Show `PART II` above `Analyst Report`.
 4. Keep the gold divider accent for continuity with the premium brand language.
-5. Add a persistent `Analyst Report` visual cue on analyst pages.
-6. Add render validation so the Analyst Report boundary cannot silently disappear.
+5. Use petrol-teal section-number badges and section-label color throughout Analyst pages.
+6. Keep Section 10 position cards white inside the subtle cool-grey Analyst panel; do not give Section 10 a separate blue card tint.
+7. Validate rendered output so the Analyst Report boundary cannot silently disappear.
 
 ## Output-contract decision
 Investor Report and Analyst Report must not appear as one continuous undifferentiated document. The transition must be visible even when a reader skims the PDF.
+
+## Regression guard
+The workflow validator `tools/validate_index_analyst_visual_distinction.py` must continue to require the petrol-teal Analyst identity marker `#0F5B5C`.
