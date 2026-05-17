@@ -1,10 +1,17 @@
+import re
 from pathlib import Path
 
 out = Path('output_indices')
-reports = sorted(out.glob('weekly_indices_review_*.md'))
-if not reports:
-    raise SystemExit('no weekly index report found')
-report = reports[-1]
+report_re = re.compile(r'^weekly_indices_review_(\d{6})(?:_(\d{2}))?\.md$')
+hits = []
+for path in out.glob('weekly_indices_review_*.md'):
+    match = report_re.match(path.name)
+    if match:
+        hits.append((match.group(1), int(match.group(2) or '0'), path))
+if not hits:
+    raise SystemExit('no canonical weekly index report found')
+hits.sort(key=lambda row: (row[0], row[1]))
+report = hits[-1][2]
 text = report.read_text(encoding='utf-8')
 marker = '### Tradable Proxy Performance'
 chart = '`EQUITY_CURVE_CHART_PLACEHOLDER`'
