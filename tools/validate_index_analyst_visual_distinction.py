@@ -3,7 +3,7 @@ from pathlib import Path
 OUT = Path('output_indices')
 REQUIRED = [
     'analyst-hero',
-    '#2F4A66',
+    '#0F5B5C',
     'PART II',
     'Research depth, scenario framing and implementation detail',
     'page-break-before: always',
