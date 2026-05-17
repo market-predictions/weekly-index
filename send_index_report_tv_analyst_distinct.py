@@ -7,7 +7,7 @@ _ORIG_BUILD_REPORT_HTML = _base.build_report_html
 
 ANALYST_DISTINCTION_CSS = """
     .analyst-hero {
-      background: #2F4A66 !important;
+      background: #0F5B5C !important;
       color: #FFFFFF !important;
       margin-top: 30px;
       page-break-before: always;
@@ -32,7 +32,7 @@ ANALYST_DISTINCTION_CSS = """
     }
     .analyst-subtitle {
       margin-top: 7px;
-      color: #E8EEF3;
+      color: #E8F3F2;
       font-size: 12px;
       font-weight: 500;
       letter-spacing: .02em;
@@ -43,32 +43,32 @@ ANALYST_DISTINCTION_CSS = """
       height: 6px;
     }
     .analyst-hero ~ .panel {
-      background: #F4F6F8;
-      border-color: #CBD3DB;
+      background: #F5F8F8;
+      border-color: #CCD9D9;
     }
     .analyst-hero ~ .panel .section-badge {
-      background: #2F4A66;
+      background: #0F5B5C;
       color: #FFFFFF;
     }
     .analyst-hero ~ .panel .section-label {
-      color: #2F4A66;
+      color: #0B4446;
     }
     .analyst-hero ~ .panel th {
-      background: #E8EDF2;
+      background: #E4EEEE;
     }
     .analyst-hero ~ .panel .position-card,
     .analyst-hero ~ .panel .subblock,
     .analyst-hero ~ .panel .chart-wrap {
-      background: #EAF0F5;
-      border-color: #C4CED8;
+      background: #FFFFFF;
+      border-color: #D6E1E1;
     }
     .analyst-hero ~ .panel .position-card-title,
     .analyst-hero ~ .panel .subblock-title,
     .analyst-hero ~ .panel h3 {
-      color: #24384D;
+      color: #0B4446;
     }
     .analyst-hero ~ .panel tr:nth-child(even) td {
-      background: #F7FAFC;
+      background: #F7FBFB;
     }
     @media print {
       .analyst-hero {
@@ -80,7 +80,7 @@ ANALYST_DISTINCTION_CSS = """
 
 
 def _inject_css(html: str) -> str:
-    if "analyst-hero" in html and "#2F4A66" in html:
+    if "analyst-hero" in html and "#0F5B5C" in html:
         return html
     return html.replace("</style>", ANALYST_DISTINCTION_CSS + "\n        </style>", 1)
 
