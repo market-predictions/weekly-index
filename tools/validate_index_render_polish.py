@@ -9,6 +9,9 @@ BAD_TEXT_PATTERNS = [
 ]
 
 BAD_HTML_PATTERNS = [
+    (re.compile(r'<li\b', re.I), 'native list item tag; use inline markers to avoid PDF ghost bullets'),
+    (re.compile(r'<ul\b', re.I), 'native unordered list tag; use inline markers to avoid PDF ghost bullets'),
+    (re.compile(r'<ol\b', re.I), 'native ordered list tag; use inline markers to avoid PDF ghost numbering'),
     (re.compile(r'<li>\s*</li>', re.I), 'empty list item'),
     (re.compile(r'<li>\s*(?:-|\*|\+|\d+\.)\s*</li>', re.I), 'orphan list marker'),
     (re.compile(r'<p>\s*(?:-|\*|\+|\d+\.)\s*</p>', re.I), 'orphan marker paragraph'),
