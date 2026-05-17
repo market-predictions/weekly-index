@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+from urllib.parse import quote
 
 import send_index_report as _base
 import send_index_report_tv  # noqa: F401 - applies TradingView/ticker rendering patches
@@ -99,6 +100,23 @@ ANALYST_DISTINCTION_CSS = """
 LI_RE = re.compile(r"<li>(.*?)</li>", re.DOTALL | re.IGNORECASE)
 UL_RE = re.compile(r"<ul>(.*?)</ul>", re.DOTALL | re.IGNORECASE)
 OL_RE = re.compile(r"<ol>(.*?)</ol>", re.DOTALL | re.IGNORECASE)
+TD_RE = re.compile(r"(<td[^>]*>)(.*?)(</td>)", re.DOTALL | re.IGNORECASE)
+TAG_SPLIT_RE = re.compile(r"(<[^>]+>)")
+TOKEN_RE = re.compile(r"(?<![A-Za-z0-9])([A-Z][A-Z0-9.\-]{1,11})(?![A-Za-z0-9])")
+
+TABLE_TICKERS = {
+    "SPY", "QQQ", "QQQM", "IWM", "VTWO", "EEM", "VWO", "INDA", "EWJ", "DXJ", "EWG", "FEZ", "IEUR",
+    "EWQ", "EWI", "EWP", "EWN", "EWU", "EWL", "EWC", "EWA", "FXI", "EWH", "EWT", "EWY", "EWW", "EWZ",
+    "EZA", "EIDO", "KSA", "RWM", "PSQ", "SH", "EFZ", "EUM", "VOO", "QUAL", "VLUE", "RSP", "USMV", "UUP",
+}
+
+
+def _tv_url(ticker: str) -> str:
+    return f"https://www.tradingview.com/chart/?symbol={quote(ticker, safe='')}"
+
+
+def _anchor(ticker: str) -> str:
+    return f'<a href="{_tv_url(ticker)}" target="_blank" rel="noopener noreferrer">{ticker}</a>'
 
 
 def _clean_li_inner(inner: str) -> str:
@@ -134,6 +152,24 @@ def _inline_native_lists(html: str) -> str:
     return current
 
 
+def _linkify_text_segment(segment: str) -> str:
+    def repl(match: re.Match[str]) -> str:
+        token = match.group(1)
+        return _anchor(token) if token in TABLE_TICKERS else token
+    return TOKEN_RE.sub(repl, segment)
+
+
+def _linkify_fragment(fragment: str) -> str:
+    if '<a ' in fragment.lower():
+        return fragment
+    parts = TAG_SPLIT_RE.split(fragment)
+    return ''.join(part if part.startswith('<') else _linkify_text_segment(part) for part in parts)
+
+
+def _linkify_table_cells(html: str) -> str:
+    return TD_RE.sub(lambda m: m.group(1) + _linkify_fragment(m.group(2)) + m.group(3), html)
+
+
 def _inject_css(html: str) -> str:
     if "analyst-hero" in html and "#0F5B5C" in html and "inline-list-item" in html:
         return html
@@ -154,6 +190,7 @@ def build_report_html(md_text: str, report_date_str: str, image_src: str | None 
     html = _ORIG_BUILD_REPORT_HTML(md_text, report_date_str, image_src=image_src, render_mode=render_mode)
     html = _mark_analyst_hero(html)
     html = _inline_native_lists(html)
+    html = _linkify_table_cells(html)
     html = _inject_css(html)
     return html
 
