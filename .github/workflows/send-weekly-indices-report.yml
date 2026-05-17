@@ -128,7 +128,11 @@ jobs:
           python tools/write_index_recommendation_scorecard.py --check-only
 
       - name: Validate HTML/PDF render before send
-        run: python send_index_report_tv.py --validate-only
+        run: python send_index_report_tv_analyst_distinct.py --validate-only
+
+      - name: Validate Analyst Report visual distinction
+        run: |
+          python tools/validate_index_analyst_visual_distinction.py
 
       - name: Validate rendered report polish
         run: |
@@ -143,7 +147,7 @@ jobs:
           MRKT_RPRTS_SMTP_PASS: ${{ secrets.MRKT_RPRTS_SMTP_PASS }}
           MRKT_RPRTS_MAIL_FROM: ${{ secrets.MRKT_RPRTS_MAIL_FROM }}
           MRKT_RPRTS_MAIL_TO: ${{ secrets.MRKT_RPRTS_MAIL_TO }}
-        run: python send_index_report_tv.py
+        run: python send_index_report_tv_analyst_distinct.py
 
       - name: Write index recommendation scorecard
         if: success()
