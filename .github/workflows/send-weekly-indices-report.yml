@@ -45,9 +45,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install markdown weasyprint matplotlib
 
+      - name: Resolve requested close date
+        id: close_date
+        run: |
+          CLOSE_DATE=$(python tools/resolve_index_requested_close_date.py)
+          echo "requested_close_date=$CLOSE_DATE" >> "$GITHUB_OUTPUT"
+          echo "REQUESTED_CLOSE_DATE=$CLOSE_DATE" >> "$GITHUB_ENV"
+          echo "Resolved requested close date: $CLOSE_DATE"
+
+      - name: Prepare report file for requested close date
+        run: |
+          python tools/prepare_weekly_index_report_for_close.py --requested-close-date "${{ steps.close_date.outputs.requested_close_date }}"
+
       - name: Run indices pricing pass
         run: |
-          python -m pricing_indices.run_pricing_pass
+          python -m pricing_indices.run_pricing_pass --requested-close-date "${{ steps.close_date.outputs.requested_close_date }}"
 
       - name: Validate benchmark-vs-proxy pricing contract
         run: |
