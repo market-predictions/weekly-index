@@ -57,6 +57,10 @@ jobs:
         run: |
           python tools/prepare_weekly_index_report_for_close.py --requested-close-date "${{ steps.close_date.outputs.requested_close_date }}"
 
+      - name: Validate report token for requested close date
+        run: |
+          python tools/validate_index_report_token_for_close.py --requested-close-date "${{ steps.close_date.outputs.requested_close_date }}"
+
       - name: Run indices pricing pass
         run: |
           python -m pricing_indices.run_pricing_pass --requested-close-date "${{ steps.close_date.outputs.requested_close_date }}"
