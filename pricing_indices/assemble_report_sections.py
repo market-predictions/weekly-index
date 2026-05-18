@@ -8,6 +8,8 @@ from collections import OrderedDict
 from pathlib import Path
 from typing import Any
 
+from pricing_indices.performance_table import build_tradable_proxy_performance_table
+
 SECTION4_NAME = "Index Opportunity Board"
 SECTION7_NAME = "Equity Curve and Portfolio Development"
 SECTION11_NAME = "Best New Index Opportunities"
@@ -237,6 +239,9 @@ def build_section7(state: dict[str, Any], valuation_rows: list[dict[str, str]]) 
     else:
         lines.append(f"| {requested_close} | {total_value:.2f} | Live pricing/state rebuild |")
     lines += ["", "`EQUITY_CURVE_CHART_PLACEHOLDER`"]
+    performance_table = build_tradable_proxy_performance_table(state).strip()
+    if performance_table:
+        lines += ["", performance_table]
     return "\n".join(lines)
 
 
