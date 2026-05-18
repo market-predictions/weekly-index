@@ -89,11 +89,11 @@ jobs:
 
       - name: Assemble artifact-driven report section drafts
         run: |
-          python -m pricing_indices.assemble_report_sections_source_section7
+          python -m pricing_indices.assemble_report_sections
 
       - name: Compose final report from assembled sections
         run: |
-          python -m pricing_indices.compose_final_report_source_section7 --in-place
+          python -m pricing_indices.compose_final_report --in-place
 
       - name: Validate proxy performance table placement
         run: |
