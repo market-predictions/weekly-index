@@ -26,15 +26,21 @@ def latest_report() -> Path:
 
 
 def target_path(token: str) -> Path:
-    base = OUT / f'weekly_indices_review_{token}.md'
-    if not base.exists():
-        return base
-    n = 2
-    while True:
-        candidate = OUT / f'weekly_indices_review_{token}_{n:02d}.md'
-        if not candidate.exists():
-            return candidate
-        n += 1
+    return OUT / f'weekly_indices_review_{token}.md'
+
+
+def set_report_date(text: str, requested_close_date: str) -> str:
+    replacement = f'# Weekly Indices Review {requested_close_date}'
+    updated = re.sub(
+        r'^#\s+Weekly Indices Review(?:\s+\d{4}-\d{2}-\d{2})?\s*$',
+        replacement,
+        text,
+        count=1,
+        flags=re.M,
+    )
+    if updated == text and not text.startswith('# Weekly Indices Review'):
+        updated = replacement + '\n\n' + text
+    return updated.rstrip() + '\n'
 
 
 def main() -> None:
@@ -44,17 +50,20 @@ def main() -> None:
 
     token = token_from_close_date(args.requested_close_date)
     target = target_path(token)
+
     if target.exists():
+        text = target.read_text(encoding='utf-8')
+        target.write_text(set_report_date(text, args.requested_close_date), encoding='utf-8')
         print(f'INDEX_REPORT_PREPARED | report={target.name} | token={token} | already_exists=yes')
         return
 
     source = latest_report()
     text = source.read_text(encoding='utf-8')
-    text = re.sub(r'^#\s+Weekly Indices Review(?:\s+\d{4}-\d{2}-\d{2})?\s*$', f'# Weekly Indices Review {args.requested_close_date}', text, count=1, flags=re.M)
-    if not text.startswith('# Weekly Indices Review'):
-        text = f'# Weekly Indices Review {args.requested_close_date}\n\n' + text
-    target.write_text(text.rstrip() + '\n', encoding='utf-8')
-    print(f'INDEX_REPORT_PREPARED | report={target.name} | token={token} | source={source.name}')
+    target.write_text(set_report_date(text, args.requested_close_date), encoding='utf-8')
+
+    if not target.exists():
+        raise SystemExit(f'FAIL: requested report token was not created: {target}')
+    print(f'INDEX_REPORT_PREPARED | report={target.name} | token={token} | source={source.name} | created=yes')
 
 
 if __name__ == '__main__':
