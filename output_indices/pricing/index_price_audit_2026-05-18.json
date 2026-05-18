@@ -1,0 +1,193 @@
+{
+  "run_date": "2026-05-18",
+  "requested_close_date": "2026-05-18",
+  "pricing_model": "layered_close_discovery_v1",
+  "provider_order": [
+    "yahoo_chart",
+    "twelve_data_time_series",
+    "fmp_historical_price_full",
+    "alpha_vantage_daily_adjusted",
+    "carry_forward_prior_valid_close"
+  ],
+  "source_mode": "state_file",
+  "bootstrapped": false,
+  "holdings_count": 4,
+  "fresh_holdings_count": 4,
+  "carried_forward_holdings_count": 0,
+  "fresh_count_pct": 100.0,
+  "coverage_count_pct": 100.0,
+  "fresh_invested_weight_coverage_pct": 85.99,
+  "priced_invested_weight_coverage_pct": 85.99,
+  "decision": "update_covered_holdings_carry_unresolved",
+  "unresolved_tickers": [],
+  "fx_basis": {
+    "date": "2026-05-18",
+    "usd_per_eur": 1.1648,
+    "source": "ecb_reference"
+  },
+  "positions": [
+    {
+      "exposure_id": "us_large_cap",
+      "display_name": "S&P 500",
+      "benchmark_symbol": "^GSPC",
+      "primary_proxy": "SPY",
+      "shares": 44,
+      "proxy_close": 738.65,
+      "benchmark_close": 7403.0498,
+      "proxy_status": "fresh_close",
+      "benchmark_status": "fresh_close",
+      "proxy_source": "yahoo_chart",
+      "benchmark_source": "yahoo_chart",
+      "proxy_attempts": [
+        {
+          "provider": "yahoo_chart",
+          "status": "ok",
+          "selected_date": "2026-05-18"
+        }
+      ],
+      "benchmark_attempts": [
+        {
+          "provider": "yahoo_chart",
+          "status": "ok",
+          "selected_date": "2026-05-18"
+        }
+      ],
+      "performance": {
+        "proxy": "SPY",
+        "as_of": "2026-05-18",
+        "latest_close": 738.65,
+        "one_week_return_pct": -0.09,
+        "one_month_return_pct": 4.01,
+        "three_month_return_pct": 8.17,
+        "since_entry_return_pct": 11.95,
+        "pnl_local": 3468.52,
+        "pnl_eur": 2977.78,
+        "contribution_pct": 2.68
+      },
+      "market_value_eur": 27902.3
+    },
+    {
+      "exposure_id": "us_tech_leadership",
+      "display_name": "Nasdaq 100",
+      "benchmark_symbol": "^NDX",
+      "primary_proxy": "QQQ",
+      "shares": 48,
+      "proxy_close": 705.88,
+      "benchmark_close": 28994.3691,
+      "proxy_status": "fresh_close",
+      "benchmark_status": "fresh_close",
+      "proxy_source": "yahoo_chart",
+      "benchmark_source": "yahoo_chart",
+      "proxy_attempts": [
+        {
+          "provider": "yahoo_chart",
+          "status": "ok",
+          "selected_date": "2026-05-18"
+        }
+      ],
+      "benchmark_attempts": [
+        {
+          "provider": "yahoo_chart",
+          "status": "ok",
+          "selected_date": "2026-05-18"
+        }
+      ],
+      "performance": {
+        "proxy": "QQQ",
+        "as_of": "2026-05-18",
+        "latest_close": 705.88,
+        "one_week_return_pct": -1.04,
+        "one_month_return_pct": 8.79,
+        "three_month_return_pct": 17.39,
+        "since_entry_return_pct": 15.52,
+        "pnl_local": 4550.88,
+        "pnl_eur": 3907.01,
+        "contribution_pct": 3.52
+      },
+      "market_value_eur": 29088.46
+    },
+    {
+      "exposure_id": "us_small_cap",
+      "display_name": "Russell 2000",
+      "benchmark_symbol": "^RUT",
+      "primary_proxy": "IWM",
+      "shares": 90,
+      "proxy_close": 275.97,
+      "benchmark_close": 2775.1021,
+      "proxy_status": "fresh_close",
+      "benchmark_status": "fresh_close",
+      "proxy_source": "yahoo_chart",
+      "benchmark_source": "yahoo_chart",
+      "proxy_attempts": [
+        {
+          "provider": "yahoo_chart",
+          "status": "ok",
+          "selected_date": "2026-05-18"
+        }
+      ],
+      "benchmark_attempts": [
+        {
+          "provider": "yahoo_chart",
+          "status": "ok",
+          "selected_date": "2026-05-18"
+        }
+      ],
+      "performance": {
+        "proxy": "IWM",
+        "as_of": "2026-05-18",
+        "latest_close": 275.97,
+        "one_week_return_pct": -3.28,
+        "one_month_return_pct": 0.07,
+        "three_month_return_pct": 4.92,
+        "since_entry_return_pct": 5.43,
+        "pnl_local": 1278.9,
+        "pnl_eur": 1097.96,
+        "contribution_pct": 0.99
+      },
+      "market_value_eur": 21323.23
+    },
+    {
+      "exposure_id": "em_broad",
+      "display_name": "Emerging Markets",
+      "benchmark_symbol": "EEM",
+      "primary_proxy": "EEM",
+      "shares": 309,
+      "proxy_close": 64.97,
+      "benchmark_close": 64.97,
+      "proxy_status": "fresh_close",
+      "benchmark_status": "fresh_close",
+      "proxy_source": "yahoo_chart",
+      "benchmark_source": "yahoo_chart",
+      "proxy_attempts": [
+        {
+          "provider": "yahoo_chart",
+          "status": "ok",
+          "selected_date": "2026-05-18"
+        }
+      ],
+      "benchmark_attempts": [
+        {
+          "provider": "yahoo_chart",
+          "status": "ok",
+          "selected_date": "2026-05-18"
+        }
+      ],
+      "performance": {
+        "proxy": "EEM",
+        "as_of": "2026-05-18",
+        "latest_close": 64.97,
+        "one_week_return_pct": -4.3,
+        "one_month_return_pct": 2.09,
+        "three_month_return_pct": 6.74,
+        "since_entry_return_pct": 13.52,
+        "pnl_local": 2391.66,
+        "pnl_eur": 2053.28,
+        "contribution_pct": 1.85
+      },
+      "market_value_eur": 17235.35
+    }
+  ],
+  "cash_eur": 15566.74,
+  "total_portfolio_value_eur": 111116.08,
+  "state_file": "output_indices/index_portfolio_state.json"
+}

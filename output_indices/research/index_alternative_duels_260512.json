@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-05-17T23:24:09.683533Z",
+  "generated_at_utc": "2026-05-18T21:59:22.150452Z",
   "methodology": "Direct alternative duels compare current implemented exposures against long alternatives. Funding requires relative-strength evidence plus portfolio-fit improvement; defensive/inverse rows remain separate from the long board.",
-  "report_date": "2026-05-15",
+  "report_date": "2026-05-18",
   "report_token": "260512",
   "rows": [
     {
@@ -13,8 +13,8 @@
       "current_proxy": "SPY",
       "decision": "Alternative improving; keep replacement duel active.",
       "duel_type": "long_alternative",
-      "edge_20d_pct": 5.23,
-      "edge_60d_pct": 9.49,
+      "edge_20d_pct": 4.91,
+      "edge_60d_pct": 8.78,
       "momentum_state": "confirmed",
       "regime_fit": "candidate",
       "required_trigger": "Momentum proof is present. QQQ increases U.S. mega-cap / technology concentration, so funding requires explicit concentration room versus the SPY/QQQ overlap limit."
@@ -28,8 +28,8 @@
       "current_proxy": "SPY",
       "decision": "Current exposure still leads; no replacement.",
       "duel_type": "long_alternative",
-      "edge_20d_pct": -5.86,
-      "edge_60d_pct": -10.49,
+      "edge_20d_pct": -5.55,
+      "edge_60d_pct": -10.01,
       "momentum_state": "not_confirmed",
       "regime_fit": "watchlist",
       "required_trigger": "Needs both 20d and 60d relative-strength improvement before funding. Europe can improve regional diversification, but funding requires evidence that earnings and policy support are strong enough to offset weaker momentum."
@@ -43,8 +43,8 @@
       "current_proxy": "SPY",
       "decision": "Early improvement only; wait for 60d confirmation.",
       "duel_type": "long_alternative",
-      "edge_20d_pct": 4.72,
-      "edge_60d_pct": -1.43,
+      "edge_20d_pct": 4.55,
+      "edge_60d_pct": -0.6,
       "momentum_state": "early_improvement",
       "regime_fit": "watchlist",
       "required_trigger": "Early improvement only; needs positive 60d confirmation before funding. Japan can improve regional diversification, but funding requires confirmation that currency and yield volatility do not overwhelm the diversification benefit."
@@ -58,8 +58,8 @@
       "current_proxy": "QQQ",
       "decision": "Current exposure still leads; no replacement.",
       "duel_type": "long_alternative",
-      "edge_20d_pct": -5.23,
-      "edge_60d_pct": -9.49,
+      "edge_20d_pct": -4.91,
+      "edge_60d_pct": -8.78,
       "momentum_state": "not_confirmed",
       "regime_fit": "watchlist",
       "required_trigger": "Needs both 20d and 60d relative-strength improvement before funding. SPY lowers concentration versus QQQ, but funding only makes sense if broader U.S. participation improves."
@@ -73,8 +73,8 @@
       "current_proxy": "QQQ",
       "decision": "Current exposure still leads; no replacement.",
       "duel_type": "long_alternative",
-      "edge_20d_pct": -8.61,
-      "edge_60d_pct": -12.64,
+      "edge_20d_pct": -9.68,
+      "edge_60d_pct": -11.74,
       "momentum_state": "not_confirmed",
       "regime_fit": "watchlist",
       "required_trigger": "Needs both 20d and 60d relative-strength improvement before funding. IWM improves breadth exposure, but funding requires small-cap breadth and real-rate conditions to improve."
@@ -103,8 +103,8 @@
       "current_proxy": "IWM",
       "decision": "Alternative improving; keep replacement duel active.",
       "duel_type": "long_alternative",
-      "edge_20d_pct": 3.37,
-      "edge_60d_pct": 3.16,
+      "edge_20d_pct": 4.77,
+      "edge_60d_pct": 2.96,
       "momentum_state": "confirmed",
       "regime_fit": "candidate",
       "required_trigger": "Momentum proof is present. SPY is the cleaner U.S. risk sleeve if small-cap breadth remains weak."
@@ -133,8 +133,8 @@
       "current_proxy": "EEM",
       "decision": "Current exposure still leads; no replacement.",
       "duel_type": "long_alternative",
-      "edge_20d_pct": -4.53,
-      "edge_60d_pct": -14.99,
+      "edge_20d_pct": -5.12,
+      "edge_60d_pct": -12.6,
       "momentum_state": "not_confirmed",
       "regime_fit": "watchlist",
       "required_trigger": "Needs both 20d and 60d relative-strength improvement before funding. India improves structural growth quality versus broad EM, but funding requires valuation and concentration discipline."
@@ -146,13 +146,13 @@
       "current_exposure_id": "em_broad",
       "current_name": "Emerging Markets",
       "current_proxy": "EEM",
-      "decision": "Early improvement only; wait for 60d confirmation.",
+      "decision": "Alternative improving; keep replacement duel active.",
       "duel_type": "long_alternative",
-      "edge_20d_pct": 1.12,
-      "edge_60d_pct": -1.95,
-      "momentum_state": "early_improvement",
-      "regime_fit": "watchlist",
-      "required_trigger": "Early improvement only; needs positive 60d confirmation before funding. China can recover quickly, but funding requires policy credibility and price confirmation, not only mean-reversion potential."
+      "edge_20d_pct": 0.53,
+      "edge_60d_pct": 0.43,
+      "momentum_state": "confirmed",
+      "regime_fit": "candidate",
+      "required_trigger": "Momentum proof is present. China can recover quickly, but funding requires policy credibility and price confirmation, not only mean-reversion potential."
     },
     {
       "alternative_exposure_id": "us_large_cap",
@@ -163,8 +163,8 @@
       "current_proxy": "EEM",
       "decision": "Alternative improving; keep replacement duel active.",
       "duel_type": "long_alternative",
-      "edge_20d_pct": 1.72,
-      "edge_60d_pct": 1.36,
+      "edge_20d_pct": 1.3,
+      "edge_60d_pct": 2.92,
       "momentum_state": "confirmed",
       "regime_fit": "candidate",
       "required_trigger": "Momentum proof is present. SPY reduces EM/USD risk, but funding would reduce non-U.S. diversification."

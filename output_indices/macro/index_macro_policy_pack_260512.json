@@ -53,7 +53,7 @@
       "underlying": "IWM / Russell 2000"
     }
   },
-  "generated_at_utc": "2026-05-17T23:24:09.457824Z",
+  "generated_at_utc": "2026-05-18T21:59:21.961266Z",
   "geopolitical_regime": {
     "confidence": 0.62,
     "current": "Elevated USD / policy-friction risk",
@@ -135,17 +135,17 @@
   },
   "macro_signals": {
     "credit": {
-      "hyg_20d_pct": -1.48
+      "hyg_20d_pct": -1.29
     },
     "duration": {
-      "tlt_20d_pct": -3.92
+      "tlt_20d_pct": -4.01
     },
     "equity_breadth": {
-      "iwm_vs_spy_20d_pct": -3.43,
-      "qqq_vs_spy_20d_pct": 5.17
+      "iwm_vs_spy_20d_pct": -4.72,
+      "qqq_vs_spy_20d_pct": 4.91
     },
     "usd": {
-      "uup_20d_pct": 1.5
+      "uup_20d_pct": 1.39
     }
   },
   "portfolio_implications": [
@@ -176,7 +176,7 @@
     "US": "Leadership is investable but concentration must be explicit.",
     "US factors": "Equal weight, quality, minimum volatility and value should be used to test breadth and factor rotation without adding new region risk."
   },
-  "report_date": "2026-05-15",
+  "report_date": "2026-05-18",
   "report_digest": {
     "central_bank_focus": "Fed real-rate risk remains the key policy filter for small caps, EM and speculative beta.",
     "decision_implications": [
