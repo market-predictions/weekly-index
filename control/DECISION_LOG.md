@@ -1,4 +1,4 @@
-# Daily Index OS — Decision Log
+# Weekly Index OS — Decision Log
 
 ## 2026-04-02
 ### Decision
@@ -141,3 +141,57 @@ Port the ETF framework and workflow selectively into `daily-index` through new i
 
 ### Why
 A selective port gives speed and production realism without importing ETF-specific drift into the long-term architecture of `daily-index`.
+
+---
+
+## 2026-05-19
+### Decision
+Freeze the current English Weekly Index baseline as production-valid.
+
+### Why
+The May 18 report validated the core output and operational contracts: explicit requested-close token discipline, fresh pricing, Section 7 performance-table ownership, Section 15 holdings/cash-only ownership, Analyst Report visual distinction, ticker linking, render polish, and equity-chart x-axis polish.
+
+---
+
+## 2026-05-19
+### Decision
+Require report token, state artifacts, generated report, and run manifest to follow the requested close date.
+
+### Why
+A report priced with May 18 data but delivered under an older May 12 token is operationally misleading. The workflow must fail rather than silently send a stale-token report.
+
+---
+
+## 2026-05-19
+### Decision
+Use Section 7 for `Equity Curve and Portfolio Development`, including `Tradable Proxy Performance`.
+
+### Why
+Performance belongs immediately after the equity chart. Section 15 must remain the holdings/cash authority, not a mixed performance appendix.
+
+---
+
+## 2026-05-19
+### Decision
+Use a petrol-teal Analyst Report identity and keep Investor/Analyst separation visible.
+
+### Why
+The report contains two reading modes. The reader must clearly see where the Investor Report ends and the Analyst Report begins while preserving an executive, premium visual language.
+
+---
+
+## 2026-05-19
+### Decision
+Maintain a root-level `changelog.md` for meaningful future codebase changes.
+
+### Why
+The repo is now production-like enough that Git commits alone are too low-level for handover, debugging and architecture review. Meaningful workflow, renderer, state, prompt, validation and output-contract changes need a human-readable audit trail.
+
+---
+
+## 2026-05-19
+### Decision
+Start bilingual Weekly Index work only after preserving the English baseline.
+
+### Why
+The Dutch report must consume the same state, numbers and report-token contract as the English report. Bilingual work should add a language/rendering layer, not create a second investment model.
