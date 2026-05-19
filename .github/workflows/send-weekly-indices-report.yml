@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - "control/run_queue/weekly_indices_report_request_*.md"
-      - "output_indices/weekly_indices_review_*.md"
   workflow_dispatch:
 
 permissions:
