@@ -4,6 +4,7 @@ import re
 from urllib.parse import quote
 
 import send_index_report as _base
+import send_index_report_equity_chart_polish  # noqa: F401 - applies print-safe equity chart label patches
 import send_index_report_tv  # noqa: F401 - applies TradingView/ticker rendering patches
 
 _ORIG_BUILD_REPORT_HTML = _base.build_report_html
