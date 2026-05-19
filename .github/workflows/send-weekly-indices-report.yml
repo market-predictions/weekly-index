@@ -46,30 +46,6 @@ jobs:
           pip install markdown weasyprint matplotlib
 
       - name: Resolve requested close date and report token
-        id: report_context
-        run: |
-          CLOSE_DATE=$(python tools/resolve_index_requested_close_date.py)
-          REPORT_TOKEN=$(python - <<'PY'
-          import os
-          close_date = os.environ['CLOSE_DATE']
-          yyyy, mm, dd = close_date.split('-')
-          print(f'{yyyy[2:]}{mm}{dd}')
-          PY
-          )
-          REPORT_PATH="output_indices/weekly_indices_review_${REPORT_TOKEN}.md"
-          echo "requested_close_date=$CLOSE_DATE" >> "$GITHUB_OUTPUT"
-          echo "report_token=$REPORT_TOKEN" >> "$GITHUB_OUTPUT"
-          echo "report_path=$REPORT_PATH" >> "$GITHUB_OUTPUT"
-          echo "REQUESTED_CLOSE_DATE=$CLOSE_DATE" >> "$GITHUB_ENV"
-          echo "REPORT_TOKEN=$REPORT_TOKEN" >> "$GITHUB_ENV"
-          echo "REPORT_PATH=$REPORT_PATH" >> "$GITHUB_ENV"
-          echo "Resolved requested close date: $CLOSE_DATE"
-          echo "Resolved report token: $REPORT_TOKEN"
-          echo "Resolved report path: $REPORT_PATH"
-        env:
-          CLOSE_DATE: ${{ steps.report_context.outputs.requested_close_date }}
-
-      - name: Resolve requested close date and report token safely
         id: token_ctx
         run: |
           CLOSE_DATE=$(python tools/resolve_index_requested_close_date.py)
