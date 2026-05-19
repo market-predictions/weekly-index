@@ -45,25 +45,58 @@ jobs:
           python -m pip install --upgrade pip
           pip install markdown weasyprint matplotlib
 
-      - name: Resolve requested close date
-        id: close_date
+      - name: Resolve requested close date and report token
+        id: report_context
         run: |
           CLOSE_DATE=$(python tools/resolve_index_requested_close_date.py)
+          REPORT_TOKEN=$(python - <<'PY'
+          import os
+          close_date = os.environ['CLOSE_DATE']
+          yyyy, mm, dd = close_date.split('-')
+          print(f'{yyyy[2:]}{mm}{dd}')
+          PY
+          )
+          REPORT_PATH="output_indices/weekly_indices_review_${REPORT_TOKEN}.md"
           echo "requested_close_date=$CLOSE_DATE" >> "$GITHUB_OUTPUT"
+          echo "report_token=$REPORT_TOKEN" >> "$GITHUB_OUTPUT"
+          echo "report_path=$REPORT_PATH" >> "$GITHUB_OUTPUT"
           echo "REQUESTED_CLOSE_DATE=$CLOSE_DATE" >> "$GITHUB_ENV"
+          echo "REPORT_TOKEN=$REPORT_TOKEN" >> "$GITHUB_ENV"
+          echo "REPORT_PATH=$REPORT_PATH" >> "$GITHUB_ENV"
           echo "Resolved requested close date: $CLOSE_DATE"
+          echo "Resolved report token: $REPORT_TOKEN"
+          echo "Resolved report path: $REPORT_PATH"
+        env:
+          CLOSE_DATE: ${{ steps.report_context.outputs.requested_close_date }}
+
+      - name: Resolve requested close date and report token safely
+        id: token_ctx
+        run: |
+          CLOSE_DATE=$(python tools/resolve_index_requested_close_date.py)
+          REPORT_TOKEN=$(python -c "d='$CLOSE_DATE'; y,m,dd=d.split('-'); print(f'{y[2:]}{m}{dd}')")
+          REPORT_PATH="output_indices/weekly_indices_review_${REPORT_TOKEN}.md"
+          echo "requested_close_date=$CLOSE_DATE" >> "$GITHUB_OUTPUT"
+          echo "report_token=$REPORT_TOKEN" >> "$GITHUB_OUTPUT"
+          echo "report_path=$REPORT_PATH" >> "$GITHUB_OUTPUT"
+          echo "REQUESTED_CLOSE_DATE=$CLOSE_DATE" >> "$GITHUB_ENV"
+          echo "REPORT_TOKEN=$REPORT_TOKEN" >> "$GITHUB_ENV"
+          echo "REPORT_PATH=$REPORT_PATH" >> "$GITHUB_ENV"
+          echo "Resolved requested close date: $CLOSE_DATE"
+          echo "Resolved report token: $REPORT_TOKEN"
+          echo "Resolved report path: $REPORT_PATH"
 
       - name: Prepare report file for requested close date
         run: |
-          python tools/prepare_weekly_index_report_for_close.py --requested-close-date "${{ steps.close_date.outputs.requested_close_date }}"
+          python tools/prepare_weekly_index_report_for_close.py --requested-close-date "${{ steps.token_ctx.outputs.requested_close_date }}"
+          test -f "${{ steps.token_ctx.outputs.report_path }}"
 
       - name: Validate report token for requested close date
         run: |
-          python tools/validate_index_report_token_for_close.py --requested-close-date "${{ steps.close_date.outputs.requested_close_date }}"
+          python tools/validate_index_report_token_for_close.py --requested-close-date "${{ steps.token_ctx.outputs.requested_close_date }}"
 
       - name: Run indices pricing pass
         run: |
-          python -m pricing_indices.run_pricing_pass --requested-close-date "${{ steps.close_date.outputs.requested_close_date }}"
+          python -m pricing_indices.run_pricing_pass --requested-close-date "${{ steps.token_ctx.outputs.requested_close_date }}"
 
       - name: Validate benchmark-vs-proxy pricing contract
         run: |
@@ -87,7 +120,7 @@ jobs:
 
       - name: Generate candidate ranking and discovery coverage artifacts
         run: |
-          python -m pricing_indices.generate_candidate_artifacts
+          python -m pricing_indices.generate_candidate_artifacts_for_token --token "${{ steps.token_ctx.outputs.report_token }}"
 
       - name: Build runtime index report state
         run: |
@@ -105,11 +138,11 @@ jobs:
 
       - name: Assemble artifact-driven report section drafts
         run: |
-          python -m pricing_indices.assemble_report_sections
+          python -m pricing_indices.assemble_report_sections --token "${{ steps.token_ctx.outputs.report_token }}"
 
       - name: Compose final report from assembled sections
         run: |
-          python -m pricing_indices.compose_final_report --in-place
+          python -m pricing_indices.compose_final_report --report-path "${{ steps.token_ctx.outputs.report_path }}" --in-place
 
       - name: Validate proxy performance table placement
         run: |
@@ -140,19 +173,19 @@ jobs:
           python tools/write_index_recommendation_scorecard.py --check-only
 
       - name: Validate HTML/PDF render before send
-        run: python send_index_report_tv_analyst_distinct.py --validate-only
+        run: python send_index_report_tv_analyst_distinct.py --report-path "${{ steps.token_ctx.outputs.report_path }}" --validate-only
 
       - name: Validate Analyst Report visual distinction
         run: |
-          python tools/validate_index_analyst_visual_distinction.py
+          python tools/validate_index_analyst_visual_distinction_for_report.py --report-path "${{ steps.token_ctx.outputs.report_path }}"
 
       - name: Validate rendered report polish
         run: |
-          python tools/validate_index_render_polish.py
+          python tools/validate_index_render_polish_for_report.py --report-path "${{ steps.token_ctx.outputs.report_path }}"
 
       - name: Validate ticker links
         run: |
-          python tools/validate_index_ticker_links.py
+          python tools/validate_index_ticker_links_for_report.py --report-path "${{ steps.token_ctx.outputs.report_path }}"
 
       - name: Send email if SMTP secrets are configured
         env:
@@ -163,7 +196,7 @@ jobs:
           MRKT_RPRTS_SMTP_PASS: ${{ secrets.MRKT_RPRTS_SMTP_PASS }}
           MRKT_RPRTS_MAIL_FROM: ${{ secrets.MRKT_RPRTS_MAIL_FROM }}
           MRKT_RPRTS_MAIL_TO: ${{ secrets.MRKT_RPRTS_MAIL_TO }}
-        run: python send_index_report_tv_analyst_distinct.py
+        run: python send_index_report_tv_analyst_distinct.py --report-path "${{ steps.token_ctx.outputs.report_path }}"
 
       - name: Write index recommendation scorecard
         if: success()
@@ -173,7 +206,7 @@ jobs:
       - name: Write run manifest
         if: always()
         run: |
-          python tools/write_weekly_indices_run_manifest.py --conclusion "${{ job.status }}"
+          python tools/write_weekly_indices_run_manifest_for_report.py --report-path "${{ steps.token_ctx.outputs.report_path }}" --conclusion "${{ job.status }}"
 
       - name: Commit composed report, run manifest, research, macro, runtime, pricing state, scorecard, and candidate artifacts back to main
         if: always()
@@ -182,6 +215,10 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
             output_indices/weekly_indices_review_*.md \
+            output_indices/weekly_indices_review_*_clean.md \
+            output_indices/weekly_indices_review_*_delivery.html \
+            output_indices/weekly_indices_review_*.pdf \
+            output_indices/weekly_indices_review_*_equity_curve.png \
             output_indices/run_manifests/*.json \
             output_indices/research/*.json \
             output_indices/macro/*.json \
