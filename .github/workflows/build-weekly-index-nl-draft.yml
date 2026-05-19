@@ -1,0 +1,67 @@
+name: Build Weekly Index NL draft
+
+on:
+  workflow_dispatch:
+    inputs:
+      report_token:
+        description: "Report token YYMMDD, e.g. 260518"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build-nl-draft:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate Dutch markdown draft
+        run: |
+          TOKEN="${{ inputs.report_token }}"
+          EN_REPORT="output_indices/weekly_indices_review_${TOKEN}.md"
+          NL_REPORT="output_indices/weekly_indices_review_nl_${TOKEN}.md"
+          test -f "$EN_REPORT"
+          python tools/generate_index_nl_report.py --en-report "$EN_REPORT" --nl-report "$NL_REPORT"
+
+      - name: Validate Dutch language contract
+        run: |
+          TOKEN="${{ inputs.report_token }}"
+          python tools/validate_index_nl_language_contract.py --nl-report "output_indices/weekly_indices_review_nl_${TOKEN}.md"
+
+      - name: Validate EN/NL section parity
+        run: |
+          TOKEN="${{ inputs.report_token }}"
+          python tools/validate_index_bilingual_section_parity.py \
+            --en-report "output_indices/weekly_indices_review_${TOKEN}.md" \
+            --nl-report "output_indices/weekly_indices_review_nl_${TOKEN}.md"
+
+      - name: Validate EN/NL numeric parity
+        run: |
+          TOKEN="${{ inputs.report_token }}"
+          python tools/validate_index_bilingual_numeric_parity.py \
+            --en-report "output_indices/weekly_indices_review_${TOKEN}.md" \
+            --nl-report "output_indices/weekly_indices_review_nl_${TOKEN}.md"
+
+      - name: Commit Dutch markdown draft
+        run: |
+          TOKEN="${{ inputs.report_token }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "output_indices/weekly_indices_review_nl_${TOKEN}.md"
+          if git diff --cached --quiet; then
+            echo "No Dutch draft changes to commit."
+            exit 0
+          fi
+          git commit -m "Persist Weekly Index NL draft ${TOKEN} [skip ci]"
+          git push origin HEAD:main
