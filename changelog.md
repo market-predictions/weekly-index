@@ -134,3 +134,21 @@ The bilingual rollout should first prove markdown generation and parity before i
 
 ### Validation / evidence
 - Code and workflow path added. Next validation step is to run the manual `Build Weekly Index NL draft` workflow with report token `260518` and inspect the committed Dutch markdown draft.
+
+---
+
+## 2026-05-19 — Fix Dutch numeric parity validator for localized dates
+
+### What changed
+- Updated `tools/validate_index_bilingual_numeric_parity.py` so it strips ISO dates, English long dates, Dutch long dates, section headers and report-token filenames before comparing financial numeric tokens.
+- Re-triggered the NL draft workflow request for report token `260518`.
+
+### Why
+The first numeric parity validator was too broad. It counted date components as investment numbers, so valid Dutch date localization such as `2026-05-18` to `maandag 18 mei 2026` caused a false parity failure.
+
+### Affected files
+- `tools/validate_index_bilingual_numeric_parity.py`
+- `changelog.md`
+
+### Validation / evidence
+- The original failure was at numeric parity with `first_diff_at=1 en='05' nl='18'`, which is consistent with date-localization noise rather than financial-number drift. The workflow has been re-triggered after the validator fix.
