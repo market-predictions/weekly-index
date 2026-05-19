@@ -1,0 +1,1212 @@
+{
+  "report_date_token": "260518",
+  "requested_close_date": "2026-05-18",
+  "macro_snapshot_file": "index_macro_snapshot_260518.json",
+  "relative_strength_snapshot_file": "index_relative_strength_snapshot_260518.json",
+  "positions_state_file": "index_portfolio_state.json",
+  "rows": [
+    {
+      "exposure_id": "us_tech_leadership",
+      "public_index_name": "Nasdaq 100",
+      "benchmark_symbol": "^NDX",
+      "primary_proxy": "QQQ",
+      "alternative_proxy": "QQQM",
+      "region": "US",
+      "style": "large-cap growth",
+      "currently_held": true,
+      "relative_strength_score": 1.79,
+      "regime_alignment_score": 0.4,
+      "implementation_priority_score": 0.8,
+      "diversification_score": 0.0,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.2,
+      "board_score": 2.79,
+      "challenger_score": 1.99,
+      "final_score": 2.79,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": 0.09041,
+        "return_60d": 0.15919,
+        "return_120d": 0.196159,
+        "drawdown_from_120d_high": -0.019808,
+        "analysis_symbol": "^NDX"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "growth leadership is supportive",
+          "rates remain a headwind for long-duration growth"
+        ],
+        "implementation_priority": [
+          "already implemented in the live model portfolio",
+          "functions as a growth engine in the current portfolio"
+        ],
+        "diversification": [],
+        "continuity": [],
+        "fragility": [
+          "rates/duration backdrop is not supportive"
+        ]
+      }
+    },
+    {
+      "exposure_id": "us_large_cap",
+      "public_index_name": "S&P 500",
+      "benchmark_symbol": "^GSPC",
+      "primary_proxy": "SPY",
+      "alternative_proxy": "VOO",
+      "region": "US",
+      "style": "large cap",
+      "currently_held": true,
+      "relative_strength_score": 1.66,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.8,
+      "diversification_score": 0.0,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "board_score": 2.61,
+      "challenger_score": 1.81,
+      "final_score": 2.61,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": 0.041343,
+        "return_60d": 0.071429,
+        "return_120d": 0.121166,
+        "drawdown_from_120d_high": -0.01309,
+        "analysis_symbol": "^GSPC"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive"
+        ],
+        "implementation_priority": [
+          "already implemented in the live model portfolio",
+          "holds a core portfolio role"
+        ],
+        "diversification": [],
+        "continuity": [],
+        "fragility": []
+      }
+    },
+    {
+      "exposure_id": "japan_equities",
+      "public_index_name": "Nikkei 225",
+      "benchmark_symbol": "^N225",
+      "primary_proxy": "EWJ",
+      "alternative_proxy": "DXJ",
+      "region": "Japan",
+      "style": "broad equity",
+      "currently_held": false,
+      "relative_strength_score": 1.72,
+      "regime_alignment_score": 0.5,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.2,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "board_score": 2.29,
+      "challenger_score": 2.42,
+      "final_score": 2.29,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": 0.050772,
+        "return_60d": 0.068034,
+        "return_120d": 0.185916,
+        "drawdown_from_120d_high": -0.038819,
+        "analysis_symbol": "^N225"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "Japan confirmation is supportive"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve"
+        ],
+        "continuity": [],
+        "fragility": []
+      }
+    },
+    {
+      "exposure_id": "south_korea_large_cap",
+      "public_index_name": "KOSPI 200 / Korea large cap",
+      "benchmark_symbol": "^KS200",
+      "primary_proxy": "EWY",
+      "alternative_proxy": "069500.KS",
+      "region": "South Korea",
+      "style": "large cap technology / exporters",
+      "currently_held": false,
+      "relative_strength_score": 2.0,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.28,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "board_score": 2.248,
+      "challenger_score": 2.43,
+      "final_score": 2.248,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": 0.248894,
+        "return_60d": 0.437901,
+        "return_120d": 1.104951,
+        "drawdown_from_120d_high": -0.057812,
+        "analysis_symbol": "^KS200"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve",
+          "adds a differentiated style bucket"
+        ],
+        "continuity": [],
+        "fragility": []
+      }
+    },
+    {
+      "exposure_id": "taiwan_large_cap",
+      "public_index_name": "MSCI Taiwan / Taiwan large cap",
+      "benchmark_symbol": "^TWII",
+      "primary_proxy": "EWT",
+      "alternative_proxy": "0050.TW",
+      "region": "Taiwan",
+      "style": "large cap technology / semiconductor",
+      "currently_held": false,
+      "relative_strength_score": 1.93,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.28,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "board_score": 2.178,
+      "challenger_score": 2.36,
+      "final_score": 2.178,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": 0.11106,
+        "return_60d": 0.286597,
+        "return_120d": 0.463187,
+        "drawdown_from_120d_high": -0.024848,
+        "analysis_symbol": "^TWII"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve",
+          "adds a differentiated style bucket"
+        ],
+        "continuity": [],
+        "fragility": []
+      }
+    },
+    {
+      "exposure_id": "em_broad",
+      "public_index_name": "Emerging Markets",
+      "benchmark_symbol": "EEM",
+      "primary_proxy": "EEM",
+      "alternative_proxy": "VWO",
+      "region": "Emerging Markets",
+      "style": "broad equity",
+      "currently_held": true,
+      "relative_strength_score": 1.59,
+      "regime_alignment_score": 0.2,
+      "implementation_priority_score": 0.65,
+      "diversification_score": 0.0,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.3,
+      "board_score": 2.14,
+      "challenger_score": 1.49,
+      "final_score": 2.14,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": 0.028332,
+        "return_60d": 0.042188,
+        "return_120d": 0.223541,
+        "drawdown_from_120d_high": -0.043715,
+        "analysis_symbol": "EEM"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "EM confirmation is supportive",
+          "dollar pressure is a headwind"
+        ],
+        "implementation_priority": [
+          "already implemented in the live model portfolio",
+          "already serves as the funded non-U.S. sleeve"
+        ],
+        "diversification": [],
+        "continuity": [],
+        "fragility": [
+          "dollar strength is a fragility factor"
+        ]
+      }
+    },
+    {
+      "exposure_id": "us_value_factor",
+      "public_index_name": "U.S. Value Factor",
+      "benchmark_symbol": "VLUE",
+      "primary_proxy": "VLUE",
+      "alternative_proxy": "IWD",
+      "region": "US",
+      "style": "value factor",
+      "currently_held": false,
+      "relative_strength_score": 1.86,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.16,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "board_score": 2.066,
+      "challenger_score": 2.17,
+      "final_score": 2.066,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": 0.126241,
+        "return_60d": 0.168285,
+        "return_120d": 0.397833,
+        "drawdown_from_120d_high": -0.038447,
+        "analysis_symbol": "VLUE"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "broadens opportunity within an already held region",
+          "adds a differentiated style bucket"
+        ],
+        "continuity": [],
+        "fragility": []
+      }
+    },
+    {
+      "exposure_id": "us_quality_factor",
+      "public_index_name": "U.S. Quality Factor",
+      "benchmark_symbol": "QUAL",
+      "primary_proxy": "QUAL",
+      "alternative_proxy": "SPHQ",
+      "region": "US",
+      "style": "quality factor",
+      "currently_held": false,
+      "relative_strength_score": 1.52,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.16,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "board_score": 1.726,
+      "challenger_score": 1.83,
+      "final_score": 1.726,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": 0.020959,
+        "return_60d": 0.031949,
+        "return_120d": 0.098656,
+        "drawdown_from_120d_high": -0.006828,
+        "analysis_symbol": "QUAL"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "broadens opportunity within an already held region",
+          "adds a differentiated style bucket"
+        ],
+        "continuity": [],
+        "fragility": []
+      }
+    },
+    {
+      "exposure_id": "us_small_cap",
+      "public_index_name": "Russell 2000",
+      "benchmark_symbol": "^RUT",
+      "primary_proxy": "IWM",
+      "alternative_proxy": "VTWO",
+      "region": "US",
+      "style": "small cap",
+      "currently_held": true,
+      "relative_strength_score": 1.38,
+      "regime_alignment_score": -0.2,
+      "implementation_priority_score": 0.7,
+      "diversification_score": 0.0,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.2,
+      "board_score": 1.68,
+      "challenger_score": 0.98,
+      "final_score": 1.68,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": -0.006395,
+        "return_60d": 0.04179,
+        "return_120d": 0.171131,
+        "drawdown_from_120d_high": -0.038683,
+        "analysis_symbol": "^RUT"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "small-cap breadth is weak"
+        ],
+        "implementation_priority": [
+          "already implemented in the live model portfolio",
+          "adds funded breadth diversification"
+        ],
+        "diversification": [],
+        "continuity": [],
+        "fragility": [
+          "rates/duration backdrop is not supportive"
+        ]
+      }
+    },
+    {
+      "exposure_id": "canada_large_cap",
+      "public_index_name": "S&P/TSX 60",
+      "benchmark_symbol": "^GSPTSE",
+      "primary_proxy": "EWC",
+      "alternative_proxy": "XIU.TO",
+      "region": "Canada",
+      "style": "large cap",
+      "currently_held": false,
+      "relative_strength_score": 1.24,
+      "regime_alignment_score": 0.32,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.2,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "board_score": 1.63,
+      "challenger_score": 1.76,
+      "final_score": 1.63,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-15",
+        "return_20d": -0.014933,
+        "return_60d": 0.007096,
+        "return_120d": 0.121771,
+        "drawdown_from_120d_high": -0.020494,
+        "analysis_symbol": "^GSPTSE"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "commodity-linked markets can benefit from firmer resource pressure",
+          "global equity appetite helps developed resource markets"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve"
+        ],
+        "continuity": [],
+        "fragility": []
+      }
+    },
+    {
+      "exposure_id": "us_equal_weight",
+      "public_index_name": "S&P 500 Equal Weight",
+      "benchmark_symbol": "^SPXEW",
+      "primary_proxy": "RSP",
+      "alternative_proxy": "RSP",
+      "region": "US",
+      "style": "equal weight / breadth",
+      "currently_held": false,
+      "relative_strength_score": 1.1,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.16,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "board_score": 1.306,
+      "challenger_score": 1.41,
+      "final_score": 1.306,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": -0.006193,
+        "return_60d": -0.006505,
+        "return_120d": 0.091499,
+        "drawdown_from_120d_high": -0.011332,
+        "analysis_symbol": "^SPXEW"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "broadens opportunity within an already held region",
+          "adds a differentiated style bucket"
+        ],
+        "continuity": [],
+        "fragility": []
+      }
+    },
+    {
+      "exposure_id": "us_min_vol_factor",
+      "public_index_name": "U.S. Minimum Volatility",
+      "benchmark_symbol": "USMV",
+      "primary_proxy": "USMV",
+      "alternative_proxy": "SPLV",
+      "region": "US",
+      "style": "minimum volatility",
+      "currently_held": false,
+      "relative_strength_score": 1.03,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.16,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "board_score": 1.236,
+      "challenger_score": 1.34,
+      "final_score": 1.236,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": 0.0133,
+        "return_60d": -0.001975,
+        "return_120d": 0.024546,
+        "drawdown_from_120d_high": -0.018505,
+        "analysis_symbol": "USMV"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "broadens opportunity within an already held region",
+          "adds a differentiated style bucket"
+        ],
+        "continuity": [],
+        "fragility": []
+      }
+    },
+    {
+      "exposure_id": "china_large_cap",
+      "public_index_name": "China large cap",
+      "benchmark_symbol": "000300.SS",
+      "primary_proxy": "FXI",
+      "alternative_proxy": "MCHI",
+      "region": "China",
+      "style": "large cap",
+      "currently_held": false,
+      "relative_strength_score": 1.31,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.2,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.3,
+      "board_score": 1.23,
+      "challenger_score": 1.36,
+      "final_score": 1.23,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": 0.031646,
+        "return_60d": 0.024255,
+        "return_120d": 0.027956,
+        "drawdown_from_120d_high": -0.032975,
+        "analysis_symbol": "000300.SS"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "broader EM confirmation is supportive",
+          "dollar pressure is a headwind"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve"
+        ],
+        "continuity": [],
+        "fragility": [
+          "dollar strength is a fragility factor"
+        ]
+      }
+    },
+    {
+      "exposure_id": "italy_large_cap",
+      "public_index_name": "FTSE MIB",
+      "benchmark_symbol": "FTSEMIB.MI",
+      "primary_proxy": "EWI",
+      "alternative_proxy": "IMIB.MI",
+      "region": "Europe",
+      "style": "large cap",
+      "currently_held": false,
+      "relative_strength_score": 1.45,
+      "regime_alignment_score": -0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.2,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.15,
+      "board_score": 1.22,
+      "challenger_score": 1.35,
+      "final_score": 1.22,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": -0.004093,
+        "return_60d": 0.049783,
+        "return_120d": 0.141099,
+        "drawdown_from_120d_high": -0.027592,
+        "analysis_symbol": "FTSEMIB.MI"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "Europe confirmation is fading",
+          "commodity pressure can challenge Europe"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve"
+        ],
+        "continuity": [],
+        "fragility": [
+          "commodity pressure adds European fragility"
+        ]
+      }
+    },
+    {
+      "exposure_id": "mexico_large_cap",
+      "public_index_name": "Mexico large cap",
+      "benchmark_symbol": "^MXX",
+      "primary_proxy": "EWW",
+      "alternative_proxy": "NAFTRAC.MX",
+      "region": "Mexico",
+      "style": "large cap industrial / financials",
+      "currently_held": false,
+      "relative_strength_score": 0.9,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.28,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "board_score": 1.148,
+      "challenger_score": 1.33,
+      "final_score": 1.148,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": -0.020347,
+        "return_60d": -0.038654,
+        "return_120d": 0.101878,
+        "drawdown_from_120d_high": -0.044638,
+        "analysis_symbol": "^MXX"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve",
+          "adds a differentiated style bucket"
+        ],
+        "continuity": [],
+        "fragility": []
+      }
+    },
+    {
+      "exposure_id": "switzerland_large_cap",
+      "public_index_name": "SMI",
+      "benchmark_symbol": "^SSMI",
+      "primary_proxy": "EWL",
+      "alternative_proxy": "CSSMI.SW",
+      "region": "Switzerland",
+      "style": "large cap defensive quality",
+      "currently_held": false,
+      "relative_strength_score": 0.83,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.28,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.05,
+      "board_score": 1.028,
+      "challenger_score": 1.21,
+      "final_score": 1.028,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": 0.005126,
+        "return_60d": -0.037239,
+        "return_120d": 0.051031,
+        "drawdown_from_120d_high": -0.055201,
+        "analysis_symbol": "^SSMI"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve",
+          "adds a differentiated style bucket"
+        ],
+        "continuity": [],
+        "fragility": [
+          "commodity pressure modestly affects Swiss exporters"
+        ]
+      }
+    },
+    {
+      "exposure_id": "netherlands_large_cap",
+      "public_index_name": "AEX",
+      "benchmark_symbol": "^AEX",
+      "primary_proxy": "EWN",
+      "alternative_proxy": "IAEX.AS",
+      "region": "Europe",
+      "style": "large cap",
+      "currently_held": false,
+      "relative_strength_score": 1.17,
+      "regime_alignment_score": -0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.2,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.15,
+      "board_score": 0.94,
+      "challenger_score": 1.07,
+      "final_score": 0.94,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": -0.007776,
+        "return_60d": 0.005126,
+        "return_120d": 0.096073,
+        "drawdown_from_120d_high": -0.015241,
+        "analysis_symbol": "^AEX"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "Europe confirmation is fading",
+          "commodity pressure can challenge Europe"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve"
+        ],
+        "continuity": [],
+        "fragility": [
+          "commodity pressure adds European fragility"
+        ]
+      }
+    },
+    {
+      "exposure_id": "uk_large_cap",
+      "public_index_name": "FTSE 100",
+      "benchmark_symbol": "^FTSE",
+      "primary_proxy": "EWU",
+      "alternative_proxy": "ISF.L",
+      "region": "UK",
+      "style": "large cap",
+      "currently_held": false,
+      "relative_strength_score": 0.62,
+      "regime_alignment_score": 0.2,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.2,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "board_score": 0.89,
+      "challenger_score": 1.02,
+      "final_score": 0.89,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": -0.032228,
+        "return_60d": -0.033913,
+        "return_120d": 0.082193,
+        "drawdown_from_120d_high": -0.053783,
+        "analysis_symbol": "^FTSE"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "risk appetite modestly supports the UK large-cap sleeve"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve"
+        ],
+        "continuity": [],
+        "fragility": []
+      }
+    },
+    {
+      "exposure_id": "saudi_large_cap",
+      "public_index_name": "Saudi Arabia large cap",
+      "benchmark_symbol": "^TASI.SR",
+      "primary_proxy": "KSA",
+      "alternative_proxy": "KSA",
+      "region": "Saudi Arabia",
+      "style": "large cap energy / financials",
+      "currently_held": false,
+      "relative_strength_score": 0.55,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.28,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "board_score": 0.798,
+      "challenger_score": 0.98,
+      "final_score": 0.798,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": -0.036131,
+        "return_60d": -0.024272,
+        "return_120d": -0.004969,
+        "drawdown_from_120d_high": -0.054616,
+        "analysis_symbol": "^TASI.SR"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve",
+          "adds a differentiated style bucket"
+        ],
+        "continuity": [],
+        "fragility": []
+      }
+    },
+    {
+      "exposure_id": "spain_large_cap",
+      "public_index_name": "IBEX 35",
+      "benchmark_symbol": "^IBEX",
+      "primary_proxy": "EWP",
+      "alternative_proxy": "IBEX.MC",
+      "region": "Europe",
+      "style": "large cap",
+      "currently_held": false,
+      "relative_strength_score": 0.97,
+      "regime_alignment_score": -0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.2,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.15,
+      "board_score": 0.74,
+      "challenger_score": 0.87,
+      "final_score": 0.74,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": -0.03946,
+        "return_60d": -0.024333,
+        "return_120d": 0.122185,
+        "drawdown_from_120d_high": -0.040088,
+        "analysis_symbol": "^IBEX"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "Europe confirmation is fading",
+          "commodity pressure can challenge Europe"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve"
+        ],
+        "continuity": [],
+        "fragility": [
+          "commodity pressure adds European fragility"
+        ]
+      }
+    },
+    {
+      "exposure_id": "australia_large_cap",
+      "public_index_name": "ASX 200",
+      "benchmark_symbol": "^AXJO",
+      "primary_proxy": "EWA",
+      "alternative_proxy": "STW.AX",
+      "region": "Australia",
+      "style": "large cap",
+      "currently_held": false,
+      "relative_strength_score": 0.34,
+      "regime_alignment_score": 0.32,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.2,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "board_score": 0.73,
+      "challenger_score": 0.86,
+      "final_score": 0.73,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": -0.050037,
+        "return_60d": -0.063932,
+        "return_120d": 0.010551,
+        "drawdown_from_120d_high": -0.07537,
+        "analysis_symbol": "^AXJO"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "commodity-linked markets can benefit from firmer resource pressure",
+          "global equity appetite helps developed resource markets"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve"
+        ],
+        "continuity": [],
+        "fragility": []
+      }
+    },
+    {
+      "exposure_id": "germany_cyclicals",
+      "public_index_name": "DAX",
+      "benchmark_symbol": "^GDAXI",
+      "primary_proxy": "EWG",
+      "alternative_proxy": "EXS1.DE",
+      "region": "Europe",
+      "style": "cyclical",
+      "currently_held": false,
+      "relative_strength_score": 0.76,
+      "regime_alignment_score": -0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.28,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.15,
+      "board_score": 0.558,
+      "challenger_score": 0.74,
+      "final_score": 0.558,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": -0.015963,
+        "return_60d": -0.038384,
+        "return_120d": 0.049432,
+        "drawdown_from_120d_high": -0.043773,
+        "analysis_symbol": "^GDAXI"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "Europe confirmation is fading",
+          "commodity pressure can challenge Europe"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve",
+          "adds a differentiated style bucket"
+        ],
+        "continuity": [],
+        "fragility": [
+          "commodity pressure adds European fragility"
+        ]
+      }
+    },
+    {
+      "exposure_id": "brazil_large_cap",
+      "public_index_name": "Brazil large cap",
+      "benchmark_symbol": "^BVSP",
+      "primary_proxy": "EWZ",
+      "alternative_proxy": "BOVA11.SA",
+      "region": "Brazil",
+      "style": "large cap commodity / financials",
+      "currently_held": false,
+      "relative_strength_score": 0.28,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.28,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "board_score": 0.528,
+      "challenger_score": 0.71,
+      "final_score": 0.528,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": -0.100819,
+        "return_60d": -0.048598,
+        "return_120d": 0.127286,
+        "drawdown_from_120d_high": -0.109138,
+        "analysis_symbol": "^BVSP"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve",
+          "adds a differentiated style bucket"
+        ],
+        "continuity": [],
+        "fragility": []
+      }
+    },
+    {
+      "exposure_id": "europe_large_cap",
+      "public_index_name": "Euro Stoxx 50",
+      "benchmark_symbol": "^STOXX50E",
+      "primary_proxy": "FEZ",
+      "alternative_proxy": "VGK",
+      "region": "Europe",
+      "style": "large cap",
+      "currently_held": false,
+      "relative_strength_score": 0.69,
+      "regime_alignment_score": -0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.2,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.15,
+      "board_score": 0.46,
+      "challenger_score": 0.59,
+      "final_score": 0.46,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": -0.014205,
+        "return_60d": -0.028704,
+        "return_120d": 0.036884,
+        "drawdown_from_120d_high": -0.052536,
+        "analysis_symbol": "^STOXX50E"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "Europe confirmation is fading",
+          "commodity pressure can challenge Europe"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve"
+        ],
+        "continuity": [],
+        "fragility": [
+          "commodity pressure adds European fragility"
+        ]
+      }
+    },
+    {
+      "exposure_id": "hong_kong_equities",
+      "public_index_name": "Hang Seng",
+      "benchmark_symbol": "^HSI",
+      "primary_proxy": "EWH",
+      "alternative_proxy": "2800.HK",
+      "region": "Hong Kong",
+      "style": "large cap",
+      "currently_held": false,
+      "relative_strength_score": 0.48,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.2,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.3,
+      "board_score": 0.4,
+      "challenger_score": 0.53,
+      "final_score": 0.4,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": -0.018545,
+        "return_60d": -0.050212,
+        "return_120d": -0.026876,
+        "drawdown_from_120d_high": -0.081983,
+        "analysis_symbol": "^HSI"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "broader EM confirmation is supportive",
+          "dollar pressure is a headwind"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve"
+        ],
+        "continuity": [],
+        "fragility": [
+          "dollar strength is a fragility factor"
+        ]
+      }
+    },
+    {
+      "exposure_id": "south_africa_large_cap",
+      "public_index_name": "South Africa large cap",
+      "benchmark_symbol": "^JTOPI",
+      "primary_proxy": "EZA",
+      "alternative_proxy": "STX40.JO",
+      "region": "South Africa",
+      "style": "large cap resources / financials",
+      "currently_held": false,
+      "relative_strength_score": 0.14,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.28,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "board_score": 0.388,
+      "challenger_score": 0.57,
+      "final_score": 0.388,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": -0.079783,
+        "return_60d": -0.122071,
+        "return_120d": 0.045637,
+        "drawdown_from_120d_high": -0.168873,
+        "analysis_symbol": "EZA"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve",
+          "adds a differentiated style bucket"
+        ],
+        "continuity": [],
+        "fragility": []
+      }
+    },
+    {
+      "exposure_id": "indonesia_large_cap",
+      "public_index_name": "Indonesia large cap",
+      "benchmark_symbol": "^JKSE",
+      "primary_proxy": "EIDO",
+      "alternative_proxy": "IDX.ID",
+      "region": "Indonesia",
+      "style": "large cap domestic demand / commodities",
+      "currently_held": false,
+      "relative_strength_score": 0.07,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.28,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.0,
+      "board_score": 0.318,
+      "challenger_score": 0.5,
+      "final_score": 0.318,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": -0.134365,
+        "return_60d": -0.168365,
+        "return_120d": -0.21387,
+        "drawdown_from_120d_high": -0.277564,
+        "analysis_symbol": "^JKSE"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve",
+          "adds a differentiated style bucket"
+        ],
+        "continuity": [],
+        "fragility": []
+      }
+    },
+    {
+      "exposure_id": "france_large_cap",
+      "public_index_name": "CAC 40",
+      "benchmark_symbol": "^FCHI",
+      "primary_proxy": "EWQ",
+      "alternative_proxy": "CAC.PA",
+      "region": "Europe",
+      "style": "large cap",
+      "currently_held": false,
+      "relative_strength_score": 0.41,
+      "regime_alignment_score": -0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.2,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.15,
+      "board_score": 0.18,
+      "challenger_score": 0.31,
+      "final_score": 0.18,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": -0.051945,
+        "return_60d": -0.052383,
+        "return_120d": 0.000606,
+        "drawdown_from_120d_high": -0.073477,
+        "analysis_symbol": "^FCHI"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "Europe confirmation is fading",
+          "commodity pressure can challenge Europe"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve"
+        ],
+        "continuity": [],
+        "fragility": [
+          "commodity pressure adds European fragility"
+        ]
+      }
+    },
+    {
+      "exposure_id": "india_large_cap",
+      "public_index_name": "Nifty 50",
+      "benchmark_symbol": "^NSEI",
+      "primary_proxy": "INDA",
+      "alternative_proxy": "INDY",
+      "region": "India",
+      "style": "large cap",
+      "currently_held": false,
+      "relative_strength_score": 0.21,
+      "regime_alignment_score": 0.15,
+      "implementation_priority_score": 0.0,
+      "diversification_score": 0.2,
+      "continuity_bonus": 0.0,
+      "fragility_penalty": 0.3,
+      "board_score": 0.13,
+      "challenger_score": 0.26,
+      "final_score": 0.13,
+      "relative_strength_metrics": {
+        "requested_close_date": "2026-05-18",
+        "selected_data_date": "2026-05-18",
+        "return_20d": -0.028891,
+        "return_60d": -0.071499,
+        "return_120d": -0.087229,
+        "drawdown_from_120d_high": -0.101738,
+        "analysis_symbol": "^NSEI"
+      },
+      "evidence_notes": {
+        "regime_alignment": [
+          "broad equity risk appetite is supportive",
+          "broader EM confirmation is supportive",
+          "dollar pressure is a headwind"
+        ],
+        "implementation_priority": [],
+        "diversification": [
+          "adds a new regional sleeve"
+        ],
+        "continuity": [],
+        "fragility": [
+          "dollar strength is a fragility factor"
+        ]
+      }
+    }
+  ]
+}

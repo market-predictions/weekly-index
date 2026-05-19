@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-18",
+  "as_of": "2026-05-19",
   "base_currency": "EUR",
   "starting_capital_eur": 100000.0,
   "total_portfolio_value_eur": 111116.08,
@@ -111,7 +111,7 @@
       "proxy_currency": "USD",
       "avg_entry_proxy": 261.76,
       "latest_proxy_close": 275.97,
-      "latest_benchmark_close": 2775.1021,
+      "latest_benchmark_close": 2775.1001,
       "market_value_local": 24837.3,
       "market_value_eur": 21323.23,
       "weight_pct": 19.19,
