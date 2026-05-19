@@ -5,7 +5,7 @@ This file is the **first entry point** for meaningful work on `market-prediction
 ## Purpose
 This repository contains two product tracks:
 
-1. **Weekly Indices Review** — the primary active report product for a model portfolio of stock-index exposures with recommendations, continuity, valuation tracking, delivery, breadth discipline, short-opportunity radar, and capital re-underwriting.
+1. **Weekly Indices Review** — the primary active report product for a model portfolio of stock-index exposures with recommendations, continuity, valuation tracking, delivery, breadth discipline, short-opportunity radar, capital re-underwriting, and bilingual EN/NL output workstream.
 2. **AEX Weekly Options** — a parked but preserved options-native track for structured AEX option analysis, machine trade plans, and later possible reuse.
 
 The architecture must keep four layers separate:
@@ -27,6 +27,10 @@ Do not collapse those four layers back into one opaque prompt.
 - `control/OPTIONAL_CUSTOM_GPT_SPEC.md`
 - `control/INDICES_REVIEW_ARCHITECTURE.md`
 - `control/INDEX_CAPITAL_REUNDERWRITING_RULES.md`
+- `control/BILINGUAL_WEEKLY_INDEX_ARCHITECTURE.md`
+- `control/NL_TERMINOLOGY.md`
+- `control/BILINGUAL_OUTPUT_RULES.md`
+- `changelog.md`
 
 ---
 
@@ -85,6 +89,7 @@ What the Weekly Indices Review is trying to decide:
 
 ### 2. Input / state contract
 Where authoritative facts come from, in what order, and how conflicts are resolved:
+- requested close date and report token
 - benchmark index closes for analysis
 - tradable proxy closes for implemented valuation
 - portfolio state files
@@ -106,6 +111,7 @@ The Weekly Indices Review should feel comparable to ETF Review:
 - continuity-aware
 - operationally auditable
 - explicit about long opportunities versus defensive / inverse opportunities
+- bilingual-ready without changing the investment model
 
 ### 4. Operational runbook
 How the review is executed:
@@ -121,16 +127,23 @@ How the review is executed:
 - email delivery
 - manifest / receipt
 - state/artifact commit-back
+- changelog update for meaningful codebase changes
 
 ---
 
 ## Session start rule
-For architecture work, debugging, workflow changes, state-authority work, or report redesign, read in this order:
+For architecture work, debugging, workflow changes, state-authority work, bilingual work, or report redesign, read in this order:
 
 1. `control/SYSTEM_INDEX.md`
 2. `control/CURRENT_STATE.md`
 3. `control/NEXT_ACTIONS.md`
 4. only then the minimum relevant execution file(s)
+
+For bilingual work, also read:
+
+5. `control/BILINGUAL_WEEKLY_INDEX_ARCHITECTURE.md`
+6. `control/NL_TERMINOLOGY.md`
+7. `control/BILINGUAL_OUTPUT_RULES.md`
 
 ---
 
@@ -144,6 +157,8 @@ For architecture work, debugging, workflow changes, state-authority work, or rep
 - Do not let the production workflow send mail on non-report code changes.
 - Do not allow weak or replaceable holdings to remain indefinite unqualified Holds.
 - Do not mix defensive / inverse tools into the long-side opportunity board.
+- Do not let the Dutch report run a second investment model or diverge numerically from English.
+- Do not make meaningful repo changes without updating `changelog.md`.
 
 ---
 
@@ -161,3 +176,4 @@ The target architecture is:
 - benchmark index data drives analysis
 - tradable proxy data drives implemented model-portfolio valuation
 - `output_indices/index_recommendation_scorecard.csv` is the machine-readable recommendation discipline memory
+- Dutch output must be a localized companion view over the same state, token, pricing and decisions
