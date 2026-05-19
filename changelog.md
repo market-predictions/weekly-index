@@ -63,3 +63,26 @@ These are now stable output-contract and operational-baseline decisions. They sh
 ### Validation / evidence
 - Fresh run succeeded with report token `260518`, requested close date `2026-05-18`, and portfolio value EUR `111,116.08`.
 - Latest successful manifest commit referenced workflow success for `output_indices/weekly_indices_review_260518.md`.
+
+---
+
+## 2026-05-19 — Freeze control layer and add bilingual architecture design
+
+### What changed
+- Updated `control/CURRENT_STATE.md` to describe the validated English Weekly Index baseline.
+- Updated `control/NEXT_ACTIONS.md` to make bilingual Weekly Index output the next active workstream.
+- Updated `control/DECISION_LOG.md` with stable baseline decisions.
+- Added `control/BILINGUAL_WEEKLY_INDEX_ARCHITECTURE.md` before touching bilingual implementation code.
+
+### Why
+The repo needed a clean control-layer checkpoint before starting bilingual output. The Dutch report must be a language/rendering layer over the same state and numbers, not a second investment model.
+
+### Affected files
+- `control/CURRENT_STATE.md`
+- `control/NEXT_ACTIONS.md`
+- `control/DECISION_LOG.md`
+- `control/BILINGUAL_WEEKLY_INDEX_ARCHITECTURE.md`
+- `changelog.md`
+
+### Validation / evidence
+- Control-layer and architecture documentation only; no report run required.
