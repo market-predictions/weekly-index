@@ -107,3 +107,30 @@ Bilingual implementation needs stable terminology and output-contract rules befo
 
 ### Validation / evidence
 - Control-layer documentation only; no report run required.
+
+---
+
+## 2026-05-19 — Add Dutch markdown draft generation path without email delivery
+
+### What changed
+- Added a first deterministic Dutch markdown generator for Weekly Index reports.
+- Added Dutch language-contract validation.
+- Added EN/NL section-parity validation.
+- Added EN/NL numeric-parity validation.
+- Added a manual NL draft workflow that generates and commits Dutch markdown only; it does not render/send email.
+- Restricted the production English send workflow trigger to run-queue requests only, so committing Dutch draft markdown cannot accidentally trigger report delivery.
+
+### Why
+The bilingual rollout should first prove markdown generation and parity before introducing Dutch PDF rendering or bilingual email delivery. The Dutch report must remain a localized companion view over the same English/state artifacts.
+
+### Affected files
+- `tools/generate_index_nl_report.py`
+- `tools/validate_index_nl_language_contract.py`
+- `tools/validate_index_bilingual_section_parity.py`
+- `tools/validate_index_bilingual_numeric_parity.py`
+- `.github/workflows/build-weekly-index-nl-draft.yml`
+- `.github/workflows/send-weekly-indices-report.yml`
+- `changelog.md`
+
+### Validation / evidence
+- Code and workflow path added. Next validation step is to run the manual `Build Weekly Index NL draft` workflow with report token `260518` and inspect the committed Dutch markdown draft.
