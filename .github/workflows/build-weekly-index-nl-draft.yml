@@ -7,6 +7,11 @@ on:
         description: "Report token YYMMDD, e.g. 260518"
         required: true
         type: string
+  push:
+    branches:
+      - main
+    paths:
+      - "control/run_queue/weekly_index_nl_draft_request_*.md"
 
 permissions:
   contents: write
@@ -26,9 +31,30 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Resolve report token
+        id: token_ctx
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TOKEN="${{ inputs.report_token }}"
+          else
+            REQUEST=$(ls -1 control/run_queue/weekly_index_nl_draft_request_*.md | sort | tail -n 1)
+            TOKEN=$(python - "$REQUEST" <<'PY'
+          import re, sys
+          text = open(sys.argv[1], encoding='utf-8').read()
+          m = re.search(r'^\s*report_token\s*:\s*(\d{6})\s*$', text, re.M)
+          if not m:
+              raise SystemExit('FAIL: report_token missing from NL draft request')
+          print(m.group(1))
+          PY
+            )
+          fi
+          echo "report_token=$TOKEN" >> "$GITHUB_OUTPUT"
+          echo "REPORT_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+          echo "Resolved report token: $TOKEN"
+
       - name: Generate Dutch markdown draft
         run: |
-          TOKEN="${{ inputs.report_token }}"
+          TOKEN="${{ steps.token_ctx.outputs.report_token }}"
           EN_REPORT="output_indices/weekly_indices_review_${TOKEN}.md"
           NL_REPORT="output_indices/weekly_indices_review_nl_${TOKEN}.md"
           test -f "$EN_REPORT"
@@ -36,26 +62,26 @@ jobs:
 
       - name: Validate Dutch language contract
         run: |
-          TOKEN="${{ inputs.report_token }}"
+          TOKEN="${{ steps.token_ctx.outputs.report_token }}"
           python tools/validate_index_nl_language_contract.py --nl-report "output_indices/weekly_indices_review_nl_${TOKEN}.md"
 
       - name: Validate EN/NL section parity
         run: |
-          TOKEN="${{ inputs.report_token }}"
+          TOKEN="${{ steps.token_ctx.outputs.report_token }}"
           python tools/validate_index_bilingual_section_parity.py \
             --en-report "output_indices/weekly_indices_review_${TOKEN}.md" \
             --nl-report "output_indices/weekly_indices_review_nl_${TOKEN}.md"
 
       - name: Validate EN/NL numeric parity
         run: |
-          TOKEN="${{ inputs.report_token }}"
+          TOKEN="${{ steps.token_ctx.outputs.report_token }}"
           python tools/validate_index_bilingual_numeric_parity.py \
             --en-report "output_indices/weekly_indices_review_${TOKEN}.md" \
             --nl-report "output_indices/weekly_indices_review_nl_${TOKEN}.md"
 
       - name: Commit Dutch markdown draft
         run: |
-          TOKEN="${{ inputs.report_token }}"
+          TOKEN="${{ steps.token_ctx.outputs.report_token }}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "output_indices/weekly_indices_review_nl_${TOKEN}.md"
