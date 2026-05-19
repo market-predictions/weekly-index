@@ -86,3 +86,24 @@ The repo needed a clean control-layer checkpoint before starting bilingual outpu
 
 ### Validation / evidence
 - Control-layer and architecture documentation only; no report run required.
+
+---
+
+## 2026-05-19 — Add Dutch terminology and bilingual output rules
+
+### What changed
+- Added Dutch terminology controls for the Weekly Index report.
+- Added bilingual output rules covering file naming, structure parity, numeric parity, date localization, terminology authority, layout parity, validation requirements, and delivery expectations.
+- Updated `control/SYSTEM_INDEX.md` so bilingual controls are part of the canonical read set.
+
+### Why
+Bilingual implementation needs stable terminology and output-contract rules before code generation starts. The Dutch report must use the same state, token, pricing and investment decisions as the English report while avoiding awkward literal translations and English date leakage.
+
+### Affected files
+- `control/NL_TERMINOLOGY.md`
+- `control/BILINGUAL_OUTPUT_RULES.md`
+- `control/SYSTEM_INDEX.md`
+- `changelog.md`
+
+### Validation / evidence
+- Control-layer documentation only; no report run required.
