@@ -29,4 +29,31 @@ The user expects a fresh production run to produce the canonical English report 
 - `changelog.md`
 
 ### Validation / evidence
-- Next validation step is a fresh production run through `control/run_queue/weekly_indices_report_request_*.md`.
+- Fresh production run delivered both versions, but user review found Dutch/English disparities that required a follow-up fix.
+
+---
+
+## 2026-05-20 — Fix Dutch companion disparities versus English report
+
+### What changed
+- Added `tools/render_index_nl_report_from_state_v2.py` as a parity-focused Dutch renderer wrapper over the native state-driven Dutch renderer.
+- The v2 renderer fixes the most visible disparities found in the delivered Dutch 260520 PDF:
+  - Section 1 now includes the same executive fields as English: primary regime confidence, geopolitical regime, geopolitical implication, what changed, portfolio implication and takeaway.
+  - Section 7 valuation history now reads the actual `index_valuation_history.csv` schema (`requested_close_date`, `total_portfolio_value_eur`) instead of falling back to only the latest close.
+  - Section 4 now restores the compact-board note about the strongest omitted regional challenger.
+  - TradingView markdown links are stripped from the Dutch markdown source so the PDF renderer owns linkification and does not expose raw markdown syntax in executive text.
+- Updated `send_index_report_bilingual.py` so Dutch HTML localizes action-snapshot row labels such as Add/Hold/Reduce/Close into Dutch.
+- Updated the production workflow to call the v2 Dutch renderer.
+
+### Why
+The Dutch PDF was received but did not match the English report closely enough. The most severe user-visible issue was raw markdown links such as `[QQQ](...)` appearing in the Dutch PDF. Other disparities included missing executive-summary fields, only one equity-history row in Dutch, English row labels in Section 2, and missing compact-board context.
+
+### Affected files
+- `tools/render_index_nl_report_from_state_v2.py`
+- `send_index_report_bilingual.py`
+- `.github/workflows/send-weekly-indices-report.yml`
+- `changelog.md`
+
+### Validation / evidence
+- Previous delivered PDFs compared: English `weekly_indices_review_260520.pdf` had 24 pages while Dutch `weekly_indices_review_nl_260520.pdf` had 20 pages, with raw markdown ticker links visible in Dutch and missing/more compact Dutch content in multiple sections.
+- Next validation step is a fresh bilingual production or NL companion rerun after these parity fixes.
