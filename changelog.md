@@ -173,3 +173,21 @@ The first Dutch draft validated structurally and numerically but still contained
 
 ### Validation / evidence
 - Next validation step is a fresh NL draft run for report token `260518` under the stricter language contract.
+
+---
+
+## 2026-05-19 — Add regex fallback translations for Dutch Top 3 action lines
+
+### What changed
+- Added line-level regex fallback translations for the `Top 3 actions this week` block in the Dutch markdown generator.
+- The fallback catches action lines starting with `Keep QQQ`, `Test SPY`, and `Force IWM` even when exact sentence replacement misses due to spacing, punctuation, or workflow-context differences.
+
+### Why
+The stricter Dutch language validator correctly blocked remaining English residue in the Top 3 action block. Exact sentence replacement was not robust enough, so those high-visibility lines needed line-level protection.
+
+### Affected files
+- `tools/generate_index_nl_report.py`
+- `changelog.md`
+
+### Validation / evidence
+- Previous workflow failure: Dutch language contract failed on `Keep QQQ` and `Test SPY`. Next validation step is a fresh NL draft run for token `260518`.
