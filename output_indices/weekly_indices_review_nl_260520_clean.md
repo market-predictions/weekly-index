@@ -9,7 +9,7 @@
 - **Primair regime:** risk-on met smalle Amerikaanse mega-cap marktleiding.
 - **Geopolitiek regime:** verhoogd USD- / beleidsfrictierisico.
 - **Portefeuille-implicatie:** behandel smalle Amerikaanse marktleiding niet als volledige bevestiging van wereldwijde marktbreedte.
-- **Kernboodschap:** houd QQQ als sterkste verdiende sleeve, houd SPY onder concentratiecontrole en dwing IWM en EEM door expliciete alternatief- en hedge-duels voordat nieuw kapitaal wordt toegewezen.
+- **Kernboodschap:** houd [QQQ](https://www.tradingview.com/chart/?symbol=QQQ) als sterkste verdiende sleeve, houd [SPY](https://www.tradingview.com/chart/?symbol=SPY) onder concentratiecontrole en dwing [IWM](https://www.tradingview.com/chart/?symbol=IWM) en [EEM](https://www.tradingview.com/chart/?symbol=EEM) door expliciete alternatief- en hedge-duels voordat nieuw kapitaal wordt toegewezen.
 
 ## 2. Portefeuille-acties in één oogopslag
 | Aanbeveling | Tickers / opmerkingen |
@@ -21,19 +21,19 @@
 | Sluiten | Geen actie deze run. |
 
 ### Beste vervangingen om te monitoren
-- Japan large cap via EWJ
-- Canada breed via EWC
-- Greater China large cap via FXI
+- Japan large cap via [EWJ](https://www.tradingview.com/chart/?symbol=EWJ)
+- Canada breed via [EWC](https://www.tradingview.com/chart/?symbol=EWC)
+- Greater China large cap via [FXI](https://www.tradingview.com/chart/?symbol=FXI)
 
 ### Top 3 acties deze week
-1. Houd QQQ als sterkste kernpositie zolang het leiderschap intact blijft.
-2. Toets SPY op overlap met QQQ, zodat Amerikaanse exposure niet wordt verward met volledige diversificatie.
-3. Dwing IWM en EEM door long-alternatief- en defensieve/inverse vergelijkingen voordat extra kapitaal wordt toegevoegd.
+1. Houd [QQQ](https://www.tradingview.com/chart/?symbol=QQQ) als sterkste kernpositie zolang het leiderschap intact blijft.
+2. Toets [SPY](https://www.tradingview.com/chart/?symbol=SPY) op overlap met [QQQ](https://www.tradingview.com/chart/?symbol=QQQ), zodat Amerikaanse exposure niet wordt verward met volledige diversificatie.
+3. Dwing [IWM](https://www.tradingview.com/chart/?symbol=IWM) en [EEM](https://www.tradingview.com/chart/?symbol=EEM) door long-alternatief- en defensieve/inverse vergelijkingen voordat extra kapitaal wordt toegevoegd.
 
 ### Top 3 risico’s deze week
 1. Hogere olieprijzen of hardnekkige inflatie vertragen ruimer beleid en houden druk op zwakke marktbreedte.
-2. SPY en QQQ blijven een concentratiecluster, geen gediversifieerde wereldwijde allocatie.
-3. IWM en EEM blijven onder herbeoordeling totdat marktbreedte, USD-beeld en relatieve sterkte verbeteren.
+2. [SPY](https://www.tradingview.com/chart/?symbol=SPY) en [QQQ](https://www.tradingview.com/chart/?symbol=QQQ) blijven een concentratiecluster, geen gediversifieerde wereldwijde allocatie.
+3. [IWM](https://www.tradingview.com/chart/?symbol=IWM) en [EEM](https://www.tradingview.com/chart/?symbol=EEM) blijven onder herbeoordeling totdat marktbreedte, USD-beeld en relatieve sterkte verbeteren.
 
 ## 3. Wereldwijd regimedashboard
 | Lens | Huidige lezing | Portefeuille-implicatie |
@@ -68,7 +68,7 @@ De scan omvat **29 exposures** over **15 regionale/stijlbuckets**. Het bord blij
 ## 6. Kernconclusie
 - De portefeuille blijft constructief, maar selectief.
 - Amerikaanse marktleiding blijft de kernmotor, maar concentratie moet bewaakt worden.
-- IWM en EEM blijven gefinancierd, maar staan onder herbeoordeling tegenover duidelijkere uitdagers.
+- [IWM](https://www.tradingview.com/chart/?symbol=IWM) en [EEM](https://www.tradingview.com/chart/?symbol=EEM) blijven gefinancierd, maar staan onder herbeoordeling tegenover duidelijkere uitdagers.
 - Inverse instrumenten zijn geen basisscenario-posities, maar de hedgekaart staat klaar als marktbreedte breekt.
 
 ## 7. Vermogenscurve en portefeuilleontwikkeling
@@ -112,11 +112,11 @@ Performance wordt berekend op de verhandelbare ETF-proxy’s die voor portefeuil
 
 ## 9. Tweede-orde-effectenkaart
 - Hogere olieprijzen duwen inflatieverwachtingen omhoog en stellen ruimer beleid verder uit.
-- Een later pad voor Fed-renteverlagingen raakt IWM sterker dan QQQ.
+- Een later pad voor Fed-renteverlagingen raakt [IWM](https://www.tradingview.com/chart/?symbol=IWM) sterker dan [QQQ](https://www.tradingview.com/chart/?symbol=QQQ).
 - Europa blijft energiegevoeliger dan de VS of Canada.
 - Grondstoffensterkte helpt Canada directer dan breed Europa.
-- Als Amerikaanse marktleiding verzwakt, activeert RWM waarschijnlijk vóór SH.
-- Als dollardruk opnieuw stijgt, wordt EUM relevanter tegenover EEM.
+- Als Amerikaanse marktleiding verzwakt, activeert [RWM](https://www.tradingview.com/chart/?symbol=RWM) waarschijnlijk vóór [SH](https://www.tradingview.com/chart/?symbol=SH).
+- Als dollardruk opnieuw stijgt, wordt [EUM](https://www.tradingview.com/chart/?symbol=EUM) relevanter tegenover [EEM](https://www.tradingview.com/chart/?symbol=EEM).
 
 ## 10. Beoordeling huidige posities
 ### S&P 500 / [SPY](https://www.tradingview.com/chart/?symbol=SPY)
@@ -124,15 +124,15 @@ Performance wordt berekend op de verhandelbare ETF-proxy’s die voor portefeuil
 - Zou instappen op huidig gewicht: Ja.
 - Thesescore: 4.1 / 5.
 - Implementatiescore: 3.9 / 5.
-- Beste alternatief: VOO / QUAL / gedeeltelijke rotatie naar EWJ.
-- Vereiste volgende actie: Toets overlap met QQQ voordat extra kapitaal wordt toegewezen.
+- Beste alternatief: [VOO](https://www.tradingview.com/chart/?symbol=VOO) / [QUAL](https://www.tradingview.com/chart/?symbol=QUAL) / gedeeltelijke rotatie naar [EWJ](https://www.tradingview.com/chart/?symbol=EWJ).
+- Vereiste volgende actie: Toets overlap met [QQQ](https://www.tradingview.com/chart/?symbol=QQQ) voordat extra kapitaal wordt toegewezen.
 
 ### Nasdaq 100 / [QQQ](https://www.tradingview.com/chart/?symbol=QQQ)
 - Zou vandaag instappen: Ja.
 - Zou instappen op huidig gewicht: Ja.
 - Thesescore: 4.4 / 5.
 - Implementatiescore: 4.3 / 5.
-- Beste alternatief: QQQM.
+- Beste alternatief: [QQQM](https://www.tradingview.com/chart/?symbol=QQQM).
 - Vereiste volgende actie: Houd als kernpositie zolang technologieleiderschap intact blijft.
 
 ### Russell 2000 / [IWM](https://www.tradingview.com/chart/?symbol=IWM)
@@ -140,16 +140,16 @@ Performance wordt berekend op de verhandelbare ETF-proxy’s die voor portefeuil
 - Zou instappen op huidig gewicht: Nee.
 - Thesescore: 3.2 / 5.
 - Implementatiescore: 2.9 / 5.
-- Beste alternatief: EWJ long-side, RWM defensief.
-- Vereiste volgende actie: Dwing een direct alternatief-duel af tegenover EWJ en RWM.
+- Beste alternatief: [EWJ](https://www.tradingview.com/chart/?symbol=EWJ) long-side, [RWM](https://www.tradingview.com/chart/?symbol=RWM) defensief.
+- Vereiste volgende actie: Dwing een direct alternatief-duel af tegenover [EWJ](https://www.tradingview.com/chart/?symbol=EWJ) en [RWM](https://www.tradingview.com/chart/?symbol=RWM).
 
 ### Emerging Markets / [EEM](https://www.tradingview.com/chart/?symbol=EEM)
 - Zou vandaag instappen: Kleiner / onopgelost.
 - Zou instappen op huidig gewicht: Nee.
 - Thesescore: 3.3 / 5.
 - Implementatiescore: 2.9 / 5.
-- Beste alternatief: FXI / INDA long-side, EUM defensief.
-- Vereiste volgende actie: Dwing een direct alternatief-duel af tegenover FXI, INDA en EUM.
+- Beste alternatief: [FXI](https://www.tradingview.com/chart/?symbol=FXI) / [INDA](https://www.tradingview.com/chart/?symbol=INDA) long-side, [EUM](https://www.tradingview.com/chart/?symbol=EUM) defensief.
+- Vereiste volgende actie: Dwing een direct alternatief-duel af tegenover [FXI](https://www.tradingview.com/chart/?symbol=FXI), [INDA](https://www.tradingview.com/chart/?symbol=INDA) en [EUM](https://www.tradingview.com/chart/?symbol=EUM).
 
 ## 11. Beste nieuwe indexkansen
 ### Long-kansen
@@ -267,10 +267,10 @@ Deze instrumenten zijn uitsluitend defensieve instrumenten. Ze maken geen deel u
 - Leverage toegestaan: Nee
 
 ### Volglijst / dynamisch radargeheugen
-- EWJ: sterkste ontwikkelde ex-VS-kandidaat.
-- EWC: Canada blijft een echte uitdager.
-- FXI: Greater China blijft tactisch relevant.
-- RWM, EUM en PSQ blijven defensieve instrumenten, geen basisscenario-longposities.
+- [EWJ](https://www.tradingview.com/chart/?symbol=EWJ): sterkste ontwikkelde ex-VS-kandidaat.
+- [EWC](https://www.tradingview.com/chart/?symbol=EWC): Canada blijft een echte uitdager.
+- [FXI](https://www.tradingview.com/chart/?symbol=FXI): Greater China blijft tactisch relevant.
+- [RWM](https://www.tradingview.com/chart/?symbol=RWM), [EUM](https://www.tradingview.com/chart/?symbol=EUM) en [PSQ](https://www.tradingview.com/chart/?symbol=PSQ) blijven defensieve instrumenten, geen basisscenario-longposities.
 
 ## 17. Disclaimer
 Dit rapport is uitsluitend bedoeld voor informatieve en educatieve doeleinden. Het is geen beleggingsadvies, juridisch advies, fiscaal advies of financieel advies, en vormt geen aanbeveling om effecten te kopen, te verkopen of aan te houden. Beleggen brengt risico’s met zich mee, waaronder het risico op verlies van inleg.
