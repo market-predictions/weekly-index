@@ -1,0 +1,7 @@
+timestamp_utc=2026-05-20T21:37:07Z
+report=weekly_indices_review_nl_260518.md
+recipient=validation_only
+delivery=validation_only
+html_body=full_report
+pdf_attached=yes
+attachments=weekly_indices_review_nl_260518_delivery.html, weekly_indices_review_nl_260518.pdf

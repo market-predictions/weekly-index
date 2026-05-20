@@ -151,7 +151,6 @@ Performance wordt berekend op de verhandelbare ETF-proxy’s die voor portefeuil
 - Beste alternatief: FXI / INDA long-side, EUM defensief.
 - Vereiste volgende actie: Dwing een direct alternatief-duel af tegenover FXI, INDA en EUM.
 
-
 ## 11. Beste nieuwe indexkansen
 ### Long-kansen
 
