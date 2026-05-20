@@ -234,8 +234,8 @@ Deze instrumenten zijn uitsluitend defensieve instrumenten. Ze maken geen deel u
 | Amerikaanse kernmarktleiding | Nasdaq 100 | [QQQ](https://www.tradingview.com/chart/?symbol=QQQ) | 3 | 3 | 1.99 /5 (Laag tot gemiddeld) | | Actief geselecteerd |
 | Amerikaanse factor- en stijlalternatieven | U.S. Value Factor | [VLUE](https://www.tradingview.com/chart/?symbol=VLUE) | 4 | 4 | 2.24 /5 (Gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
 | Continentaal Europa | FTSE MIB | [EWI](https://www.tradingview.com/chart/?symbol=EWI) | 6 | 6 | 1.68 /5 (Laag tot gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
-| Verenigd Koninkrijk | FTSE 100 | [EWU](https://www.tradingview.com/chart/?symbol=EWU) | 1 | 1 | 1.30 /5 (Laag tot gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
-| Zwitserland | SMI | [EWL](https://www.tradingview.com/chart/?symbol=EWL) | 1 | 1 | 1.26 /5 (Laag tot gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
+| Verenigd Koninkrijk | FTSE 100 | [EWU](https://www.tradingview.com/chart/?symbol=EWU) | 1 | 1 | 1.09 /5 (Laag) | | Interessant, maar nog onvoldoende overtuiging |
+| Zwitserland | SMI | [EWL](https://www.tradingview.com/chart/?symbol=EWL) | 1 | 1 | 1.33 /5 (Laag tot gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
 | Noord-Amerika buiten VS | S&P/TSX 60 | [EWC](https://www.tradingview.com/chart/?symbol=EWC) | 1 | 1 | 1.83 /5 (Laag tot gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
 | Ontwikkelde Azië-Pacific | Nikkei 225 | [EWJ](https://www.tradingview.com/chart/?symbol=EWJ) | 2 | 2 | 2.42 /5 (Gemiddeld) | | Actief geselecteerd |
 | Korea / Taiwan | KOSPI 200 / Korea large cap | [EWY](https://www.tradingview.com/chart/?symbol=EWY) | 2 | 2 | 2.43 /5 (Gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |

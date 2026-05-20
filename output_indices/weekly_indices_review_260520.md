@@ -238,8 +238,8 @@ These instruments are defensive tools only. They are not part of the base-case l
 | U.S. core leadership | Nasdaq 100 | QQQ | 3 | 3 | 1.99 | Published |
 | U.S. factor / style alternatives | U.S. Value Factor | VLUE | 4 | 4 | 2.24 | Close challenger, not funded |
 | continental Europe | FTSE MIB | EWI | 6 | 6 | 1.68 | Close challenger, not funded |
-| UK | FTSE 100 | EWU | 1 | 1 | 1.30 | Close challenger, not funded |
-| Switzerland | SMI | EWL | 1 | 1 | 1.26 | Close challenger, not funded |
+| UK | FTSE 100 | EWU | 1 | 1 | 1.09 | Close challenger, not funded |
+| Switzerland | SMI | EWL | 1 | 1 | 1.33 | Close challenger, not funded |
 | North America ex-U.S. | S&P/TSX 60 | EWC | 1 | 1 | 1.83 | Close challenger, not funded |
 | developed Asia-Pacific | Nikkei 225 | EWJ | 2 | 2 | 2.42 | Published |
 | Korea / Taiwan | KOSPI 200 / Korea large cap | EWY | 2 | 2 | 2.43 | Close challenger, not funded |
@@ -268,14 +268,14 @@ These instruments are defensive tools only. They are not part of the base-case l
 | Netherlands technology / global industrial tilt | AEX Index | continental Europe | EWN | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.47 | Strong challenger, not yet funded |
 | Mexico nearshoring / industrial beta | S&P/BMV IPC Index | Latin America | EWW | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.46 | Strong challenger, not yet funded |
 | U.S. equal-weight breadth | S&P 500 Equal Weight Index | U.S. factor / style alternatives | RSP | Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history. | No | 1.41 | Strong challenger, not yet funded |
-| UK defensive yield / energy / financials | FTSE 100 Index | UK | EWU | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.30 | Strong challenger, not yet funded |
+| Switzerland defensive quality | Swiss Market Index | Switzerland | EWL | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.33 | Strong challenger, not yet funded |
+| Germany cyclical industrial beta | DAX Index | continental Europe | EWG | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.28 | Strong challenger, not yet funded |
 | U.S. minimum-volatility defensive equity | MSCI USA Minimum Volatility proxy benchmark | U.S. factor / style alternatives | USMV | Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history. | No | 1.28 | Strong challenger, not yet funded |
-| Switzerland defensive quality | Swiss Market Index | Switzerland | EWL | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.26 | Strong challenger, not yet funded |
-| Germany cyclical industrial beta | DAX Index | continental Europe | EWG | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.21 | Strong challenger, not yet funded |
 | U.S. small-cap breadth | Russell 2000 Index | U.S. core leadership | IWM | Funded or directly fundable if portfolio rules permit. | Yes | 1.12 | Included on the board |
+| UK defensive yield / energy / financials | FTSE 100 Index | UK | EWU | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.09 | Strong challenger, not yet funded |
+| Spain domestic-cycle / financial beta | IBEX 35 Index | continental Europe | EWP | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.06 | Strong challenger, not yet funded |
 | Saudi Arabia energy / Gulf reform beta | Tadawul All Share Index | Middle East | KSA | Specialist country ETF proxy; review liquidity and spread before funding. | No | 1.05 | Strong challenger, not yet funded |
 | Hong Kong large-cap China-linked equities | Hang Seng Index | Greater China | EWH | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.01 | Strong challenger, not yet funded |
-| Spain domestic-cycle / financial beta | IBEX 35 Index | continental Europe | EWP | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.99 | Strong challenger, not yet funded |
 | Australia resources / banks / China sensitivity | S&P/ASX 200 Index | developed Asia-Pacific | EWA | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.93 | Strong challenger, not yet funded |
 | Europe broad large-cap core | EURO STOXX 50 Index | continental Europe | FEZ | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.85 | Relative strength not strong enough yet |
 | India domestic growth / reform compounder | Nifty 50 Index | India | INDA | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.74 | Relative strength not strong enough yet |
@@ -363,8 +363,8 @@ Reasons:
 | U.S. core leadership | Published | 3 | 3 | Nasdaq 100 | QQQ | 1.99 |
 | U.S. factor / style alternatives | Close challenger, not funded | 4 | 4 | U.S. Value Factor | VLUE | 2.24 |
 | continental Europe | Close challenger, not funded | 6 | 6 | FTSE MIB | EWI | 1.68 |
-| UK | Close challenger, not funded | 1 | 1 | FTSE 100 | EWU | 1.30 |
-| Switzerland | Close challenger, not funded | 1 | 1 | SMI | EWL | 1.26 |
+| UK | Close challenger, not funded | 1 | 1 | FTSE 100 | EWU | 1.09 |
+| Switzerland | Close challenger, not funded | 1 | 1 | SMI | EWL | 1.33 |
 | North America ex-U.S. | Close challenger, not funded | 1 | 1 | S&P/TSX 60 | EWC | 1.83 |
 | developed Asia-Pacific | Published | 2 | 2 | Nikkei 225 | EWJ | 2.42 |
 | Korea / Taiwan | Close challenger, not funded | 2 | 2 | KOSPI 200 / Korea large cap | EWY | 2.43 |

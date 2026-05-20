@@ -332,26 +332,6 @@
       "relative_strength_score": 0.97
     },
     {
-      "exposure_id": "uk_large_cap",
-      "public_index_name": "FTSE 100",
-      "analysis_symbol": "^FTSE",
-      "analysis_source_type": "benchmark",
-      "requested_close_date": "2026-05-20",
-      "selected_data_date": "2026-05-20",
-      "primary_proxy": "EWU",
-      "region": "UK",
-      "regional_group": "UK",
-      "return_20d": -0.006264,
-      "return_60d": -0.02382,
-      "return_120d": 0.085628,
-      "drawdown_from_120d_high": -0.043834,
-      "latest_close": 10432.339844,
-      "latest_date": "2026-05-20",
-      "composite_score_raw": -0.002797,
-      "percentile": 0.4483,
-      "relative_strength_score": 0.9
-    },
-    {
       "exposure_id": "germany_cyclicals",
       "public_index_name": "DAX",
       "analysis_symbol": "^GDAXI",
@@ -368,8 +348,8 @@
       "latest_close": 24400.650391,
       "latest_date": "2026-05-19",
       "composite_score_raw": -0.007688,
-      "percentile": 0.4138,
-      "relative_strength_score": 0.83
+      "percentile": 0.4483,
+      "relative_strength_score": 0.9
     },
     {
       "exposure_id": "switzerland_large_cap",
@@ -388,8 +368,8 @@
       "latest_close": 13364.799805,
       "latest_date": "2026-05-19",
       "composite_score_raw": -0.008409,
-      "percentile": 0.3793,
-      "relative_strength_score": 0.76
+      "percentile": 0.4138,
+      "relative_strength_score": 0.83
     },
     {
       "exposure_id": "spain_large_cap",
@@ -408,6 +388,26 @@
       "latest_close": 17670.099609,
       "latest_date": "2026-05-19",
       "composite_score_raw": -0.008923,
+      "percentile": 0.3793,
+      "relative_strength_score": 0.76
+    },
+    {
+      "exposure_id": "uk_large_cap",
+      "public_index_name": "FTSE 100",
+      "analysis_symbol": "^FTSE",
+      "analysis_source_type": "benchmark",
+      "requested_close_date": "2026-05-20",
+      "selected_data_date": "2026-05-19",
+      "primary_proxy": "EWU",
+      "region": "UK",
+      "regional_group": "UK",
+      "return_20d": -0.026251,
+      "return_60d": -0.027891,
+      "return_120d": 0.083451,
+      "drawdown_from_120d_high": -0.053159,
+      "latest_close": 10330.599609,
+      "latest_date": "2026-05-19",
+      "composite_score_raw": -0.015517,
       "percentile": 0.3448,
       "relative_strength_score": 0.69
     },
