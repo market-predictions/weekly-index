@@ -102,7 +102,7 @@ jobs:
         run: |
           TOKEN="${{ steps.token_ctx.outputs.report_token }}"
           NL_REPORT="output_indices/weekly_indices_review_nl_${TOKEN}.md"
-          python send_index_report_tv_analyst_distinct.py --report-path "$NL_REPORT" --validate-only
+          python send_index_report_bilingual.py --report-path "$NL_REPORT" --language nl --validate-only
 
       - name: Validate Dutch Analyst visual distinction
         run: |
