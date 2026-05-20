@@ -130,12 +130,11 @@ HEADER_REPLACEMENTS = {
     "| Portfolio sleeve | Benchmark index | Tradable proxy | Weight % | 1w return | 1m return | 3m return | Since-entry | P/L EUR | Contribution % |":
     "| Portefeuillesleeve | Benchmarkindex | Verhandelbare proxy | Gewicht % | 1w rendement | 1m rendement | 3m rendement | Sinds instap | W/V EUR | Bijdrage % |",
     "| Ticker | Public index / exposure | Shares | Price (local) | Currency | Market value (local) | Market value (EUR) | Weight % |":
-    "| Ticker | Publieke index / exposure | Aandelen | Prijs (lokaal) | Valuta | Marktwaarde (lokaal) | Gewicht % |",
+    "| Ticker | Publieke index / exposure | Aandelen | Prijs (lokaal) | Valuta | Marktwaarde (lokaal) | Marktwaarde (EUR) | Gewicht % |",
     "| Date | Portfolio value (EUR) | Comment |":
     "| Datum | Portefeuillewaarde (EUR) | Toelichting |",
 }
 
-# Targeted narrative translations for the current deterministic English report.
 EXACT_SENTENCE_REPLACEMENTS = [
     ("Risk-on narrow US mega-cap leadership", "Risk-on met smalle Amerikaanse mega-cap marktleiding"),
     ("72% confidence", "72% vertrouwen"),
@@ -156,7 +155,6 @@ EXACT_SENTENCE_REPLACEMENTS = [
     ("Higher oil or sticky inflation delays easier policy and keeps pressure on weak breadth.", "Hogere olieprijzen of hardnekkige inflatie vertragen ruimer beleid en houden druk op zwakke marktbreedte."),
     ("SPY and QQQ remain a concentration cluster, not a diversified global allocation.", "SPY en QQQ blijven een concentratiecluster, geen gediversifieerde wereldwijde allocatie."),
     ("IWM and EEM stay under review until breadth, USD and relative-strength evidence improve.", "IWM en EEM blijven onder herbeoordeling totdat marktbreedte, USD-beeld en relatieve sterkte verbeteren."),
-    ("IWM and EEM stay onder herbeoordeling until breadth, USD and relative-strength evidence improve.", "IWM en EEM blijven onder herbeoordeling totdat marktbreedte, USD-beeld en relatieve sterkte verbeteren."),
     ("Still resilient; AI and semis continue to lead", "Nog altijd veerkrachtig; AI en halfgeleiders blijven leiden"),
     ("Supports QQQ and keeps SPY valid", "Ondersteunt QQQ en houdt SPY valide"),
     ("Higher oil is reviving inflation concerns", "Hogere olieprijzen brengen inflatiezorgen terug"),
@@ -172,8 +170,6 @@ EXACT_SENTENCE_REPLACEMENTS = [
     ("Still investable, but more exposed to dollar/oil stress than U.S. leadership", "Nog steeds belegbaar, maar gevoeliger voor dollar- en oliedruk dan Amerikaanse marktleiding"),
     ("EEM must pass a stricter review versus alternatives", "EEM moet een strengere beoordeling tegenover alternatieven doorstaan"),
     ("The scan covers", "De scan omvat"),
-    ("exposures", "exposures"),
-    ("across", "over"),
     ("regional/style buckets", "regionale/stijlbuckets"),
     ("The board remains compact by design; broader coverage is shown later in the universe checkpoint.", "Het bord blijft bewust compact; bredere dekking staat verderop in het universum-checkpoint."),
     ("The board remains intentionally compact.", "Het bord blijft bewust compact."),
@@ -188,13 +184,11 @@ EXACT_SENTENCE_REPLACEMENTS = [
     ("The portfolio remains constructive but selective.", "De portefeuille blijft constructief, maar selectief."),
     ("U.S. leadership remains the core engine, but concentration must be watched.", "Amerikaanse marktleiding blijft de kernmotor, maar concentratie moet bewaakt worden."),
     ("IWM and EEM remain funded but under review versus clearer challengers.", "IWM en EEM blijven gefinancierd, maar staan onder herbeoordeling tegenover duidelijkere uitdagers."),
-    ("IWM and EEM remain funded but onder herbeoordeling versus clearer challengers.", "IWM en EEM blijven gefinancierd, maar staan onder herbeoordeling tegenover duidelijkere uitdagers."),
     ("Inverse instruments are not base-case positions, but the hedge map is ready if breadth breaks.", "Inverse instrumenten zijn geen basisscenario-posities, maar de hedgekaart staat klaar als marktbreedte breekt."),
     ("Live tracked", "Live gevolgd"),
     ("Pricing basis close", "Prijsbasis slotkoers"),
     ("Notes:", "Toelichting:"),
     ("Holdings and NAV are rebuilt from the pricing/state layer for the requested close date", "Posities en NAV zijn herbouwd vanuit de prijs- en statelaag voor de gevraagde slotdatum"),
-    ("Houdenings and NAV are rebuilt from the pricing/state layer for the requested close date", "Posities en NAV zijn herbouwd vanuit de prijs- en statelaag voor de gevraagde slotdatum"),
     ("Overweight", "Overwogen"),
     ("Neutral-positive", "Neutraal-positief"),
     ("Under active review", "Onder actieve herbeoordeling"),
@@ -252,6 +246,18 @@ REGEX_REPLACEMENTS = [
     (
         re.compile(r"De scan omvat \*\*(\d+) exposures\*\* over \*\*(\d+) regionale/stijlbuckets\*\*\."),
         r"De scan omvat **\1 exposures** over **\2 regionale/stijlbuckets**.",
+    ),
+    (
+        re.compile(r"^\s*1\.\s*Keep\s+QQQ.*$", re.M),
+        "1. Houd QQQ als sterkste kernpositie zolang het leiderschap intact blijft.",
+    ),
+    (
+        re.compile(r"^\s*2\.\s*Test\s+SPY.*$", re.M),
+        "2. Test SPY op overlap met QQQ, zodat Amerikaanse exposure niet wordt verward met volledige diversificatie.",
+    ),
+    (
+        re.compile(r"^\s*3\.\s*Force\s+IWM.*$", re.M),
+        "3. Dwing IWM en EEM door long-alternatief- en defensieve/inverse vergelijkingen voordat extra kapitaal wordt toegevoegd.",
     ),
 ]
 
