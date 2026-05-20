@@ -270,3 +270,21 @@ The previous NL draft render failed because the English renderer required Englis
 
 ### Validation / evidence
 - Previous render failure was caused by English-only heading validation. Next validation step is a fresh NL rendered draft run for token `260518` using the bilingual adapter.
+
+---
+
+## 2026-05-20 — Allow Dutch Analyst visual labels in validator
+
+### What changed
+- Updated the Analyst visual distinction validator so it accepts either English or Dutch labels for the Analyst transition.
+- The invariant visual requirements remain unchanged: `analyst-hero`, petrol-teal `#0F5B5C`, and print page-break CSS must still be present.
+
+### Why
+The Dutch HTML/PDF render now succeeds, but the validator still required English text labels: `PART II` and `Research depth, scenario framing and implementation detail`. The Dutch render correctly localizes these to `DEEL II` and `Onderzoeksdiepte, scenario’s en implementatiedetail`, so the validator needed bilingual label aliases rather than weakening the visual contract.
+
+### Affected files
+- `tools/validate_index_analyst_visual_distinction_for_report.py`
+- `changelog.md`
+
+### Validation / evidence
+- Previous workflow failure occurred after successful Dutch render and failed only because the visual validator required English labels. Next validation step is a fresh NL rendered draft run for token `260518`.
