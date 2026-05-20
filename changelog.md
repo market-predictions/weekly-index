@@ -288,3 +288,23 @@ The Dutch HTML/PDF render now succeeds, but the validator still required English
 
 ### Validation / evidence
 - Previous workflow failure occurred after successful Dutch render and failed only because the visual validator required English labels. Next validation step is a fresh NL rendered draft run for token `260518`.
+
+---
+
+## 2026-05-20 — Linkify native Dutch report tickers before render
+
+### What changed
+- Added a deterministic ticker-link normalization script for Weekly Index reports.
+- Updated the NL draft workflow so the native Dutch markdown is linkified before HTML/PDF rendering and ticker-link validation.
+- The linkifier covers the same visible tradable proxy universe as the ticker-link validator, including candidate proxies such as `EWT`.
+
+### Why
+The Dutch rendered draft passed render, visual distinction and polish checks, but ticker-link validation failed because `EWT` was visible in the Dutch report without a TradingView link. This normalizes known proxy tickers at the markdown stage so the existing renderer and validator receive already-linked tickers.
+
+### Affected files
+- `tools/linkify_index_report_tickers.py`
+- `.github/workflows/build-weekly-index-nl-draft.yml`
+- `changelog.md`
+
+### Validation / evidence
+- Previous workflow failure occurred only at the ticker-link gate: `visible tickers missing TradingView links ... EWT`. Next validation step is a fresh NL rendered draft run for token `260518`.
