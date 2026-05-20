@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import re
 from pathlib import Path
 
@@ -30,13 +31,38 @@ def pct(value: object, signed: bool = False) -> str:
     return f"{sign}{number:.2f}%"
 
 
+def numeric_variants(value: object, *, allow_integer: bool = False, signed_pct: bool = False) -> list[str]:
+    """Return equivalent display formats accepted in EN and NL markdown.
+
+    The English report may use integer share counts (`44`) and comma-formatted
+    P/L values (`2,977.78`), while the native NL renderer usually emits `44.00`
+    and `2977.78`. These are equivalent for parity purposes.
+    """
+    try:
+        number = float(value)
+    except (TypeError, ValueError):
+        return []
+
+    variants = {f"{number:.2f}", f"{number:,.2f}"}
+    if signed_pct:
+        sign = "+" if number > 0 else ""
+        variants.add(f"{sign}{number:.2f}%")
+        variants.add(f"{sign}{number:,.2f}%")
+    if allow_integer and math.isfinite(number) and float(number).is_integer():
+        variants.add(str(int(number)))
+    return sorted(v for v in variants if v)
+
+
 def read_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def must_contain(text: str, needle: str, label: str, failures: list[str]) -> None:
-    if needle not in text:
-        failures.append(f"missing {label}: {needle}")
+def must_contain_any(text: str, needles: list[str], label: str, failures: list[str]) -> None:
+    if not needles:
+        failures.append(f"missing {label}: no value")
+        return
+    if not any(needle in text for needle in needles):
+        failures.append(f"missing {label}: one of {needles}")
 
 
 def main() -> None:
@@ -51,41 +77,43 @@ def main() -> None:
     state = read_json(Path(args.state_path))
     failures: list[str] = []
 
-    # State-aware parity: the Dutch native renderer does not need to duplicate
-    # every incidental English report number, but it must preserve all portfolio
-    # authority numbers from the shared state.
     core_values = {
-        "starting capital": f2(state.get("starting_capital_eur")),
-        "portfolio value": f2(state.get("total_portfolio_value_eur")),
-        "cash": f2(state.get("cash_eur")),
+        "starting capital": state.get("starting_capital_eur"),
+        "portfolio value": state.get("total_portfolio_value_eur"),
+        "cash": state.get("cash_eur"),
     }
     for label, value in core_values.items():
-        must_contain(en_text, value, f"EN {label}", failures)
-        must_contain(nl_text, value, f"NL {label}", failures)
+        variants = numeric_variants(value)
+        must_contain_any(en_text, variants, f"EN {label}", failures)
+        must_contain_any(nl_text, variants, f"NL {label}", failures)
 
     for position in state.get("positions", []) or []:
         proxy = str(position.get("primary_proxy") or "").upper()
-        for label, value in {
-            f"{proxy} shares": f2(position.get("shares")),
-            f"{proxy} latest close": f2(position.get("latest_proxy_close")),
-            f"{proxy} market value EUR": f2(position.get("market_value_eur")),
-            f"{proxy} weight": f2(position.get("weight_pct")),
-        }.items():
-            must_contain(en_text, value, f"EN {label}", failures)
-            must_contain(nl_text, value, f"NL {label}", failures)
-        perf = position.get("performance") or {}
-        for label, value in {
-            f"{proxy} 1w return": pct(perf.get("one_week_return_pct"), signed=True),
-            f"{proxy} 1m return": pct(perf.get("one_month_return_pct"), signed=True),
-            f"{proxy} 3m return": pct(perf.get("three_month_return_pct"), signed=True),
-            f"{proxy} since-entry return": pct(perf.get("since_entry_return_pct"), signed=True),
-            f"{proxy} pnl EUR": f2(perf.get("pnl_eur")),
-            f"{proxy} contribution": pct(perf.get("contribution_pct"), signed=True),
-        }.items():
-            must_contain(en_text, value, f"EN {label}", failures)
-            must_contain(nl_text, value, f"NL {label}", failures)
+        checks = {
+            f"{proxy} shares": (position.get("shares"), True, False),
+            f"{proxy} latest close": (position.get("latest_proxy_close"), False, False),
+            f"{proxy} market value EUR": (position.get("market_value_eur"), False, False),
+            f"{proxy} weight": (position.get("weight_pct"), False, False),
+        }
+        for label, (value, allow_integer, signed_pct) in checks.items():
+            variants = numeric_variants(value, allow_integer=allow_integer, signed_pct=signed_pct)
+            must_contain_any(en_text, variants, f"EN {label}", failures)
+            must_contain_any(nl_text, variants, f"NL {label}", failures)
 
-    # Date localization must be present in NL and raw ISO date should stay out.
+        perf = position.get("performance") or {}
+        perf_checks = {
+            f"{proxy} 1w return": (perf.get("one_week_return_pct"), False, True),
+            f"{proxy} 1m return": (perf.get("one_month_return_pct"), False, True),
+            f"{proxy} 3m return": (perf.get("three_month_return_pct"), False, True),
+            f"{proxy} since-entry return": (perf.get("since_entry_return_pct"), False, True),
+            f"{proxy} pnl EUR": (perf.get("pnl_eur"), False, False),
+            f"{proxy} contribution": (perf.get("contribution_pct"), False, True),
+        }
+        for label, (value, allow_integer, signed_pct) in perf_checks.items():
+            variants = numeric_variants(value, allow_integer=allow_integer, signed_pct=signed_pct)
+            must_contain_any(en_text, variants, f"EN {label}", failures)
+            must_contain_any(nl_text, variants, f"NL {label}", failures)
+
     if ISO_DATE_RE.search(nl_text):
         failures.append("NL report still contains raw ISO date")
     if not DUTCH_DATE_RE.search(nl_text):
