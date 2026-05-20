@@ -250,3 +250,23 @@ The Dutch markdown path now validates language, sections and numbers. The next s
 
 ### Validation / evidence
 - Next validation step is a fresh NL draft run for token `260518` that produces `weekly_indices_review_nl_260518_delivery.html` and `weekly_indices_review_nl_260518.pdf` without sending email.
+
+---
+
+## 2026-05-20 — Port ETF-style bilingual render adapter to Weekly Index
+
+### What changed
+- Added `send_index_report_bilingual.py`, a bilingual render adapter that follows the proven Weekly ETF pattern: keep native Dutch markdown, adapt Dutch headings and content labels only at render time, and reuse the existing premium Weekly Index rendering stack.
+- The adapter validates Dutch companion markdown using Dutch headings and disclaimer language, then converts section headings and key labels into renderer-compatible forms before final HTML/PDF generation.
+- Updated the NL draft workflow to call the bilingual renderer instead of the English-only renderer.
+
+### Why
+The previous NL draft render failed because the English renderer required English headings such as `Executive Summary`. Weekly ETF solved this class of problem by making the delivery layer bilingual-aware instead of building one-off Dutch wrappers. This ports that pattern into Weekly Index while keeping email delivery disabled for Dutch drafts.
+
+### Affected files
+- `send_index_report_bilingual.py`
+- `.github/workflows/build-weekly-index-nl-draft.yml`
+- `changelog.md`
+
+### Validation / evidence
+- Previous render failure was caused by English-only heading validation. Next validation step is a fresh NL rendered draft run for token `260518` using the bilingual adapter.
