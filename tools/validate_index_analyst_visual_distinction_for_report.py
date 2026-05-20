@@ -3,13 +3,24 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-REQUIRED = [
+REQUIRED_ALWAYS = [
     'analyst-hero',
     '#0F5B5C',
-    'PART II',
-    'Research depth, scenario framing and implementation detail',
     'page-break-before: always',
     'break-before: page',
+]
+
+LANGUAGE_GROUPS = [
+    ('part label', ['PART II', 'DEEL II']),
+    (
+        'analyst subtitle',
+        [
+            'Research depth, scenario framing and implementation detail',
+            'Onderzoeksdiepte, scenario’s en implementatiedetail',
+            'Onderzoeksdiepte, scenario&#8217;s en implementatiedetail',
+            'Onderzoeksdiepte, scenario&rsquo;s en implementatiedetail',
+        ],
+    ),
 ]
 
 
@@ -23,7 +34,12 @@ def main() -> None:
     if not html_path.exists():
         raise SystemExit(f'FAIL: delivery HTML missing for explicit report: {html_path}')
     html = html_path.read_text(encoding='utf-8')
-    missing = [item for item in REQUIRED if item not in html]
+
+    missing = [item for item in REQUIRED_ALWAYS if item not in html]
+    for label, variants in LANGUAGE_GROUPS:
+        if not any(variant in html for variant in variants):
+            missing.append(label + ': one of ' + ', '.join(variants))
+
     if missing:
         raise SystemExit('FAIL: Analyst visual distinction missing from ' + html_path.name + ': ' + ', '.join(missing))
     print(f'INDEX_ANALYST_VISUAL_DISTINCTION_OK | html={html_path.name}')
