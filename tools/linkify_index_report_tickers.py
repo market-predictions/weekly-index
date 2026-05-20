@@ -5,10 +5,11 @@ import re
 from pathlib import Path
 from urllib.parse import quote
 
-# Keep this aligned with the ticker-link validator. The script is intentionally
-# narrow: it adds deterministic TradingView markdown links to known tradable
-# proxies before HTML/PDF rendering, especially for native NL reports where
-# the generic English renderer ticker set may not know every candidate proxy.
+# Keep this aligned with the ticker-link validator. The script adds
+# deterministic TradingView markdown links to known tradable proxies before
+# HTML/PDF rendering. It intentionally covers tables, headings, bullets and
+# paragraph text because visible proxy tickers can appear in best-alternative
+# explanations as well as tables.
 KNOWN_TICKERS = {
     'SPY', 'QQQ', 'IWM', 'EEM', 'EWJ', 'EWC', 'FXI', 'EWT', 'VLUE', 'EWY',
     'QUAL', 'RSP', 'EWI', 'EWN', 'EWU', 'EWL', 'EWA', 'INDA', 'EWW', 'EWZ',
@@ -17,6 +18,8 @@ KNOWN_TICKERS = {
 }
 
 LINK_RE = re.compile(r"\[([^\]]+)\]\(https://www\.tradingview\.com/chart/\?symbol=[^)]+\)")
+CODE_FENCE_RE = re.compile(r"^\s*```")
+RAW_URL_RE = re.compile(r"https?://\S+")
 
 
 def tv_url(ticker: str) -> str:
@@ -28,7 +31,8 @@ def link_ticker(ticker: str) -> str:
 
 
 def linkify_line(line: str) -> str:
-    # Preserve already-linked markdown anchors.
+    # Preserve already-linked markdown anchors and raw URLs before scanning for
+    # bare ticker words. This prevents nested links and URL corruption.
     placeholders: list[str] = []
 
     def hold(match: re.Match[str]) -> str:
@@ -36,6 +40,7 @@ def linkify_line(line: str) -> str:
         return f"@@TVLINK{len(placeholders) - 1}@@"
 
     protected = LINK_RE.sub(hold, line)
+    protected = RAW_URL_RE.sub(hold, protected)
     for ticker in sorted(KNOWN_TICKERS, key=len, reverse=True):
         protected = re.sub(
             rf"(?<![A-Za-z0-9_]){re.escape(ticker)}(?![A-Za-z0-9_])",
@@ -47,25 +52,29 @@ def linkify_line(line: str) -> str:
     return protected
 
 
-def should_linkify(line: str) -> bool:
+def should_linkify(line: str, in_code_block: bool) -> bool:
     stripped = line.strip()
-    if not stripped:
+    if in_code_block or not stripped:
         return False
-    if stripped.startswith('|') and stripped.endswith('|'):
-        # Skip markdown separator rows.
-        body = stripped.strip('|').replace(':', '').replace('-', '').replace(' ', '')
-        if not body:
-            return False
-        return True
-    # Also link current-position titles such as "### S&P 500 / SPY".
-    if stripped.startswith('###') or stripped.startswith('####'):
-        return True
-    return False
+    if stripped.startswith('# Weekly'):
+        return False
+    if stripped.startswith('>'):
+        return False
+    if set(stripped.replace('|', '').replace(':', '').replace('-', '').replace(' ', '')) == set():
+        return False
+    return True
 
 
 def linkify_report(path: Path) -> None:
     lines = path.read_text(encoding='utf-8').splitlines()
-    out = [linkify_line(line) if should_linkify(line) else line for line in lines]
+    out: list[str] = []
+    in_code_block = False
+    for line in lines:
+        if CODE_FENCE_RE.match(line):
+            out.append(line)
+            in_code_block = not in_code_block
+            continue
+        out.append(linkify_line(line) if should_linkify(line, in_code_block) else line)
     path.write_text('\n'.join(out).rstrip() + '\n', encoding='utf-8')
     print(f"INDEX_TICKER_LINKIFY_OK | report={path.name}")
 
