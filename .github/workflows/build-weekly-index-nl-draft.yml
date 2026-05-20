@@ -52,13 +52,14 @@ jobs:
           echo "REPORT_TOKEN=$TOKEN" >> "$GITHUB_ENV"
           echo "Resolved report token: $TOKEN"
 
-      - name: Generate Dutch markdown draft
+      - name: Generate native Dutch markdown draft from state
         run: |
           TOKEN="${{ steps.token_ctx.outputs.report_token }}"
           EN_REPORT="output_indices/weekly_indices_review_${TOKEN}.md"
           NL_REPORT="output_indices/weekly_indices_review_nl_${TOKEN}.md"
           test -f "$EN_REPORT"
-          python tools/generate_index_nl_report.py --en-report "$EN_REPORT" --nl-report "$NL_REPORT"
+          test -f "output_indices/index_portfolio_state.json"
+          python tools/render_index_nl_report_from_state.py --token "$TOKEN" --nl-report "$NL_REPORT"
 
       - name: Validate Dutch language contract
         run: |
