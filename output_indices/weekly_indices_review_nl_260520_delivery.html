@@ -1,0 +1,874 @@
+<html>
+      <head>
+        <meta charset="utf-8" />
+        <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      background: #F6F2EC;
+      color: #2B3742;
+      font-family: Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .report-shell { max-width: 1180px; margin: 0 auto; padding: 0 0 18px 0; }
+    .hero { background: #607887; color: #FBFAF7; padding: 20px 24px 18px 24px; border-radius: 14px 14px 0 0; }
+    .hero-secondary { margin-top: 26px; }
+    .hero-table { width: 100%; border-collapse: collapse; }
+    .hero-table td { vertical-align: middle; }
+    .hero-left { text-align: left; }
+    .hero-right { text-align: right; white-space: nowrap; padding-left: 24px; }
+    .masthead { font-family: Georgia, 'Times New Roman', serif; font-weight: 700; font-size: 30px; letter-spacing: 1px; margin: 0 0 8px 0; text-transform: uppercase; }
+    .hero-sub { font-size: 14px; color: #EFF4F6; margin: 0; }
+    .hero-side-label { font-size: 16px; line-height: 1.2; font-weight: 700; color: #FBFAF7; letter-spacing: .03em; }
+    .hero-rule { height: 5px; background: #D4B483; margin: 8px 0 18px 0; border-radius: 999px; }
+    .notice { background: #F8F4EE; border: 1px solid #D9D3CB; color: #6B7882; border-radius: 14px; padding: 12px 16px; font-size: 12px; margin: 0 0 18px 0; }
+    .summary-strip { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; margin: 0 0 18px 0; }
+    .mini-card { background: #FCFAF7; border: 1px solid #D9D3CB; border-radius: 16px; padding: 14px 18px; }
+    .mini-label { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #6B7882; margin: 0 0 8px 0; }
+    .mini-value { font-family: Georgia, 'Times New Roman', serif; font-weight: 700; font-size: 22px; color: #2B3742; line-height: 1.22; }
+    .client-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 18px; align-items: start; margin: 0 0 18px 0; }
+    .panel { background: #FCFAF7; border: 1px solid #D9D3CB; border-radius: 18px; padding: 16px 18px; margin: 0 0 18px 0; }
+    .section-kicker { width: auto; border-collapse: collapse; margin: 0 0 18px 0; }
+    .section-kicker td { vertical-align: middle; }
+    .section-badge-cell { width: 64px; padding: 0 16px 0 0; }
+    .section-badge { width: 46px; height: 46px; border-radius: 999px; background: #2A5384; color: #ffffff; font-weight: 700; font-size: 17px; display: block; text-align: center; line-height: 46px; font-family: Arial, Helvetica, sans-serif; }
+    .section-label { display: block; font-size: 15px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #6B7882; line-height: 1.12; }
+    .summary-line { margin: 0 0 12px 0; padding: 0 0 12px 0; border-bottom: 1px solid #D9D3CB; }
+    .summary-key { color: #6B7882; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 6px 0; }
+    .summary-value { color: #2B3742; font-size: 14px; line-height: 1.55; }
+    .takeaway { margin: 18px 0 0 0; padding: 14px 16px; border-radius: 12px; background: #F4EEE4; border: 1px solid #E7D7BB; }
+    .takeaway-label { color: #6B7882; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 6px 0; }
+    .takeaway-text { color: #2B3742; font-size: 17px; font-weight: 700; line-height: 1.42; }
+    .snapshot-table { width: 100%; border-collapse: collapse; margin: 0 0 16px 0; border: 1px solid #D9D3CB; table-layout: fixed; }
+    .snapshot-table th { background: #F2EBDD; color: #2B3742; text-align: left; padding: 9px 10px; border-bottom: 1px solid #D9D3CB; font-size: 13px; font-weight: 700; }
+    .snapshot-table td { padding: 9px 10px; border-bottom: 1px solid #ECE6DE; vertical-align: top; font-size: 14px; line-height: 1.5; word-break: break-word; }
+    .snapshot-table tbody tr:nth-child(even) td { background: #FEFCF9; }
+    .subgrid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .subblock { margin: 0 0 14px 0; padding: 12px 14px; background: #FBF7F0; border: 1px solid #D9D3CB; border-radius: 12px; }
+    .subblock-title { color: #6B7882; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 8px 0; }
+    .subblock ul { margin: 0; padding-left: 18px; }
+    .panel p, .panel li { font-size: 14px; line-height: 1.58; margin-top: 0; font-weight: 400; }
+    .panel strong { font-weight: 700; }
+    .panel ul, .panel ol { margin-top: 0; padding-left: 22px; }
+    .panel h3 { color: #2B3742; font-size: 18px; font-weight: 700; line-height: 1.35; margin: 18px 0 10px 0; }
+    .panel h4 { color: #6B7882; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; margin: 18px 0 8px 0; }
+    .panel table { width: 100%; border-collapse: collapse; table-layout: fixed; margin: 12px 0 14px 0; border: 1px solid #D9D3CB; font-size: 12px; }
+    .panel th { text-align: left; padding: 8px 10px; border-bottom: 1px solid #D9D3CB; background: #F2EBDD; color: #2B3742; vertical-align: middle; font-size: 12px; font-weight: 700; }
+    .panel td { padding: 8px 10px; border-bottom: 1px solid #ECE6DE; vertical-align: top; word-wrap: break-word; }
+    .panel tr:nth-child(even) td { background: #FEFCF9; }
+    .panel img { max-width: 100%; height: auto; border: 1px solid #D9D3CB; border-radius: 10px; margin: 10px 0 4px 0; display: block; }
+    .position-card { margin: 0 0 16px 0; padding: 14px 16px; border: 1px solid #D9D3CB; background: #FBF7F0; border-radius: 14px; }
+    .position-card-title { font-size: 17px; font-weight: 700; color: #2B3742; margin: 0 0 10px 0; }
+    .position-card-body table { margin-top: 10px; }
+    .chart-wrap { margin: 12px 0 18px 0; padding: 12px 14px; background: #FBF7F0; border: 1px solid #D9D3CB; border-radius: 14px; }
+    .chart-label { color: #6B7882; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin: 0 0 8px 0; }
+    a { color: #315F8B; text-decoration: underline; }
+    
+    @media screen and (max-width: 1100px) {
+      .summary-strip, .client-grid, .subgrid { display: block; }
+      .hero-table, .hero-table tbody, .hero-table tr, .hero-table td { display: block; width: 100%; }
+      .hero-right { text-align: left; padding-left: 0; padding-top: 10px; }
+      .mini-card, .panel { margin-bottom: 16px; }
+      .panel table, .snapshot-table { table-layout: auto; }
+    }
+    
+    .analyst-hero {
+      background: #0F5B5C !important;
+      color: #FFFFFF !important;
+      margin-top: 30px;
+      page-break-before: always;
+      break-before: page;
+    }
+    .analyst-hero .masthead,
+    .analyst-hero .hero-sub,
+    .analyst-hero .hero-side-label {
+      color: #FFFFFF !important;
+    }
+    .analyst-part-label {
+      display: inline-block;
+      margin: 0 0 8px 0;
+      padding: 4px 9px;
+      border: 1px solid rgba(255,255,255,0.45);
+      border-radius: 999px;
+      color: #FFFFFF;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .analyst-subtitle {
+      margin-top: 7px;
+      color: #E8F3F2;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .02em;
+      white-space: normal;
+    }
+    .analyst-hero + .hero-rule {
+      background: #C9A96A !important;
+      height: 6px;
+    }
+    .analyst-hero ~ .panel {
+      background: #F5F8F8;
+      border-color: #CCD9D9;
+    }
+    .analyst-hero ~ .panel .section-badge {
+      background: #0F5B5C;
+      color: #FFFFFF;
+    }
+    .analyst-hero ~ .panel .section-label {
+      color: #0B4446;
+    }
+    .analyst-hero ~ .panel th {
+      background: #E4EEEE;
+    }
+    .analyst-hero ~ .panel .position-card,
+    .analyst-hero ~ .panel .subblock,
+    .analyst-hero ~ .panel .chart-wrap {
+      background: #FFFFFF;
+      border-color: #D6E1E1;
+    }
+    .analyst-hero ~ .panel .position-card-title,
+    .analyst-hero ~ .panel .subblock-title,
+    .analyst-hero ~ .panel h3 {
+      color: #0B4446;
+    }
+    .analyst-hero ~ .panel tr:nth-child(even) td {
+      background: #F7FBFB;
+    }
+    .inline-list {
+      margin: 0 0 12px 0;
+      padding: 0;
+    }
+    .inline-list-item {
+      display: block;
+      margin: 0 0 5px 0;
+      padding: 0;
+      font-size: 14px;
+      line-height: 1.58;
+      font-weight: 400;
+    }
+    .inline-list-marker {
+      font-weight: 400;
+      margin-right: 4px;
+    }
+    @media print {
+      .analyst-hero {
+        page-break-before: always;
+        break-before: page;
+      }
+    }
+
+        </style>
+      </head>
+      <body>
+        <div class="report-shell">
+          <div class="hero">
+            <table class="hero-table" role="presentation" cellpadding="0" cellspacing="0"><tr>
+              <td class="hero-left"><div class="masthead">WEEKLY INDEX REVIEW</div><p class="hero-sub">woensdag 20 mei 2026</p></td>
+              <td class="hero-right"><div class="hero-side-label">Beleggersrapport</div></td>
+            </tr></table>
+          </div>
+          <div class="hero-rule"></div>
+          <div class="notice">Dit rapport is uitsluitend bedoeld voor informatieve en educatieve doeleinden; zie de disclaimer aan het einde.</div>
+          <div class="summary-strip"><div class='mini-card'><div class='mini-label'>Primair regime</div><div class='mini-value'>risk-on met smalle Amerikaanse mega-cap marktleiding.</div></div><div class='mini-card'><div class='mini-label'>Geopolitiek regime</div><div class='mini-value'>verhoogd USD- / beleidsfrictierisico.</div></div><div class='mini-card'><div class='mini-label'>Kernboodschap</div><div class='mini-value'>houd QQQ als sterkste verdiende sleeve, houd SPY onder concentratiecontrole en dwing IWM en EEM door expliciete alternatief- en hedge-duels voordat nieuw kapitaal wordt toegewezen.</div></div></div>
+          <div class="client-grid"><div class='panel panel-exec'><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>1</span></td><td class='section-label-cell'><span class='section-label'>Samenvatting</span></td></tr></table><div class='summary-line'><div class='summary-key'>Huidige waarderingsbasis</div><div class='summary-value'>portefeuillewaarde is EUR 112,344.02, inclusief EUR 15,566.74 cash, herbouwd op basis van de slotkoers van woensdag 20 mei 2026 en FX-referentiedatum woensdag 20 mei 2026.</div></div><div class='summary-line'><div class='summary-key'>Portefeuille-implicatie</div><div class='summary-value'>behandel smalle Amerikaanse marktleiding niet als volledige bevestiging van wereldwijde marktbreedte.</div></div><div class='takeaway'><div class='takeaway-label'>Kernboodschap</div><div class='takeaway-text'>houd QQQ als sterkste verdiende sleeve, houd SPY onder concentratiecontrole en dwing IWM en EEM door expliciete alternatief- en hedge-duels voordat nieuw kapitaal wordt toegewezen.</div></div></div><div class='panel panel-snapshot'><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>2</span></td><td class='section-label-cell'><span class='section-label'>Portefeuille-acties in één oogopslag</span></td></tr></table><table class='snapshot-table'><thead><tr><th>Aanbeveling</th><th>Tickers / opmerkingen</th></tr></thead><tbody><tr><th>Add</th><td>Geen toevoeging deze run. Cash blijft beschikbaar, maar nog geen uitdager haalt de volledige drempel voor prijs, regime en relatieve sterkte.</td></tr><tr><th>Hold</th><td>S&amp;P 500 via [<a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a>](https://www.tradingview.com/chart/?symbol=<a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a>); Nasdaq 100 via [<a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a>](https://www.tradingview.com/chart/?symbol=<a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a>)</td></tr><tr><th>Hold but replaceable</th><td>Russell 2000 via [<a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a>](https://www.tradingview.com/chart/?symbol=<a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a>); Emerging Markets via [<a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a>](https://www.tradingview.com/chart/?symbol=<a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a>)</td></tr><tr><th>Reduce</th><td>Geen verlaging totdat het directe alternatief-duel een schonere vervanging of hedge-trigger oplevert.</td></tr><tr><th>Close</th><td>Geen actie deze run.</td></tr></tbody></table><div class='subblock'><div class='subblock-title'>Beste vervangingen om te monitoren</div><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Japan large cap via <a href="https://www.tradingview.com/chart/?symbol=EWJ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EWJ</a></div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Canada breed via <a href="https://www.tradingview.com/chart/?symbol=EWC" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EWC</a></div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Greater China large cap via <a href="https://www.tradingview.com/chart/?symbol=FXI" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">FXI</a></div></div></div><div class='subgrid'><div class='subblock'><div class='subblock-title'>Top 3 acties deze week</div><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Houd <a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a> als sterkste kernpositie zolang het leiderschap intact blijft.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Toets <a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a> op overlap met <a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a>, zodat Amerikaanse exposure niet wordt verward met volledige diversificatie.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Dwing <a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a> en <a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a> door long-alternatief- en defensieve/inverse vergelijkingen voordat extra kapitaal wordt toegevoegd.</div></div></div><div class='subblock'><div class='subblock-title'>Top 3 risico’s deze week</div><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Hogere olieprijzen of hardnekkige inflatie vertragen ruimer beleid en houden druk op zwakke marktbreedte.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a> en <a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a> blijven een concentratiecluster, geen gediversifieerde wereldwijde allocatie.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a> en <a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a> blijven onder herbeoordeling totdat marktbreedte, USD-beeld en relatieve sterkte verbeteren.</div></div></div></div></div></div>
+          <div class="report-stack"><div class='panel panel-regime'><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>3</span></td><td class='section-label-cell'><span class='section-label'>Wereldwijd regimedashboard</span></td></tr></table><table>
+<thead>
+<tr>
+<th>Lens</th>
+<th>Huidige lezing</th>
+<th>Portefeuille-implicatie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amerikaanse groei / winst</td>
+<td>Nog altijd veerkrachtig; AI en halfgeleiders blijven leiden</td>
+<td>Ondersteunt <a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a> en houdt <a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a> valide</td>
+</tr>
+<tr>
+<td>Inflatie</td>
+<td>Hogere olieprijzen brengen inflatiezorgen terug</td>
+<td>Houdt druk op cyclische waarden met lage marges</td>
+</tr>
+<tr>
+<td>Beleidspad</td>
+<td>Verwachtingen voor Fed-renteverlagingen zijn naar achteren geschoven</td>
+<td>Minder gunstig voor small caps en rentegevoelige beta</td>
+</tr>
+<tr>
+<td>Europa</td>
+<td>Vlak tot zwakker koersbeeld door olie- en geopolitieke druk</td>
+<td>Europa blijft voorlopig onder de selectielijn</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Betere relatieve setup dan breed Europa</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWJ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EWJ</a> blijft een geloofwaardige toevoegingskandidaat</td>
+</tr>
+<tr>
+<td>Canada</td>
+<td>Grondstoffensteun verbetert de casus</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWC" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EWC</a> blijft een echte uitdager, geen opvulling</td>
+</tr>
+<tr>
+<td>EM</td>
+<td>Nog belegbaar, maar gevoeliger voor dollar- en oliedruk</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a> moet streng worden getoetst tegenover alternatieven</td>
+</tr>
+</tbody>
+</table></div><div class='panel panel-radar'><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>4</span></td><td class='section-label-cell'><span class='section-label'>Indexkansenbord</span></td></tr></table><p>De scan omvat <strong>29 exposures</strong> over <strong>15 regionale/stijlbuckets</strong>. Het bord blijft bewust compact.</p>
+<table>
+<thead>
+<tr>
+<th>Portefeuillesleeve</th>
+<th>Benchmarkindex</th>
+<th>Verhandelbare proxy</th>
+<th>Regio / stijlbucket</th>
+<th style="text-align: right;">Score</th>
+<th>Status</th>
+<th>Reden voor opname</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U.S. mega-cap growth leadership</td>
+<td>Nasdaq 100 Index</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td>U.S. core leadership</td>
+<td style="text-align: right;">2.79</td>
+<td>Gepubliceerd</td>
+<td>Groeileiderschap blijft de kernmotor in de huidige kansenlijst.</td>
+</tr>
+<tr>
+<td>Broad emerging-market equity</td>
+<td>Emerging Markets Proxy Benchmark</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a></td>
+<td>EM broad</td>
+<td style="text-align: right;">2.76</td>
+<td>Gepubliceerd</td>
+<td>Past bij het huidige regime en behoudt voldoende prijs- en relatieve-sterktebewijs.</td>
+</tr>
+<tr>
+<td>U.S. large-cap core beta</td>
+<td>S&amp;P 500 Index</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a></td>
+<td>U.S. core leadership</td>
+<td style="text-align: right;">2.54</td>
+<td>Gepubliceerd</td>
+<td>Amerikaanse large-cap kernblootstelling blijft het zuiverste anker.</td>
+</tr>
+<tr>
+<td>Japan developed equity</td>
+<td>Nikkei 225 Index</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWJ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EWJ</a></td>
+<td>developed Asia-Pacific</td>
+<td style="text-align: right;">2.29</td>
+<td>Gepubliceerd</td>
+<td>Japan verbetert de ontwikkelde ex-VS-breedte zonder lage overtuiging te forceren.</td>
+</tr>
+<tr>
+<td>U.S. small-cap breadth</td>
+<td>Russell 2000 Index</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a></td>
+<td>U.S. core leadership</td>
+<td style="text-align: right;">1.75</td>
+<td>Gepubliceerd</td>
+<td>Past bij het huidige regime en behoudt voldoende prijs- en relatieve-sterktebewijs.</td>
+</tr>
+</tbody>
+</table></div><div class='panel panel-risks panel-compact'><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>5</span></td><td class='section-label-cell'><span class='section-label'>Belangrijkste risico’s / ontkrachters</span></td></tr></table><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>1.</span>Olie blijft verhoogd of stijgt opnieuw, waardoor inflatiedruk hoog blijft.</div><div class='inline-list-item'><span class='inline-list-marker'>2.</span>De Fed, ECB of BOJ wordt minder marktvriendelijk dan verwacht.</div><div class='inline-list-item'><span class='inline-list-marker'>3.</span>Amerikaanse mega-cap marktleiding breekt na een sterke run.</div><div class='inline-list-item'><span class='inline-list-marker'>4.</span>Russell 2000 blijft achter en bevestigt dat marktbreedte zwakker is dan zij lijkt.</div><div class='inline-list-item'><span class='inline-list-marker'>5.</span>EM verzwakt door een sterkere dollar of hernieuwde grondstoffendruk.</div><div class='inline-list-item'><span class='inline-list-marker'>6.</span>Prijs-, ranking-, scorecard-, render- of verzendvalidatie faalt.</div></div></div><div class='panel panel-bottomline panel-compact'><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>6</span></td><td class='section-label-cell'><span class='section-label'>Kernconclusie</span></td></tr></table><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>De portefeuille blijft constructief, maar selectief.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Amerikaanse marktleiding blijft de kernmotor, maar concentratie moet bewaakt worden.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>IWM en EEM blijven gefinancierd, maar staan onder herbeoordeling tegenover duidelijkere uitdagers.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Inverse instrumenten zijn geen basisscenario-posities, maar de hedgekaart staat klaar als marktbreedte breekt.</div></div></div><div class='panel panel-equity'><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>7</span></td><td class='section-label-cell'><span class='section-label'>Vermogenscurve en portefeuilleontwikkeling</span></td></tr></table><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Startkapitaal (EUR): 100000.00</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Huidige portefeuillewaarde (EUR): 112344.02</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Rendement sinds start (%): 12.34</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Status vermogenscurve: live gevolgd</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Prijsbasis gevraagde slotdatum: woensdag 20 mei 2026</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>FX-referentiedatum: woensdag 20 mei 2026</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Toelichting: posities en NAV zijn herbouwd vanuit de prijs- en statelaag voor de gevraagde slotdatum woensdag 20 mei 2026.</div></div>
+<table>
+<thead>
+<tr>
+<th>Datum</th>
+<th style="text-align: right;">Portefeuillewaarde (EUR)</th>
+<th>Toelichting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>woensdag 20 mei 2026</td>
+<td style="text-align: right;">112344.02</td>
+<td>Prijsbasis slotkoers woensdag 20 mei 2026</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Equity curve" src="cid:equitycurve" /></p>
+<h3>Performance van verhandelbare proxy’s</h3>
+<p>Performance wordt berekend op de verhandelbare ETF-proxy’s die voor portefeuillewaardering worden gebruikt. Benchmarkindexprijzen blijven het analyseanker; slotkoersen van verhandelbare proxy’s bepalen marktwaarde, winst/verlies en bijdrage.</p>
+<table>
+<thead>
+<tr>
+<th>Portefeuillesleeve</th>
+<th>Benchmarkindex</th>
+<th>Verhandelbare proxy</th>
+<th style="text-align: right;">Gewicht %</th>
+<th style="text-align: right;">1w rendement</th>
+<th style="text-align: right;">1m rendement</th>
+<th style="text-align: right;">3m rendement</th>
+<th style="text-align: right;">Sinds instap</th>
+<th style="text-align: right;">W/V EUR</th>
+<th style="text-align: right;">Bijdrage %</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S&amp;P 500</td>
+<td>S&amp;P 500 Index</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a></td>
+<td style="text-align: right;">25.03</td>
+<td style="text-align: right;">-0.14%</td>
+<td style="text-align: right;">+4.59%</td>
+<td style="text-align: right;">+8.29%</td>
+<td style="text-align: right;">+12.34%</td>
+<td style="text-align: right;">3088.72</td>
+<td style="text-align: right;">+2.75%</td>
+</tr>
+<tr>
+<td>Nasdaq 100</td>
+<td>Nasdaq 100 Index</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td style="text-align: right;">26.27</td>
+<td style="text-align: right;">-0.22%</td>
+<td style="text-align: right;">+10.26%</td>
+<td style="text-align: right;">+18.17%</td>
+<td style="text-align: right;">+16.71%</td>
+<td style="text-align: right;">4224.00</td>
+<td style="text-align: right;">+3.76%</td>
+</tr>
+<tr>
+<td>Russell 2000</td>
+<td>Russell 2000 Index</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a></td>
+<td style="text-align: right;">19.33</td>
+<td style="text-align: right;">-0.99%</td>
+<td style="text-align: right;">+0.91%</td>
+<td style="text-align: right;">+5.77%</td>
+<td style="text-align: right;">+6.92%</td>
+<td style="text-align: right;">1405.09</td>
+<td style="text-align: right;">+1.25%</td>
+</tr>
+<tr>
+<td>Emerging Markets</td>
+<td>Emerging Markets Proxy Benchmark</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a></td>
+<td style="text-align: right;">15.52</td>
+<td style="text-align: right;">-2.60%</td>
+<td style="text-align: right;">+3.61%</td>
+<td style="text-align: right;">+7.24%</td>
+<td style="text-align: right;">+14.38%</td>
+<td style="text-align: right;">2192.30</td>
+<td style="text-align: right;">+1.95%</td>
+</tr>
+</tbody>
+</table></div><div class='hero hero-secondary analyst-hero'><table class='hero-table' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='hero-left'><div class='masthead'>WEEKLY INDEX REVIEW</div><p class='hero-sub'>woensdag 20 mei 2026</p></td><td class='hero-right'><div class='analyst-part-label'>DEEL II</div><div class='hero-side-label'>Analistenrapport</div><div class='analyst-subtitle'>Onderzoeksdiepte, scenario’s en implementatiedetail</div></td></tr></table></div><div class='hero-rule'></div><div class='panel '><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>8</span></td><td class='section-label-cell'><span class='section-label'>Regionale en stijlallocatiekaart</span></td></tr></table><table>
+<thead>
+<tr>
+<th>Regio / stijlbucket</th>
+<th>Huidige visie</th>
+<th>Toelichting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amerikaanse mega-cap / kwaliteitsgroei</td>
+<td>Overwogen</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a> blijft de sterkste sleeve.</td>
+</tr>
+<tr>
+<td>Amerikaanse brede large cap</td>
+<td>Neutraal-positief</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a> werkt nog, maar overlap met <a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a> moet worden getoetst.</td>
+</tr>
+<tr>
+<td>Amerikaanse small cap</td>
+<td>Onder actieve herbeoordeling</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a> is gefinancierd, maar geen passieve hold meer.</td>
+</tr>
+<tr>
+<td>Continentaal Europa</td>
+<td>Onderwogen</td>
+<td>Olie- en geopolitieke gevoeligheid blijven een rem.</td>
+</tr>
+<tr>
+<td>Verenigd Koninkrijk</td>
+<td>Lagere prioriteit</td>
+<td>Nog niet sterk genoeg tegenover Japan of Canada.</td>
+</tr>
+<tr>
+<td>Zwitserland</td>
+<td>Watchlist</td>
+<td>Defensieve kwaliteit, maar nog niet topgerangschikt.</td>
+</tr>
+<tr>
+<td>Noord-Amerika ex-VS</td>
+<td>Verbeterend</td>
+<td>Canada blijft een echte uitdager.</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Positief</td>
+<td>Sterkste ontwikkelde ex-VS-lane.</td>
+</tr>
+<tr>
+<td>Greater China</td>
+<td>Tactische watchlist</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=FXI" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">FXI</a> blijft een echte marktbreedtekandidaat.</td>
+</tr>
+<tr>
+<td>EM breed</td>
+<td>Neutraal-positief maar onder herbeoordeling</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a> moet selectievere alternatieven verslaan.</td>
+</tr>
+</tbody>
+</table></div><div class='panel '><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>9</span></td><td class='section-label-cell'><span class='section-label'>Tweede-orde-effectenkaart</span></td></tr></table><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Hogere olieprijzen duwen inflatieverwachtingen omhoog en stellen ruimer beleid verder uit.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Een later pad voor Fed-renteverlagingen raakt IWM sterker dan QQQ.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Europa blijft energiegevoeliger dan de VS of Canada.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Grondstoffensterkte helpt Canada directer dan breed Europa.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Als Amerikaanse marktleiding verzwakt, activeert RWM waarschijnlijk vóór SH.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Als dollardruk opnieuw stijgt, wordt EUM relevanter tegenover EEM.</div></div></div><div class='panel panel-positions'><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>10</span></td><td class='section-label-cell'><span class='section-label'>Beoordeling huidige posities</span></td></tr></table><article class='position-card'><div class='position-card-title'>S&amp;P 500 / [<a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a>](https://www.tradingview.com/chart/?symbol=<a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a>)</div><div class='position-card-body'><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Zou vandaag instappen: Ja.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Zou instappen op huidig gewicht: Ja.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Thesescore: 4.1 / 5.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Implementatiescore: 3.9 / 5.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Beste alternatief: VOO / QUAL / gedeeltelijke rotatie naar EWJ.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Vereiste volgende actie: Toets overlap met QQQ voordat extra kapitaal wordt toegewezen.</div></div></div></article><article class='position-card'><div class='position-card-title'>Nasdaq 100 / [<a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a>](https://www.tradingview.com/chart/?symbol=<a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a>)</div><div class='position-card-body'><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Zou vandaag instappen: Ja.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Zou instappen op huidig gewicht: Ja.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Thesescore: 4.4 / 5.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Implementatiescore: 4.3 / 5.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Beste alternatief: QQQM.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Vereiste volgende actie: Houd als kernpositie zolang technologieleiderschap intact blijft.</div></div></div></article><article class='position-card'><div class='position-card-title'>Russell 2000 / [<a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a>](https://www.tradingview.com/chart/?symbol=<a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a>)</div><div class='position-card-body'><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Zou vandaag instappen: Kleiner / onopgelost.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Zou instappen op huidig gewicht: Nee.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Thesescore: 3.2 / 5.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Implementatiescore: 2.9 / 5.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Beste alternatief: EWJ long-side, RWM defensief.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Vereiste volgende actie: Dwing een direct alternatief-duel af tegenover EWJ en RWM.</div></div></div></article><article class='position-card'><div class='position-card-title'>Emerging Markets / [<a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a>](https://www.tradingview.com/chart/?symbol=<a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a>)</div><div class='position-card-body'><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Zou vandaag instappen: Kleiner / onopgelost.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Zou instappen op huidig gewicht: Nee.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Thesescore: 3.3 / 5.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Implementatiescore: 2.9 / 5.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Beste alternatief: FXI / INDA long-side, EUM defensief.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Vereiste volgende actie: Dwing een direct alternatief-duel af tegenover FXI, INDA en EUM.</div></div></div></article></div><div class='panel '><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>11</span></td><td class='section-label-cell'><span class='section-label'>Beste nieuwe indexkansen</span></td></tr></table><h3>Long-kansen</h3>
+<h4>1. KOSPI 200 / Korea large cap (<a href="https://www.tradingview.com/chart/?symbol=EWY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EWY</a>)</h4>
+<div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Portefeuillesleeve: South Korea semiconductor / export cycle</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Regio / stijlbucket: Korea / Taiwan</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Challenger-score: 2.43</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Proxy-geschiktheid: Liquide landen-ETF; geschikt voor ranking mits prijsdata en macrofit kloppen.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Waarom relevant: sterke kandidaat, maar nog niet gefinancierd.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Waarom nog niet op het bord: meer prijs-, regime- of relatieve-sterktebevestiging nodig.</div></div>
+<h4>2. MSCI Taiwan / Taiwan large cap (<a href="https://www.tradingview.com/chart/?symbol=EWT" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EWT</a>)</h4>
+<div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Portefeuillesleeve: Taiwan semiconductor supply-chain leadership</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Regio / stijlbucket: Korea / Taiwan</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Challenger-score: 2.29</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Proxy-geschiktheid: Liquide landen-ETF; geschikt voor ranking mits prijsdata en macrofit kloppen.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Waarom relevant: sterke kandidaat, maar nog niet gefinancierd.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Waarom nog niet op het bord: meer prijs-, regime- of relatieve-sterktebevestiging nodig.</div></div>
+<h4>3. U.S. Value Factor (<a href="https://www.tradingview.com/chart/?symbol=VLUE" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">VLUE</a>)</h4>
+<div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Portefeuillesleeve: U.S. value factor</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Regio / stijlbucket: U.S. factor / style alternatives</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Challenger-score: 2.24</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Proxy-geschiktheid: Liquide Amerikaanse ETF; geschikt voor ranking mits prijsdata en historie kloppen.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Waarom relevant: sterke kandidaat, maar nog niet gefinancierd.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Waarom nog niet op het bord: meer prijs-, regime- of relatieve-sterktebevestiging nodig.</div></div>
+<h4>4. FTSE MIB (<a href="https://www.tradingview.com/chart/?symbol=EWI" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EWI</a>)</h4>
+<div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Portefeuillesleeve: Italy high-beta Europe financial / industrial beta</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Regio / stijlbucket: continental Europe</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Challenger-score: 1.82</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Proxy-geschiktheid: Liquide landen-ETF; geschikt voor ranking mits prijsdata en macrofit kloppen.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Waarom relevant: sterke kandidaat, maar nog niet gefinancierd.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Waarom nog niet op het bord: meer prijs-, regime- of relatieve-sterktebevestiging nodig.</div></div>
+<h3>Beste defensieve / inverse kansen</h3>
+<p>Deze instrumenten zijn uitsluitend defensieve instrumenten. Ze maken geen deel uit van de basisscenario-longallocatie.</p>
+<table>
+<thead>
+<tr>
+<th>Kandidaat</th>
+<th>Onderliggende waarde</th>
+<th>Status</th>
+<th>Short-these</th>
+<th>Trigger</th>
+<th>Ontkrachting</th>
+<th>Maximale rol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=RWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">RWM</a></td>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a> / Russell 2000</td>
+<td>Watchlist</td>
+<td>Small caps blijven kwetsbaar als marktbreedte zwak blijft en reële rentes restrictief zijn.</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a> blijft achter bij <a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a> terwijl krediet en breedte niet verbeteren.</td>
+<td>Breed herstel door versoepeling en betere small-cap relatieve sterkte.</td>
+<td>Alleen defensieve hedge.</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=EUM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EUM</a></td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a> / Emerging Markets</td>
+<td>Watchlist</td>
+<td>EM blijft kwetsbaar bij USD-druk en zwakker Chinavertrouwen.</td>
+<td>UUP versterkt terwijl <a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a> relatieve steun breekt.</td>
+<td>USD verzwakt en China/EM-breedte bevestigt opwaarts potentieel.</td>
+<td>Alleen defensieve hedge.</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=PSQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">PSQ</a></td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a> / Nasdaq 100</td>
+<td>Monitor</td>
+<td>Nasdaq-hedge alleen relevant als mega-cap leiderschap breekt.</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a> verliest relatieve sterkte tegenover <a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a>.</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a>-leiderschap blijft intact.</td>
+<td>Drawdown-hedge.</td>
+</tr>
+</tbody>
+</table>
+<h3>Marktbreedtecheck per regionale bucket</h3>
+<table>
+<thead>
+<tr>
+<th>Regio / stijlbucket</th>
+<th>Sterkste kandidaat</th>
+<th>Proxy</th>
+<th style="text-align: right;">Aantal kandidaten</th>
+<th style="text-align: right;">Geschikte proxy’s</th>
+<th style="text-align: right;">Challenger-score</th>
+<th>Huidige status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U.S. core leadership</td>
+<td>Nasdaq 100</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.99</td>
+<td>Gepubliceerd</td>
+</tr>
+<tr>
+<td>U.S. factor / style alternatives</td>
+<td>U.S. Value Factor</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=VLUE" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">VLUE</a></td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2.24</td>
+<td>Sterke kandidaat, nog niet gefinancierd</td>
+</tr>
+<tr>
+<td>continental Europe</td>
+<td>FTSE MIB</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWI" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EWI</a></td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1.82</td>
+<td>Sterke kandidaat, nog niet gefinancierd</td>
+</tr>
+<tr>
+<td>UK</td>
+<td>FTSE 100</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWU" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EWU</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.02</td>
+<td>Sterke kandidaat, nog niet gefinancierd</td>
+</tr>
+<tr>
+<td>Switzerland</td>
+<td>SMI</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWL" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EWL</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.19</td>
+<td>Sterke kandidaat, nog niet gefinancierd</td>
+</tr>
+<tr>
+<td>North America ex-U.S.</td>
+<td>S&amp;P/TSX 60</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWC" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EWC</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.76</td>
+<td>Sterke kandidaat, nog niet gefinancierd</td>
+</tr>
+<tr>
+<td>developed Asia-Pacific</td>
+<td>Nikkei 225</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWJ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EWJ</a></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2.42</td>
+<td>Gepubliceerd</td>
+</tr>
+<tr>
+<td>Korea / Taiwan</td>
+<td>KOSPI 200 / Korea large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EWY</a></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2.43</td>
+<td>Sterke kandidaat, nog niet gefinancierd</td>
+</tr>
+<tr>
+<td>Greater China</td>
+<td>China large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=FXI" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">FXI</a></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.70</td>
+<td>Sterke kandidaat, nog niet gefinancierd</td>
+</tr>
+<tr>
+<td>India</td>
+<td>Nifty 50</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=INDA" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">INDA</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.74</td>
+<td>Lagere prioriteit deze run</td>
+</tr>
+<tr>
+<td>Latin America</td>
+<td>Mexico large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWW" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EWW</a></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.33</td>
+<td>Sterke kandidaat, nog niet gefinancierd</td>
+</tr>
+<tr>
+<td>Africa</td>
+<td>South Africa large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EZA" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EZA</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.57</td>
+<td>Lagere prioriteit deze run</td>
+</tr>
+<tr>
+<td>ASEAN</td>
+<td>Indonesia large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EIDO" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EIDO</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.50</td>
+<td>Lagere prioriteit deze run</td>
+</tr>
+<tr>
+<td>Middle East</td>
+<td>Saudi Arabia large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=KSA" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">KSA</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.98</td>
+<td>Sterke kandidaat, nog niet gefinancierd</td>
+</tr>
+<tr>
+<td>EM broad</td>
+<td>Emerging Markets</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.11</td>
+<td>Gepubliceerd</td>
+</tr>
+</tbody>
+</table></div><div class='panel '><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>12</span></td><td class='section-label-cell'><span class='section-label'>Portefeuillerotatieplan</span></td></tr></table><table>
+<thead>
+<tr>
+<th>Sluiten</th>
+<th>Verlagen</th>
+<th>Houden</th>
+<th>Toevoegen</th>
+<th>Vervangen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Geen</td>
+<td>Geen</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a>, <a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td>Geen</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a> en <a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a> blijven onder herbeoordeling</td>
+</tr>
+</tbody>
+</table></div><div class='panel '><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>13</span></td><td class='section-label-cell'><span class='section-label'>Definitieve actietabel</span></td></tr></table><table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Exposure</th>
+<th style="text-align: right;">Gewicht %</th>
+<th>Advies</th>
+<th>Rol</th>
+<th>Korte toelichting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a></td>
+<td>S&amp;P 500</td>
+<td style="text-align: right;">25.03</td>
+<td>Houden</td>
+<td>kernbeta</td>
+<td>Amerikaanse large-cap kernblootstelling in een gemengd regime.</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td>Nasdaq 100</td>
+<td style="text-align: right;">26.27</td>
+<td>Houden</td>
+<td>groeimotor</td>
+<td>Technologieleiderschap blijft de sterkste groeimotor.</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a></td>
+<td>Russell 2000</td>
+<td style="text-align: right;">19.33</td>
+<td>Houden, onder herbeoordeling</td>
+<td>marktbreedte-diversifier</td>
+<td>Small-cap blootstelling blijft nuttig als marktbreedte-diversifier, maar staat onder herbeoordeling.</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a></td>
+<td>Emerging Markets</td>
+<td style="text-align: right;">15.52</td>
+<td>Houden, onder herbeoordeling</td>
+<td>niet-Amerikaanse risicosleeve</td>
+<td>Gemeten niet-Amerikaanse risicosleeve, maar gevoelig voor USD- en oliedruk.</td>
+</tr>
+</tbody>
+</table></div><div class='panel '><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>14</span></td><td class='section-label-cell'><span class='section-label'>Positiewijzigingen in deze run</span></td></tr></table><table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th style="text-align: right;">Vorig gewicht %</th>
+<th style="text-align: right;">Nieuw gewicht %</th>
+<th style="text-align: right;">Gewichtswijziging %</th>
+<th>Uitgevoerde actie</th>
+<th>Toelichting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a></td>
+<td style="text-align: right;">25.03</td>
+<td style="text-align: right;">25.03</td>
+<td style="text-align: right;">0.00</td>
+<td>Geen</td>
+<td>Aanhouden; overlapreview tegenover <a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a>.</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td style="text-align: right;">26.27</td>
+<td style="text-align: right;">26.27</td>
+<td style="text-align: right;">0.00</td>
+<td>Geen</td>
+<td>Aanhouden als sterkste kernpositie.</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a></td>
+<td style="text-align: right;">19.33</td>
+<td style="text-align: right;">19.33</td>
+<td style="text-align: right;">0.00</td>
+<td>Geen</td>
+<td>Gefinancierd, maar onder herbeoordeling.</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a></td>
+<td style="text-align: right;">15.52</td>
+<td style="text-align: right;">15.52</td>
+<td style="text-align: right;">0.00</td>
+<td>Geen</td>
+<td>Gefinancierd, maar onder herbeoordeling.</td>
+</tr>
+</tbody>
+</table></div><div class='panel '><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>15</span></td><td class='section-label-cell'><span class='section-label'>Huidige portefeuilleposities en cash</span></td></tr></table><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Startkapitaal (EUR): 100000.00</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Belegde marktwaarde (EUR): 96777.28</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Cash (EUR): 15566.74</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Totale portefeuillewaarde (EUR): 112344.02</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Rendement sinds start (%): 12.34</div></div>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Publieke index / exposure</th>
+<th style="text-align: right;">Aandelen</th>
+<th style="text-align: right;">Prijs (lokaal)</th>
+<th>Valuta</th>
+<th style="text-align: right;">Marktwaarde (lokaal)</th>
+<th style="text-align: right;">Marktwaarde (EUR)</th>
+<th style="text-align: right;">Gewicht %</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a></td>
+<td>S&amp;P 500</td>
+<td style="text-align: right;">44.00</td>
+<td style="text-align: right;">741.25</td>
+<td>USD</td>
+<td style="text-align: right;">32615.00</td>
+<td style="text-align: right;">28116.38</td>
+<td style="text-align: right;">25.03</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td>Nasdaq 100</td>
+<td style="text-align: right;">48.00</td>
+<td style="text-align: right;">713.15</td>
+<td>USD</td>
+<td style="text-align: right;">34231.20</td>
+<td style="text-align: right;">29509.66</td>
+<td style="text-align: right;">26.27</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a></td>
+<td>Russell 2000</td>
+<td style="text-align: right;">90.00</td>
+<td style="text-align: right;">279.87</td>
+<td>USD</td>
+<td style="text-align: right;">25188.30</td>
+<td style="text-align: right;">21714.05</td>
+<td style="text-align: right;">19.33</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a></td>
+<td>Emerging Markets</td>
+<td style="text-align: right;">309.00</td>
+<td style="text-align: right;">65.46</td>
+<td>USD</td>
+<td style="text-align: right;">20227.14</td>
+<td style="text-align: right;">17437.19</td>
+<td style="text-align: right;">15.52</td>
+</tr>
+<tr>
+<td>CASH</td>
+<td>Cash</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">1.00</td>
+<td>EUR</td>
+<td style="text-align: right;">15566.74</td>
+<td style="text-align: right;">15566.74</td>
+<td style="text-align: right;">13.86</td>
+</tr>
+</tbody>
+</table></div><div class='panel panel-carry'><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>16</span></td><td class='section-label-cell'><span class='section-label'>Continuïteitsinvoer voor de volgende run</span></td></tr></table><p><strong>Deze sectie is de canonieke standaardinput voor de volgende run tenzij de gebruiker expliciet iets anders opgeeft.</strong></p>
+<h3>Portefeuilletabel</h3>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Index / exposure</th>
+<th>Richting</th>
+<th style="text-align: right;">Gewicht %</th>
+<th style="text-align: right;">Gem. instap</th>
+<th style="text-align: right;">Huidige prijs</th>
+<th style="text-align: right;">W/V %</th>
+<th>Thesis</th>
+<th>Rol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a></td>
+<td>S&amp;P 500</td>
+<td>Long</td>
+<td style="text-align: right;">25.03</td>
+<td style="text-align: right;">659.82</td>
+<td style="text-align: right;">741.25</td>
+<td style="text-align: right;">+12.34%</td>
+<td>Amerikaanse large-cap kernblootstelling in een gemengd regime.</td>
+<td>kernbeta</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td>Nasdaq 100</td>
+<td>Long</td>
+<td style="text-align: right;">26.27</td>
+<td style="text-align: right;">611.07</td>
+<td style="text-align: right;">713.15</td>
+<td style="text-align: right;">+16.71%</td>
+<td>Technologieleiderschap blijft de sterkste groeimotor.</td>
+<td>groeimotor</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a></td>
+<td>Russell 2000</td>
+<td>Long</td>
+<td style="text-align: right;">19.33</td>
+<td style="text-align: right;">261.76</td>
+<td style="text-align: right;">279.87</td>
+<td style="text-align: right;">+6.92%</td>
+<td>Small-cap blootstelling blijft nuttig als marktbreedte-diversifier, maar staat onder herbeoordeling.</td>
+<td>marktbreedte-diversifier</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a></td>
+<td>Emerging Markets</td>
+<td>Long</td>
+<td style="text-align: right;">15.52</td>
+<td style="text-align: right;">57.23</td>
+<td style="text-align: right;">65.46</td>
+<td style="text-align: right;">+14.38%</td>
+<td>Gemeten niet-Amerikaanse risicosleeve, maar gevoelig voor USD- en oliedruk.</td>
+<td>niet-Amerikaanse risicosleeve</td>
+</tr>
+</tbody>
+</table>
+<h3>Beschikbare cash</h3>
+<div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Cash %: 13.86</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Margegebruik %: 0.00</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Leverage toegestaan: Nee</div></div>
+<h3>Volglijst / dynamisch radargeheugen</h3>
+<div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>EWJ: sterkste ontwikkelde ex-VS-kandidaat.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>EWC: Canada blijft een echte uitdager.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>FXI: Greater China blijft tactisch relevant.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>RWM, EUM en PSQ blijven defensieve instrumenten, geen basisscenario-longposities.</div></div></div><div class='panel '><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>17</span></td><td class='section-label-cell'><span class='section-label'>Disclaimer</span></td></tr></table><p>Dit rapport is uitsluitend bedoeld voor informatieve en educatieve doeleinden. Het is geen beleggingsadvies, juridisch advies, fiscaal advies of financieel advies, en vormt geen aanbeveling om effecten te kopen, te verkopen of aan te houden. Beleggen brengt risico’s met zich mee, waaronder het risico op verlies van inleg.</p></div></div>
+        </div>
+      </body>
+    </html>
