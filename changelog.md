@@ -212,3 +212,21 @@ The English-to-Dutch post-translation path was becoming residue-driven and fragi
 
 ### Validation / evidence
 - Next validation step is a fresh NL draft run for token `260518` using the native renderer path.
+
+---
+
+## 2026-05-20 — Accept equivalent number formats in bilingual parity
+
+### What changed
+- Updated the state-aware EN/NL numeric parity validator to accept equivalent numeric display formats.
+- The validator now tolerates integer shares such as `44` versus `44.00`, comma-formatted values such as `2,977.78` versus `2977.78`, and signed percentage formats.
+
+### Why
+The native Dutch renderer passed language and section validation, but numeric parity failed because the English markdown uses compact or comma-formatted values while the state-driven NL renderer uses normalized decimal values. These are equivalent and should not block validation.
+
+### Affected files
+- `tools/validate_index_bilingual_numeric_parity.py`
+- `changelog.md`
+
+### Validation / evidence
+- Previous native-renderer draft failed only on numeric-format mismatches for shares and P/L values, not on language or section parity. Next validation step is a fresh native NL draft run for token `260518`.
