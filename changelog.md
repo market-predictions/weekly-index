@@ -308,3 +308,23 @@ The Dutch rendered draft passed render, visual distinction and polish checks, bu
 
 ### Validation / evidence
 - Previous workflow failure occurred only at the ticker-link gate: `visible tickers missing TradingView links ... EWT`. Next validation step is a fresh NL rendered draft run for token `260518`.
+
+---
+
+## 2026-05-20 — Add Dutch companion send workflow
+
+### What changed
+- Added a dedicated Dutch companion send workflow for Weekly Index reports.
+- The workflow resolves the requested or latest English report token, generates the native Dutch report from the same state, linkifies tickers, validates language/section/numeric parity, renders HTML/PDF, validates visual/render/ticker contracts, then sends the Dutch companion if SMTP secrets are configured.
+- Triggered a Dutch companion send request for the latest available English Weekly Index report after the production run delivered only the English report.
+
+### Why
+The main production workflow still sends only the English report. The Dutch path had been validated as a draft/render flow but was not yet wired into production delivery. This workflow provides an immediate catch-up path for the missed Dutch companion without resending the English report.
+
+### Affected files
+- `.github/workflows/send-weekly-index-nl-companion.yml`
+- `control/run_queue/weekly_index_nl_send_request_20260520_220500.md`
+- `changelog.md`
+
+### Validation / evidence
+- Next validation step is the Dutch companion workflow run triggered by `control/run_queue/weekly_index_nl_send_request_20260520_220500.md`.
