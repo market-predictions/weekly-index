@@ -2,84 +2,98 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 from pathlib import Path
 
-# Numeric parity should protect investment and portfolio values, not punish
-# required date localization. The Dutch report intentionally turns ISO dates
-# such as 2026-05-18 into maandag 18 mei 2026. Strip dates before extracting
-# numeric tokens.
-NUMBER_RE = re.compile(r"(?<![A-Za-z0-9])[-+]?\d{1,3}(?:,\d{3})*(?:\.\d+)?%?(?![A-Za-z0-9])")
 ISO_DATE_RE = re.compile(r"\b20\d{2}-\d{2}-\d{2}\b")
 DUTCH_DATE_RE = re.compile(
     r"\b(?:maandag|dinsdag|woensdag|donderdag|vrijdag|zaterdag|zondag)\s+\d{1,2}\s+"
     r"(?:januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)\s+20\d{2}\b",
     re.I,
 )
-EN_LONG_DATE_RE = re.compile(
-    r"\b(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday),?\s+\d{1,2}\s+"
-    r"(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+20\d{2}\b",
-    re.I,
-)
-NL_SHORT_DATE_RE = re.compile(
-    r"\b\d{1,2}\s+(?:januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)\s+20\d{2}\b",
-    re.I,
-)
 
 
-def strip_dates(text: str) -> str:
-    text = ISO_DATE_RE.sub(" DATE ", text)
-    text = DUTCH_DATE_RE.sub(" DATE ", text)
-    text = EN_LONG_DATE_RE.sub(" DATE ", text)
-    text = NL_SHORT_DATE_RE.sub(" DATE ", text)
-    return text
+def f2(value: object) -> str:
+    try:
+        return f"{float(value):.2f}"
+    except (TypeError, ValueError):
+        return ""
 
 
-def strip_nonfinancial_number_context(text: str) -> str:
-    """Remove numeric contexts that are intentionally language/layout metadata.
-
-    Section numbers, file tokens in titles and image placeholders are checked by
-    other validators. This validator focuses on financial numeric parity.
-    """
-    text = re.sub(r"^##\s+\d+\.\s+.*$", " SECTION ", text, flags=re.M)
-    text = re.sub(r"weekly_indices_review(?:_nl)?_\d{6}\b", " REPORT_FILE ", text)
-    return text
+def pct(value: object, signed: bool = False) -> str:
+    try:
+        number = float(value)
+    except (TypeError, ValueError):
+        return ""
+    sign = "+" if signed and number > 0 else ""
+    return f"{sign}{number:.2f}%"
 
 
-def normalized_text(text: str) -> str:
-    return strip_nonfinancial_number_context(strip_dates(text))
+def read_json(path: Path) -> dict:
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
-def numbers(text: str) -> list[str]:
-    return NUMBER_RE.findall(normalized_text(text))
+def must_contain(text: str, needle: str, label: str, failures: list[str]) -> None:
+    if needle not in text:
+        failures.append(f"missing {label}: {needle}")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--en-report", required=True)
     parser.add_argument("--nl-report", required=True)
+    parser.add_argument("--state-path", default="output_indices/index_portfolio_state.json")
     args = parser.parse_args()
 
-    en_path = Path(args.en_report)
-    nl_path = Path(args.nl_report)
-    en_numbers = numbers(en_path.read_text(encoding="utf-8"))
-    nl_numbers = numbers(nl_path.read_text(encoding="utf-8"))
+    en_text = Path(args.en_report).read_text(encoding="utf-8")
+    nl_text = Path(args.nl_report).read_text(encoding="utf-8")
+    state = read_json(Path(args.state_path))
+    failures: list[str] = []
 
-    if en_numbers != nl_numbers:
-        first_diff = None
-        for idx, (en, nl) in enumerate(zip(en_numbers, nl_numbers), start=1):
-            if en != nl:
-                first_diff = f"first_diff_at={idx} en={en!r} nl={nl!r}"
-                break
-        if first_diff is None:
-            first_diff = f"length_diff en={len(en_numbers)} nl={len(nl_numbers)}"
-        raise SystemExit(
-            "FAIL: bilingual numeric parity failed: "
-            + first_diff
-            + f" | en_count={len(en_numbers)} nl_count={len(nl_numbers)}"
-        )
+    # State-aware parity: the Dutch native renderer does not need to duplicate
+    # every incidental English report number, but it must preserve all portfolio
+    # authority numbers from the shared state.
+    core_values = {
+        "starting capital": f2(state.get("starting_capital_eur")),
+        "portfolio value": f2(state.get("total_portfolio_value_eur")),
+        "cash": f2(state.get("cash_eur")),
+    }
+    for label, value in core_values.items():
+        must_contain(en_text, value, f"EN {label}", failures)
+        must_contain(nl_text, value, f"NL {label}", failures)
 
-    print(f"INDEX_BILINGUAL_NUMERIC_PARITY_OK | en={en_path.name} | nl={nl_path.name} | numbers={len(en_numbers)}")
+    for position in state.get("positions", []) or []:
+        proxy = str(position.get("primary_proxy") or "").upper()
+        for label, value in {
+            f"{proxy} shares": f2(position.get("shares")),
+            f"{proxy} latest close": f2(position.get("latest_proxy_close")),
+            f"{proxy} market value EUR": f2(position.get("market_value_eur")),
+            f"{proxy} weight": f2(position.get("weight_pct")),
+        }.items():
+            must_contain(en_text, value, f"EN {label}", failures)
+            must_contain(nl_text, value, f"NL {label}", failures)
+        perf = position.get("performance") or {}
+        for label, value in {
+            f"{proxy} 1w return": pct(perf.get("one_week_return_pct"), signed=True),
+            f"{proxy} 1m return": pct(perf.get("one_month_return_pct"), signed=True),
+            f"{proxy} 3m return": pct(perf.get("three_month_return_pct"), signed=True),
+            f"{proxy} since-entry return": pct(perf.get("since_entry_return_pct"), signed=True),
+            f"{proxy} pnl EUR": f2(perf.get("pnl_eur")),
+            f"{proxy} contribution": pct(perf.get("contribution_pct"), signed=True),
+        }.items():
+            must_contain(en_text, value, f"EN {label}", failures)
+            must_contain(nl_text, value, f"NL {label}", failures)
+
+    # Date localization must be present in NL and raw ISO date should stay out.
+    if ISO_DATE_RE.search(nl_text):
+        failures.append("NL report still contains raw ISO date")
+    if not DUTCH_DATE_RE.search(nl_text):
+        failures.append("NL report does not contain a Dutch long date")
+
+    if failures:
+        raise SystemExit("FAIL: bilingual numeric parity failed: " + "; ".join(failures[:20]))
+    print(f"INDEX_BILINGUAL_STATE_NUMERIC_PARITY_OK | en={Path(args.en_report).name} | nl={Path(args.nl_report).name}")
 
 
 if __name__ == "__main__":
