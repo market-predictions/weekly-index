@@ -5,97 +5,84 @@
 > *Dit rapport is uitsluitend bedoeld voor informatieve en educatieve doeleinden; zie de disclaimer aan het einde.*
 
 ## 1. Samenvatting
-- **Huidige waarderingsbasis:** portfolio NAV is EUR 111,116.08, including EUR 15,566.74 cash, rebuilt from the maandag 18 mei 2026 close and FX-referentiedatum maandag 18 mei 2026.
-- **Primair regime:** Risk-on narrow US mega-cap leadership (72% confidence).
-- **Geopolitiek regime:** Elevated USD / policy-friction risk.
-- **Geopolitieke implicatie:** Keep EM, China, Korea/Taiwan and commodity-sensitive regions on a higher evidence hurdle until USD pressure eases.
-- **Wat veranderde:** Nasdaq leadership is stronger than small-cap breadth, so risk appetite remains narrow rather than broad.
-- **Portefeuille-implicatie:** Do not treat narrow U.S. leadership as full global breadth confirmation.
-- **Kernboodschap:** keep QQQ as the strongest earned sleeve, keep SPY under concentration review, and force IWM and EEM through named long-alternative and defensive-hedge duels before any new capital is assigned.
+- **Huidige waarderingsbasis:** portefeuillewaarde is EUR 111,116.08, inclusief EUR 15,566.74 cash, herbouwd op basis van de slotkoers van maandag 18 mei 2026 en FX-referentiedatum maandag 18 mei 2026.
+- **Primair regime:** risk-on met smalle Amerikaanse mega-cap marktleiding.
+- **Geopolitiek regime:** verhoogd USD- / beleidsfrictierisico.
+- **Portefeuille-implicatie:** behandel smalle Amerikaanse marktleiding niet als volledige bevestiging van wereldwijde marktbreedte.
+- **Kernboodschap:** houd QQQ als sterkste verdiende sleeve, houd SPY onder concentratiecontrole en dwing IWM en EEM door expliciete alternatief- en hedge-duels voordat nieuw kapitaal wordt toegewezen.
 
 ## 2. Portefeuille-acties in één oogopslag
 | Aanbeveling | Tickers / opmerkingen |
 |---|---|
-| Toevoegen | None this run. Cash remains available, but no challenger clears the full pricing, regime and relative-strength hurdle yet. |
+| Toevoegen | Geen toevoeging deze run. Cash blijft beschikbaar, maar nog geen uitdager haalt de volledige drempel voor prijs, regime en relatieve sterkte. |
 | Houden | S&P 500 via SPY; Nasdaq 100 via QQQ |
 | Houden, maar vervangbaar | Russell 2000 via IWM; Emerging Markets via EEM |
-| Verlagen | None until the direct alternative-duel evidence produces a cleaner replacement or hedge trigger. |
-| Sluiten | None this run. |
+| Verlagen | Geen verlaging totdat het directe alternatief-duel een schonere vervanging of hedge-trigger oplevert. |
+| Sluiten | Geen actie deze run. |
 
 ### Beste vervangingen om te monitoren
 - Japan large cap via EWJ
-- Canada broad via EWC
+- Canada breed via EWC
 - Greater China large cap via FXI
 
 ### Top 3 acties deze week
-1. Keep QQQ as the strongest core holding while leadership remains intact.
-2. Test SPY against QQQ overlap so U.S. exposure is not mistaken for full diversification.
-3. Force IWM and EEM through long-alternative and defensive/inverse comparisons before adding capital.
+1. Houd QQQ als sterkste kernpositie zolang het leiderschap intact blijft.
+2. Toets SPY op overlap met QQQ, zodat Amerikaanse exposure niet wordt verward met volledige diversificatie.
+3. Dwing IWM en EEM door long-alternatief- en defensieve/inverse vergelijkingen voordat extra kapitaal wordt toegevoegd.
 
 ### Top 3 risico’s deze week
-1. Higher oil or sticky inflation delays easier policy and keeps pressure on weak breadth.
-2. SPY and QQQ remain a concentration cluster, not a diversified global allocation.
-3. IWM and EEM stay onder herbeoordeling until breadth, USD and relative-strength evidence improve.
+1. Hogere olieprijzen of hardnekkige inflatie vertragen ruimer beleid en houden druk op zwakke marktbreedte.
+2. SPY en QQQ blijven een concentratiecluster, geen gediversifieerde wereldwijde allocatie.
+3. IWM en EEM blijven onder herbeoordeling totdat marktbreedte, USD-beeld en relatieve sterkte verbeteren.
 
 ## 3. Wereldwijd regimedashboard
-| Lens | Current read | Portefeuille-implicatie |
+| Lens | Huidige lezing | Portefeuille-implicatie |
 |---|---|---|
-| U.S. growth / earnings | Still resilient; AI and semis continue to lead | Supports QQQ and keeps SPY valid |
-| Inflation | Higher oil is reviving inflation concerns | Keeps pressure on weak-margin cyclicals |
-| Policy path | Fed-cut expectations have been pushed back | Less friendly for small caps and rate-sensitive beta |
-| Europe | Flat-to-weaker tape under oil and geopolitical strain | Europe stays below the cut line for now |
-| Japan | Better relative setup than Europe broad | EWJ remains one of the most credible add candidates |
-| Canada | Commodity support is improving the case | EWC remains a real challenger, not filler |
-| EM | Still investable, but more exposed to dollar/oil stress than U.S. leadership | EEM must pass a stricter review versus alternatives |
+| Amerikaanse groei / winst | Nog altijd veerkrachtig; AI en halfgeleiders blijven leiden | Ondersteunt QQQ en houdt SPY valide |
+| Inflatie | Hogere olieprijzen brengen inflatiezorgen terug | Houdt druk op cyclische waarden met lage marges |
+| Beleidspad | Verwachtingen voor Fed-renteverlagingen zijn naar achteren geschoven | Minder gunstig voor small caps en rentegevoelige beta |
+| Europa | Vlak tot zwakker koersbeeld door olie- en geopolitieke druk | Europa blijft voorlopig onder de selectielijn |
+| Japan | Betere relatieve setup dan breed Europa | EWJ blijft een geloofwaardige toevoegingskandidaat |
+| Canada | Grondstoffensteun verbetert de casus | EWC blijft een echte uitdager, geen opvulling |
+| EM | Nog belegbaar, maar gevoeliger voor dollar- en oliedruk | EEM moet streng worden getoetst tegenover alternatieven |
 
 ## 4. Indexkansenbord
-The scan covers **29 exposures** across **15 regional/style buckets**. The board remains compact by design; broader coverage is shown later in the universe checkpoint.
+De scan omvat **29 exposures** over **15 regionale/stijlbuckets**. Het bord blijft bewust compact.
 
-| Portefeuillesleeve | Benchmarkindex | Verhandelbare proxy | Regional / style bucket | Score | Status | Why it is on the board |
+| Portefeuillesleeve | Benchmarkindex | Verhandelbare proxy | Regio / stijlbucket | Score | Status | Reden voor opname |
 |---|---|---|---|---:|---|---|
-| U.S. mega-cap growth leadership | Nasdaq 100 Index | QQQ | U.S. core leadership | 2.79 | Funded | Growth leadership remains a core engine in the current opportunity set. |
-| U.S. large-cap core beta | S&P 500 Index | SPY | U.S. core leadership | 2.61 | Funded | Core U.S. large-cap exposure remains the cleanest starting anchor. |
-| Japan developed equity | Nikkei 225 Index | EWJ | developed Asia-Pacific | 2.29 | Surfaced | Improves breadth or fills an important portfolio gap without forcing a low-conviction rotation. |
-| Broad emerging-market equity | Emerging Markets Proxy Benchmark | EEM | EM broad | 2.14 | Funded | Emerging markets add a measured non-U.S. risk sleeve while the dollar backdrop is less hostile. |
-| U.S. small-cap breadth | Russell 2000 Index | IWM | U.S. core leadership | 1.68 | Funded | Domestic breadth improves diversification without dominating the book. |
-
-The board remains intentionally compact. The strongest omitted regional challenger this run is **U.S. Value Factor (VLUE)**, which remains close enough to matter without displacing a higher-ranked funded exposure.
+| U.S. mega-cap growth leadership | Nasdaq 100 Index | QQQ | U.S. core leadership | 2.79 | Gepubliceerd | Groeileiderschap blijft de kernmotor in de huidige kansenlijst. |
+| U.S. large-cap core beta | S&P 500 Index | SPY | U.S. core leadership | 2.61 | Gepubliceerd | Amerikaanse large-cap kernblootstelling blijft het zuiverste anker. |
+| Japan developed equity | Nikkei 225 Index | EWJ | developed Asia-Pacific | 2.29 | Gepubliceerd | Japan verbetert de ontwikkelde ex-VS-breedte zonder lage overtuiging te forceren. |
+| Broad emerging-market equity | Emerging Markets Proxy Benchmark | EEM | EM broad | 2.14 | Gepubliceerd | Past bij het huidige regime en behoudt voldoende prijs- en relatieve-sterktebewijs. |
+| U.S. small-cap breadth | Russell 2000 Index | IWM | U.S. core leadership | 1.68 | Gepubliceerd | Past bij het huidige regime en behoudt voldoende prijs- en relatieve-sterktebewijs. |
 
 ## 5. Belangrijkste risico’s / ontkrachters
-1. Oil remains elevated or spikes again, keeping inflation pressure high.
-2. The Fed, ECB, or BOJ turns less market-friendly than expected.
-3. U.S. mega-cap leadership finally cracks after a record run.
-4. Russell 2000 continues to lag and confirms that breadth is weaker than it looks.
-5. EM weakens under a stronger dollar or renewed commodity stress.
-6. Pricing, ranking, scorecard, render, or send validation fails.
+1. Olie blijft verhoogd of stijgt opnieuw, waardoor inflatiedruk hoog blijft.
+2. De Fed, ECB of BOJ wordt minder marktvriendelijk dan verwacht.
+3. Amerikaanse mega-cap marktleiding breekt na een sterke run.
+4. Russell 2000 blijft achter en bevestigt dat marktbreedte zwakker is dan zij lijkt.
+5. EM verzwakt door een sterkere dollar of hernieuwde grondstoffendruk.
+6. Prijs-, ranking-, scorecard-, render- of verzendvalidatie faalt.
 
 ## 6. Kernconclusie
-- The portfolio remains constructive but selective.
-- U.S. leadership remains the core engine, but concentration must be watched.
-- IWM and EEM remain funded but onder herbeoordeling versus clearer challengers.
-- Inverse instruments are not base-case positions, but the hedge map is ready if breadth breaks.
+- De portefeuille blijft constructief, maar selectief.
+- Amerikaanse marktleiding blijft de kernmotor, maar concentratie moet bewaakt worden.
+- IWM en EEM blijven gefinancierd, maar staan onder herbeoordeling tegenover duidelijkere uitdagers.
+- Inverse instrumenten zijn geen basisscenario-posities, maar de hedgekaart staat klaar als marktbreedte breekt.
 
 ## 7. Vermogenscurve en portefeuilleontwikkeling
 - Startkapitaal (EUR): 100000.00
 - Huidige portefeuillewaarde (EUR): 111116.08
 - Rendement sinds start (%): 11.12
-- Status vermogenscurve: Live tracked
+- Status vermogenscurve: live gevolgd
 - Prijsbasis gevraagde slotdatum: maandag 18 mei 2026
 - FX-referentiedatum: maandag 18 mei 2026
-- Notes: Houdenings and NAV are rebuilt from the pricing/state layer for the requested close date maandag 18 mei 2026.
+- Toelichting: posities en NAV zijn herbouwd vanuit de prijs- en statelaag voor de gevraagde slotdatum maandag 18 mei 2026.
 
 | Datum | Portefeuillewaarde (EUR) | Toelichting |
 |---|---:|---|
-| vrijdag 24 april 2026 | 106707.13 | Pricing basis close vrijdag 24 april 2026 |
-| maandag 27 april 2026 | 105772.19 | Pricing basis close maandag 27 april 2026 |
-| donderdag 30 april 2026 | 107173.81 | Pricing basis close donderdag 30 april 2026 |
-| vrijdag 1 mei 2026 | 107643.74 | Pricing basis close vrijdag 1 mei 2026 |
-| maandag 4 mei 2026 | 108478.51 | Pricing basis close maandag 4 mei 2026 |
-| dinsdag 5 mei 2026 | 109869.46 | Pricing basis close dinsdag 5 mei 2026 |
-| maandag 11 mei 2026 | 111975.43 | Pricing basis close maandag 11 mei 2026 |
-| dinsdag 12 mei 2026 | 111151.27 | Pricing basis close dinsdag 12 mei 2026 |
-| vrijdag 15 mei 2026 | 111578.74 | Pricing basis close vrijdag 15 mei 2026 |
-| maandag 18 mei 2026 | 111116.08 | Pricing basis close maandag 18 mei 2026 |
+| maandag 18 mei 2026 | 111116.08 | Prijsbasis slotkoers maandag 18 mei 2026 |
 
 `EQUITY_CURVE_CHART_PLACEHOLDER`
 
@@ -104,276 +91,187 @@ Performance wordt berekend op de verhandelbare ETF-proxy’s die voor portefeuil
 
 | Portefeuillesleeve | Benchmarkindex | Verhandelbare proxy | Gewicht % | 1w rendement | 1m rendement | 3m rendement | Sinds instap | W/V EUR | Bijdrage % |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
-| S&P 500 | S&P 500 Index | SPY | 25.11 | -0.09% | +4.01% | +8.17% | +11.95% | 2,977.78 | +2.68% |
-| Nasdaq 100 | Nasdaq 100 Index | QQQ | 26.18 | -1.04% | +8.79% | +17.39% | +15.52% | 3,907.01 | +3.52% |
-| Russell 2000 | Russell 2000 Index | IWM | 19.19 | -3.28% | +0.07% | +4.92% | +5.43% | 1,097.96 | +0.99% |
-| Emerging Markets | Emerging Markets Proxy Benchmark | EEM | 15.51 | -4.30% | +2.09% | +6.74% | +13.52% | 2,053.28 | +1.85% |
+| S&P 500 | S&P 500 Index | SPY | 25.11 | -0.09% | +4.01% | +8.17% | +11.95% | 2977.78 | +2.68% |
+| Nasdaq 100 | Nasdaq 100 Index | QQQ | 26.18 | -1.04% | +8.79% | +17.39% | +15.52% | 3907.01 | +3.52% |
+| Russell 2000 | Russell 2000 Index | IWM | 19.19 | -3.28% | +0.07% | +4.92% | +5.43% | 1097.96 | +0.99% |
+| Emerging Markets | Emerging Markets Proxy Benchmark | EEM | 15.51 | -4.30% | +2.09% | +6.74% | +13.52% | 2053.28 | +1.85% |
 
 ## 8. Regionale en stijlallocatiekaart
 | Regio / stijlbucket | Huidige visie | Toelichting |
 |---|---|---|
-| U.S. mega-cap / quality growth | Overweight | QQQ remains the strongest sleeve |
-| U.S. broad large cap | Neutral-positive | SPY still works, but overlap must be tested |
-| U.S. small cap | Under active review | IWM is funded, but no longer a passive hold |
-| Continental Europe | Underweight | Oil and geopolitical sensitivity remain a drag |
-| UK | Lower priority | Not yet strong enough versus Japan or Canada |
-| Switzerland | Watchlist | Defensive quality, but not top-ranked yet |
-| North America ex-U.S. | Improving | Canada remains a real challenger |
-| Japan | Positive | Strongest developed ex-U.S. lane |
-| Greater China | Tactical watch | FXI remains a real breadth candidate |
-| India | Tactical watch | Still interesting, but not top-ranked today |
-| EM broad | Neutral-positive but onder herbeoordeling | EEM must beat more selective alternatives |
+| Amerikaanse mega-cap / kwaliteitsgroei | Overwogen | QQQ blijft de sterkste sleeve. |
+| Amerikaanse brede large cap | Neutraal-positief | SPY werkt nog, maar overlap met QQQ moet worden getoetst. |
+| Amerikaanse small cap | Onder actieve herbeoordeling | IWM is gefinancierd, maar geen passieve hold meer. |
+| Continentaal Europa | Onderwogen | Olie- en geopolitieke gevoeligheid blijven een rem. |
+| Verenigd Koninkrijk | Lagere prioriteit | Nog niet sterk genoeg tegenover Japan of Canada. |
+| Zwitserland | Watchlist | Defensieve kwaliteit, maar nog niet topgerangschikt. |
+| Noord-Amerika ex-VS | Verbeterend | Canada blijft een echte uitdager. |
+| Japan | Positief | Sterkste ontwikkelde ex-VS-lane. |
+| Greater China | Tactische watchlist | FXI blijft een echte marktbreedtekandidaat. |
+| EM breed | Neutraal-positief maar onder herbeoordeling | EEM moet selectievere alternatieven verslaan. |
 
 ## 9. Tweede-orde-effectenkaart
-- Higher oil pushes inflation expectations higher and keeps easier policy further away.
-- A later Fed-cut path matters more for IWM than for QQQ.
-- Europe remains more energy-sensitive than the U.S. or Canada.
-- Commodity strength helps Canada more directly than Europe broad.
-- If U.S. leadership finally weakens, RWM likely activates before SH.
-- If dollar pressure rises again, EUM becomes more relevant against EEM.
+- Hogere olieprijzen duwen inflatieverwachtingen omhoog en stellen ruimer beleid verder uit.
+- Een later pad voor Fed-renteverlagingen raakt IWM sterker dan QQQ.
+- Europa blijft energiegevoeliger dan de VS of Canada.
+- Grondstoffensterkte helpt Canada directer dan breed Europa.
+- Als Amerikaanse marktleiding verzwakt, activeert RWM waarschijnlijk vóór SH.
+- Als dollardruk opnieuw stijgt, wordt EUM relevanter tegenover EEM.
 
 ## 10. Beoordeling huidige posities
 ### S&P 500 / SPY
-- Would initiate today: Yes.
-- Would initiate at current weight: Yes, but only after explicit overlap review versus QQQ.
-- Thesis score: 4.1 / 5.
-- Implementation score: 3.9 / 5.
-- Best alternative: VOO / QUAL / partial redeployment toward EWJ.
-- Required next action: test whether SPY still diversifies the book or mainly duplicates U.S. mega-cap growth beta.
+- Zou vandaag instappen: Ja.
+- Zou instappen op huidig gewicht: Ja.
+- Thesescore: 4.1 / 5.
+- Implementatiescore: 3.9 / 5.
+- Beste alternatief: VOO / QUAL / gedeeltelijke rotatie naar EWJ.
+- Vereiste volgende actie: Toets overlap met QQQ voordat extra kapitaal wordt toegewezen.
 
 ### Nasdaq 100 / QQQ
-- Would initiate today: Yes.
-- Would initiate at current weight: Yes.
-- Thesis score: 4.4 / 5.
-- Implementation score: 4.3 / 5.
-- Best alternative: QQQM.
-- Required next action: keep as top core holding unless leadership clearly breaks.
+- Zou vandaag instappen: Ja.
+- Zou instappen op huidig gewicht: Ja.
+- Thesescore: 4.4 / 5.
+- Implementatiescore: 4.3 / 5.
+- Beste alternatief: QQQM.
+- Vereiste volgende actie: Houd als kernpositie zolang technologieleiderschap intact blijft.
 
 ### Russell 2000 / IWM
-- Would initiate today: Smaller / Unresolved.
-- Would initiate at current weight: No.
-- Thesis score: 3.2 / 5.
-- Implementation score: 2.9 / 5.
-- Best alternative: EWJ on the long side, RWM on the defensive side.
-- Required next action: force direct alternative duel; upgrade, reduce, replace, or close.
+- Zou vandaag instappen: Kleiner / onopgelost.
+- Zou instappen op huidig gewicht: Nee.
+- Thesescore: 3.2 / 5.
+- Implementatiescore: 2.9 / 5.
+- Beste alternatief: EWJ long-side, RWM defensief.
+- Vereiste volgende actie: Dwing een direct alternatief-duel af tegenover EWJ en RWM.
 
 ### Emerging Markets / EEM
-- Would initiate today: Smaller / Unresolved.
-- Would initiate at current weight: No.
-- Thesis score: 3.3 / 5.
-- Implementation score: 2.9 / 5.
-- Best alternative: FXI / INDA on the selective long side, EUM on the defensive side.
-- Required next action: force direct alternative duel; upgrade, reduce, replace, or close.
+- Zou vandaag instappen: Kleiner / onopgelost.
+- Zou instappen op huidig gewicht: Nee.
+- Thesescore: 3.3 / 5.
+- Implementatiescore: 2.9 / 5.
+- Beste alternatief: FXI / INDA long-side, EUM defensief.
+- Vereiste volgende actie: Dwing een direct alternatief-duel af tegenover FXI, INDA en EUM.
+
 
 ## 11. Beste nieuwe indexkansen
-### Long-side Opportunities
-
-The strongest omitted regional challenger this run is **KOSPI 200 / Korea large cap (EWY)**. It improves breadth and remains close enough to the live board to stay visible in the report.
+### Long-kansen
 
 #### 1. KOSPI 200 / Korea large cap (EWY)
 - Portefeuillesleeve: South Korea semiconductor / export cycle
-- Regional / style bucket: Korea / Taiwan
-- Challenger score: 2.43
-- Proxy eligibility: Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.
-- Why it matters: Ranks well internally but remains just below the current publication cutoff.
-- Why not on the board yet: Strong challenger, not yet funded
+- Regio / stijlbucket: Korea / Taiwan
+- Challenger-score: 2.43
+- Proxy-geschiktheid: Liquide landen-ETF; geschikt voor ranking mits prijsdata en macrofit kloppen.
+- Waarom relevant: sterke kandidaat, maar nog niet gefinancierd.
+- Waarom nog niet op het bord: meer prijs-, regime- of relatieve-sterktebevestiging nodig.
 
 #### 2. MSCI Taiwan / Taiwan large cap (EWT)
 - Portefeuillesleeve: Taiwan semiconductor supply-chain leadership
-- Regional / style bucket: Korea / Taiwan
-- Challenger score: 2.36
-- Proxy eligibility: Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.
-- Why it matters: Ranks well internally but remains just below the current publication cutoff.
-- Why not on the board yet: Strong challenger, not yet funded
+- Regio / stijlbucket: Korea / Taiwan
+- Challenger-score: 2.36
+- Proxy-geschiktheid: Liquide landen-ETF; geschikt voor ranking mits prijsdata en macrofit kloppen.
+- Waarom relevant: sterke kandidaat, maar nog niet gefinancierd.
+- Waarom nog niet op het bord: meer prijs-, regime- of relatieve-sterktebevestiging nodig.
 
 #### 3. U.S. Value Factor (VLUE)
 - Portefeuillesleeve: U.S. value factor
-- Regional / style bucket: U.S. factor / style alternatives
-- Challenger score: 2.17
-- Proxy eligibility: Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history.
-- Why it matters: Ranks well internally but remains just below the current publication cutoff.
-- Why not on the board yet: Strong challenger, not yet funded
+- Regio / stijlbucket: U.S. factor / style alternatives
+- Challenger-score: 2.17
+- Proxy-geschiktheid: Liquide Amerikaanse ETF; geschikt voor ranking mits prijsdata en historie kloppen.
+- Waarom relevant: sterke kandidaat, maar nog niet gefinancierd.
+- Waarom nog niet op het bord: meer prijs-, regime- of relatieve-sterktebevestiging nodig.
 
 #### 4. U.S. Quality Factor (QUAL)
 - Portefeuillesleeve: U.S. quality factor
-- Regional / style bucket: U.S. factor / style alternatives
-- Challenger score: 1.83
-- Proxy eligibility: Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history.
-- Why it matters: Ranks well internally but remains just below the current publication cutoff.
-- Why not on the board yet: Strong challenger, not yet funded
+- Regio / stijlbucket: U.S. factor / style alternatives
+- Challenger-score: 1.83
+- Proxy-geschiktheid: Liquide Amerikaanse ETF; geschikt voor ranking mits prijsdata en historie kloppen.
+- Waarom relevant: sterke kandidaat, maar nog niet gefinancierd.
+- Waarom nog niet op het bord: meer prijs-, regime- of relatieve-sterktebevestiging nodig.
 
-### Alternative Duel Table
-| Current exposure | Current proxy | Alternative / hedge | Alternative proxy | Type | 20d edge | 60d edge | Regime fit | Besluit | Vereiste trigger |
-|---|---|---|---|---|---:|---:|---|---|---|
-| S&P 500 | SPY | Nasdaq 100 | QQQ | Long alternative | +4.91% | +8.78% | candidate | Alternative improving; keep replacement duel active. | Momentum proof is present. QQQ increases U.S. mega-cap / technology concentration, so funding requires explicit concentration room versus the SPY/QQQ overlap limit. |
-| S&P 500 | SPY | Euro Stoxx 50 | FEZ | Long alternative | -5.55% | -10.01% | watchlist | Current exposure still leads; no replacement. | Needs both 20d and 60d relative-strength improvement before funding. Europe can improve regional diversification, but funding requires evidence that earnings and policy support are strong enough to offset weaker momentum. |
-| S&P 500 | SPY | Nikkei 225 | EWJ | Long alternative | +0.94% | -0.34% | watchlist | Early improvement only; wait for 60d confirmation. | Early improvement only; needs positive 60d confirmation before funding. Japan can improve regional diversification, but funding requires confirmation that currency and yield volatility do not overwhelm the diversification benefit. |
-| Nasdaq 100 | QQQ | S&P 500 | SPY | Long alternative | -4.91% | -8.78% | watchlist | Current exposure still leads; no replacement. | Needs both 20d and 60d relative-strength improvement before funding. SPY lowers concentration versus QQQ, but funding only makes sense if broader U.S. participation improves. |
-| Nasdaq 100 | QQQ | Russell 2000 | IWM | Long alternative | -9.68% | -11.74% | watchlist | Current exposure still leads; no replacement. | Needs both 20d and 60d relative-strength improvement before funding. IWM improves breadth exposure, but funding requires small-cap breadth and real-rate conditions to improve. |
-| Nasdaq 100 | QQQ | Inverse hedge for Nasdaq 100 | PSQ | Defensive / inverse | n/a | n/a | inactive | Not decision-grade this week — relative-strength proof incomplete. | Nasdaq leadership remains intact. |
-| Russell 2000 | IWM | S&P 500 | SPY | Long alternative | +4.77% | +2.96% | candidate | Alternative improving; keep replacement duel active. | Momentum proof is present. SPY is the cleaner U.S. risk sleeve if small-cap breadth remains weak. |
-| Russell 2000 | IWM | Inverse hedge for Russell 2000 | RWM | Defensive / inverse | n/a | n/a | watchlist | Not decision-grade this week — relative-strength proof incomplete. | Small-cap breadth remains weak versus SPY. |
-| Emerging Markets | EEM | Nifty 50 | INDA | Long alternative | -5.72% | -11.37% | watchlist | Current exposure still leads; no replacement. | Needs both 20d and 60d relative-strength improvement before funding. India improves structural growth quality versus broad EM, but funding requires valuation and concentration discipline. |
-| Emerging Markets | EEM | China large cap | FXI | Long alternative | +0.33% | -1.79% | watchlist | Early improvement only; wait for 60d confirmation. | Early improvement only; needs positive 60d confirmation before funding. China can recover quickly, but funding requires policy credibility and price confirmation, not only mean-reversion potential. |
-| Emerging Markets | EEM | S&P 500 | SPY | Long alternative | +1.30% | +2.92% | candidate | Alternative improving; keep replacement duel active. | Momentum proof is present. SPY reduces EM/USD risk, but funding would reduce non-U.S. diversification. |
-| Emerging Markets | EEM | Inverse hedge for Emerging Markets | EUM | Defensive / inverse | n/a | n/a | watchlist | Not decision-grade this week — relative-strength proof incomplete. | Dollar pressure is a headwind for EM. |
+### Beste defensieve / inverse kansen
+Deze instrumenten zijn uitsluitend defensieve instrumenten. Ze maken geen deel uit van de basisscenario-longallocatie.
 
-### Best Defensive / Inverse Opportunities
-These instruments are defensive tools only. They are not part of the base-case long allocation.
-
-| Candidate | Underlying | Status | Short thesis | Trigger | Invalidation | Max role |
+| Kandidaat | Onderliggende waarde | Status | Short-these | Trigger | Ontkrachting | Maximale rol |
 |---|---|---|---|---|---|---|
-| RWM | IWM / Russell 2000 | Watchlist | Small caps remain vulnerable when breadth is weak and real rates are restrictive. | IWM underperforms SPY while breadth and credit fail to improve. | Broad easing impulse plus improving small-cap relative strength. | Defensive hedge only; not a long-side opportunity. |
-| EUM | EEM / Emerging Markets | Watchlist | EM remains vulnerable when USD pressure and China confidence risk rise. | UUP strengthens while EEM breaks relative support. | USD weakens and China / EM breadth confirms upside. | Defensive hedge only; not a long-side opportunity. |
-| PSQ | QQQ / Nasdaq 100 | Inactive / monitor only | Nasdaq hedge only becomes relevant if mega-cap leadership breaks. | QQQ loses relative strength versus SPY and breadth fails. | QQQ leadership remains intact. | Crash / drawdown hedge only; not a base-case allocation. |
+| RWM | IWM / Russell 2000 | Watchlist | Small caps blijven kwetsbaar als marktbreedte zwak blijft en reële rentes restrictief zijn. | IWM blijft achter bij SPY terwijl krediet en breedte niet verbeteren. | Breed herstel door versoepeling en betere small-cap relatieve sterkte. | Alleen defensieve hedge. |
+| EUM | EEM / Emerging Markets | Watchlist | EM blijft kwetsbaar bij USD-druk en zwakker Chinavertrouwen. | UUP versterkt terwijl EEM relatieve steun breekt. | USD verzwakt en China/EM-breedte bevestigt opwaarts potentieel. | Alleen defensieve hedge. |
+| PSQ | QQQ / Nasdaq 100 | Monitor | Nasdaq-hedge alleen relevant als mega-cap leiderschap breekt. | QQQ verliest relatieve sterkte tegenover SPY. | QQQ-leiderschap blijft intact. | Drawdown-hedge. |
 
-### Breadth checkpoint by regional bucket
-| Regional / style bucket | Strongest candidate | Proxy | Candidate count | Eligible proxies | Challenger score | Current status |
+### Marktbreedtecheck per regionale bucket
+| Regio / stijlbucket | Sterkste kandidaat | Proxy | Aantal kandidaten | Geschikte proxy’s | Challenger-score | Huidige status |
 |---|---|---|---:|---:|---:|---|
-| U.S. core leadership | Nasdaq 100 | QQQ | 3 | 3 | 1.99 | Published |
-| U.S. factor / style alternatives | U.S. Value Factor | VLUE | 4 | 4 | 2.17 | Sluiten challenger, not funded |
-| continental Europe | FTSE MIB | EWI | 6 | 6 | 1.35 | Sluiten challenger, not funded |
-| UK | FTSE 100 | EWU | 1 | 1 | 1.02 | Sluiten challenger, not funded |
-| Switzerland | SMI | EWL | 1 | 1 | 1.21 | Sluiten challenger, not funded |
-| North America ex-U.S. | S&P/TSX 60 | EWC | 1 | 1 | 1.76 | Sluiten challenger, not funded |
-| developed Asia-Pacific | Nikkei 225 | EWJ | 2 | 2 | 2.42 | Published |
-| Korea / Taiwan | KOSPI 200 / Korea large cap | EWY | 2 | 2 | 2.43 | Sluiten challenger, not funded |
-| Greater China | China large cap | FXI | 2 | 2 | 1.36 | Sluiten challenger, not funded |
-| India | Nifty 50 | INDA | 1 | 1 | 0.26 | Lower priority this run |
-| Latin America | Mexico large cap | EWW | 2 | 2 | 1.33 | Sluiten challenger, not funded |
-| Africa | South Africa large cap | EZA | 1 | 1 | 0.57 | Lower priority this run |
-| ASEAN | Indonesia large cap | EIDO | 1 | 1 | 0.50 | Lower priority this run |
-| Middle East | Saudi Arabia large cap | KSA | 1 | 1 | 0.98 | Sluiten challenger, not funded |
-| EM broad | Emerging Markets | EEM | 1 | 1 | 1.49 | Published |
-
-### Universe scan checkpoint
-| Portefeuillesleeve | Benchmarkindex | Regional / style bucket | Verhandelbare proxy | Proxy eligibility | Published? | Challenger score | Why not on the board yet |
-|---|---|---|---|---|---|---:|---|
-| South Korea semiconductor / export cycle | KOSPI 200 Index | Korea / Taiwan | EWY | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 2.43 | Strong challenger, not yet funded |
-| Japan developed equity | Nikkei 225 Index | developed Asia-Pacific | EWJ | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | Yes | 2.42 | Included on the board |
-| Taiwan semiconductor supply-chain leadership | Taiwan Weighted Index | Korea / Taiwan | EWT | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 2.36 | Strong challenger, not yet funded |
-| U.S. value factor | MSCI USA Value proxy benchmark | U.S. factor / style alternatives | VLUE | Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history. | No | 2.17 | Strong challenger, not yet funded |
-| U.S. mega-cap growth leadership | Nasdaq 100 Index | U.S. core leadership | QQQ | Funded or directly fundable if portfolio rules permit. | Yes | 1.99 | Included on the board |
-| U.S. quality factor | MSCI USA Quality proxy benchmark | U.S. factor / style alternatives | QUAL | Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history. | No | 1.83 | Strong challenger, not yet funded |
-| U.S. large-cap core beta | S&P 500 Index | U.S. core leadership | SPY | Funded or directly fundable if portfolio rules permit. | Yes | 1.81 | Included on the board |
-| Canada resources / financials | S&P/TSX Composite Index | North America ex-U.S. | EWC | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.76 | Strong challenger, not yet funded |
-| Broad emerging-market equity | Emerging Markets Proxy Benchmark | EM broad | EEM | Funded or directly fundable if portfolio rules permit. | Yes | 1.49 | Included on the board |
-| U.S. equal-weight breadth | S&P 500 Equal Weight Index | U.S. factor / style alternatives | RSP | Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history. | No | 1.41 | Strong challenger, not yet funded |
-| Mainland China policy beta | CSI 300 Index | Greater China | FXI | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.36 | Strong challenger, not yet funded |
-| Italy high-beta Europe financial / industrial beta | FTSE MIB Index | continental Europe | EWI | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.35 | Strong challenger, not yet funded |
-| U.S. minimum-volatility defensive equity | MSCI USA Minimum Volatility proxy benchmark | U.S. factor / style alternatives | USMV | Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history. | No | 1.34 | Strong challenger, not yet funded |
-| Mexico nearshoring / industrial beta | S&P/BMV IPC Index | Latin America | EWW | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.33 | Strong challenger, not yet funded |
-| Switzerland defensive quality | Swiss Market Index | Switzerland | EWL | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.21 | Strong challenger, not yet funded |
-| Netherlands technology / global industrial tilt | AEX Index | continental Europe | EWN | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.07 | Strong challenger, not yet funded |
-| UK defensive yield / energy / financials | FTSE 100 Index | UK | EWU | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 1.02 | Strong challenger, not yet funded |
-| U.S. small-cap breadth | Russell 2000 Index | U.S. core leadership | IWM | Funded or directly fundable if portfolio rules permit. | Yes | 0.98 | Included on the board |
-| Saudi Arabia energy / Gulf reform beta | Tadawul All Share Index | Middle East | KSA | Specialist country ETF proxy; review liquidity and spread before funding. | No | 0.98 | Strong challenger, not yet funded |
-| Spain domestic-cycle / financial beta | IBEX 35 Index | continental Europe | EWP | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.87 | Strong challenger, not yet funded |
-| Australia resources / banks / China sensitivity | S&P/ASX 200 Index | developed Asia-Pacific | EWA | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.86 | Strong challenger, not yet funded |
-| Germany cyclical industrial beta | DAX Index | continental Europe | EWG | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.74 | Relative strength not strong enough yet |
-| Brazil commodity / rates-sensitive LatAm beta | Bovespa Index | Latin America | EWZ | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.71 | Relative strength not strong enough yet |
-| Europe broad large-cap core | EURO STOXX 50 Index | continental Europe | FEZ | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.59 | Relative strength not strong enough yet |
-| South Africa resources / EM value beta | JSE Top 40 Index | Africa | EZA | Specialist country ETF proxy; review liquidity and spread before funding. | No | 0.57 | Relative strength not strong enough yet |
-| Hong Kong large-cap China-linked equities | Hang Seng Index | Greater China | EWH | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.53 | Relative strength not strong enough yet |
-| Indonesia domestic demand / commodities | Jakarta Composite Index | ASEAN | EIDO | Specialist country ETF proxy; review liquidity and spread before funding. | No | 0.50 | Relative strength not strong enough yet |
-| France consumer / industrial Europe | CAC 40 Index | continental Europe | EWQ | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.31 | Relative strength not strong enough yet |
-| India domestic growth / reform compounder | Nifty 50 Index | India | INDA | Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit. | No | 0.26 | Relative strength not strong enough yet |
+| U.S. core leadership | Nasdaq 100 | QQQ | 3 | 3 | 1.99 | Gepubliceerd |
+| U.S. factor / style alternatives | U.S. Value Factor | VLUE | 4 | 4 | 2.17 | Sterke kandidaat, nog niet gefinancierd |
+| continental Europe | FTSE MIB | EWI | 6 | 6 | 1.35 | Sterke kandidaat, nog niet gefinancierd |
+| UK | FTSE 100 | EWU | 1 | 1 | 1.02 | Sterke kandidaat, nog niet gefinancierd |
+| Switzerland | SMI | EWL | 1 | 1 | 1.21 | Sterke kandidaat, nog niet gefinancierd |
+| North America ex-U.S. | S&P/TSX 60 | EWC | 1 | 1 | 1.76 | Sterke kandidaat, nog niet gefinancierd |
+| developed Asia-Pacific | Nikkei 225 | EWJ | 2 | 2 | 2.42 | Gepubliceerd |
+| Korea / Taiwan | KOSPI 200 / Korea large cap | EWY | 2 | 2 | 2.43 | Sterke kandidaat, nog niet gefinancierd |
+| Greater China | China large cap | FXI | 2 | 2 | 1.36 | Sterke kandidaat, nog niet gefinancierd |
+| India | Nifty 50 | INDA | 1 | 1 | 0.26 | Lagere prioriteit deze run |
+| Latin America | Mexico large cap | EWW | 2 | 2 | 1.33 | Sterke kandidaat, nog niet gefinancierd |
+| Africa | South Africa large cap | EZA | 1 | 1 | 0.57 | Lagere prioriteit deze run |
+| ASEAN | Indonesia large cap | EIDO | 1 | 1 | 0.50 | Lagere prioriteit deze run |
+| Middle East | Saudi Arabia large cap | KSA | 1 | 1 | 0.98 | Sterke kandidaat, nog niet gefinancierd |
+| EM broad | Emerging Markets | EEM | 1 | 1 | 1.49 | Gepubliceerd |
 
 ## 12. Portefeuillerotatieplan
-**This run: no executed rotation before the fresh workflow rebuild.**
-
-Most likely next-step rotation path if conditions persist:
-
-1. Keep QQQ as the strongest core holding.
-2. Review whether SPY stays at full size or should share capital with a non-U.S. challenger.
-3. Force the IWM versus EWJ / RWM decision.
-4. Force the EEM versus FXI / INDA / EUM decision.
-5. Deploy part of cash only if the ranking, pricing, and scorecard align cleanly.
-
-What would change this plan:
-
-- Oil falling decisively and easing inflation pressure.
-- Europe or UK suddenly improving enough to challenge Japan and Canada.
-- Small-cap breadth recovering clearly enough to re-justify IWM.
-- EM breadth improving without renewed dollar pressure.
+| Sluiten | Verlagen | Houden | Toevoegen | Vervangen |
+|---|---|---|---|---|
+| Geen | Geen | SPY, QQQ | Geen | IWM en EEM blijven onder herbeoordeling |
 
 ## 13. Definitieve actietabel
-| Ticker | Public index / exposure | Existing/New | Target Weight | Suggested Action | Conviction Tier | Total Score | Portfolio Role | Better Alternative Exists? | Short Reason |
-|---|---|---|---:|---|---|---:|---|---|---|
-| SPY | S&P 500 | Existing | Under review | Houden | Tier 1 | Under review | Core beta | Under review | Still valid, but overlap with QQQ must be tested |
-| QQQ | Nasdaq 100 | Existing | Under review | Houden | Tier 1 | Under review | Growth engine | No urgent need | Strongest current holding |
-| IWM | Russell 2000 | Existing | Under review | Houden, onder herbeoordeling | Tier 2 | Under review | Breadth diversifier | Yes: EWJ / RWM | Weakest current sleeve; requires direct duel |
-| EEM | Emerging Markets | Existing | Under review | Houden, onder herbeoordeling | Tier 2 | Under review | Non-U.S. risk sleeve | Yes: FXI / INDA / EUM | Must justify itself more clearly |
-| CASH | Residual cash | Existing | Under review | Houden | Tier 1 | — | Optionality | — | Meaningful reserve while alternatives are tested |
+| Ticker | Exposure | Gewicht % | Advies | Rol | Korte toelichting |
+|---|---|---:|---|---|---|
+| SPY | S&P 500 | 25.11 | Houden | kernbeta | Amerikaanse large-cap kernblootstelling in een gemengd regime. |
+| QQQ | Nasdaq 100 | 26.18 | Houden | groeimotor | Technologieleiderschap blijft de sterkste groeimotor. |
+| IWM | Russell 2000 | 19.19 | Houden, onder herbeoordeling | marktbreedte-diversifier | Small-cap blootstelling blijft nuttig als marktbreedte-diversifier, maar staat onder herbeoordeling. |
+| EEM | Emerging Markets | 15.51 | Houden, onder herbeoordeling | niet-Amerikaanse risicosleeve | Gemeten niet-Amerikaanse risicosleeve, maar gevoelig voor USD- en oliedruk. |
 
 ## 14. Positiewijzigingen in deze run
-- None.
-
-Reasons:
-
-- The next review should confirm pricing, research, ranking, and scorecard first.
-- The current portfolio still needs the live alternative-duel outputs before a forced implementation change.
-- The higher-value fix this run is decision quality, not performative turnover.
+| Ticker | Vorig gewicht % | Nieuw gewicht % | Gewichtswijziging % | Uitgevoerde actie | Toelichting |
+|---|---:|---:|---:|---|---|
+| SPY | 25.11 | 25.11 | 0.00 | Geen | Aanhouden; overlapreview tegenover QQQ. |
+| QQQ | 26.18 | 26.18 | 0.00 | Geen | Aanhouden als sterkste kernpositie. |
+| IWM | 19.19 | 19.19 | 0.00 | Geen | Gefinancierd, maar onder herbeoordeling. |
+| EEM | 15.51 | 15.51 | 0.00 | Geen | Gefinancierd, maar onder herbeoordeling. |
 
 ## 15. Huidige portefeuilleposities en cash
 - Startkapitaal (EUR): 100000.00
-- Invested market value (EUR): 95549.34
+- Belegde marktwaarde (EUR): 95549.34
 - Cash (EUR): 15566.74
-- Total portfolio value (EUR): 111116.08
+- Totale portefeuillewaarde (EUR): 111116.08
 - Rendement sinds start (%): 11.12
-- Prijsbasis gevraagde slotdatum: maandag 18 mei 2026
-- FX-referentiedatum: maandag 18 mei 2026
 
 | Ticker | Publieke index / exposure | Aandelen | Prijs (lokaal) | Valuta | Marktwaarde (lokaal) | Marktwaarde (EUR) | Gewicht % |
 |---|---|---:|---:|---|---:|---:|---:|
-| SPY | S&P 500 | 44 | 738.65 | USD | 32500.60 | 27902.30 | 25.11 |
-| QQQ | Nasdaq 100 | 48 | 705.88 | USD | 33882.24 | 29088.46 | 26.18 |
-| IWM | Russell 2000 | 90 | 275.97 | USD | 24837.30 | 21323.23 | 19.19 |
-| EEM | Emerging Markets | 309 | 64.97 | USD | 20075.73 | 17235.35 | 15.51 |
-| CASH | Residual cash | - | 1.00 | EUR | 15566.74 | 15566.74 | 14.01 |
+| SPY | S&P 500 | 44.00 | 738.65 | USD | 32500.60 | 27902.30 | 25.11 |
+| QQQ | Nasdaq 100 | 48.00 | 705.88 | USD | 33882.24 | 29088.46 | 26.18 |
+| IWM | Russell 2000 | 90.00 | 275.97 | USD | 24837.30 | 21323.23 | 19.19 |
+| EEM | Emerging Markets | 309.00 | 64.97 | USD | 20075.73 | 17235.35 | 15.51 |
+| CASH | Cash | - | 1.00 | EUR | 15566.74 | 15566.74 | 14.01 |
 
 ## 16. Continuïteitsinvoer voor de volgende run
-### Watchlist / dynamic radar memory
-| Theme | Regional / style bucket | Primary proxy | Status | Why it stays visible |
-|---|---|---|---|---|
-| KOSPI 200 / Korea large cap | Korea / Taiwan | EWY | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
-| MSCI Taiwan / Taiwan large cap | Korea / Taiwan | EWT | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
-| U.S. Value Factor | U.S. factor / style alternatives | VLUE | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
-| U.S. Quality Factor | U.S. factor / style alternatives | QUAL | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
-| S&P/TSX 60 | North America ex-U.S. | EWC | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
-| S&P 500 Equal Weight | U.S. factor / style alternatives | RSP | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
-| China large cap | Greater China | FXI | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
-| FTSE MIB | continental Europe | EWI | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
-| U.S. Minimum Volatility | U.S. factor / style alternatives | USMV | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
-| Mexico large cap | Latin America | EWW | Strong challenger | Broad discovery keeps it visible even though it did not make the compact board. |
+**Deze sectie is de canonieke standaardinput voor de volgende run tenzij de gebruiker expliciet iets anders opgeeft.**
 
-### Discovery coverage checkpoint
-| Regional / style bucket | Status | Candidates scanned | Eligible proxies | Strongest candidate | Proxy | Score |
-|---|---|---:|---:|---|---|---:|
-| U.S. core leadership | Published | 3 | 3 | Nasdaq 100 | QQQ | 1.99 |
-| U.S. factor / style alternatives | Sluiten challenger, not funded | 4 | 4 | U.S. Value Factor | VLUE | 2.17 |
-| continental Europe | Sluiten challenger, not funded | 6 | 6 | FTSE MIB | EWI | 1.35 |
-| UK | Sluiten challenger, not funded | 1 | 1 | FTSE 100 | EWU | 1.02 |
-| Switzerland | Sluiten challenger, not funded | 1 | 1 | SMI | EWL | 1.21 |
-| North America ex-U.S. | Sluiten challenger, not funded | 1 | 1 | S&P/TSX 60 | EWC | 1.76 |
-| developed Asia-Pacific | Published | 2 | 2 | Nikkei 225 | EWJ | 2.42 |
-| Korea / Taiwan | Sluiten challenger, not funded | 2 | 2 | KOSPI 200 / Korea large cap | EWY | 2.43 |
-| Greater China | Sluiten challenger, not funded | 2 | 2 | China large cap | FXI | 1.36 |
-| India | Lower priority this run | 1 | 1 | Nifty 50 | INDA | 0.26 |
-| Latin America | Sluiten challenger, not funded | 2 | 2 | Mexico large cap | EWW | 1.33 |
-| Africa | Lower priority this run | 1 | 1 | South Africa large cap | EZA | 0.57 |
-| ASEAN | Lower priority this run | 1 | 1 | Indonesia large cap | EIDO | 0.50 |
-| Middle East | Sluiten challenger, not funded | 1 | 1 | Saudi Arabia large cap | KSA | 0.98 |
-| EM broad | Published | 1 | 1 | Emerging Markets | EEM | 1.49 |
+### Portefeuilletabel
+| Ticker | Index / exposure | Richting | Gewicht % | Gem. instap | Huidige prijs | W/V % | Thesis | Rol |
+|---|---|---|---:|---:|---:|---:|---|---|
+| SPY | S&P 500 | Long | 25.11 | 659.82 | 738.65 | +11.95% | Amerikaanse large-cap kernblootstelling in een gemengd regime. | kernbeta |
+| QQQ | Nasdaq 100 | Long | 26.18 | 611.07 | 705.88 | +15.52% | Technologieleiderschap blijft de sterkste groeimotor. | groeimotor |
+| IWM | Russell 2000 | Long | 19.19 | 261.76 | 275.97 | +5.43% | Small-cap blootstelling blijft nuttig als marktbreedte-diversifier, maar staat onder herbeoordeling. | marktbreedte-diversifier |
+| EEM | Emerging Markets | Long | 15.51 | 57.23 | 64.97 | +13.52% | Gemeten niet-Amerikaanse risicosleeve, maar gevoelig voor USD- en oliedruk. | niet-Amerikaanse risicosleeve |
 
-### Lane continuity notes
-- Retained entries: none
-- New entries: S&P 500, Nasdaq 100, Russell 2000, Emerging Markets broad
-- Dropped entries: none
-- Strong challengers not published: Japan large-cap equities, Germany cyclical equities, Europe broad large-cap equities
-- What would most likely change the board next run: Cleaner confirmation in Japan or Europe broadens the funded opportunity set next run.
+### Beschikbare cash
+- Cash %: 14.01
+- Margegebruik %: 0.00
+- Leverage toegestaan: Nee
+
+### Volglijst / dynamisch radargeheugen
+- EWJ: sterkste ontwikkelde ex-VS-kandidaat.
+- EWC: Canada blijft een echte uitdager.
+- FXI: Greater China blijft tactisch relevant.
+- RWM, EUM en PSQ blijven defensieve instrumenten, geen basisscenario-longposities.
 
 ## 17. Disclaimer
-Dit rapport is uitsluitend bedoeld voor informatieve en educatieve doeleinden.
-
-It does not constitute investment advice, an offer, or a solicitation to buy or sell any security. Markets involve risk, including the risk of loss. Any model portfolio, ranking, or scenario analysis in this report is hypothetical and may differ materially from real-world execution, liquidity, taxes, costs, timing, and investor suitability.
+Dit rapport is uitsluitend bedoeld voor informatieve en educatieve doeleinden. Het is geen beleggingsadvies, juridisch advies, fiscaal advies of financieel advies, en vormt geen aanbeveling om effecten te kopen, te verkopen of aan te houden. Beleggen brengt risico’s met zich mee, waaronder het risico op verlies van inleg.
