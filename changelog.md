@@ -230,3 +230,23 @@ The native Dutch renderer passed language and section validation, but numeric pa
 
 ### Validation / evidence
 - Previous native-renderer draft failed only on numeric-format mismatches for shares and P/L values, not on language or section parity. Next validation step is a fresh native NL draft run for token `260518`.
+
+---
+
+## 2026-05-20 — Add Dutch draft HTML/PDF render validation path
+
+### What changed
+- Extended the Dutch draft workflow to install the PDF rendering dependencies used by production delivery.
+- Added a render-only step for the Dutch markdown draft using the existing premium Weekly Index renderer.
+- Added Dutch draft validation for Analyst visual distinction, render polish and ticker links.
+- Extended the Dutch draft commit step to include NL clean markdown, delivery HTML, PDF, equity-curve image and delivery manifest.
+
+### Why
+The Dutch markdown path now validates language, sections and numbers. The next safety gate is render quality before any bilingual email delivery is added. This keeps NL output draft-only while proving the PDF/HTML artifacts can be generated and inspected.
+
+### Affected files
+- `.github/workflows/build-weekly-index-nl-draft.yml`
+- `changelog.md`
+
+### Validation / evidence
+- Next validation step is a fresh NL draft run for token `260518` that produces `weekly_indices_review_nl_260518_delivery.html` and `weekly_indices_review_nl_260518.pdf` without sending email.
