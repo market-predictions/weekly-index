@@ -177,8 +177,7 @@ jobs:
         run: |
           TOKEN="${{ steps.token_ctx.outputs.report_token }}"
           NL_REPORT="output_indices/weekly_indices_review_nl_${TOKEN}.md"
-          python tools/render_index_nl_report_from_state.py --token "$TOKEN" --nl-report "$NL_REPORT"
-          python tools/linkify_index_report_tickers.py --report-path "$NL_REPORT"
+          python tools/render_index_nl_report_from_state_v2.py --token "$TOKEN" --nl-report "$NL_REPORT"
           echo "NL_REPORT=$NL_REPORT" >> "$GITHUB_ENV"
 
       - name: Validate Dutch companion contracts
