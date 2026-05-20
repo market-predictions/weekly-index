@@ -57,3 +57,21 @@ The Dutch PDF was received but did not match the English report closely enough. 
 ### Validation / evidence
 - Previous delivered PDFs compared: English `weekly_indices_review_260520.pdf` had 24 pages while Dutch `weekly_indices_review_nl_260520.pdf` had 20 pages, with raw markdown ticker links visible in Dutch and missing/more compact Dutch content in multiple sections.
 - Next validation step is a fresh bilingual production or NL companion rerun after these parity fixes.
+
+---
+
+## 2026-05-21 — Restore Dutch ticker linkification after v2 renderer
+
+### What changed
+- Updated the main production workflow so the Dutch companion is linkified immediately after the v2 Dutch renderer writes the markdown.
+
+### Why
+The v2 renderer correctly strips raw markdown links to avoid visible `[QQQ](...)` syntax in the Dutch PDF, but the production workflow had not re-applied deterministic ticker linkification before rendering. The fresh run failed only at the Dutch ticker-link gate for `EWT` and `QUAL`.
+
+### Affected files
+- `.github/workflows/send-weekly-indices-report.yml`
+- `changelog.md`
+
+### Validation / evidence
+- Previous fresh bilingual run failed after successful Dutch language, section, numeric, render, visual and polish checks with: `visible tickers missing TradingView links ... EWT, QUAL`.
+- Next validation step is another fresh bilingual production run.
