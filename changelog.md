@@ -191,3 +191,24 @@ The stricter Dutch language validator correctly blocked remaining English residu
 
 ### Validation / evidence
 - Previous workflow failure: Dutch language contract failed on `Keep QQQ` and `Test SPY`. Next validation step is a fresh NL draft run for token `260518`.
+
+---
+
+## 2026-05-20 — Migrate Weekly Index NL draft to native state-driven renderer
+
+### What changed
+- Added a native Dutch Weekly Index renderer that builds the NL markdown directly from shared state and ranking artifacts instead of translating the completed English markdown line by line.
+- Updated the NL draft workflow to call the native renderer.
+- Reworked EN/NL numeric parity to become state-aware: it verifies shared authoritative portfolio numbers, positions, weights, returns, P/L and contribution values instead of requiring every incidental markdown number to appear in the same order.
+
+### Why
+The English-to-Dutch post-translation path was becoming residue-driven and fragile. The proven `weekly-etf` approach uses runtime/state-driven native Dutch rendering, which is more deterministic and avoids endless patching of English fragments like `Keep QQQ` and `Test SPY`.
+
+### Affected files
+- `tools/render_index_nl_report_from_state.py`
+- `.github/workflows/build-weekly-index-nl-draft.yml`
+- `tools/validate_index_bilingual_numeric_parity.py`
+- `changelog.md`
+
+### Validation / evidence
+- Next validation step is a fresh NL draft run for token `260518` using the native renderer path.
