@@ -152,3 +152,24 @@ The first numeric parity validator was too broad. It counted date components as 
 
 ### Validation / evidence
 - The original failure was at numeric parity with `first_diff_at=1 en='05' nl='18'`, which is consistent with date-localization noise rather than financial-number drift. The workflow has been re-triggered after the validator fix.
+
+---
+
+## 2026-05-19 — Improve Dutch draft localization quality gates
+
+### What changed
+- Reworked the Dutch markdown generator to avoid generic short word replacements that corrupted words such as `Holdings` into `Houdenings`.
+- Added more deterministic phrase, sentence and table-header translations for the current English Weekly Index report structure.
+- Added targeted fixups for known bad localization artifacts.
+- Tightened the Dutch language contract so it fails on obvious English residue and known bad artifacts.
+
+### Why
+The first Dutch draft validated structurally and numerically but still contained too much mixed English/Dutch copy. The bilingual path should fail fast on obvious localization artifacts before moving toward render or delivery.
+
+### Affected files
+- `tools/generate_index_nl_report.py`
+- `tools/validate_index_nl_language_contract.py`
+- `changelog.md`
+
+### Validation / evidence
+- Next validation step is a fresh NL draft run for report token `260518` under the stricter language contract.
