@@ -1,0 +1,151 @@
+name: Send weekly index NL companion
+
+on:
+  workflow_dispatch:
+    inputs:
+      report_token:
+        description: "Optional report token YYMMDD. Leave empty to use latest English report."
+        required: false
+        type: string
+  push:
+    branches:
+      - main
+    paths:
+      - "control/run_queue/weekly_index_nl_send_request_*.md"
+
+permissions:
+  contents: write
+
+jobs:
+  send-nl-companion:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install system packages for PDF rendering
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libcairo2 \
+            libpango-1.0-0 \
+            libgdk-pixbuf-2.0-0 \
+            libffi-dev \
+            shared-mime-info \
+            fonts-liberation \
+            fonts-dejavu-core \
+            fonts-lato
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install markdown weasyprint matplotlib
+
+      - name: Resolve report token
+        id: token_ctx
+        run: |
+          TOKEN=""
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TOKEN="${{ inputs.report_token }}"
+          else
+            REQUEST=$(ls -1 control/run_queue/weekly_index_nl_send_request_*.md | sort | tail -n 1)
+            TOKEN=$(python - "$REQUEST" <<'PY'
+          import re, sys
+          text = open(sys.argv[1], encoding='utf-8').read()
+          m = re.search(r'^\s*report_token\s*:\s*(\d{6})\s*$', text, re.M)
+          print(m.group(1) if m else '')
+          PY
+            )
+          fi
+          if [ -z "$TOKEN" ]; then
+            TOKEN=$(python - <<'PY'
+          import re
+          from pathlib import Path
+          hits = []
+          for p in Path('output_indices').glob('weekly_indices_review_*.md'):
+              name = p.name
+              if '_nl_' in name or name.endswith('_clean.md'):
+                  continue
+              m = re.match(r'^weekly_indices_review_(\d{6})(?:_(\d{2}))?\.md$', name)
+              if m:
+                  hits.append((m.group(1), m.group(2) or '00', name))
+          if not hits:
+              raise SystemExit('FAIL: no English Weekly Index report found')
+          hits.sort()
+          print(hits[-1][0])
+          PY
+            )
+          fi
+          EN_REPORT="output_indices/weekly_indices_review_${TOKEN}.md"
+          NL_REPORT="output_indices/weekly_indices_review_nl_${TOKEN}.md"
+          test -f "$EN_REPORT"
+          echo "report_token=$TOKEN" >> "$GITHUB_OUTPUT"
+          echo "en_report=$EN_REPORT" >> "$GITHUB_OUTPUT"
+          echo "nl_report=$NL_REPORT" >> "$GITHUB_OUTPUT"
+          echo "REPORT_TOKEN=$TOKEN" >> "$GITHUB_ENV"
+          echo "EN_REPORT=$EN_REPORT" >> "$GITHUB_ENV"
+          echo "NL_REPORT=$NL_REPORT" >> "$GITHUB_ENV"
+          echo "Resolved report token: $TOKEN"
+          echo "Resolved English report: $EN_REPORT"
+          echo "Resolved Dutch report: $NL_REPORT"
+
+      - name: Generate native Dutch report from state
+        run: |
+          python tools/render_index_nl_report_from_state.py --token "${{ steps.token_ctx.outputs.report_token }}" --nl-report "${{ steps.token_ctx.outputs.nl_report }}"
+          python tools/linkify_index_report_tickers.py --report-path "${{ steps.token_ctx.outputs.nl_report }}"
+
+      - name: Validate Dutch companion contracts
+        run: |
+          python tools/validate_index_nl_language_contract.py --nl-report "${{ steps.token_ctx.outputs.nl_report }}"
+          python tools/validate_index_bilingual_section_parity.py \
+            --en-report "${{ steps.token_ctx.outputs.en_report }}" \
+            --nl-report "${{ steps.token_ctx.outputs.nl_report }}"
+          python tools/validate_index_bilingual_numeric_parity.py \
+            --en-report "${{ steps.token_ctx.outputs.en_report }}" \
+            --nl-report "${{ steps.token_ctx.outputs.nl_report }}"
+
+      - name: Render and validate Dutch companion before send
+        run: |
+          python send_index_report_bilingual.py --report-path "${{ steps.token_ctx.outputs.nl_report }}" --language nl --validate-only
+          python tools/validate_index_analyst_visual_distinction_for_report.py --report-path "${{ steps.token_ctx.outputs.nl_report }}"
+          python tools/validate_index_render_polish_for_report.py --report-path "${{ steps.token_ctx.outputs.nl_report }}"
+          python tools/validate_index_ticker_links_for_report.py --report-path "${{ steps.token_ctx.outputs.nl_report }}"
+
+      - name: Send Dutch companion email if SMTP secrets are configured
+        env:
+          MRKT_RPRTS_SUBJECT_PREFIX: Weekly Index Review NL
+          MRKT_RPRTS_SMTP_HOST: ${{ secrets.MRKT_RPRTS_SMTP_HOST }}
+          MRKT_RPRTS_SMTP_PORT: ${{ secrets.MRKT_RPRTS_SMTP_PORT }}
+          MRKT_RPRTS_SMTP_USER: ${{ secrets.MRKT_RPRTS_SMTP_USER }}
+          MRKT_RPRTS_SMTP_PASS: ${{ secrets.MRKT_RPRTS_SMTP_PASS }}
+          MRKT_RPRTS_MAIL_FROM: ${{ secrets.MRKT_RPRTS_MAIL_FROM }}
+          MRKT_RPRTS_MAIL_TO: ${{ secrets.MRKT_RPRTS_MAIL_TO }}
+        run: python send_index_report_bilingual.py --report-path "${{ steps.token_ctx.outputs.nl_report }}" --language nl
+
+      - name: Commit Dutch companion assets
+        if: always()
+        run: |
+          TOKEN="${{ steps.token_ctx.outputs.report_token }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            "output_indices/weekly_indices_review_nl_${TOKEN}.md" \
+            "output_indices/weekly_indices_review_nl_${TOKEN}_clean.md" \
+            "output_indices/weekly_indices_review_nl_${TOKEN}_delivery.html" \
+            "output_indices/weekly_indices_review_nl_${TOKEN}.pdf" \
+            "output_indices/weekly_indices_review_nl_${TOKEN}_equity_curve.png" \
+            "output_indices/weekly_indices_review_nl_${TOKEN}_delivery_manifest.txt" || true
+          if git diff --cached --quiet; then
+            echo "No Dutch companion asset changes to commit."
+            exit 0
+          fi
+          git commit -m "Persist Weekly Index NL companion delivery assets ${TOKEN} [skip ci]"
+          git push origin HEAD:main
