@@ -32,6 +32,42 @@ FORBIDDEN_INTERNAL_TERMS = [
     "board_capacity", "near_miss", "ruled_out", "artifact rebuild", "live repo state",
 ]
 
+FORBIDDEN_BAD_ARTIFACTS = [
+    "Houdenings",
+    "portfolio NAV",
+    "including EUR",
+    "rebuilt from the",
+    "None this run",
+    "Keep QQQ",
+    "Test SPY",
+    "Force IWM",
+    "Higher oil or sticky inflation",
+    "Current read",
+    "Why it is on the board",
+    "Why not on the board yet",
+    "Close challenger, not funded",
+    "Sluiten challenger, not funded",
+    "The portfolio remains constructive",
+    "Notes:",
+    "Pricing basis close",
+]
+
+# Allow financial labels that intentionally remain English-like, such as
+# risk-on/risk-off, USD, EM, long, short, hedge, ticker symbols and index names.
+SENTENCE_LEVEL_ENGLISH_RESIDUE = [
+    re.compile(r"\bportfolio NAV\b"),
+    re.compile(r"\bincluding EUR\b"),
+    re.compile(r"\brebuilt from the\b"),
+    re.compile(r"\bNone this run\b"),
+    re.compile(r"\bThe board remains\b"),
+    re.compile(r"\bThe scan covers\b"),
+    re.compile(r"\bThe portfolio remains\b"),
+    re.compile(r"\bCurrent read\b"),
+    re.compile(r"\bWhy it is on the board\b"),
+    re.compile(r"\bWhy not on the board yet\b"),
+    re.compile(r"\bPricing basis close\b"),
+]
+
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -54,6 +90,12 @@ def main() -> None:
     for term in FORBIDDEN_INTERNAL_TERMS:
         if term in text:
             failures.append(f"internal term leakage: {term}")
+    for term in FORBIDDEN_BAD_ARTIFACTS:
+        if term in text:
+            failures.append(f"bad Dutch localization artifact: {term}")
+    for pattern in SENTENCE_LEVEL_ENGLISH_RESIDUE:
+        if pattern.search(text):
+            failures.append(f"English residue pattern: {pattern.pattern}")
 
     if failures:
         raise SystemExit("FAIL: Dutch language contract failed for " + path.name + ": " + "; ".join(failures))
