@@ -1,0 +1,1541 @@
+<html>
+      <head>
+        <meta charset="utf-8" />
+        <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      background: #F6F2EC;
+      color: #2B3742;
+      font-family: Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .report-shell { max-width: 1180px; margin: 0 auto; padding: 0 0 18px 0; }
+    .hero { background: #607887; color: #FBFAF7; padding: 20px 24px 18px 24px; border-radius: 14px 14px 0 0; }
+    .hero-secondary { margin-top: 26px; }
+    .hero-table { width: 100%; border-collapse: collapse; }
+    .hero-table td { vertical-align: middle; }
+    .hero-left { text-align: left; }
+    .hero-right { text-align: right; white-space: nowrap; padding-left: 24px; }
+    .masthead { font-family: Georgia, 'Times New Roman', serif; font-weight: 700; font-size: 30px; letter-spacing: 1px; margin: 0 0 8px 0; text-transform: uppercase; }
+    .hero-sub { font-size: 14px; color: #EFF4F6; margin: 0; }
+    .hero-side-label { font-size: 16px; line-height: 1.2; font-weight: 700; color: #FBFAF7; letter-spacing: .03em; }
+    .hero-rule { height: 5px; background: #D4B483; margin: 8px 0 18px 0; border-radius: 999px; }
+    .notice { background: #F8F4EE; border: 1px solid #D9D3CB; color: #6B7882; border-radius: 14px; padding: 12px 16px; font-size: 12px; margin: 0 0 18px 0; }
+    .summary-strip { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; margin: 0 0 18px 0; }
+    .mini-card { background: #FCFAF7; border: 1px solid #D9D3CB; border-radius: 16px; padding: 14px 18px; }
+    .mini-label { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #6B7882; margin: 0 0 8px 0; }
+    .mini-value { font-family: Georgia, 'Times New Roman', serif; font-weight: 700; font-size: 22px; color: #2B3742; line-height: 1.22; }
+    .client-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 18px; align-items: start; margin: 0 0 18px 0; }
+    .panel { background: #FCFAF7; border: 1px solid #D9D3CB; border-radius: 18px; padding: 16px 18px; margin: 0 0 18px 0; }
+    .section-kicker { width: auto; border-collapse: collapse; margin: 0 0 18px 0; }
+    .section-kicker td { vertical-align: middle; }
+    .section-badge-cell { width: 64px; padding: 0 16px 0 0; }
+    .section-badge { width: 46px; height: 46px; border-radius: 999px; background: #2A5384; color: #ffffff; font-weight: 700; font-size: 17px; display: block; text-align: center; line-height: 46px; font-family: Arial, Helvetica, sans-serif; }
+    .section-label { display: block; font-size: 15px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #6B7882; line-height: 1.12; }
+    .summary-line { margin: 0 0 12px 0; padding: 0 0 12px 0; border-bottom: 1px solid #D9D3CB; }
+    .summary-key { color: #6B7882; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 6px 0; }
+    .summary-value { color: #2B3742; font-size: 14px; line-height: 1.55; }
+    .takeaway { margin: 18px 0 0 0; padding: 14px 16px; border-radius: 12px; background: #F4EEE4; border: 1px solid #E7D7BB; }
+    .takeaway-label { color: #6B7882; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 6px 0; }
+    .takeaway-text { color: #2B3742; font-size: 17px; font-weight: 700; line-height: 1.42; }
+    .snapshot-table { width: 100%; border-collapse: collapse; margin: 0 0 16px 0; border: 1px solid #D9D3CB; table-layout: fixed; }
+    .snapshot-table th { background: #F2EBDD; color: #2B3742; text-align: left; padding: 9px 10px; border-bottom: 1px solid #D9D3CB; font-size: 13px; font-weight: 700; }
+    .snapshot-table td { padding: 9px 10px; border-bottom: 1px solid #ECE6DE; vertical-align: top; font-size: 14px; line-height: 1.5; word-break: break-word; }
+    .snapshot-table tbody tr:nth-child(even) td { background: #FEFCF9; }
+    .subgrid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .subblock { margin: 0 0 14px 0; padding: 12px 14px; background: #FBF7F0; border: 1px solid #D9D3CB; border-radius: 12px; }
+    .subblock-title { color: #6B7882; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 8px 0; }
+    .subblock ul { margin: 0; padding-left: 18px; }
+    .panel p, .panel li { font-size: 14px; line-height: 1.58; margin-top: 0; font-weight: 400; }
+    .panel strong { font-weight: 700; }
+    .panel ul, .panel ol { margin-top: 0; padding-left: 22px; }
+    .panel h3 { color: #2B3742; font-size: 18px; font-weight: 700; line-height: 1.35; margin: 18px 0 10px 0; }
+    .panel h4 { color: #6B7882; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; margin: 18px 0 8px 0; }
+    .panel table { width: 100%; border-collapse: collapse; table-layout: fixed; margin: 12px 0 14px 0; border: 1px solid #D9D3CB; font-size: 12px; }
+    .panel th { text-align: left; padding: 8px 10px; border-bottom: 1px solid #D9D3CB; background: #F2EBDD; color: #2B3742; vertical-align: middle; font-size: 12px; font-weight: 700; }
+    .panel td { padding: 8px 10px; border-bottom: 1px solid #ECE6DE; vertical-align: top; word-wrap: break-word; }
+    .panel tr:nth-child(even) td { background: #FEFCF9; }
+    .panel img { max-width: 100%; height: auto; border: 1px solid #D9D3CB; border-radius: 10px; margin: 10px 0 4px 0; display: block; }
+    .position-card { margin: 0 0 16px 0; padding: 14px 16px; border: 1px solid #D9D3CB; background: #FBF7F0; border-radius: 14px; }
+    .position-card-title { font-size: 17px; font-weight: 700; color: #2B3742; margin: 0 0 10px 0; }
+    .position-card-body table { margin-top: 10px; }
+    .chart-wrap { margin: 12px 0 18px 0; padding: 12px 14px; background: #FBF7F0; border: 1px solid #D9D3CB; border-radius: 14px; }
+    .chart-label { color: #6B7882; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin: 0 0 8px 0; }
+    a { color: #315F8B; text-decoration: underline; }
+    
+    @media screen and (max-width: 1100px) {
+      .summary-strip, .client-grid, .subgrid { display: block; }
+      .hero-table, .hero-table tbody, .hero-table tr, .hero-table td { display: block; width: 100%; }
+      .hero-right { text-align: left; padding-left: 0; padding-top: 10px; }
+      .mini-card, .panel { margin-bottom: 16px; }
+      .panel table, .snapshot-table { table-layout: auto; }
+    }
+    
+    .analyst-hero {
+      background: #0F5B5C !important;
+      color: #FFFFFF !important;
+      margin-top: 30px;
+      page-break-before: always;
+      break-before: page;
+    }
+    .analyst-hero .masthead,
+    .analyst-hero .hero-sub,
+    .analyst-hero .hero-side-label {
+      color: #FFFFFF !important;
+    }
+    .analyst-part-label {
+      display: inline-block;
+      margin: 0 0 8px 0;
+      padding: 4px 9px;
+      border: 1px solid rgba(255,255,255,0.45);
+      border-radius: 999px;
+      color: #FFFFFF;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .analyst-subtitle {
+      margin-top: 7px;
+      color: #E8F3F2;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .02em;
+      white-space: normal;
+    }
+    .analyst-hero + .hero-rule {
+      background: #C9A96A !important;
+      height: 6px;
+    }
+    .analyst-hero ~ .panel {
+      background: #F5F8F8;
+      border-color: #CCD9D9;
+    }
+    .analyst-hero ~ .panel .section-badge {
+      background: #0F5B5C;
+      color: #FFFFFF;
+    }
+    .analyst-hero ~ .panel .section-label {
+      color: #0B4446;
+    }
+    .analyst-hero ~ .panel th {
+      background: #E4EEEE;
+    }
+    .analyst-hero ~ .panel .position-card,
+    .analyst-hero ~ .panel .subblock,
+    .analyst-hero ~ .panel .chart-wrap {
+      background: #FFFFFF;
+      border-color: #D6E1E1;
+    }
+    .analyst-hero ~ .panel .position-card-title,
+    .analyst-hero ~ .panel .subblock-title,
+    .analyst-hero ~ .panel h3 {
+      color: #0B4446;
+    }
+    .analyst-hero ~ .panel tr:nth-child(even) td {
+      background: #F7FBFB;
+    }
+    .inline-list {
+      margin: 0 0 12px 0;
+      padding: 0;
+    }
+    .inline-list-item {
+      display: block;
+      margin: 0 0 5px 0;
+      padding: 0;
+      font-size: 14px;
+      line-height: 1.58;
+      font-weight: 400;
+    }
+    .inline-list-marker {
+      font-weight: 400;
+      margin-right: 4px;
+    }
+    @media print {
+      .analyst-hero {
+        page-break-before: always;
+        break-before: page;
+      }
+    }
+
+        </style>
+      </head>
+      <body>
+        <div class="report-shell">
+          <div class="hero">
+            <table class="hero-table" role="presentation" cellpadding="0" cellspacing="0"><tr>
+              <td class="hero-left"><div class="masthead">WEEKLY INDICES REVIEW</div><p class="hero-sub">Wednesday, 20 May 2026</p></td>
+              <td class="hero-right"><div class="hero-side-label">Investor Report</div></td>
+            </tr></table>
+          </div>
+          <div class="hero-rule"></div>
+          <div class="notice">This report is for informational and educational purposes only; please see the disclaimer at the end.</div>
+          <div class="summary-strip"><div class='mini-card'><div class='mini-label'>Primary regime</div><div class='mini-value'>Risk-on narrow US mega-cap leadership (72% confidence).</div></div><div class='mini-card'><div class='mini-label'>Geopolitical regime</div><div class='mini-value'>Rates and energy-sensitive geopolitical risk.</div></div><div class='mini-card'><div class='mini-label'>Main takeaway</div><div class='mini-value'>keep QQQ as the strongest earned sleeve, keep SPY under concentration review, and force IWM and EEM through named long-alternative and defensive-hedge duels before any new capital is assigned.</div></div></div>
+          <div class="client-grid"><div class='panel panel-exec'><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>1</span></td><td class='section-label-cell'><span class='section-label'>Executive Summary</span></td></tr></table><div class='summary-line'><div class='summary-key'>Current valuation basis</div><div class='summary-value'>portfolio NAV is EUR 112,344.02, including EUR 15,566.74 cash, rebuilt from the 2026-05-20 close and FX reference date 2026-05-20.</div></div><div class='summary-line'><div class='summary-key'>Geopolitical implication</div><div class='summary-value'>Treat oil, rates and defense/geopolitical shocks as risk filters for small caps, EM and Europe.</div></div><div class='summary-line'><div class='summary-key'>What changed</div><div class='summary-value'>Nasdaq leadership is stronger than small-cap breadth, so risk appetite remains narrow rather than broad.</div></div><div class='summary-line'><div class='summary-key'>Portfolio implication</div><div class='summary-value'>Do not treat narrow U.S. leadership as full global breadth confirmation.</div></div><div class='takeaway'><div class='takeaway-label'>Main takeaway</div><div class='takeaway-text'>keep QQQ as the strongest earned sleeve, keep SPY under concentration review, and force IWM and EEM through named long-alternative and defensive-hedge duels before any new capital is assigned.</div></div></div><div class='panel panel-snapshot'><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>2</span></td><td class='section-label-cell'><span class='section-label'>Portfolio Action Snapshot</span></td></tr></table><table class='snapshot-table'><thead><tr><th>Recommendation</th><th>Tickers / notes</th></tr></thead><tbody><tr><th>Add</th><td>None this run. Cash remains available, but no challenger clears the full pricing, regime and relative-strength hurdle yet.</td></tr><tr><th>Hold</th><td>S&amp;P 500 via <a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a>; Nasdaq 100 via <a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a></td></tr><tr><th>Hold but replaceable</th><td>Russell 2000 via <a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a>; Emerging Markets via <a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a></td></tr><tr><th>Reduce</th><td>None until the direct alternative-duel evidence produces a cleaner replacement or hedge trigger.</td></tr><tr><th>Close</th><td>None this run.</td></tr></tbody></table><div class='subblock'><div class='subblock-title'>Best replacements to monitor</div><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Japan large cap via <a href="https://www.tradingview.com/chart/?symbol=EWJ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EWJ</a></div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Canada broad via <a href="https://www.tradingview.com/chart/?symbol=EWC" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EWC</a></div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Greater China large cap via <a href="https://www.tradingview.com/chart/?symbol=FXI" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">FXI</a></div></div></div><div class='subgrid'><div class='subblock'><div class='subblock-title'>Top 3 actions this week</div><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Keep <a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a> as the strongest core holding while leadership remains intact.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Test <a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a> against <a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a> overlap so U.S. exposure is not mistaken for full diversification.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Force <a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a> and <a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a> through long-alternative and defensive/inverse comparisons before adding capital.</div></div></div><div class='subblock'><div class='subblock-title'>Top 3 risks this week</div><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Higher oil or sticky inflation delays easier policy and keeps pressure on weak breadth.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a> and <a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a> remain a concentration cluster, not a diversified global allocation.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a> and <a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a> stay under review until breadth, USD and relative-strength evidence improve.</div></div></div></div></div></div>
+          <div class="report-stack"><div class='panel panel-regime'><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>3</span></td><td class='section-label-cell'><span class='section-label'>Global Regime Dashboard</span></td></tr></table><table>
+<thead>
+<tr>
+<th>Lens</th>
+<th>Current read</th>
+<th>Portfolio implication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U.S. growth / earnings</td>
+<td>Still resilient; AI and semis continue to lead</td>
+<td>Supports <a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a> and keeps <a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a> valid</td>
+</tr>
+<tr>
+<td>Inflation</td>
+<td>Higher oil is reviving inflation concerns</td>
+<td>Keeps pressure on weak-margin cyclicals</td>
+</tr>
+<tr>
+<td>Policy path</td>
+<td>Fed-cut expectations have been pushed back</td>
+<td>Less friendly for small caps and rate-sensitive beta</td>
+</tr>
+<tr>
+<td>Europe</td>
+<td>Flat-to-weaker tape under oil and geopolitical strain</td>
+<td>Europe stays below the cut line for now</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Better relative setup than Europe broad</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWJ" target="_blank" rel="noopener noreferrer">EWJ</a> remains one of the most credible add candidates</td>
+</tr>
+<tr>
+<td>Canada</td>
+<td>Commodity support is improving the case</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWC" target="_blank" rel="noopener noreferrer">EWC</a> remains a real challenger, not filler</td>
+</tr>
+<tr>
+<td>EM</td>
+<td>Still investable, but more exposed to dollar/oil stress than U.S. leadership</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer">EEM</a> must pass a stricter review versus alternatives</td>
+</tr>
+</tbody>
+</table></div><div class='panel panel-radar'><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>4</span></td><td class='section-label-cell'><span class='section-label'>Index Opportunity Board</span></td></tr></table><p>The scan covers <strong>29 exposures</strong> across <strong>15 regional/style buckets</strong>. The board remains compact by design; broader coverage is shown later in the universe checkpoint.</p>
+<table>
+<thead>
+<tr>
+<th>Portfolio sleeve</th>
+<th>Benchmark index</th>
+<th>Tradable proxy</th>
+<th>Regional / style bucket</th>
+<th style="text-align: right;">Score</th>
+<th>Status</th>
+<th>Why it is on the board</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U.S. mega-cap growth leadership</td>
+<td>Nasdaq 100 Index</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td>U.S. core leadership</td>
+<td style="text-align: right;">2.79</td>
+<td>Funded</td>
+<td>Growth leadership remains a core engine in the current opportunity set.</td>
+</tr>
+<tr>
+<td>Broad emerging-market equity</td>
+<td>Emerging Markets Proxy Benchmark</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer">EEM</a></td>
+<td>EM broad</td>
+<td style="text-align: right;">2.76</td>
+<td>Funded</td>
+<td>Emerging markets add a measured non-U.S. risk sleeve while the dollar backdrop is less hostile.</td>
+</tr>
+<tr>
+<td>U.S. large-cap core beta</td>
+<td>S&amp;P 500 Index</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a></td>
+<td>U.S. core leadership</td>
+<td style="text-align: right;">2.54</td>
+<td>Funded</td>
+<td>Core U.S. large-cap exposure remains the cleanest starting anchor.</td>
+</tr>
+<tr>
+<td>Japan developed equity</td>
+<td>Nikkei 225 Index</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWJ" target="_blank" rel="noopener noreferrer">EWJ</a></td>
+<td>developed Asia-Pacific</td>
+<td style="text-align: right;">2.29</td>
+<td>Surfaced</td>
+<td>Improves breadth or fills an important portfolio gap without forcing a low-conviction rotation.</td>
+</tr>
+<tr>
+<td>U.S. small-cap breadth</td>
+<td>Russell 2000 Index</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer">IWM</a></td>
+<td>U.S. core leadership</td>
+<td style="text-align: right;">1.75</td>
+<td>Funded</td>
+<td>Domestic breadth improves diversification without dominating the book.</td>
+</tr>
+</tbody>
+</table>
+<p>The board remains intentionally compact. The strongest omitted regional challenger this run is <strong>U.S. Value Factor (VLUE)</strong>, which remains close enough to matter without displacing a higher-ranked funded exposure.</p></div><div class='panel panel-risks panel-compact'><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>5</span></td><td class='section-label-cell'><span class='section-label'>Key Risks / Invalidators</span></td></tr></table><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>1.</span>Oil remains elevated or spikes again, keeping inflation pressure high.</div><div class='inline-list-item'><span class='inline-list-marker'>2.</span>The Fed, ECB, or BOJ turns less market-friendly than expected.</div><div class='inline-list-item'><span class='inline-list-marker'>3.</span>U.S. mega-cap leadership finally cracks after a record run.</div><div class='inline-list-item'><span class='inline-list-marker'>4.</span>Russell 2000 continues to lag and confirms that breadth is weaker than it looks.</div><div class='inline-list-item'><span class='inline-list-marker'>5.</span>EM weakens under a stronger dollar or renewed commodity stress.</div><div class='inline-list-item'><span class='inline-list-marker'>6.</span>Pricing, ranking, scorecard, render, or send validation fails.</div></div></div><div class='panel panel-bottomline panel-compact'><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>6</span></td><td class='section-label-cell'><span class='section-label'>Bottom Line</span></td></tr></table><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>The portfolio remains constructive but selective.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>U.S. leadership remains the core engine, but concentration must be watched.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>IWM and EEM remain funded but under review versus clearer challengers.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Inverse instruments are not base-case positions, but the hedge map is ready if breadth breaks.</div></div></div><div class='panel panel-equity'><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>7</span></td><td class='section-label-cell'><span class='section-label'>Equity Curve and Portfolio Development</span></td></tr></table><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Starting capital (EUR): 100000.00</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Current portfolio value (EUR): 112344.02</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Since inception return (%): 12.34</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Equity-curve state: Live tracked</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Pricing basis requested close date: 2026-05-20</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>FX reference date: 2026-05-20</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Notes: Holdings and NAV are rebuilt from the pricing/state layer for the requested close date 2026-05-20.</div></div>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th style="text-align: right;">Portfolio value (EUR)</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-04-27</td>
+<td style="text-align: right;">105772.19</td>
+<td>Pricing basis close 2026-04-27</td>
+</tr>
+<tr>
+<td>2026-04-30</td>
+<td style="text-align: right;">107173.81</td>
+<td>Pricing basis close 2026-04-30</td>
+</tr>
+<tr>
+<td>2026-05-01</td>
+<td style="text-align: right;">107643.74</td>
+<td>Pricing basis close 2026-05-01</td>
+</tr>
+<tr>
+<td>2026-05-04</td>
+<td style="text-align: right;">108478.51</td>
+<td>Pricing basis close 2026-05-04</td>
+</tr>
+<tr>
+<td>2026-05-05</td>
+<td style="text-align: right;">109869.46</td>
+<td>Pricing basis close 2026-05-05</td>
+</tr>
+<tr>
+<td>2026-05-11</td>
+<td style="text-align: right;">111975.43</td>
+<td>Pricing basis close 2026-05-11</td>
+</tr>
+<tr>
+<td>2026-05-12</td>
+<td style="text-align: right;">111151.27</td>
+<td>Pricing basis close 2026-05-12</td>
+</tr>
+<tr>
+<td>2026-05-15</td>
+<td style="text-align: right;">111578.74</td>
+<td>Pricing basis close 2026-05-15</td>
+</tr>
+<tr>
+<td>2026-05-18</td>
+<td style="text-align: right;">111116.08</td>
+<td>Pricing basis close 2026-05-18</td>
+</tr>
+<tr>
+<td>2026-05-20</td>
+<td style="text-align: right;">112344.02</td>
+<td>Pricing basis close 2026-05-20</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Equity curve" src="cid:equitycurve" /></p>
+<h3>Tradable Proxy Performance</h3>
+<p>Performance is calculated on the tradable ETF proxies used for portfolio valuation. Benchmark index prices remain the analysis reference; tradable proxy closes drive market value, P/L and contribution.</p>
+<table>
+<thead>
+<tr>
+<th>Portfolio sleeve</th>
+<th>Benchmark index</th>
+<th>Tradable proxy</th>
+<th style="text-align: right;">Weight %</th>
+<th style="text-align: right;">1w return</th>
+<th style="text-align: right;">1m return</th>
+<th style="text-align: right;">3m return</th>
+<th style="text-align: right;">Since-entry</th>
+<th style="text-align: right;">P/L EUR</th>
+<th style="text-align: right;">Contribution %</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S&amp;P 500</td>
+<td>S&amp;P 500 Index</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a></td>
+<td style="text-align: right;">25.03</td>
+<td style="text-align: right;">-0.14%</td>
+<td style="text-align: right;">+4.59%</td>
+<td style="text-align: right;">+8.29%</td>
+<td style="text-align: right;">+12.34%</td>
+<td style="text-align: right;">3,088.72</td>
+<td style="text-align: right;">+2.75%</td>
+</tr>
+<tr>
+<td>Nasdaq 100</td>
+<td>Nasdaq 100 Index</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td style="text-align: right;">26.27</td>
+<td style="text-align: right;">-0.22%</td>
+<td style="text-align: right;">+10.26%</td>
+<td style="text-align: right;">+18.17%</td>
+<td style="text-align: right;">+16.71%</td>
+<td style="text-align: right;">4,224.00</td>
+<td style="text-align: right;">+3.76%</td>
+</tr>
+<tr>
+<td>Russell 2000</td>
+<td>Russell 2000 Index</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer">IWM</a></td>
+<td style="text-align: right;">19.33</td>
+<td style="text-align: right;">-0.99%</td>
+<td style="text-align: right;">+0.91%</td>
+<td style="text-align: right;">+5.77%</td>
+<td style="text-align: right;">+6.92%</td>
+<td style="text-align: right;">1,405.09</td>
+<td style="text-align: right;">+1.25%</td>
+</tr>
+<tr>
+<td>Emerging Markets</td>
+<td>Emerging Markets Proxy Benchmark</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer">EEM</a></td>
+<td style="text-align: right;">15.52</td>
+<td style="text-align: right;">-2.60%</td>
+<td style="text-align: right;">+3.61%</td>
+<td style="text-align: right;">+7.24%</td>
+<td style="text-align: right;">+14.38%</td>
+<td style="text-align: right;">2,192.30</td>
+<td style="text-align: right;">+1.95%</td>
+</tr>
+</tbody>
+</table></div><div class='hero hero-secondary analyst-hero'><table class='hero-table' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='hero-left'><div class='masthead'>WEEKLY INDICES REVIEW</div><p class='hero-sub'>Wednesday, 20 May 2026</p></td><td class='hero-right'><div class='analyst-part-label'>PART II</div><div class='hero-side-label'>Analyst Report</div><div class='analyst-subtitle'>Research depth, scenario framing and implementation detail</div></td></tr></table></div><div class='hero-rule'></div><div class='panel '><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>8</span></td><td class='section-label-cell'><span class='section-label'>Regional / Style Allocation Map</span></td></tr></table><table>
+<thead>
+<tr>
+<th>Region / style bucket</th>
+<th>Current view</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U.S. mega-cap / quality growth</td>
+<td>Overweight</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a> remains the strongest sleeve</td>
+</tr>
+<tr>
+<td>U.S. broad large cap</td>
+<td>Neutral-positive</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a> still works, but overlap must be tested</td>
+</tr>
+<tr>
+<td>U.S. small cap</td>
+<td>Under active review</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer">IWM</a> is funded, but no longer a passive hold</td>
+</tr>
+<tr>
+<td>Continental Europe</td>
+<td>Underweight</td>
+<td>Oil and geopolitical sensitivity remain a drag</td>
+</tr>
+<tr>
+<td>UK</td>
+<td>Lower priority</td>
+<td>Not yet strong enough versus Japan or Canada</td>
+</tr>
+<tr>
+<td>Switzerland</td>
+<td>Watchlist</td>
+<td>Defensive quality, but not top-ranked yet</td>
+</tr>
+<tr>
+<td>North America ex-U.S.</td>
+<td>Improving</td>
+<td>Canada remains a real challenger</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Positive</td>
+<td>Strongest developed ex-U.S. lane</td>
+</tr>
+<tr>
+<td>Greater China</td>
+<td>Tactical watch</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=FXI" target="_blank" rel="noopener noreferrer">FXI</a> remains a real breadth candidate</td>
+</tr>
+<tr>
+<td>India</td>
+<td>Tactical watch</td>
+<td>Still interesting, but not top-ranked today</td>
+</tr>
+<tr>
+<td>EM broad</td>
+<td>Neutral-positive but under review</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer">EEM</a> must beat more selective alternatives</td>
+</tr>
+</tbody>
+</table></div><div class='panel '><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>9</span></td><td class='section-label-cell'><span class='section-label'>Second-Order Effects Map</span></td></tr></table><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Higher oil pushes inflation expectations higher and keeps easier policy further away.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>A later Fed-cut path matters more for IWM than for QQQ.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Europe remains more energy-sensitive than the U.S. or Canada.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Commodity strength helps Canada more directly than Europe broad.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>If U.S. leadership finally weakens, RWM likely activates before SH.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>If dollar pressure rises again, EUM becomes more relevant against EEM.</div></div></div><div class='panel panel-positions'><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>10</span></td><td class='section-label-cell'><span class='section-label'>Current Position Review</span></td></tr></table><article class='position-card'><div class='position-card-title'>S&amp;P 500 / <a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">SPY</a></div><div class='position-card-body'><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Would initiate today: Yes.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Would initiate at current weight: Yes, but only after explicit overlap review versus QQQ.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Thesis score: 4.1 / 5.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Implementation score: 3.9 / 5.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Best alternative: VOO / QUAL / partial redeployment toward EWJ.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Required next action: test whether SPY still diversifies the book or mainly duplicates U.S. mega-cap growth beta.</div></div></div></article><article class='position-card'><div class='position-card-title'>Nasdaq 100 / <a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">QQQ</a></div><div class='position-card-body'><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Would initiate today: Yes.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Would initiate at current weight: Yes.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Thesis score: 4.4 / 5.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Implementation score: 4.3 / 5.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Best alternative: QQQM.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Required next action: keep as top core holding unless leadership clearly breaks.</div></div></div></article><article class='position-card'><div class='position-card-title'>Russell 2000 / <a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">IWM</a></div><div class='position-card-body'><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Would initiate today: Smaller / Unresolved.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Would initiate at current weight: No.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Thesis score: 3.2 / 5.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Implementation score: 2.9 / 5.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Best alternative: EWJ on the long side, RWM on the defensive side.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Required next action: force direct alternative duel; upgrade, reduce, replace, or close.</div></div></div></article><article class='position-card'><div class='position-card-title'>Emerging Markets / <a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EEM</a></div><div class='position-card-body'><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Would initiate today: Smaller / Unresolved.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Would initiate at current weight: No.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Thesis score: 3.3 / 5.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Implementation score: 2.9 / 5.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Best alternative: FXI / INDA on the selective long side, EUM on the defensive side.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Required next action: force direct alternative duel; upgrade, reduce, replace, or close.</div></div></div></article></div><div class='panel '><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>11</span></td><td class='section-label-cell'><span class='section-label'>Best New Index Opportunities</span></td></tr></table><h3>Long-side Opportunities</h3>
+<p>The strongest omitted regional challenger this run is <strong>KOSPI 200 / Korea large cap (EWY)</strong>. It improves breadth and remains close enough to the live board to stay visible in the report.</p>
+<h4>1. KOSPI 200 / Korea large cap (EWY)</h4>
+<div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Portfolio sleeve: South Korea semiconductor / export cycle</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Regional / style bucket: Korea / Taiwan</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Challenger score: 2.43</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Proxy eligibility: Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Why it matters: Ranks well internally but remains just below the current publication cutoff.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Why not on the board yet: Strong challenger, not yet funded</div></div>
+<h4>2. MSCI Taiwan / Taiwan large cap (EWT)</h4>
+<div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Portfolio sleeve: Taiwan semiconductor supply-chain leadership</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Regional / style bucket: Korea / Taiwan</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Challenger score: 2.29</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Proxy eligibility: Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Why it matters: Ranks well internally but remains just below the current publication cutoff.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Why not on the board yet: Strong challenger, not yet funded</div></div>
+<h4>3. U.S. Value Factor (VLUE)</h4>
+<div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Portfolio sleeve: U.S. value factor</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Regional / style bucket: U.S. factor / style alternatives</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Challenger score: 2.24</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Proxy eligibility: Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Why it matters: Ranks well internally but remains just below the current publication cutoff.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Why not on the board yet: Strong challenger, not yet funded</div></div>
+<h4>4. FTSE MIB (<a href="https://www.tradingview.com/chart/?symbol=EWI" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">EWI</a>)</h4>
+<div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Portfolio sleeve: Italy high-beta Europe financial / industrial beta</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Regional / style bucket: continental Europe</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Challenger score: 1.82</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Proxy eligibility: Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Why it matters: Ranks well internally but remains just below the current publication cutoff.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Why not on the board yet: Strong challenger, not yet funded</div></div>
+<h3>Alternative Duel Table</h3>
+<table>
+<thead>
+<tr>
+<th>Current exposure</th>
+<th>Current proxy</th>
+<th>Alternative / hedge</th>
+<th>Alternative proxy</th>
+<th>Type</th>
+<th style="text-align: right;">20d edge</th>
+<th style="text-align: right;">60d edge</th>
+<th>Regime fit</th>
+<th>Decision</th>
+<th>Required trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S&amp;P 500</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a></td>
+<td>Nasdaq 100</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td>Long alternative</td>
+<td style="text-align: right;">+4.63%</td>
+<td style="text-align: right;">+9.42%</td>
+<td>candidate</td>
+<td>Alternative improving; keep replacement duel active.</td>
+<td>Momentum proof is present. <a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a> increases U.S. mega-cap / technology concentration, so funding requires explicit concentration room versus the <a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a>/<a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a> overlap limit.</td>
+</tr>
+<tr>
+<td>S&amp;P 500</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a></td>
+<td>Euro Stoxx 50</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=FEZ" target="_blank" rel="noopener noreferrer">FEZ</a></td>
+<td>Long alternative</td>
+<td style="text-align: right;">-4.24%</td>
+<td style="text-align: right;">-9.26%</td>
+<td>watchlist</td>
+<td>Current exposure still leads; no replacement.</td>
+<td>Needs both 20d and 60d relative-strength improvement before funding. Europe can improve regional diversification, but funding requires evidence that earnings and policy support are strong enough to offset weaker momentum.</td>
+</tr>
+<tr>
+<td>S&amp;P 500</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a></td>
+<td>Nikkei 225</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWJ" target="_blank" rel="noopener noreferrer">EWJ</a></td>
+<td>Long alternative</td>
+<td style="text-align: right;">+0.02%</td>
+<td style="text-align: right;">-1.29%</td>
+<td>watchlist</td>
+<td>Early improvement only; wait for 60d confirmation.</td>
+<td>Early improvement only; needs positive 60d confirmation before funding. Japan can improve regional diversification, but funding requires confirmation that currency and yield volatility do not overwhelm the diversification benefit.</td>
+</tr>
+<tr>
+<td>Nasdaq 100</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td>S&amp;P 500</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a></td>
+<td>Long alternative</td>
+<td style="text-align: right;">-4.63%</td>
+<td style="text-align: right;">-9.42%</td>
+<td>watchlist</td>
+<td>Current exposure still leads; no replacement.</td>
+<td>Needs both 20d and 60d relative-strength improvement before funding. <a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a> lowers concentration versus <a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a>, but funding only makes sense if broader U.S. participation improves.</td>
+</tr>
+<tr>
+<td>Nasdaq 100</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td>Russell 2000</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer">IWM</a></td>
+<td>Long alternative</td>
+<td style="text-align: right;">-7.61%</td>
+<td style="text-align: right;">-11.08%</td>
+<td>watchlist</td>
+<td>Current exposure still leads; no replacement.</td>
+<td>Needs both 20d and 60d relative-strength improvement before funding. <a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer">IWM</a> improves breadth exposure, but funding requires small-cap breadth and real-rate conditions to improve.</td>
+</tr>
+<tr>
+<td>Nasdaq 100</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td>Inverse hedge for Nasdaq 100</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=PSQ" target="_blank" rel="noopener noreferrer">PSQ</a></td>
+<td>Defensive / inverse</td>
+<td style="text-align: right;">n/a</td>
+<td style="text-align: right;">n/a</td>
+<td>inactive</td>
+<td>Not decision-grade this week — relative-strength proof incomplete.</td>
+<td>Nasdaq leadership remains intact.</td>
+</tr>
+<tr>
+<td>Russell 2000</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer">IWM</a></td>
+<td>S&amp;P 500</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a></td>
+<td>Long alternative</td>
+<td style="text-align: right;">+2.99%</td>
+<td style="text-align: right;">+1.66%</td>
+<td>candidate</td>
+<td>Alternative improving; keep replacement duel active.</td>
+<td>Momentum proof is present. <a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a> is the cleaner U.S. risk sleeve if small-cap breadth remains weak.</td>
+</tr>
+<tr>
+<td>Russell 2000</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer">IWM</a></td>
+<td>Inverse hedge for Russell 2000</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=RWM" target="_blank" rel="noopener noreferrer">RWM</a></td>
+<td>Defensive / inverse</td>
+<td style="text-align: right;">n/a</td>
+<td style="text-align: right;">n/a</td>
+<td>watchlist</td>
+<td>Not decision-grade this week — relative-strength proof incomplete.</td>
+<td>Small-cap breadth remains weak versus SPY.</td>
+</tr>
+<tr>
+<td>Emerging Markets</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer">EEM</a></td>
+<td>Nifty 50</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=INDA" target="_blank" rel="noopener noreferrer">INDA</a></td>
+<td>Long alternative</td>
+<td style="text-align: right;">-6.35%</td>
+<td style="text-align: right;">-12.57%</td>
+<td>watchlist</td>
+<td>Current exposure still leads; no replacement.</td>
+<td>Needs both 20d and 60d relative-strength improvement before funding. India improves structural growth quality versus broad EM, but funding requires valuation and concentration discipline.</td>
+</tr>
+<tr>
+<td>Emerging Markets</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer">EEM</a></td>
+<td>China large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=FXI" target="_blank" rel="noopener noreferrer">FXI</a></td>
+<td>Long alternative</td>
+<td style="text-align: right;">-0.83%</td>
+<td style="text-align: right;">-1.81%</td>
+<td>watchlist</td>
+<td>Current exposure still leads; no replacement.</td>
+<td>Needs both 20d and 60d relative-strength improvement before funding. China can recover quickly, but funding requires policy credibility and price confirmation, not only mean-reversion potential.</td>
+</tr>
+<tr>
+<td>Emerging Markets</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer">EEM</a></td>
+<td>S&amp;P 500</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a></td>
+<td>Long alternative</td>
+<td style="text-align: right;">+0.85%</td>
+<td style="text-align: right;">+3.34%</td>
+<td>candidate</td>
+<td>Alternative improving; keep replacement duel active.</td>
+<td>Momentum proof is present. <a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a> reduces EM/USD risk, but funding would reduce non-U.S. diversification.</td>
+</tr>
+<tr>
+<td>Emerging Markets</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer">EEM</a></td>
+<td>Inverse hedge for Emerging Markets</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EUM" target="_blank" rel="noopener noreferrer">EUM</a></td>
+<td>Defensive / inverse</td>
+<td style="text-align: right;">n/a</td>
+<td style="text-align: right;">n/a</td>
+<td>inactive</td>
+<td>Not decision-grade this week — relative-strength proof incomplete.</td>
+<td>Dollar pressure is not strong enough to activate EM inverse readiness.</td>
+</tr>
+</tbody>
+</table>
+<h3>Best Defensive / Inverse Opportunities</h3>
+<p>These instruments are defensive tools only. They are not part of the base-case long allocation.</p>
+<table>
+<thead>
+<tr>
+<th>Candidate</th>
+<th>Underlying</th>
+<th>Status</th>
+<th>Short thesis</th>
+<th>Trigger</th>
+<th>Invalidation</th>
+<th>Max role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=RWM" target="_blank" rel="noopener noreferrer">RWM</a></td>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer">IWM</a> / Russell 2000</td>
+<td>Watchlist</td>
+<td>Small caps remain vulnerable when breadth is weak and real rates are restrictive.</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer">IWM</a> underperforms <a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a> while breadth and credit fail to improve.</td>
+<td>Broad easing impulse plus improving small-cap relative strength.</td>
+<td>Defensive hedge only; not a long-side opportunity.</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=EUM" target="_blank" rel="noopener noreferrer">EUM</a></td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer">EEM</a> / Emerging Markets</td>
+<td>Inactive / monitor only</td>
+<td>EM remains vulnerable when USD pressure and China confidence risk rise.</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=UUP" target="_blank" rel="noopener noreferrer">UUP</a> strengthens while <a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer">EEM</a> breaks relative support.</td>
+<td>USD weakens and China / EM breadth confirms upside.</td>
+<td>Defensive hedge only; not a long-side opportunity.</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=PSQ" target="_blank" rel="noopener noreferrer">PSQ</a></td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a> / Nasdaq 100</td>
+<td>Inactive / monitor only</td>
+<td>Nasdaq hedge only becomes relevant if mega-cap leadership breaks.</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a> loses relative strength versus <a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a> and breadth fails.</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a> leadership remains intact.</td>
+<td>Crash / drawdown hedge only; not a base-case allocation.</td>
+</tr>
+</tbody>
+</table>
+<h3>Breadth checkpoint by regional bucket</h3>
+<table>
+<thead>
+<tr>
+<th>Regional / style bucket</th>
+<th>Strongest candidate</th>
+<th>Proxy</th>
+<th style="text-align: right;">Candidate count</th>
+<th style="text-align: right;">Eligible proxies</th>
+<th style="text-align: right;">Challenger score</th>
+<th>Current status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U.S. core leadership</td>
+<td>Nasdaq 100</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.99</td>
+<td>Published</td>
+</tr>
+<tr>
+<td>U.S. factor / style alternatives</td>
+<td>U.S. Value Factor</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=VLUE" target="_blank" rel="noopener noreferrer">VLUE</a></td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2.24</td>
+<td>Close challenger, not funded</td>
+</tr>
+<tr>
+<td>continental Europe</td>
+<td>FTSE MIB</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWI" target="_blank" rel="noopener noreferrer">EWI</a></td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1.82</td>
+<td>Close challenger, not funded</td>
+</tr>
+<tr>
+<td>UK</td>
+<td>FTSE 100</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWU" target="_blank" rel="noopener noreferrer">EWU</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.02</td>
+<td>Close challenger, not funded</td>
+</tr>
+<tr>
+<td>Switzerland</td>
+<td>SMI</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWL" target="_blank" rel="noopener noreferrer">EWL</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.19</td>
+<td>Close challenger, not funded</td>
+</tr>
+<tr>
+<td>North America ex-U.S.</td>
+<td>S&amp;P/TSX 60</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWC" target="_blank" rel="noopener noreferrer">EWC</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.76</td>
+<td>Close challenger, not funded</td>
+</tr>
+<tr>
+<td>developed Asia-Pacific</td>
+<td>Nikkei 225</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWJ" target="_blank" rel="noopener noreferrer">EWJ</a></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2.42</td>
+<td>Published</td>
+</tr>
+<tr>
+<td>Korea / Taiwan</td>
+<td>KOSPI 200 / Korea large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWY" target="_blank" rel="noopener noreferrer">EWY</a></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2.43</td>
+<td>Close challenger, not funded</td>
+</tr>
+<tr>
+<td>Greater China</td>
+<td>China large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=FXI" target="_blank" rel="noopener noreferrer">FXI</a></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.70</td>
+<td>Close challenger, not funded</td>
+</tr>
+<tr>
+<td>India</td>
+<td>Nifty 50</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=INDA" target="_blank" rel="noopener noreferrer">INDA</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.74</td>
+<td>Lower priority this run</td>
+</tr>
+<tr>
+<td>Latin America</td>
+<td>Mexico large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWW" target="_blank" rel="noopener noreferrer">EWW</a></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.33</td>
+<td>Close challenger, not funded</td>
+</tr>
+<tr>
+<td>Africa</td>
+<td>South Africa large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EZA" target="_blank" rel="noopener noreferrer">EZA</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.57</td>
+<td>Lower priority this run</td>
+</tr>
+<tr>
+<td>ASEAN</td>
+<td>Indonesia large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EIDO" target="_blank" rel="noopener noreferrer">EIDO</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.50</td>
+<td>Lower priority this run</td>
+</tr>
+<tr>
+<td>Middle East</td>
+<td>Saudi Arabia large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=KSA" target="_blank" rel="noopener noreferrer">KSA</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.98</td>
+<td>Close challenger, not funded</td>
+</tr>
+<tr>
+<td>EM broad</td>
+<td>Emerging Markets</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer">EEM</a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.11</td>
+<td>Published</td>
+</tr>
+</tbody>
+</table>
+<h3>Universe scan checkpoint</h3>
+<table>
+<thead>
+<tr>
+<th>Portfolio sleeve</th>
+<th>Benchmark index</th>
+<th>Regional / style bucket</th>
+<th>Tradable proxy</th>
+<th>Proxy eligibility</th>
+<th>Published?</th>
+<th style="text-align: right;">Challenger score</th>
+<th>Why not on the board yet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>South Korea semiconductor / export cycle</td>
+<td>KOSPI 200 Index</td>
+<td>Korea / Taiwan</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWY" target="_blank" rel="noopener noreferrer">EWY</a></td>
+<td>Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</td>
+<td>No</td>
+<td style="text-align: right;">2.43</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>Japan developed equity</td>
+<td>Nikkei 225 Index</td>
+<td>developed Asia-Pacific</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWJ" target="_blank" rel="noopener noreferrer">EWJ</a></td>
+<td>Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</td>
+<td>Yes</td>
+<td style="text-align: right;">2.42</td>
+<td>Included on the board</td>
+</tr>
+<tr>
+<td>Taiwan semiconductor supply-chain leadership</td>
+<td>Taiwan Weighted Index</td>
+<td>Korea / Taiwan</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWT" target="_blank" rel="noopener noreferrer">EWT</a></td>
+<td>Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</td>
+<td>No</td>
+<td style="text-align: right;">2.29</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>U.S. value factor</td>
+<td>MSCI USA Value proxy benchmark</td>
+<td>U.S. factor / style alternatives</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=VLUE" target="_blank" rel="noopener noreferrer">VLUE</a></td>
+<td>Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history.</td>
+<td>No</td>
+<td style="text-align: right;">2.24</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>Broad emerging-market equity</td>
+<td>Emerging Markets Proxy Benchmark</td>
+<td>EM broad</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer">EEM</a></td>
+<td>Funded or directly fundable if portfolio rules permit.</td>
+<td>Yes</td>
+<td style="text-align: right;">2.11</td>
+<td>Included on the board</td>
+</tr>
+<tr>
+<td>U.S. mega-cap growth leadership</td>
+<td>Nasdaq 100 Index</td>
+<td>U.S. core leadership</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td>Funded or directly fundable if portfolio rules permit.</td>
+<td>Yes</td>
+<td style="text-align: right;">1.99</td>
+<td>Included on the board</td>
+</tr>
+<tr>
+<td>Italy high-beta Europe financial / industrial beta</td>
+<td>FTSE MIB Index</td>
+<td>continental Europe</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWI" target="_blank" rel="noopener noreferrer">EWI</a></td>
+<td>Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</td>
+<td>No</td>
+<td style="text-align: right;">1.82</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>Canada resources / financials</td>
+<td>S&amp;P/TSX Composite Index</td>
+<td>North America ex-U.S.</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWC" target="_blank" rel="noopener noreferrer">EWC</a></td>
+<td>Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</td>
+<td>No</td>
+<td style="text-align: right;">1.76</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>U.S. large-cap core beta</td>
+<td>S&amp;P 500 Index</td>
+<td>U.S. core leadership</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a></td>
+<td>Funded or directly fundable if portfolio rules permit.</td>
+<td>Yes</td>
+<td style="text-align: right;">1.74</td>
+<td>Included on the board</td>
+</tr>
+<tr>
+<td>Mainland China policy beta</td>
+<td>CSI 300 Index</td>
+<td>Greater China</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=FXI" target="_blank" rel="noopener noreferrer">FXI</a></td>
+<td>Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</td>
+<td>No</td>
+<td style="text-align: right;">1.70</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>U.S. quality factor</td>
+<td>MSCI USA Quality proxy benchmark</td>
+<td>U.S. factor / style alternatives</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QUAL" target="_blank" rel="noopener noreferrer">QUAL</a></td>
+<td>Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history.</td>
+<td>No</td>
+<td style="text-align: right;">1.69</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>Netherlands technology / global industrial tilt</td>
+<td>AEX Index</td>
+<td>continental Europe</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWN" target="_blank" rel="noopener noreferrer">EWN</a></td>
+<td>Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</td>
+<td>No</td>
+<td style="text-align: right;">1.61</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>U.S. equal-weight breadth</td>
+<td>S&amp;P 500 Equal Weight Index</td>
+<td>U.S. factor / style alternatives</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=RSP" target="_blank" rel="noopener noreferrer">RSP</a></td>
+<td>Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history.</td>
+<td>No</td>
+<td style="text-align: right;">1.41</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>Germany cyclical industrial beta</td>
+<td>DAX Index</td>
+<td>continental Europe</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWG" target="_blank" rel="noopener noreferrer">EWG</a></td>
+<td>Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</td>
+<td>No</td>
+<td style="text-align: right;">1.35</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>Spain domestic-cycle / financial beta</td>
+<td>IBEX 35 Index</td>
+<td>continental Europe</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWP" target="_blank" rel="noopener noreferrer">EWP</a></td>
+<td>Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</td>
+<td>No</td>
+<td style="text-align: right;">1.33</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>Mexico nearshoring / industrial beta</td>
+<td>S&amp;P/BMV IPC Index</td>
+<td>Latin America</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWW" target="_blank" rel="noopener noreferrer">EWW</a></td>
+<td>Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</td>
+<td>No</td>
+<td style="text-align: right;">1.33</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>Switzerland defensive quality</td>
+<td>Swiss Market Index</td>
+<td>Switzerland</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWL" target="_blank" rel="noopener noreferrer">EWL</a></td>
+<td>Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</td>
+<td>No</td>
+<td style="text-align: right;">1.19</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>U.S. minimum-volatility defensive equity</td>
+<td>MSCI USA Minimum Volatility proxy benchmark</td>
+<td>U.S. factor / style alternatives</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=USMV" target="_blank" rel="noopener noreferrer">USMV</a></td>
+<td>Liquid U.S.-listed ETF proxy; eligible for ranking subject to pricing and history.</td>
+<td>No</td>
+<td style="text-align: right;">1.14</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>Europe broad large-cap core</td>
+<td>EURO STOXX 50 Index</td>
+<td>continental Europe</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=FEZ" target="_blank" rel="noopener noreferrer">FEZ</a></td>
+<td>Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</td>
+<td>No</td>
+<td style="text-align: right;">1.06</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>U.S. small-cap breadth</td>
+<td>Russell 2000 Index</td>
+<td>U.S. core leadership</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer">IWM</a></td>
+<td>Funded or directly fundable if portfolio rules permit.</td>
+<td>Yes</td>
+<td style="text-align: right;">1.05</td>
+<td>Included on the board</td>
+</tr>
+<tr>
+<td>UK defensive yield / energy / financials</td>
+<td>FTSE 100 Index</td>
+<td>UK</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWU" target="_blank" rel="noopener noreferrer">EWU</a></td>
+<td>Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</td>
+<td>No</td>
+<td style="text-align: right;">1.02</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>Saudi Arabia energy / Gulf reform beta</td>
+<td>Tadawul All Share Index</td>
+<td>Middle East</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=KSA" target="_blank" rel="noopener noreferrer">KSA</a></td>
+<td>Specialist country ETF proxy; review liquidity and spread before funding.</td>
+<td>No</td>
+<td style="text-align: right;">0.98</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>Hong Kong large-cap China-linked equities</td>
+<td>Hang Seng Index</td>
+<td>Greater China</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWH" target="_blank" rel="noopener noreferrer">EWH</a></td>
+<td>Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</td>
+<td>No</td>
+<td style="text-align: right;">0.94</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>Australia resources / banks / China sensitivity</td>
+<td>S&amp;P/ASX 200 Index</td>
+<td>developed Asia-Pacific</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWA" target="_blank" rel="noopener noreferrer">EWA</a></td>
+<td>Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</td>
+<td>No</td>
+<td style="text-align: right;">0.86</td>
+<td>Strong challenger, not yet funded</td>
+</tr>
+<tr>
+<td>France consumer / industrial Europe</td>
+<td>CAC 40 Index</td>
+<td>continental Europe</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWQ" target="_blank" rel="noopener noreferrer">EWQ</a></td>
+<td>Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</td>
+<td>No</td>
+<td style="text-align: right;">0.78</td>
+<td>Relative strength not strong enough yet</td>
+</tr>
+<tr>
+<td>India domestic growth / reform compounder</td>
+<td>Nifty 50 Index</td>
+<td>India</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=INDA" target="_blank" rel="noopener noreferrer">INDA</a></td>
+<td>Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</td>
+<td>No</td>
+<td style="text-align: right;">0.74</td>
+<td>Relative strength not strong enough yet</td>
+</tr>
+<tr>
+<td>Brazil commodity / rates-sensitive LatAm beta</td>
+<td>Bovespa Index</td>
+<td>Latin America</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWZ" target="_blank" rel="noopener noreferrer">EWZ</a></td>
+<td>Liquid country ETF proxy; eligible for ranking subject to pricing and macro fit.</td>
+<td>No</td>
+<td style="text-align: right;">0.71</td>
+<td>Relative strength not strong enough yet</td>
+</tr>
+<tr>
+<td>South Africa resources / EM value beta</td>
+<td>JSE Top 40 Index</td>
+<td>Africa</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EZA" target="_blank" rel="noopener noreferrer">EZA</a></td>
+<td>Specialist country ETF proxy; review liquidity and spread before funding.</td>
+<td>No</td>
+<td style="text-align: right;">0.57</td>
+<td>Relative strength not strong enough yet</td>
+</tr>
+<tr>
+<td>Indonesia domestic demand / commodities</td>
+<td>Jakarta Composite Index</td>
+<td>ASEAN</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EIDO" target="_blank" rel="noopener noreferrer">EIDO</a></td>
+<td>Specialist country ETF proxy; review liquidity and spread before funding.</td>
+<td>No</td>
+<td style="text-align: right;">0.50</td>
+<td>Relative strength not strong enough yet</td>
+</tr>
+</tbody>
+</table></div><div class='panel '><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>12</span></td><td class='section-label-cell'><span class='section-label'>Portfolio Rotation Plan</span></td></tr></table><p><strong>This run: no executed rotation before the fresh workflow rebuild.</strong></p>
+<p>Most likely next-step rotation path if conditions persist:</p>
+<div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>1.</span>Keep QQQ as the strongest core holding.</div><div class='inline-list-item'><span class='inline-list-marker'>2.</span>Review whether SPY stays at full size or should share capital with a non-U.S. challenger.</div><div class='inline-list-item'><span class='inline-list-marker'>3.</span>Force the IWM versus EWJ / RWM decision.</div><div class='inline-list-item'><span class='inline-list-marker'>4.</span>Force the EEM versus FXI / INDA / EUM decision.</div><div class='inline-list-item'><span class='inline-list-marker'>5.</span>Deploy part of cash only if the ranking, pricing, and scorecard align cleanly.</div></div>
+<p>What would change this plan:</p>
+<div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Oil falling decisively and easing inflation pressure.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Europe or UK suddenly improving enough to challenge Japan and Canada.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Small-cap breadth recovering clearly enough to re-justify IWM.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>EM breadth improving without renewed dollar pressure.</div></div></div><div class='panel '><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>13</span></td><td class='section-label-cell'><span class='section-label'>Final Action Table</span></td></tr></table><table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Public index / exposure</th>
+<th>Existing/New</th>
+<th style="text-align: right;">Target Weight</th>
+<th>Suggested Action</th>
+<th>Conviction Tier</th>
+<th style="text-align: right;">Total Score</th>
+<th>Portfolio Role</th>
+<th>Better Alternative Exists?</th>
+<th>Short Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a></td>
+<td>S&amp;P 500</td>
+<td>Existing</td>
+<td style="text-align: right;">Under review</td>
+<td>Hold</td>
+<td>Tier 1</td>
+<td style="text-align: right;">Under review</td>
+<td>Core beta</td>
+<td>Under review</td>
+<td>Still valid, but overlap with <a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a> must be tested</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td>Nasdaq 100</td>
+<td>Existing</td>
+<td style="text-align: right;">Under review</td>
+<td>Hold</td>
+<td>Tier 1</td>
+<td style="text-align: right;">Under review</td>
+<td>Growth engine</td>
+<td>No urgent need</td>
+<td>Strongest current holding</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer">IWM</a></td>
+<td>Russell 2000</td>
+<td>Existing</td>
+<td style="text-align: right;">Under review</td>
+<td>Hold under review</td>
+<td>Tier 2</td>
+<td style="text-align: right;">Under review</td>
+<td>Breadth diversifier</td>
+<td>Yes: <a href="https://www.tradingview.com/chart/?symbol=EWJ" target="_blank" rel="noopener noreferrer">EWJ</a> / <a href="https://www.tradingview.com/chart/?symbol=RWM" target="_blank" rel="noopener noreferrer">RWM</a></td>
+<td>Weakest current sleeve; requires direct duel</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer">EEM</a></td>
+<td>Emerging Markets</td>
+<td>Existing</td>
+<td style="text-align: right;">Under review</td>
+<td>Hold under review</td>
+<td>Tier 2</td>
+<td style="text-align: right;">Under review</td>
+<td>Non-U.S. risk sleeve</td>
+<td>Yes: <a href="https://www.tradingview.com/chart/?symbol=FXI" target="_blank" rel="noopener noreferrer">FXI</a> / <a href="https://www.tradingview.com/chart/?symbol=INDA" target="_blank" rel="noopener noreferrer">INDA</a> / <a href="https://www.tradingview.com/chart/?symbol=EUM" target="_blank" rel="noopener noreferrer">EUM</a></td>
+<td>Must justify itself more clearly</td>
+</tr>
+<tr>
+<td>CASH</td>
+<td>Residual cash</td>
+<td>Existing</td>
+<td style="text-align: right;">Under review</td>
+<td>Hold</td>
+<td>Tier 1</td>
+<td style="text-align: right;">—</td>
+<td>Optionality</td>
+<td>—</td>
+<td>Meaningful reserve while alternatives are tested</td>
+</tr>
+</tbody>
+</table></div><div class='panel '><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>14</span></td><td class='section-label-cell'><span class='section-label'>Position Changes Executed This Run</span></td></tr></table><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>None.</div></div>
+<p>Reasons:</p>
+<div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>The next review should confirm pricing, research, ranking, and scorecard first.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>The current portfolio still needs the live alternative-duel outputs before a forced implementation change.</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>The higher-value fix this run is decision quality, not performative turnover.</div></div></div><div class='panel '><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>15</span></td><td class='section-label-cell'><span class='section-label'>Current Portfolio Holdings and Cash</span></td></tr></table><div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Starting capital (EUR): 100000.00</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Invested market value (EUR): 96777.28</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Cash (EUR): 15566.74</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Total portfolio value (EUR): 112344.02</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Since inception return (%): 12.34</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Pricing basis requested close date: 2026-05-20</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>FX reference date: 2026-05-20</div></div>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Public index / exposure</th>
+<th style="text-align: right;">Shares</th>
+<th style="text-align: right;">Price (local)</th>
+<th>Currency</th>
+<th style="text-align: right;">Market value (local)</th>
+<th style="text-align: right;">Market value (EUR)</th>
+<th style="text-align: right;">Weight %</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=SPY" target="_blank" rel="noopener noreferrer">SPY</a></td>
+<td>S&amp;P 500</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">741.25</td>
+<td>USD</td>
+<td style="text-align: right;">32615.00</td>
+<td style="text-align: right;">28116.38</td>
+<td style="text-align: right;">25.03</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td>Nasdaq 100</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">713.15</td>
+<td>USD</td>
+<td style="text-align: right;">34231.20</td>
+<td style="text-align: right;">29509.66</td>
+<td style="text-align: right;">26.27</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=IWM" target="_blank" rel="noopener noreferrer">IWM</a></td>
+<td>Russell 2000</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">279.87</td>
+<td>USD</td>
+<td style="text-align: right;">25188.30</td>
+<td style="text-align: right;">21714.05</td>
+<td style="text-align: right;">19.33</td>
+</tr>
+<tr>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer">EEM</a></td>
+<td>Emerging Markets</td>
+<td style="text-align: right;">309</td>
+<td style="text-align: right;">65.46</td>
+<td>USD</td>
+<td style="text-align: right;">20227.14</td>
+<td style="text-align: right;">17437.19</td>
+<td style="text-align: right;">15.52</td>
+</tr>
+<tr>
+<td>CASH</td>
+<td>Residual cash</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">1.00</td>
+<td>EUR</td>
+<td style="text-align: right;">15566.74</td>
+<td style="text-align: right;">15566.74</td>
+<td style="text-align: right;">13.86</td>
+</tr>
+</tbody>
+</table></div><div class='panel panel-carry'><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>16</span></td><td class='section-label-cell'><span class='section-label'>Continuity Input for Next Run</span></td></tr></table><h3>Watchlist / dynamic radar memory</h3>
+<table>
+<thead>
+<tr>
+<th>Theme</th>
+<th>Regional / style bucket</th>
+<th>Primary proxy</th>
+<th>Status</th>
+<th>Why it stays visible</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KOSPI 200 / Korea large cap</td>
+<td>Korea / Taiwan</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWY" target="_blank" rel="noopener noreferrer">EWY</a></td>
+<td>Strong challenger</td>
+<td>Broad discovery keeps it visible even though it did not make the compact board.</td>
+</tr>
+<tr>
+<td>MSCI Taiwan / Taiwan large cap</td>
+<td>Korea / Taiwan</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWT" target="_blank" rel="noopener noreferrer">EWT</a></td>
+<td>Strong challenger</td>
+<td>Broad discovery keeps it visible even though it did not make the compact board.</td>
+</tr>
+<tr>
+<td>U.S. Value Factor</td>
+<td>U.S. factor / style alternatives</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=VLUE" target="_blank" rel="noopener noreferrer">VLUE</a></td>
+<td>Strong challenger</td>
+<td>Broad discovery keeps it visible even though it did not make the compact board.</td>
+</tr>
+<tr>
+<td>FTSE MIB</td>
+<td>continental Europe</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWI" target="_blank" rel="noopener noreferrer">EWI</a></td>
+<td>Strong challenger</td>
+<td>Broad discovery keeps it visible even though it did not make the compact board.</td>
+</tr>
+<tr>
+<td>S&amp;P/TSX 60</td>
+<td>North America ex-U.S.</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWC" target="_blank" rel="noopener noreferrer">EWC</a></td>
+<td>Strong challenger</td>
+<td>Broad discovery keeps it visible even though it did not make the compact board.</td>
+</tr>
+<tr>
+<td>China large cap</td>
+<td>Greater China</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=FXI" target="_blank" rel="noopener noreferrer">FXI</a></td>
+<td>Strong challenger</td>
+<td>Broad discovery keeps it visible even though it did not make the compact board.</td>
+</tr>
+<tr>
+<td>U.S. Quality Factor</td>
+<td>U.S. factor / style alternatives</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QUAL" target="_blank" rel="noopener noreferrer">QUAL</a></td>
+<td>Strong challenger</td>
+<td>Broad discovery keeps it visible even though it did not make the compact board.</td>
+</tr>
+<tr>
+<td>AEX</td>
+<td>continental Europe</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWN" target="_blank" rel="noopener noreferrer">EWN</a></td>
+<td>Strong challenger</td>
+<td>Broad discovery keeps it visible even though it did not make the compact board.</td>
+</tr>
+<tr>
+<td>S&amp;P 500 Equal Weight</td>
+<td>U.S. factor / style alternatives</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=RSP" target="_blank" rel="noopener noreferrer">RSP</a></td>
+<td>Strong challenger</td>
+<td>Broad discovery keeps it visible even though it did not make the compact board.</td>
+</tr>
+<tr>
+<td>DAX</td>
+<td>continental Europe</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWG" target="_blank" rel="noopener noreferrer">EWG</a></td>
+<td>Strong challenger</td>
+<td>Improves breadth or fills an important portfolio gap without forcing a low-conviction rotation.</td>
+</tr>
+</tbody>
+</table>
+<h3>Discovery coverage checkpoint</h3>
+<table>
+<thead>
+<tr>
+<th>Regional / style bucket</th>
+<th>Status</th>
+<th style="text-align: right;">Candidates scanned</th>
+<th style="text-align: right;">Eligible proxies</th>
+<th>Strongest candidate</th>
+<th>Proxy</th>
+<th style="text-align: right;">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U.S. core leadership</td>
+<td>Published</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td>Nasdaq 100</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=QQQ" target="_blank" rel="noopener noreferrer">QQQ</a></td>
+<td style="text-align: right;">1.99</td>
+</tr>
+<tr>
+<td>U.S. factor / style alternatives</td>
+<td>Close challenger, not funded</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td>U.S. Value Factor</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=VLUE" target="_blank" rel="noopener noreferrer">VLUE</a></td>
+<td style="text-align: right;">2.24</td>
+</tr>
+<tr>
+<td>continental Europe</td>
+<td>Close challenger, not funded</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td>FTSE MIB</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWI" target="_blank" rel="noopener noreferrer">EWI</a></td>
+<td style="text-align: right;">1.82</td>
+</tr>
+<tr>
+<td>UK</td>
+<td>Close challenger, not funded</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td>FTSE 100</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWU" target="_blank" rel="noopener noreferrer">EWU</a></td>
+<td style="text-align: right;">1.02</td>
+</tr>
+<tr>
+<td>Switzerland</td>
+<td>Close challenger, not funded</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td>SMI</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWL" target="_blank" rel="noopener noreferrer">EWL</a></td>
+<td style="text-align: right;">1.19</td>
+</tr>
+<tr>
+<td>North America ex-U.S.</td>
+<td>Close challenger, not funded</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td>S&amp;P/TSX 60</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWC" target="_blank" rel="noopener noreferrer">EWC</a></td>
+<td style="text-align: right;">1.76</td>
+</tr>
+<tr>
+<td>developed Asia-Pacific</td>
+<td>Published</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td>Nikkei 225</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWJ" target="_blank" rel="noopener noreferrer">EWJ</a></td>
+<td style="text-align: right;">2.42</td>
+</tr>
+<tr>
+<td>Korea / Taiwan</td>
+<td>Close challenger, not funded</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td>KOSPI 200 / Korea large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWY" target="_blank" rel="noopener noreferrer">EWY</a></td>
+<td style="text-align: right;">2.43</td>
+</tr>
+<tr>
+<td>Greater China</td>
+<td>Close challenger, not funded</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td>China large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=FXI" target="_blank" rel="noopener noreferrer">FXI</a></td>
+<td style="text-align: right;">1.70</td>
+</tr>
+<tr>
+<td>India</td>
+<td>Lower priority this run</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td>Nifty 50</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=INDA" target="_blank" rel="noopener noreferrer">INDA</a></td>
+<td style="text-align: right;">0.74</td>
+</tr>
+<tr>
+<td>Latin America</td>
+<td>Close challenger, not funded</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td>Mexico large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EWW" target="_blank" rel="noopener noreferrer">EWW</a></td>
+<td style="text-align: right;">1.33</td>
+</tr>
+<tr>
+<td>Africa</td>
+<td>Lower priority this run</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td>South Africa large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EZA" target="_blank" rel="noopener noreferrer">EZA</a></td>
+<td style="text-align: right;">0.57</td>
+</tr>
+<tr>
+<td>ASEAN</td>
+<td>Lower priority this run</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td>Indonesia large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EIDO" target="_blank" rel="noopener noreferrer">EIDO</a></td>
+<td style="text-align: right;">0.50</td>
+</tr>
+<tr>
+<td>Middle East</td>
+<td>Close challenger, not funded</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td>Saudi Arabia large cap</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=KSA" target="_blank" rel="noopener noreferrer">KSA</a></td>
+<td style="text-align: right;">0.98</td>
+</tr>
+<tr>
+<td>EM broad</td>
+<td>Published</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td>Emerging Markets</td>
+<td><a href="https://www.tradingview.com/chart/?symbol=EEM" target="_blank" rel="noopener noreferrer">EEM</a></td>
+<td style="text-align: right;">2.11</td>
+</tr>
+</tbody>
+</table>
+<h3>Lane continuity notes</h3>
+<div class='inline-list'><div class='inline-list-item'><span class='inline-list-marker'>•</span>Retained entries: none</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>New entries: S&amp;P 500, Nasdaq 100, Russell 2000, Emerging Markets broad</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Dropped entries: none</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>Strong challengers not published: Japan large-cap equities, Germany cyclical equities, Europe broad large-cap equities</div><div class='inline-list-item'><span class='inline-list-marker'>•</span>What would most likely change the board next run: Cleaner confirmation in Japan or Europe broadens the funded opportunity set next run.</div></div></div><div class='panel '><table class='section-kicker' role='presentation' cellpadding='0' cellspacing='0'><tr><td class='section-badge-cell'><span class='section-badge'>17</span></td><td class='section-label-cell'><span class='section-label'>Disclaimer</span></td></tr></table><p>This report is provided for informational and educational purposes only.</p>
+<p>It does not constitute investment advice, an offer, or a solicitation to buy or sell any security. Markets involve risk, including the risk of loss. Any model portfolio, ranking, or scenario analysis in this report is hypothetical and may differ materially from real-world execution, liquidity, taxes, costs, timing, and investor suitability.</p></div></div>
+        </div>
+      </body>
+    </html>
