@@ -147,22 +147,22 @@ jobs:
         run: |
           python tools/write_index_recommendation_scorecard.py --check-only
 
-      - name: Validate HTML/PDF render before send
+      - name: Validate English HTML/PDF render before send
         run: python send_index_report_tv_analyst_distinct.py --report-path "${{ steps.token_ctx.outputs.report_path }}" --validate-only
 
-      - name: Validate Analyst Report visual distinction
+      - name: Validate English Analyst Report visual distinction
         run: |
           python tools/validate_index_analyst_visual_distinction_for_report.py --report-path "${{ steps.token_ctx.outputs.report_path }}"
 
-      - name: Validate rendered report polish
+      - name: Validate English rendered report polish
         run: |
           python tools/validate_index_render_polish_for_report.py --report-path "${{ steps.token_ctx.outputs.report_path }}"
 
-      - name: Validate ticker links
+      - name: Validate English ticker links
         run: |
           python tools/validate_index_ticker_links_for_report.py --report-path "${{ steps.token_ctx.outputs.report_path }}"
 
-      - name: Send email if SMTP secrets are configured
+      - name: Send English email if SMTP secrets are configured
         env:
           MRKT_RPRTS_SUBJECT_PREFIX: Weekly Indices Review
           MRKT_RPRTS_SMTP_HOST: ${{ secrets.MRKT_RPRTS_SMTP_HOST }}
@@ -172,6 +172,42 @@ jobs:
           MRKT_RPRTS_MAIL_FROM: ${{ secrets.MRKT_RPRTS_MAIL_FROM }}
           MRKT_RPRTS_MAIL_TO: ${{ secrets.MRKT_RPRTS_MAIL_TO }}
         run: python send_index_report_tv_analyst_distinct.py --report-path "${{ steps.token_ctx.outputs.report_path }}"
+
+      - name: Generate native Dutch companion from same state
+        run: |
+          TOKEN="${{ steps.token_ctx.outputs.report_token }}"
+          NL_REPORT="output_indices/weekly_indices_review_nl_${TOKEN}.md"
+          python tools/render_index_nl_report_from_state.py --token "$TOKEN" --nl-report "$NL_REPORT"
+          python tools/linkify_index_report_tickers.py --report-path "$NL_REPORT"
+          echo "NL_REPORT=$NL_REPORT" >> "$GITHUB_ENV"
+
+      - name: Validate Dutch companion contracts
+        run: |
+          python tools/validate_index_nl_language_contract.py --nl-report "$NL_REPORT"
+          python tools/validate_index_bilingual_section_parity.py \
+            --en-report "${{ steps.token_ctx.outputs.report_path }}" \
+            --nl-report "$NL_REPORT"
+          python tools/validate_index_bilingual_numeric_parity.py \
+            --en-report "${{ steps.token_ctx.outputs.report_path }}" \
+            --nl-report "$NL_REPORT"
+
+      - name: Render and validate Dutch companion before send
+        run: |
+          python send_index_report_bilingual.py --report-path "$NL_REPORT" --language nl --validate-only
+          python tools/validate_index_analyst_visual_distinction_for_report.py --report-path "$NL_REPORT"
+          python tools/validate_index_render_polish_for_report.py --report-path "$NL_REPORT"
+          python tools/validate_index_ticker_links_for_report.py --report-path "$NL_REPORT"
+
+      - name: Send Dutch email if SMTP secrets are configured
+        env:
+          MRKT_RPRTS_SUBJECT_PREFIX: Weekly Index Review NL
+          MRKT_RPRTS_SMTP_HOST: ${{ secrets.MRKT_RPRTS_SMTP_HOST }}
+          MRKT_RPRTS_SMTP_PORT: ${{ secrets.MRKT_RPRTS_SMTP_PORT }}
+          MRKT_RPRTS_SMTP_USER: ${{ secrets.MRKT_RPRTS_SMTP_USER }}
+          MRKT_RPRTS_SMTP_PASS: ${{ secrets.MRKT_RPRTS_SMTP_PASS }}
+          MRKT_RPRTS_MAIL_FROM: ${{ secrets.MRKT_RPRTS_MAIL_FROM }}
+          MRKT_RPRTS_MAIL_TO: ${{ secrets.MRKT_RPRTS_MAIL_TO }}
+        run: python send_index_report_bilingual.py --report-path "$NL_REPORT" --language nl
 
       - name: Write index recommendation scorecard
         if: success()
@@ -183,7 +219,7 @@ jobs:
         run: |
           python tools/write_weekly_indices_run_manifest_for_report.py --report-path "${{ steps.token_ctx.outputs.report_path }}" --conclusion "${{ job.status }}"
 
-      - name: Commit composed report, run manifest, research, macro, runtime, pricing state, scorecard, and candidate artifacts back to main
+      - name: Commit composed reports, run manifest, research, macro, runtime, pricing state, scorecard, and candidate artifacts back to main
         if: always()
         run: |
           git config user.name "github-actions[bot]"
@@ -194,6 +230,7 @@ jobs:
             output_indices/weekly_indices_review_*_delivery.html \
             output_indices/weekly_indices_review_*.pdf \
             output_indices/weekly_indices_review_*_equity_curve.png \
+            output_indices/weekly_indices_review_*_delivery_manifest.txt \
             output_indices/run_manifests/*.json \
             output_indices/research/*.json \
             output_indices/macro/*.json \
