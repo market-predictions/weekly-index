@@ -31,6 +31,24 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install system packages for PDF rendering
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libcairo2 \
+            libpango-1.0-0 \
+            libgdk-pixbuf-2.0-0 \
+            libffi-dev \
+            shared-mime-info \
+            fonts-liberation \
+            fonts-dejavu-core \
+            fonts-lato
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install markdown weasyprint matplotlib
+
       - name: Resolve report token
         id: token_ctx
         run: |
@@ -80,15 +98,42 @@ jobs:
             --en-report "output_indices/weekly_indices_review_${TOKEN}.md" \
             --nl-report "output_indices/weekly_indices_review_nl_${TOKEN}.md"
 
-      - name: Commit Dutch markdown draft
+      - name: Render Dutch HTML/PDF draft without email delivery
+        run: |
+          TOKEN="${{ steps.token_ctx.outputs.report_token }}"
+          NL_REPORT="output_indices/weekly_indices_review_nl_${TOKEN}.md"
+          python send_index_report_tv_analyst_distinct.py --report-path "$NL_REPORT" --validate-only
+
+      - name: Validate Dutch Analyst visual distinction
+        run: |
+          TOKEN="${{ steps.token_ctx.outputs.report_token }}"
+          python tools/validate_index_analyst_visual_distinction_for_report.py --report-path "output_indices/weekly_indices_review_nl_${TOKEN}.md"
+
+      - name: Validate Dutch rendered report polish
+        run: |
+          TOKEN="${{ steps.token_ctx.outputs.report_token }}"
+          python tools/validate_index_render_polish_for_report.py --report-path "output_indices/weekly_indices_review_nl_${TOKEN}.md"
+
+      - name: Validate Dutch ticker links
+        run: |
+          TOKEN="${{ steps.token_ctx.outputs.report_token }}"
+          python tools/validate_index_ticker_links_for_report.py --report-path "output_indices/weekly_indices_review_nl_${TOKEN}.md"
+
+      - name: Commit Dutch markdown and rendered draft assets
         run: |
           TOKEN="${{ steps.token_ctx.outputs.report_token }}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "output_indices/weekly_indices_review_nl_${TOKEN}.md"
+          git add \
+            "output_indices/weekly_indices_review_nl_${TOKEN}.md" \
+            "output_indices/weekly_indices_review_nl_${TOKEN}_clean.md" \
+            "output_indices/weekly_indices_review_nl_${TOKEN}_delivery.html" \
+            "output_indices/weekly_indices_review_nl_${TOKEN}.pdf" \
+            "output_indices/weekly_indices_review_nl_${TOKEN}_equity_curve.png" \
+            "output_indices/weekly_indices_review_nl_${TOKEN}_delivery_manifest.txt" || true
           if git diff --cached --quiet; then
             echo "No Dutch draft changes to commit."
             exit 0
           fi
-          git commit -m "Persist Weekly Index NL draft ${TOKEN} [skip ci]"
+          git commit -m "Persist Weekly Index NL rendered draft ${TOKEN} [skip ci]"
           git push origin HEAD:main
