@@ -55,7 +55,7 @@ De scan omvat **29 exposures** over **15 regionale/stijlbuckets**. Het bord blij
 | Broad emerging-market equity | Emerging Markets Proxy Benchmark | [EEM](https://www.tradingview.com/chart/?symbol=EEM) | EM broad | 2.76 | Gepubliceerd | Past bij het huidige regime en behoudt voldoende prijs- en relatieve-sterktebewijs. |
 | U.S. large-cap core beta | S&P 500 Index | [SPY](https://www.tradingview.com/chart/?symbol=SPY) | U.S. core leadership | 2.54 | Gepubliceerd | Amerikaanse large-cap kernblootstelling blijft het zuiverste anker. |
 | Japan developed equity | Nikkei 225 Index | [EWJ](https://www.tradingview.com/chart/?symbol=EWJ) | developed Asia-Pacific | 2.29 | Gepubliceerd | Japan verbetert de ontwikkelde ex-VS-breedte zonder lage overtuiging te forceren. |
-| U.S. small-cap breadth | Russell 2000 Index | [IWM](https://www.tradingview.com/chart/?symbol=IWM) | U.S. core leadership | 1.75 | Gepubliceerd | Past bij het huidige regime en behoudt voldoende prijs- en relatieve-sterktebewijs. |
+| U.S. small-cap breadth | Russell 2000 Index | [IWM](https://www.tradingview.com/chart/?symbol=IWM) | U.S. core leadership | 1.82 | Gepubliceerd | Past bij het huidige regime en behoudt voldoende prijs- en relatieve-sterktebewijs. |
 
 ## 5. Belangrijkste risico’s / ontkrachters
 1. Olie blijft verhoogd of stijgt opnieuw, waardoor inflatiedruk hoog blijft.
@@ -178,10 +178,10 @@ Performance wordt berekend op de verhandelbare ETF-proxy’s die voor portefeuil
 - Waarom relevant: sterke kandidaat, maar nog niet gefinancierd.
 - Waarom nog niet op het bord: meer prijs-, regime- of relatieve-sterktebevestiging nodig.
 
-#### 4. FTSE MIB ([EWI](https://www.tradingview.com/chart/?symbol=EWI))
-- Portefeuillesleeve: Italy high-beta Europe financial / industrial beta
-- Regio / stijlbucket: continental Europe
-- Challenger-score: 1.82
+#### 4. S&P/TSX 60 ([EWC](https://www.tradingview.com/chart/?symbol=EWC))
+- Portefeuillesleeve: Canada resources / financials
+- Regio / stijlbucket: North America ex-U.S.
+- Challenger-score: 1.83
 - Proxy-geschiktheid: Liquide landen-ETF; geschikt voor ranking mits prijsdata en macrofit kloppen.
 - Waarom relevant: sterke kandidaat, maar nog niet gefinancierd.
 - Waarom nog niet op het bord: meer prijs-, regime- of relatieve-sterktebevestiging nodig.
@@ -200,18 +200,18 @@ Deze instrumenten zijn uitsluitend defensieve instrumenten. Ze maken geen deel u
 |---|---|---|---:|---:|---:|---|
 | U.S. core leadership | Nasdaq 100 | [QQQ](https://www.tradingview.com/chart/?symbol=QQQ) | 3 | 3 | 1.99 | Gepubliceerd |
 | U.S. factor / style alternatives | U.S. Value Factor | [VLUE](https://www.tradingview.com/chart/?symbol=VLUE) | 4 | 4 | 2.24 | Sterke kandidaat, nog niet gefinancierd |
-| continental Europe | FTSE MIB | [EWI](https://www.tradingview.com/chart/?symbol=EWI) | 6 | 6 | 1.82 | Sterke kandidaat, nog niet gefinancierd |
-| UK | FTSE 100 | [EWU](https://www.tradingview.com/chart/?symbol=EWU) | 1 | 1 | 1.02 | Sterke kandidaat, nog niet gefinancierd |
-| Switzerland | SMI | [EWL](https://www.tradingview.com/chart/?symbol=EWL) | 1 | 1 | 1.19 | Sterke kandidaat, nog niet gefinancierd |
-| North America ex-U.S. | S&P/TSX 60 | [EWC](https://www.tradingview.com/chart/?symbol=EWC) | 1 | 1 | 1.76 | Sterke kandidaat, nog niet gefinancierd |
+| continental Europe | FTSE MIB | [EWI](https://www.tradingview.com/chart/?symbol=EWI) | 6 | 6 | 1.68 | Sterke kandidaat, nog niet gefinancierd |
+| UK | FTSE 100 | [EWU](https://www.tradingview.com/chart/?symbol=EWU) | 1 | 1 | 1.30 | Sterke kandidaat, nog niet gefinancierd |
+| Switzerland | SMI | [EWL](https://www.tradingview.com/chart/?symbol=EWL) | 1 | 1 | 1.26 | Sterke kandidaat, nog niet gefinancierd |
+| North America ex-U.S. | S&P/TSX 60 | [EWC](https://www.tradingview.com/chart/?symbol=EWC) | 1 | 1 | 1.83 | Sterke kandidaat, nog niet gefinancierd |
 | developed Asia-Pacific | Nikkei 225 | [EWJ](https://www.tradingview.com/chart/?symbol=EWJ) | 2 | 2 | 2.42 | Gepubliceerd |
 | Korea / Taiwan | KOSPI 200 / Korea large cap | [EWY](https://www.tradingview.com/chart/?symbol=EWY) | 2 | 2 | 2.43 | Sterke kandidaat, nog niet gefinancierd |
-| Greater China | China large cap | [FXI](https://www.tradingview.com/chart/?symbol=FXI) | 2 | 2 | 1.70 | Sterke kandidaat, nog niet gefinancierd |
+| Greater China | China large cap | [FXI](https://www.tradingview.com/chart/?symbol=FXI) | 2 | 2 | 1.77 | Sterke kandidaat, nog niet gefinancierd |
 | India | Nifty 50 | [INDA](https://www.tradingview.com/chart/?symbol=INDA) | 1 | 1 | 0.74 | Lagere prioriteit deze run |
-| Latin America | Mexico large cap | [EWW](https://www.tradingview.com/chart/?symbol=EWW) | 2 | 2 | 1.33 | Sterke kandidaat, nog niet gefinancierd |
+| Latin America | Mexico large cap | [EWW](https://www.tradingview.com/chart/?symbol=EWW) | 2 | 2 | 1.46 | Sterke kandidaat, nog niet gefinancierd |
 | Africa | South Africa large cap | [EZA](https://www.tradingview.com/chart/?symbol=EZA) | 1 | 1 | 0.57 | Lagere prioriteit deze run |
 | ASEAN | Indonesia large cap | [EIDO](https://www.tradingview.com/chart/?symbol=EIDO) | 1 | 1 | 0.50 | Lagere prioriteit deze run |
-| Middle East | Saudi Arabia large cap | [KSA](https://www.tradingview.com/chart/?symbol=KSA) | 1 | 1 | 0.98 | Sterke kandidaat, nog niet gefinancierd |
+| Middle East | Saudi Arabia large cap | [KSA](https://www.tradingview.com/chart/?symbol=KSA) | 1 | 1 | 1.05 | Sterke kandidaat, nog niet gefinancierd |
 | EM broad | Emerging Markets | [EEM](https://www.tradingview.com/chart/?symbol=EEM) | 1 | 1 | 2.11 | Gepubliceerd |
 
 ## 12. Portefeuillerotatieplan

@@ -1,0 +1,7 @@
+timestamp_utc=2026-05-20T22:01:33Z
+report=weekly_indices_review_260520.md
+recipient=mrkt.rprts@gmail.com
+delivery=delivery_ok
+html_body=full_report
+pdf_attached=yes
+attachments=weekly_indices_review_260520.pdf, weekly_indices_review_260520_clean.md, weekly_indices_review_260520_delivery.html, weekly_indices_review_260520_equity_curve.png
