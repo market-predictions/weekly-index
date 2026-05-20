@@ -7,7 +7,7 @@ from datetime import datetime
 from pathlib import Path
 
 import send_index_report as _base
-import send_index_report_tv_analyst_distinct  # noqa: F401 - applies TV links, inline-list and analyst visual patches
+import send_index_report_tv_analyst_distinct  # noqa: F401
 
 NL_REPORT_RE = re.compile(r"^weekly_indices_review_nl_(\d{6})(?:_(\d{2}))?\.md$")
 NL_LONG_DATE_RE = re.compile(
@@ -71,8 +71,14 @@ EN_TO_NL_HTML_LABELS = {
     "Recommendation": "Aanbeveling",
     "Tickers / notes": "Tickers / opmerkingen",
     "Best replacements to fund": "Beste vervangingen om te monitoren",
+    "Best replacements to monitor": "Beste vervangingen om te monitoren",
     "Top 3 actions this week": "Top 3 acties deze week",
     "Top 3 risks this week": "Top 3 risico’s deze week",
+    ">Add<": ">Toevoegen<",
+    ">Hold<": ">Houden<",
+    ">Hold but replaceable<": ">Houden, maar vervangbaar<",
+    ">Reduce<": ">Verlagen<",
+    ">Close<": ">Sluiten<",
 }
 
 NL_TO_EN_HEADINGS = {
@@ -97,7 +103,7 @@ NL_TO_EN_HEADINGS = {
 }
 
 NL_TO_EN_H3 = {
-    "### Beste vervangingen om te monitoren": "### Best replacements to fund",
+    "### Beste vervangingen om te monitoren": "### Best replacements to monitor",
     "### Top 3 acties deze week": "### Top 3 actions this week",
     "### Top 3 risico’s deze week": "### Top 3 risks this week",
 }
@@ -114,7 +120,6 @@ ACTION_ROW_LABELS = {
 _ORIG_VALIDATE_REPORT = _base.validate_report
 _ORIG_VALIDATE_EMAIL_BODY = _base.validate_email_body
 _ORIG_PARSE_REPORT_DATE = _base.parse_report_date
-_ORIG_FORMAT_FULL_DATE = _base.format_full_date
 _PATCHED_BUILD_REPORT_HTML = _base.build_report_html
 
 
