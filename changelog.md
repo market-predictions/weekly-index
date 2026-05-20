@@ -15,6 +15,27 @@ Tiny typo-only edits do not need a full entry unless they affect output quality,
 
 ---
 
+## 2026-05-21 — Add Dutch executive translation and decision-support layer
+
+### What changed
+- Strengthened `tools/render_index_nl_report_from_state_v2.py` with a client-facing Dutch translation layer for internal labels, bucket names, status text and model jargon.
+- Added score interpretation in Dutch output so raw candidate scores are displayed with `/5` context and conviction labels.
+- Replaced the descriptive Dutch Top 3 Actions block with more concrete week actions focused on no-new-capital discipline, IWM/EWJ/RWM and EEM/FXI/INDA/EUM duels, and hedge readiness.
+- Added a visible scan coverage checkpoint for major regions including U.S., Europe, Japan, China/Hong Kong, India, Korea/Taiwan, Latin America, Middle East, ASEAN and Africa.
+- Added explicit capital re-underwriting context in the Dutch current-position review.
+
+### Why
+The Dutch report had reached functional parity but still exposed too much internal ranking/system language, English bucket labels and passive recommendation language. The goal is to move the Dutch companion closer to ETF-level executive quality: boardroom-ready, decision-useful and less machine-like.
+
+### Affected files
+- `tools/render_index_nl_report_from_state_v2.py`
+- `changelog.md`
+
+### Validation / evidence
+- Code committed to main. Next validation step is a fresh bilingual Weekly Index production run through the existing run-queue trigger.
+
+---
+
 ## 2026-05-20 — Make production Weekly Index run bilingual by default
 
 ### What changed
