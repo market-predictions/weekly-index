@@ -9,7 +9,8 @@ from urllib.parse import quote
 # deterministic TradingView markdown links to known tradable proxies before
 # HTML/PDF rendering. It intentionally covers tables, headings, bullets and
 # paragraph text because visible proxy tickers can appear in best-alternative
-# explanations as well as tables.
+# explanations as well as tables. Executive hero summary lines are deliberately
+# left unlinked so the Dutch snapshot matches the English snapshot.
 KNOWN_TICKERS = {
     'SPY', 'QQQ', 'IWM', 'EEM', 'EWJ', 'EWC', 'FXI', 'EWT', 'VLUE', 'EWY',
     'QUAL', 'RSP', 'EWI', 'EWN', 'EWU', 'EWL', 'EWA', 'INDA', 'EWW', 'EWZ',
@@ -52,6 +53,23 @@ def linkify_line(line: str) -> str:
     return protected
 
 
+def is_executive_snapshot_line(stripped: str) -> bool:
+    # These lines become the top snapshot mini-cards and takeaway box. English
+    # intentionally keeps tickers in these boxes as plain text, so Dutch must
+    # not link them either.
+    return any(
+        marker in stripped
+        for marker in (
+            '**Kernboodschap:**',
+            '**Main takeaway:**',
+            '**Primair regime:**',
+            '**Primary regime:**',
+            '**Geopolitiek regime:**',
+            '**Geopolitical regime:**',
+        )
+    )
+
+
 def should_linkify(line: str, in_code_block: bool) -> bool:
     stripped = line.strip()
     if in_code_block or not stripped:
@@ -59,6 +77,8 @@ def should_linkify(line: str, in_code_block: bool) -> bool:
     if stripped.startswith('# Weekly'):
         return False
     if stripped.startswith('>'):
+        return False
+    if is_executive_snapshot_line(stripped):
         return False
     if set(stripped.replace('|', '').replace(':', '').replace('-', '').replace(' ', '')) == set():
         return False
