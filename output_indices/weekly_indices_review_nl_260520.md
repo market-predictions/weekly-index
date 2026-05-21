@@ -50,16 +50,18 @@
 | EM | Nog belegbaar, maar gevoeliger voor dollar- en oliedruk | EEM moet streng worden getoetst tegenover alternatieven |
 
 ## 4. Indexkansenbord
-De scan omvat **29 exposures** over **15 regionale/stijlbuckets**. Het bord blijft bewust compact.
+
+De scan omvat **29 exposures** across **15 regionale/stijlbuckets**. Het bord blijft bewust compact; bredere dekking staat verderop in het universum-checkpoint.
 
 | Portefeuillesleeve | Benchmarkindex | Verhandelbare proxy | Regio / stijlbucket | Score | Status | Reden voor opname |
 |---|---|---|---|---:|---|---|
-| Brede opkomende-marktenblootstelling | Emerging Markets Proxy Benchmark | EEM | Brede opkomende markten | 2.82 /5 (Hoog) | | Actief geselecteerd | Past bij het huidige regime en behoudt voldoende prijs- en relatieve-sterktebewijs. |
-| Amerikaanse mega-cap groeileiderschap | Nasdaq 100 Index | QQQ | Amerikaanse kernmarktleiding | 2.79 /5 (Hoog) | | Actief geselecteerd | Groeileiderschap blijft de kernmotor in de huidige kansenlijst. |
-| Amerikaanse large-cap kernbeta | S&P 500 Index | SPY | Amerikaanse kernmarktleiding | 2.61 /5 (Hoog) | | Actief geselecteerd | Amerikaanse large-cap kernblootstelling blijft het zuiverste anker. |
-| Zuid-Koreaanse halfgeleider- en exportcyclus | KOSPI 200 Index | EWY | Korea / Taiwan | 2.25 /5 (Gemiddeld) | | Actief geselecteerd | Past bij het huidige regime en behoudt voldoende prijs- en relatieve-sterktebewijs. |
-| Amerikaanse small-cap marktbreedte | Russell 2000 Index | IWM | Amerikaanse kernmarktleiding | 1.82 /5 (Laag tot gemiddeld) | | Actief geselecteerd | Past bij het huidige regime en behoudt voldoende prijs- en relatieve-sterktebewijs. |
-Het bord blijft bewust compact. De sterkste weggelaten regionale uitdager deze run is **MSCI Taiwan / Taiwan large cap (EWT)**, die relevant blijft zonder een hoger gerangschikte opgenomen positie te verdringen.
+| Brede opkomende-marktenblootstelling | Emerging Markets Proxy Benchmark | EEM | Brede opkomende markten | 2.82 | Opgenomen | Opkomende markten voegen gemeten niet-Amerikaanse risicoblootstelling toe zolang de dollaromgeving minder vijandig is. |
+| Amerikaanse mega-cap groeileiderschap | Nasdaq 100 Index | QQQ | Amerikaanse kernmarktleiding | 2.79 | Opgenomen | Groeileiderschap blijft een kernmotor in de huidige kansenlijst. |
+| Amerikaanse large-cap kernbeta | S&P 500 Index | SPY | Amerikaanse kernmarktleiding | 2.61 | Opgenomen | Amerikaanse large-cap kernblootstelling blijft het zuiverste startanker. |
+| Zuid-Koreaanse halfgeleider- en exportcyclus | KOSPI 200 Index | EWY | Korea / Taiwan | 2.25 | Actief geselecteerd | Scoort intern hoog genoeg om op het compacte gepubliceerde bord te blijven. |
+| Amerikaanse small-cap marktbreedte | Russell 2000 Index | IWM | Amerikaanse kernmarktleiding | 1.82 | Opgenomen | Binnenlandse marktbreedte verbetert diversificatie zonder de portefeuille te domineren. |
+
+Het bord blijft bewust compact. De sterkste weggelaten regionale uitdager deze run is **U.S. Value Factor (VLUE)**, die dicht genoeg bij de selectie blijft om relevant te zijn zonder een hoger gerangschikte opgenomen positie te verdringen.
 
 ### Scandekking
 | Regio | Gedekt |
@@ -231,21 +233,21 @@ Deze instrumenten zijn uitsluitend defensieve instrumenten. Ze maken geen deel u
 ### Marktbreedtecheck per regionale bucket
 | Regio / stijlbucket | Sterkste kandidaat | Proxy | Aantal kandidaten | Geschikte proxy’s | Overtuigingsscore /5 | Huidige status |
 |---|---|---|---:|---:|---:|---|
-| Amerikaanse kernmarktleiding | Nasdaq 100 | QQQ | 3 | 3 | 1.99 /5 (Laag tot gemiddeld) | | Actief geselecteerd |
-| Amerikaanse factor- en stijlalternatieven | U.S. Value Factor | VLUE | 4 | 4 | 2.24 /5 (Gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
-| Continentaal Europa | FTSE MIB | EWI | 6 | 6 | 1.89 /5 (Laag tot gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
-| Verenigd Koninkrijk | FTSE 100 | EWU | 1 | 1 | 1.02 /5 (Laag) | | Interessant, maar nog onvoldoende overtuiging |
-| Zwitserland | SMI | EWL | 1 | 1 | 1.19 /5 (Laag) | | Interessant, maar nog onvoldoende overtuiging |
-| Noord-Amerika buiten VS | S&P/TSX 60 | EWC | 1 | 1 | 1.76 /5 (Laag tot gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
-| Ontwikkelde Azië-Pacific | Nikkei 225 | EWJ | 2 | 2 | 2.15 /5 (Gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
-| Korea / Taiwan | KOSPI 200 / Korea large cap | EWY | 2 | 2 | 2.43 /5 (Gemiddeld) | | Actief geselecteerd |
-| Groot-China | China large cap | FXI | 2 | 2 | 1.70 /5 (Laag tot gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
-| India | Nifty 50 | INDA | 1 | 1 | 0.74 /5 (Laag) | | Niet aantrekkelijk genoeg deze week |
-| Latijns-Amerika | Mexico large cap | EWW | 2 | 2 | 1.33 /5 (Laag tot gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
-| Afrika | South Afrika large cap | EZA | 1 | 1 | 0.57 /5 (Laag) | | Niet aantrekkelijk genoeg deze week |
-| ASEAN | Indonesia large cap | EIDO | 1 | 1 | 0.50 /5 (Laag) | | Niet aantrekkelijk genoeg deze week |
-| Midden-Oosten | Saudi Arabia large cap | KSA | 1 | 1 | 0.98 /5 (Laag) | | Interessant, maar nog onvoldoende overtuiging |
-| Brede opkomende markten | Emerging Markets | EEM | 1 | 1 | 2.17 /5 (Gemiddeld) | | Actief geselecteerd |
+| Amerikaanse kernmarktleiding | Nasdaq 100 | QQQ | 3 | 3 | 1.99 | Actief geselecteerd |
+| Amerikaanse factor- en stijlalternatieven | U.S. Value Factor | VLUE | 4 | 4 | 2.24 | Interessant, maar nog onvoldoende overtuiging |
+| Continentaal Europa | FTSE MIB | EWI | 6 | 6 | 1.89 | Interessant, maar nog onvoldoende overtuiging |
+| Verenigd Koninkrijk | FTSE 100 | EWU | 1 | 1 | 1.02 | Interessant, maar nog onvoldoende overtuiging |
+| Zwitserland | SMI | EWL | 1 | 1 | 1.19 | Interessant, maar nog onvoldoende overtuiging |
+| Noord-Amerika buiten VS | S&P/TSX 60 | EWC | 1 | 1 | 1.76 | Interessant, maar nog onvoldoende overtuiging |
+| Ontwikkelde Azië-Pacific | Nikkei 225 | EWJ | 2 | 2 | 2.15 | Interessant, maar nog onvoldoende overtuiging |
+| Korea / Taiwan | KOSPI 200 / Korea large cap | EWY | 2 | 2 | 2.43 | Actief geselecteerd |
+| Groot-China | China large cap | FXI | 2 | 2 | 1.70 | Interessant, maar nog onvoldoende overtuiging |
+| India | Nifty 50 | INDA | 1 | 1 | 0.74 | Niet aantrekkelijk genoeg deze week |
+| Latijns-Amerika | Mexico large cap | EWW | 2 | 2 | 1.33 | Interessant, maar nog onvoldoende overtuiging |
+| Afrika | South Afrika large cap | EZA | 1 | 1 | 0.57 | Niet aantrekkelijk genoeg deze week |
+| ASEAN | Indonesia large cap | EIDO | 1 | 1 | 0.50 | Niet aantrekkelijk genoeg deze week |
+| Midden-Oosten | Saudi Arabia large cap | KSA | 1 | 1 | 0.98 | Interessant, maar nog onvoldoende overtuiging |
+| Brede opkomende markten | Emerging Markets | EEM | 1 | 1 | 2.17 | Actief geselecteerd |
 
 ## 12. Portefeuillerotatieplan
 | Sluiten | Verlagen | Houden | Toevoegen | Vervangen |
