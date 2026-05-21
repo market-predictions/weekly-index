@@ -5,6 +5,7 @@ import argparse
 import re
 from datetime import datetime
 from pathlib import Path
+from urllib.parse import quote
 
 import send_index_report as _base
 import send_index_report_tv_analyst_distinct  # noqa: F401
@@ -15,6 +16,15 @@ NL_LONG_DATE_RE = re.compile(
     r"(?:januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)\s+20\d{2}\b",
     re.I,
 )
+HTML_TAG_RE = re.compile(r"(<[^>]+>)")
+HTML_TOKEN_RE = re.compile(r"(?<![A-Za-z0-9])([A-Z][A-Z0-9.\-]{1,11})(?![A-Za-z0-9])")
+MARKDOWN_TV_LINK_LITERAL_RE = re.compile(r"\[([A-Z][A-Z0-9.\-]{1,11})\]\(https://www\.tradingview\.com/chart/\?symbol=[^)]+\)")
+HTML_LINKABLE_TICKERS = {
+    'SPY', 'QQQ', 'IWM', 'EEM', 'EWJ', 'EWC', 'FXI', 'EWT', 'VLUE', 'EWY', 'QUAL', 'RSP',
+    'EWI', 'EWN', 'EWU', 'EWL', 'EWA', 'INDA', 'EWW', 'EWZ', 'EZA', 'EIDO', 'KSA', 'EWP',
+    'EWG', 'FEZ', 'EWH', 'EWQ', 'RWM', 'PSQ', 'EUM', 'USMV', 'QQQM', 'VOO', 'VWO', 'VTWO',
+    'DXJ', 'IEUR', 'SH', 'EFZ',
+}
 
 NL_REQUIRED_HEADINGS = [
     "# Weekly Index Review",
@@ -136,6 +146,55 @@ def _iso_to_nl(date_str: str) -> str:
     return f"{WEEKDAYS_NL[dt.weekday()]} {dt.day} {MONTHS_NL[dt.month - 1]} {dt.year}"
 
 
+def _tv_url(ticker: str) -> str:
+    return f"https://www.tradingview.com/chart/?symbol={quote(ticker, safe='')}"
+
+
+def _ticker_anchor(ticker: str) -> str:
+    return f'<a href="{_tv_url(ticker)}" target="_blank" rel="noopener noreferrer">{ticker}</a>'
+
+
+def _linkify_text_segment(segment: str) -> str:
+    def repl(match: re.Match[str]) -> str:
+        token = match.group(1)
+        return _ticker_anchor(token) if token in HTML_LINKABLE_TICKERS else token
+    return HTML_TOKEN_RE.sub(repl, segment)
+
+
+def _linkify_html_tickers(html: str) -> str:
+    """Link visible ticker tokens in final HTML, never in markdown source.
+
+    This mirrors the Weekly ETF delivery-layer pattern: keep report markdown clean
+    and add links during rendering. It prevents raw markdown links such as
+    `[QQQ](...)` from appearing in custom HTML blocks while still satisfying the
+    clickable ticker contract.
+    """
+    html = MARKDOWN_TV_LINK_LITERAL_RE.sub(lambda m: _ticker_anchor(m.group(1)), html)
+    parts = HTML_TAG_RE.split(html)
+    out: list[str] = []
+    in_anchor = False
+    in_protected = False
+    for part in parts:
+        if not part:
+            continue
+        if part.startswith("<") and part.endswith(">"):
+            lower = part.lower()
+            if lower.startswith("<a ") or lower.startswith("<a>"):
+                in_anchor = True
+            elif lower.startswith("</a"):
+                in_anchor = False
+            elif lower.startswith("<script") or lower.startswith("<style"):
+                in_protected = True
+            elif lower.startswith("</script") or lower.startswith("</style"):
+                in_protected = False
+            out.append(part)
+        elif in_anchor or in_protected:
+            out.append(part)
+        else:
+            out.append(_linkify_text_segment(part))
+    return "".join(out)
+
+
 def _normalize_dutch_heading_for_renderer(line: str) -> str:
     stripped = line.strip()
     if stripped.startswith("# Weekly Index Review"):
@@ -197,7 +256,7 @@ def _localize_rendered_html(html: str) -> str:
     for source, target in sorted(EN_TO_NL_HTML_LABELS.items(), key=lambda x: len(x[0]), reverse=True):
         html = html.replace(source, target)
     html = html.replace(_base.DISCLAIMER_LINE, NL_DISCLAIMER_LINE)
-    return html
+    return _linkify_html_tickers(html)
 
 
 def validate_report(md_text: str) -> None:
