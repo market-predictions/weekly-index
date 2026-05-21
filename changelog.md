@@ -15,6 +15,27 @@ Tiny typo-only edits do not need a full entry unless they affect output quality,
 
 ---
 
+## 2026-05-21 — Preserve required Dutch terminology after client polish
+
+### What changed
+- Updated `tools/render_index_nl_report_from_state_v2.py` so client-facing replacements do not remove terminology that the Dutch language contract requires.
+- Restored `Portefeuillesleeve` after the client polish layer accidentally converted it to `Portefeuillepositie`.
+- Triggered a fresh bilingual production rerun after the terminology fix.
+
+### Why
+The production run sent the English report but blocked the Dutch companion at the language-contract gate because the required Dutch term `Portefeuillesleeve` was missing. The missing term was caused by an over-broad replacement of `sleeve` with `positie`.
+
+### Affected files
+- `tools/render_index_nl_report_from_state_v2.py`
+- `control/run_queue/weekly_indices_report_request_20260521_011000.md`
+- `changelog.md`
+
+### Validation / evidence
+- Previous failure: `Dutch language contract failed ... missing required Dutch term: Portefeuillesleeve`.
+- Next validation step is the fresh bilingual run triggered by `weekly_indices_report_request_20260521_011000.md`.
+
+---
+
 ## 2026-05-21 — Add Dutch executive translation and decision-support layer
 
 ### What changed
