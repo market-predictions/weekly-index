@@ -52,7 +52,7 @@
 ## 4. Indexkansenbord
 De scan omvat **29 exposures** over **15 regionale/stijlbuckets**. Het bord blijft bewust compact.
 
-| Portefeuillepositie | Benchmarkindex | Verhandelbare proxy | Regio / stijlbucket | Score | Status | Reden voor opname |
+| Portefeuillesleeve | Benchmarkindex | Verhandelbare proxy | Regio / stijlbucket | Score | Status | Reden voor opname |
 |---|---|---|---|---:|---|---|
 | Brede opkomende-marktenblootstelling | Emerging Markets Proxy Benchmark | [EEM](https://www.tradingview.com/chart/?symbol=EEM) | Brede opkomende markten | 2.82 /5 (Hoog) | | Actief geselecteerd | Past bij het huidige regime en behoudt voldoende prijs- en relatieve-sterktebewijs. |
 | Amerikaanse mega-cap groeileiderschap | Nasdaq 100 Index | [QQQ](https://www.tradingview.com/chart/?symbol=QQQ) | Amerikaanse kernmarktleiding | 2.79 /5 (Hoog) | | Actief geselecteerd | Groeileiderschap blijft de kernmotor in de huidige kansenlijst. |
@@ -120,7 +120,7 @@ Het bord blijft bewust compact. De sterkste weggelaten regionale uitdager deze r
 ### Performance van verhandelbare proxy’s
 Performance wordt berekend op de verhandelbare ETF-proxy’s die voor portefeuillewaardering worden gebruikt. Benchmarkindexprijzen blijven het analyseanker; slotkoersen van verhandelbare proxy’s bepalen marktwaarde, winst/verlies en bijdrage.
 
-| Portefeuillepositie | Benchmarkindex | Verhandelbare proxy | Gewicht % | 1w rendement | 1m rendement | 3m rendement | Sinds instap | W/V EUR | Bijdrage % |
+| Portefeuillesleeve | Benchmarkindex | Verhandelbare proxy | Gewicht % | 1w rendement | 1m rendement | 3m rendement | Sinds instap | W/V EUR | Bijdrage % |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|
 | S&P 500 | S&P 500 Index | [SPY](https://www.tradingview.com/chart/?symbol=SPY) | 25.03 | -0.14% | +4.59% | +8.29% | +12.34% | 3088.72 | +2.75% |
 | Nasdaq 100 | Nasdaq 100 Index | [QQQ](https://www.tradingview.com/chart/?symbol=QQQ) | 26.27 | -0.22% | +10.26% | +18.17% | +16.71% | 4224.00 | +3.76% |
@@ -130,7 +130,7 @@ Performance wordt berekend op de verhandelbare ETF-proxy’s die voor portefeuil
 ## 8. Regionale en stijlallocatiekaart
 | Regio / stijlbucket | Huidige visie | Toelichting |
 |---|---|---|
-| Amerikaanse mega-cap / kwaliteitsgroei | Overwogen | [QQQ](https://www.tradingview.com/chart/?symbol=QQQ) blijft de sterkste positie. |
+| Amerikaanse mega-cap / kwaliteitsgroei | Overwogen | [QQQ](https://www.tradingview.com/chart/?symbol=QQQ) blijft de sterkste sleeve. |
 | Amerikaanse brede large cap | Neutraal-positief | [SPY](https://www.tradingview.com/chart/?symbol=SPY) werkt nog, maar overlap met [QQQ](https://www.tradingview.com/chart/?symbol=QQQ) moet worden getoetst. |
 | Amerikaanse small cap | Onder actieve herbeoordeling | [IWM](https://www.tradingview.com/chart/?symbol=IWM) is opgenomen in portefeuille, maar geen passieve hold meer. |
 | Continentaal Europa | Onderwogen | Olie- en geopolitieke gevoeligheid blijven een rem. |
@@ -188,7 +188,7 @@ Performance wordt berekend op de verhandelbare ETF-proxy’s die voor portefeuil
 ### Long-kansen
 
 #### 1. MSCI Taiwan / Taiwan large cap ([EWT](https://www.tradingview.com/chart/?symbol=EWT))
-- Portefeuillepositie: Taiwanese halfgeleiderketen-leiderschap
+- Portefeuillesleeve: Taiwanese halfgeleiderketen-leiderschap
 - Regio / stijlbucket: Korea / Taiwan
 - Overtuigingsscore /5: 2.29
 - Proxykwaliteit: Liquide landen-ETF; geschikt voor ranking mits prijsdata en macrofit kloppen.
@@ -196,7 +196,7 @@ Performance wordt berekend op de verhandelbare ETF-proxy’s die voor portefeuil
 - Waarom nog niet geselecteerd: meer prijs-, regime- of relatieve-sterktebevestiging nodig.
 
 #### 2. U.S. Value Factor ([VLUE](https://www.tradingview.com/chart/?symbol=VLUE))
-- Portefeuillepositie: Amerikaanse value-factor
+- Portefeuillesleeve: Amerikaanse value-factor
 - Regio / stijlbucket: Amerikaanse factor- en stijlalternatieven
 - Overtuigingsscore /5: 2.24
 - Proxykwaliteit: Liquide Amerikaanse ETF; geschikt voor ranking mits prijsdata en historie kloppen.
@@ -204,7 +204,7 @@ Performance wordt berekend op de verhandelbare ETF-proxy’s die voor portefeuil
 - Waarom nog niet geselecteerd: meer prijs-, regime- of relatieve-sterktebevestiging nodig.
 
 #### 3. Nikkei 225 ([EWJ](https://www.tradingview.com/chart/?symbol=EWJ))
-- Portefeuillepositie: Japanse ontwikkelde-marktenblootstelling
+- Portefeuillesleeve: Japanse ontwikkelde-marktenblootstelling
 - Regio / stijlbucket: Ontwikkelde Azië-Pacific
 - Overtuigingsscore /5: 2.15
 - Proxykwaliteit: Liquide landen-ETF; geschikt voor ranking mits prijsdata en macrofit kloppen.
@@ -212,7 +212,7 @@ Performance wordt berekend op de verhandelbare ETF-proxy’s die voor portefeuil
 - Waarom nog niet geselecteerd: meer prijs-, regime- of relatieve-sterktebevestiging nodig.
 
 #### 4. FTSE MIB ([EWI](https://www.tradingview.com/chart/?symbol=EWI))
-- Portefeuillepositie: Italy high-beta Europe financial / industrial beta
+- Portefeuillesleeve: Italy high-beta Europe financial / industrial beta
 - Regio / stijlbucket: Continentaal Europa
 - Overtuigingsscore /5: 1.89
 - Proxykwaliteit: Liquide landen-ETF; geschikt voor ranking mits prijsdata en macrofit kloppen.
@@ -258,7 +258,7 @@ Deze instrumenten zijn uitsluitend defensieve instrumenten. Ze maken geen deel u
 | [SPY](https://www.tradingview.com/chart/?symbol=SPY) | S&P 500 | 25.03 | Houden | kernbeta | Amerikaanse large-cap kernblootstelling in een gemengd regime. |
 | [QQQ](https://www.tradingview.com/chart/?symbol=QQQ) | Nasdaq 100 | 26.27 | Houden | groeimotor | Technologieleiderschap blijft de sterkste groeimotor. |
 | [IWM](https://www.tradingview.com/chart/?symbol=IWM) | Russell 2000 | 19.33 | Houden, onder herbeoordeling | marktbreedte-diversifier | Small-cap blootstelling blijft nuttig als marktbreedte-diversifier, maar staat onder herbeoordeling. |
-| [EEM](https://www.tradingview.com/chart/?symbol=EEM) | Emerging Markets | 15.52 | Houden, onder herbeoordeling | niet-Amerikaanse risicopositie | Gemeten niet-Amerikaanse risicopositie, maar gevoelig voor USD- en oliedruk. |
+| [EEM](https://www.tradingview.com/chart/?symbol=EEM) | Emerging Markets | 15.52 | Houden, onder herbeoordeling | niet-Amerikaanse risicosleeve | Gemeten niet-Amerikaanse risicosleeve, maar gevoelig voor USD- en oliedruk. |
 
 ## 14. Positiewijzigingen in deze run
 | Ticker | Vorig gewicht % | Nieuw gewicht % | Gewichtswijziging % | Uitgevoerde actie | Toelichting |
@@ -292,7 +292,7 @@ Deze instrumenten zijn uitsluitend defensieve instrumenten. Ze maken geen deel u
 | [SPY](https://www.tradingview.com/chart/?symbol=SPY) | S&P 500 | Long | 25.03 | 659.82 | 741.25 | +12.34% | Amerikaanse large-cap kernblootstelling in een gemengd regime. | kernbeta |
 | [QQQ](https://www.tradingview.com/chart/?symbol=QQQ) | Nasdaq 100 | Long | 26.27 | 611.07 | 713.15 | +16.71% | Technologieleiderschap blijft de sterkste groeimotor. | groeimotor |
 | [IWM](https://www.tradingview.com/chart/?symbol=IWM) | Russell 2000 | Long | 19.33 | 261.76 | 279.87 | +6.92% | Small-cap blootstelling blijft nuttig als marktbreedte-diversifier, maar staat onder herbeoordeling. | marktbreedte-diversifier |
-| [EEM](https://www.tradingview.com/chart/?symbol=EEM) | Emerging Markets | Long | 15.52 | 57.23 | 65.46 | +14.38% | Gemeten niet-Amerikaanse risicopositie, maar gevoelig voor USD- en oliedruk. | niet-Amerikaanse risicopositie |
+| [EEM](https://www.tradingview.com/chart/?symbol=EEM) | Emerging Markets | Long | 15.52 | 57.23 | 65.46 | +14.38% | Gemeten niet-Amerikaanse risicosleeve, maar gevoelig voor USD- en oliedruk. | niet-Amerikaanse risicosleeve |
 
 ### Beschikbare cash
 - Cash %: 13.86
