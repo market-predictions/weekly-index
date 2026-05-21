@@ -15,6 +15,27 @@ Tiny typo-only edits do not need a full entry unless they affect output quality,
 
 ---
 
+## 2026-05-21 — Add Dutch markdown-link residue gate
+
+### What changed
+- Added `tools/validate_index_no_markdown_link_residue.py` to fail if Dutch markdown or final delivery HTML contains TradingView markdown-link residue such as `[QQQ](...)`.
+- Wired the validator into the Dutch render-validation step before visual/ticker checks and before Dutch send.
+
+### Why
+The latest successful run showed the intended delivery-layer linkification working, but ticker-link validation alone can pass while visible markdown syntax remains. This gate preserves the clean-markdown / HTML-linkification architecture and catches regressions before email delivery.
+
+### Affected files
+- `tools/validate_index_no_markdown_link_residue.py`
+- `.github/workflows/send-weekly-indices-report.yml`
+- `changelog.md`
+
+### Validation / evidence
+- Latest run from `control/run_queue/weekly_indices_report_request_20260521_112500.md` completed successfully and both EN/NL delivery manifests show `delivery_ok` with PDFs attached.
+- The committed Dutch delivery HTML for token `260520` shows TradingView ticker anchors in the hero and Section 2, not visible markdown links.
+- This follow-up change adds the explicit guard for future runs; it does not trigger a duplicate report send.
+
+---
+
 ## 2026-05-21 — Move Dutch ticker links to HTML delivery layer
 
 ### What changed
