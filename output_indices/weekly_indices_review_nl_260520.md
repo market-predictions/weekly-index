@@ -54,12 +54,12 @@ De scan omvat **29 exposures** over **15 regionale/stijlbuckets**. Het bord blij
 
 | Portefeuillepositie | Benchmarkindex | Verhandelbare proxy | Regio / stijlbucket | Score | Status | Reden voor opname |
 |---|---|---|---|---:|---|---|
+| Brede opkomende-marktenblootstelling | Emerging Markets Proxy Benchmark | [EEM](https://www.tradingview.com/chart/?symbol=EEM) | Brede opkomende markten | 2.82 /5 (Hoog) | | Actief geselecteerd | Past bij het huidige regime en behoudt voldoende prijs- en relatieve-sterktebewijs. |
 | Amerikaanse mega-cap groeileiderschap | Nasdaq 100 Index | [QQQ](https://www.tradingview.com/chart/?symbol=QQQ) | Amerikaanse kernmarktleiding | 2.79 /5 (Hoog) | | Actief geselecteerd | Groeileiderschap blijft de kernmotor in de huidige kansenlijst. |
-| Brede opkomende-marktenblootstelling | Emerging Markets Proxy Benchmark | [EEM](https://www.tradingview.com/chart/?symbol=EEM) | Brede opkomende markten | 2.76 /5 (Hoog) | | Actief geselecteerd | Past bij het huidige regime en behoudt voldoende prijs- en relatieve-sterktebewijs. |
-| Amerikaanse large-cap kernbeta | S&P 500 Index | [SPY](https://www.tradingview.com/chart/?symbol=SPY) | Amerikaanse kernmarktleiding | 2.54 /5 (Gemiddeld) | | Actief geselecteerd | Amerikaanse large-cap kernblootstelling blijft het zuiverste anker. |
-| Japanse ontwikkelde-marktenblootstelling | Nikkei 225 Index | [EWJ](https://www.tradingview.com/chart/?symbol=EWJ) | Ontwikkelde Azië-Pacific | 2.29 /5 (Gemiddeld) | | Actief geselecteerd | Japan verbetert de ontwikkelde ex-VS-breedte zonder lage overtuiging te forceren. |
+| Amerikaanse large-cap kernbeta | S&P 500 Index | [SPY](https://www.tradingview.com/chart/?symbol=SPY) | Amerikaanse kernmarktleiding | 2.61 /5 (Hoog) | | Actief geselecteerd | Amerikaanse large-cap kernblootstelling blijft het zuiverste anker. |
+| Zuid-Koreaanse halfgeleider- en exportcyclus | KOSPI 200 Index | [EWY](https://www.tradingview.com/chart/?symbol=EWY) | Korea / Taiwan | 2.25 /5 (Gemiddeld) | | Actief geselecteerd | Past bij het huidige regime en behoudt voldoende prijs- en relatieve-sterktebewijs. |
 | Amerikaanse small-cap marktbreedte | Russell 2000 Index | [IWM](https://www.tradingview.com/chart/?symbol=IWM) | Amerikaanse kernmarktleiding | 1.82 /5 (Laag tot gemiddeld) | | Actief geselecteerd | Past bij het huidige regime en behoudt voldoende prijs- en relatieve-sterktebewijs. |
-Het bord blijft bewust compact. De sterkste weggelaten regionale uitdager deze run is **KOSPI 200 / Korea large cap ([EWY](https://www.tradingview.com/chart/?symbol=EWY))**, die relevant blijft zonder een hoger gerangschikte opgenomen positie te verdringen.
+Het bord blijft bewust compact. De sterkste weggelaten regionale uitdager deze run is **MSCI Taiwan / Taiwan large cap ([EWT](https://www.tradingview.com/chart/?symbol=EWT))**, die relevant blijft zonder een hoger gerangschikte opgenomen positie te verdringen.
 
 ### Scandekking
 | Regio | Gedekt |
@@ -187,15 +187,7 @@ Performance wordt berekend op de verhandelbare ETF-proxy’s die voor portefeuil
 ## 11. Beste nieuwe indexkansen
 ### Long-kansen
 
-#### 1. KOSPI 200 / Korea large cap ([EWY](https://www.tradingview.com/chart/?symbol=EWY))
-- Portefeuillepositie: Zuid-Koreaanse halfgeleider- en exportcyclus
-- Regio / stijlbucket: Korea / Taiwan
-- Overtuigingsscore /5: 2.43
-- Proxykwaliteit: Liquide landen-ETF; geschikt voor ranking mits prijsdata en macrofit kloppen.
-- Waarom relevant: interessant, maar nog onvoldoende overtuiging.
-- Waarom nog niet geselecteerd: meer prijs-, regime- of relatieve-sterktebevestiging nodig.
-
-#### 2. MSCI Taiwan / Taiwan large cap ([EWT](https://www.tradingview.com/chart/?symbol=EWT))
+#### 1. MSCI Taiwan / Taiwan large cap ([EWT](https://www.tradingview.com/chart/?symbol=EWT))
 - Portefeuillepositie: Taiwanese halfgeleiderketen-leiderschap
 - Regio / stijlbucket: Korea / Taiwan
 - Overtuigingsscore /5: 2.29
@@ -203,7 +195,7 @@ Performance wordt berekend op de verhandelbare ETF-proxy’s die voor portefeuil
 - Waarom relevant: interessant, maar nog onvoldoende overtuiging.
 - Waarom nog niet geselecteerd: meer prijs-, regime- of relatieve-sterktebevestiging nodig.
 
-#### 3. U.S. Value Factor ([VLUE](https://www.tradingview.com/chart/?symbol=VLUE))
+#### 2. U.S. Value Factor ([VLUE](https://www.tradingview.com/chart/?symbol=VLUE))
 - Portefeuillepositie: Amerikaanse value-factor
 - Regio / stijlbucket: Amerikaanse factor- en stijlalternatieven
 - Overtuigingsscore /5: 2.24
@@ -211,10 +203,18 @@ Performance wordt berekend op de verhandelbare ETF-proxy’s die voor portefeuil
 - Waarom relevant: interessant, maar nog onvoldoende overtuiging.
 - Waarom nog niet geselecteerd: meer prijs-, regime- of relatieve-sterktebevestiging nodig.
 
-#### 4. S&P/TSX 60 ([EWC](https://www.tradingview.com/chart/?symbol=EWC))
-- Portefeuillepositie: Canadese grondstoffen en financials
-- Regio / stijlbucket: Noord-Amerika buiten VS
-- Overtuigingsscore /5: 1.83
+#### 3. Nikkei 225 ([EWJ](https://www.tradingview.com/chart/?symbol=EWJ))
+- Portefeuillepositie: Japanse ontwikkelde-marktenblootstelling
+- Regio / stijlbucket: Ontwikkelde Azië-Pacific
+- Overtuigingsscore /5: 2.15
+- Proxykwaliteit: Liquide landen-ETF; geschikt voor ranking mits prijsdata en macrofit kloppen.
+- Waarom relevant: interessant, maar nog onvoldoende overtuiging.
+- Waarom nog niet geselecteerd: meer prijs-, regime- of relatieve-sterktebevestiging nodig.
+
+#### 4. FTSE MIB ([EWI](https://www.tradingview.com/chart/?symbol=EWI))
+- Portefeuillepositie: Italy high-beta Europe financial / industrial beta
+- Regio / stijlbucket: Continentaal Europa
+- Overtuigingsscore /5: 1.89
 - Proxykwaliteit: Liquide landen-ETF; geschikt voor ranking mits prijsdata en macrofit kloppen.
 - Waarom relevant: interessant, maar nog onvoldoende overtuiging.
 - Waarom nog niet geselecteerd: meer prijs-, regime- of relatieve-sterktebevestiging nodig.
@@ -233,19 +233,19 @@ Deze instrumenten zijn uitsluitend defensieve instrumenten. Ze maken geen deel u
 |---|---|---|---:|---:|---:|---|
 | Amerikaanse kernmarktleiding | Nasdaq 100 | [QQQ](https://www.tradingview.com/chart/?symbol=QQQ) | 3 | 3 | 1.99 /5 (Laag tot gemiddeld) | | Actief geselecteerd |
 | Amerikaanse factor- en stijlalternatieven | U.S. Value Factor | [VLUE](https://www.tradingview.com/chart/?symbol=VLUE) | 4 | 4 | 2.24 /5 (Gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
-| Continentaal Europa | FTSE MIB | [EWI](https://www.tradingview.com/chart/?symbol=EWI) | 6 | 6 | 1.68 /5 (Laag tot gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
-| Verenigd Koninkrijk | FTSE 100 | [EWU](https://www.tradingview.com/chart/?symbol=EWU) | 1 | 1 | 1.09 /5 (Laag) | | Interessant, maar nog onvoldoende overtuiging |
-| Zwitserland | SMI | [EWL](https://www.tradingview.com/chart/?symbol=EWL) | 1 | 1 | 1.33 /5 (Laag tot gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
-| Noord-Amerika buiten VS | S&P/TSX 60 | [EWC](https://www.tradingview.com/chart/?symbol=EWC) | 1 | 1 | 1.83 /5 (Laag tot gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
-| Ontwikkelde Azië-Pacific | Nikkei 225 | [EWJ](https://www.tradingview.com/chart/?symbol=EWJ) | 2 | 2 | 2.42 /5 (Gemiddeld) | | Actief geselecteerd |
-| Korea / Taiwan | KOSPI 200 / Korea large cap | [EWY](https://www.tradingview.com/chart/?symbol=EWY) | 2 | 2 | 2.43 /5 (Gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
-| Groot-China | China large cap | [FXI](https://www.tradingview.com/chart/?symbol=FXI) | 2 | 2 | 1.77 /5 (Laag tot gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
+| Continentaal Europa | FTSE MIB | [EWI](https://www.tradingview.com/chart/?symbol=EWI) | 6 | 6 | 1.89 /5 (Laag tot gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
+| Verenigd Koninkrijk | FTSE 100 | [EWU](https://www.tradingview.com/chart/?symbol=EWU) | 1 | 1 | 1.02 /5 (Laag) | | Interessant, maar nog onvoldoende overtuiging |
+| Zwitserland | SMI | [EWL](https://www.tradingview.com/chart/?symbol=EWL) | 1 | 1 | 1.19 /5 (Laag) | | Interessant, maar nog onvoldoende overtuiging |
+| Noord-Amerika buiten VS | S&P/TSX 60 | [EWC](https://www.tradingview.com/chart/?symbol=EWC) | 1 | 1 | 1.76 /5 (Laag tot gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
+| Ontwikkelde Azië-Pacific | Nikkei 225 | [EWJ](https://www.tradingview.com/chart/?symbol=EWJ) | 2 | 2 | 2.15 /5 (Gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
+| Korea / Taiwan | KOSPI 200 / Korea large cap | [EWY](https://www.tradingview.com/chart/?symbol=EWY) | 2 | 2 | 2.43 /5 (Gemiddeld) | | Actief geselecteerd |
+| Groot-China | China large cap | [FXI](https://www.tradingview.com/chart/?symbol=FXI) | 2 | 2 | 1.70 /5 (Laag tot gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
 | India | Nifty 50 | [INDA](https://www.tradingview.com/chart/?symbol=INDA) | 1 | 1 | 0.74 /5 (Laag) | | Niet aantrekkelijk genoeg deze week |
-| Latijns-Amerika | Mexico large cap | [EWW](https://www.tradingview.com/chart/?symbol=EWW) | 2 | 2 | 1.46 /5 (Laag tot gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
+| Latijns-Amerika | Mexico large cap | [EWW](https://www.tradingview.com/chart/?symbol=EWW) | 2 | 2 | 1.33 /5 (Laag tot gemiddeld) | | Interessant, maar nog onvoldoende overtuiging |
 | Afrika | South Afrika large cap | [EZA](https://www.tradingview.com/chart/?symbol=EZA) | 1 | 1 | 0.57 /5 (Laag) | | Niet aantrekkelijk genoeg deze week |
 | ASEAN | Indonesia large cap | [EIDO](https://www.tradingview.com/chart/?symbol=EIDO) | 1 | 1 | 0.50 /5 (Laag) | | Niet aantrekkelijk genoeg deze week |
-| Midden-Oosten | Saudi Arabia large cap | [KSA](https://www.tradingview.com/chart/?symbol=KSA) | 1 | 1 | 1.05 /5 (Laag) | | Interessant, maar nog onvoldoende overtuiging |
-| Brede opkomende markten | Emerging Markets | [EEM](https://www.tradingview.com/chart/?symbol=EEM) | 1 | 1 | 2.11 /5 (Gemiddeld) | | Actief geselecteerd |
+| Midden-Oosten | Saudi Arabia large cap | [KSA](https://www.tradingview.com/chart/?symbol=KSA) | 1 | 1 | 0.98 /5 (Laag) | | Interessant, maar nog onvoldoende overtuiging |
+| Brede opkomende markten | Emerging Markets | [EEM](https://www.tradingview.com/chart/?symbol=EEM) | 1 | 1 | 2.17 /5 (Gemiddeld) | | Actief geselecteerd |
 
 ## 12. Portefeuillerotatieplan
 | Sluiten | Verlagen | Houden | Toevoegen | Vervangen |

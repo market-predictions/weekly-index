@@ -1,5 +1,5 @@
 {
-  "run_date": "2026-05-20",
+  "run_date": "2026-05-21",
   "requested_close_date": "2026-05-20",
   "pricing_model": "layered_close_discovery_v1",
   "provider_order": [
@@ -73,7 +73,7 @@
       "primary_proxy": "QQQ",
       "shares": 48,
       "proxy_close": 713.15,
-      "benchmark_close": 29297.6973,
+      "benchmark_close": 29297.6992,
       "proxy_status": "fresh_close",
       "benchmark_status": "fresh_close",
       "proxy_source": "yahoo_chart",
@@ -113,7 +113,7 @@
       "primary_proxy": "IWM",
       "shares": 90,
       "proxy_close": 279.87,
-      "benchmark_close": 2817.3647,
+      "benchmark_close": 2817.3701,
       "proxy_status": "fresh_close",
       "benchmark_status": "fresh_close",
       "proxy_source": "yahoo_chart",

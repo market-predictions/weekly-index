@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-20T23:13:54.492721Z",
+  "generated_at_utc": "2026-05-21T07:39:25.218737Z",
   "methodology": "Direct alternative duels compare current implemented exposures against long alternatives. Funding requires relative-strength evidence plus portfolio-fit improvement; defensive/inverse rows remain separate from the long board.",
   "report_date": "2026-05-20",
   "report_token": "260520",
@@ -28,8 +28,8 @@
       "current_proxy": "SPY",
       "decision": "Current exposure still leads; no replacement.",
       "duel_type": "long_alternative",
-      "edge_20d_pct": -7.54,
-      "edge_60d_pct": -12.01,
+      "edge_20d_pct": -4.24,
+      "edge_60d_pct": -9.26,
       "momentum_state": "not_confirmed",
       "regime_fit": "watchlist",
       "required_trigger": "Needs both 20d and 60d relative-strength improvement before funding. Europe can improve regional diversification, but funding requires evidence that earnings and policy support are strong enough to offset weaker momentum."
@@ -41,13 +41,13 @@
       "current_exposure_id": "us_large_cap",
       "current_name": "S&P 500",
       "current_proxy": "SPY",
-      "decision": "Early improvement only; wait for 60d confirmation.",
+      "decision": "Current exposure still leads; no replacement.",
       "duel_type": "long_alternative",
-      "edge_20d_pct": 0.02,
-      "edge_60d_pct": -1.29,
-      "momentum_state": "early_improvement",
+      "edge_20d_pct": -3.65,
+      "edge_60d_pct": -2.16,
+      "momentum_state": "not_confirmed",
       "regime_fit": "watchlist",
-      "required_trigger": "Early improvement only; needs positive 60d confirmation before funding. Japan can improve regional diversification, but funding requires confirmation that currency and yield volatility do not overwhelm the diversification benefit."
+      "required_trigger": "Needs both 20d and 60d relative-strength improvement before funding. Japan can improve regional diversification, but funding requires confirmation that currency and yield volatility do not overwhelm the diversification benefit."
     },
     {
       "alternative_exposure_id": "us_large_cap",
@@ -133,7 +133,7 @@
       "current_proxy": "EEM",
       "decision": "Current exposure still leads; no replacement.",
       "duel_type": "long_alternative",
-      "edge_20d_pct": -6.35,
+      "edge_20d_pct": -7.02,
       "edge_60d_pct": -12.57,
       "momentum_state": "not_confirmed",
       "regime_fit": "watchlist",
@@ -148,8 +148,8 @@
       "current_proxy": "EEM",
       "decision": "Current exposure still leads; no replacement.",
       "duel_type": "long_alternative",
-      "edge_20d_pct": -0.83,
-      "edge_60d_pct": -1.81,
+      "edge_20d_pct": -0.7,
+      "edge_60d_pct": -1.63,
       "momentum_state": "not_confirmed",
       "regime_fit": "watchlist",
       "required_trigger": "Needs both 20d and 60d relative-strength improvement before funding. China can recover quickly, but funding requires policy credibility and price confirmation, not only mean-reversion potential."
