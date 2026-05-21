@@ -193,6 +193,7 @@ jobs:
       - name: Render and validate Dutch companion before send
         run: |
           python send_index_report_bilingual.py --report-path "$NL_REPORT" --language nl --validate-only
+          python tools/validate_index_no_markdown_link_residue.py --report-path "$NL_REPORT"
           python tools/validate_index_analyst_visual_distinction_for_report.py --report-path "$NL_REPORT"
           python tools/validate_index_render_polish_for_report.py --report-path "$NL_REPORT"
           python tools/validate_index_ticker_links_for_report.py --report-path "$NL_REPORT"
