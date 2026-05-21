@@ -55,7 +55,6 @@ CLIENT_REPLACEMENTS = [
     ('Gefinancierd, maar onder herbeoordeling.', 'Opgenomen in portefeuille, maar onder herbeoordeling.'),
     ('gefinancierde exposure', 'opgenomen positie'),
     ('verdiende sleeve', 'verdiende positie'),
-    ('sleeve', 'positie'),
 ]
 
 
@@ -130,9 +129,17 @@ def strip_tv_markdown_links(text: str) -> str:
     return TV_MD_LINK_RE.sub(r'\1', text)
 
 
+def preserve_required_terms(text: str) -> str:
+    # Keep terminology aligned with control/NL_TERMINOLOGY.md. Earlier client
+    # polishing replaced every occurrence of "sleeve" with "positie", which
+    # accidentally changed required table headers such as Portefeuillesleeve.
+    return text.replace('Portefeuillepositie', 'Portefeuillesleeve')
+
+
 def apply_client_language(text: str) -> str:
     for src, dst in CLIENT_REPLACEMENTS:
         text = text.replace(src, dst)
+    text = preserve_required_terms(text)
     text = text.replace('Status vermogenscurve: actief gevolgd', 'Status vermogenscurve: actief gevolgd')
     text = text.replace('Waarom relevant: sterke kandidaat, maar nog niet gefinancierd.', 'Waarom relevant: interessant, maar nog onvoldoende overtuiging.')
     text = text.replace('Waarom nog niet op het bord: meer prijs-, regime- of relatieve-sterktebevestiging nodig.', 'Waarom nog niet geselecteerd: meer prijs-, regime- of relatieve-sterktebevestiging nodig.')
