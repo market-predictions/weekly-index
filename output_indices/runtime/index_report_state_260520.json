@@ -2030,7 +2030,7 @@
       "rule": "Broad scan universe first; compact board second. Candidates require proxy eligibility, pricing, regime fit and relative-strength evidence before funding."
     }
   },
-  "generated_at_utc": "2026-05-21T09:01:48.542392Z",
+  "generated_at_utc": "2026-05-21T10:04:49.243957Z",
   "macro_policy_pack": {
     "central_banks": {
       "boe": {
@@ -2086,7 +2086,7 @@
         "underlying": "IWM / Russell 2000"
       }
     },
-    "generated_at_utc": "2026-05-21T09:01:48.334556Z",
+    "generated_at_utc": "2026-05-21T10:04:49.057578Z",
     "geopolitical_regime": {
       "confidence": 0.6,
       "current": "Rates and energy-sensitive geopolitical risk",

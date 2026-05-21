@@ -1,4 +1,4 @@
-timestamp_utc=2026-05-21T09:02:11Z
+timestamp_utc=2026-05-21T10:05:10Z
 report=weekly_indices_review_nl_260520.md
 recipient=mrkt.rprts@gmail.com
 delivery=delivery_ok
