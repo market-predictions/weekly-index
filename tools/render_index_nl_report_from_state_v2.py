@@ -57,6 +57,32 @@ CLIENT_REPLACEMENTS = [
     ('verdiende sleeve', 'verdiende positie'),
 ]
 
+SECTION4_REPLACEMENTS = [
+    ('## 4. Index Opportunity Board', '## 4. Indexkansenbord'),
+    ('The scan covers', 'De scan omvat'),
+    ('exposures across', 'exposures over'),
+    ('regional/style buckets', 'regionale/stijlbuckets'),
+    ('The board remains compact by design; broader coverage is shown later in the universe checkpoint.', 'Het bord blijft bewust compact; bredere dekking staat verderop in het universum-checkpoint.'),
+    ('| Portfolio sleeve | Benchmark index | Tradable proxy | Regional / style bucket | Score | Status | Why it is on the board |', '| Portefeuillesleeve | Benchmarkindex | Verhandelbare proxy | Regio / stijlbucket | Score | Status | Reden voor opname |'),
+    ('Broad emerging-market equity', 'Brede opkomende-marktenblootstelling'),
+    ('U.S. mega-cap growth leadership', 'Amerikaanse mega-cap groeileiderschap'),
+    ('U.S. large-cap core beta', 'Amerikaanse large-cap kernbeta'),
+    ('South Korea semiconductor / export cycle', 'Zuid-Koreaanse halfgeleider- en exportcyclus'),
+    ('U.S. small-cap breadth', 'Amerikaanse small-cap marktbreedte'),
+    ('EM broad', 'Brede opkomende markten'),
+    ('U.S. core leadership', 'Amerikaanse kernmarktleiding'),
+    ('Funded', 'Opgenomen'),
+    ('Surfaced', 'Actief geselecteerd'),
+    ('Emerging markets add a measured non-U.S. risk sleeve while the dollar backdrop is less hostile.', 'Opkomende markten voegen gemeten niet-Amerikaanse risicoblootstelling toe zolang de dollaromgeving minder vijandig is.'),
+    ('Growth leadership remains a core engine in the current opportunity set.', 'Groeileiderschap blijft een kernmotor in de huidige kansenlijst.'),
+    ('Core U.S. large-cap exposure remains the cleanest starting anchor.', 'Amerikaanse large-cap kernblootstelling blijft het zuiverste startanker.'),
+    ('Ranks high enough internally to remain on the compact published board.', 'Scoort intern hoog genoeg om op het compacte gepubliceerde bord te blijven.'),
+    ('Domestic breadth improves diversification without dominating the book.', 'Binnenlandse marktbreedte verbetert diversificatie zonder de portefeuille te domineren.'),
+    ('The board remains intentionally compact.', 'Het bord blijft bewust compact.'),
+    ('The strongest omitted regional challenger this run is', 'De sterkste weggelaten regionale uitdager deze run is'),
+    ('which remains close enough to matter without displacing a higher-ranked funded exposure.', 'die dicht genoeg bij de selectie blijft om relevant te zijn zonder een hoger gerangschikte opgenomen positie te verdringen.'),
+]
+
 
 def section_bounds(text: str, number: int) -> tuple[int, int] | None:
     matches = list(SECTION_RE.finditer(text))
@@ -72,6 +98,14 @@ def replace_section(text: str, number: int, replacement: str) -> str:
         return text
     start, end = bounds
     return text[:start] + replacement.rstrip() + '\n\n' + text[end:].lstrip()
+
+
+def extract_section(text: str, number: int) -> str:
+    bounds = section_bounds(text, number)
+    if not bounds:
+        return ''
+    start, end = bounds
+    return text[start:end].strip()
 
 
 def valuation_rows(output_dir: Path) -> list[dict[str, str]]:
@@ -112,27 +146,11 @@ def section1_fixed(state: dict[str, Any], close_date: str, fx_date: str) -> str:
 - **Kernboodschap:** houd QQQ als sterkste verdiende positie, houd SPY onder concentratiecontrole en dwing IWM en EEM door expliciete long-alternatief- en defensieve hedge-duels voordat nieuw kapitaal wordt toegewezen."""
 
 
-def add_section4_omitted(text: str, ranking: dict[str, Any]) -> str:
-    bounds = section_bounds(text, 4)
-    if not bounds or 'sterkste weggelaten regionale uitdager' in text[bounds[0]:bounds[1]]:
-        return text
-    candidates = [c for c in ranking.get('candidates', []) if not c.get('publish')]
-    if not candidates:
-        return text
-    best = sorted(candidates, key=lambda c: float(c.get('challenger_score') or c.get('score') or 0.0), reverse=True)[0]
-    line = f"\nHet bord blijft bewust compact. De sterkste weggelaten regionale uitdager deze run is **{best.get('public_index_name')} ({best.get('primary_proxy')})**, die relevant blijft zonder een hoger gerangschikte opgenomen positie te verdringen.\n"
-    start, end = bounds
-    return text[:end].rstrip() + line + '\n' + text[end:].lstrip()
-
-
 def strip_tv_markdown_links(text: str) -> str:
     return TV_MD_LINK_RE.sub(r'\1', text)
 
 
 def preserve_required_terms(text: str) -> str:
-    # Keep terminology aligned with control/NL_TERMINOLOGY.md. Earlier client
-    # polishing replaced every occurrence of "sleeve" with "positie", which
-    # accidentally changed required table headers such as Portefeuillesleeve.
     return text.replace('Portefeuillepositie', 'Portefeuillesleeve')
 
 
@@ -146,27 +164,6 @@ def apply_client_language(text: str) -> str:
     return text
 
 
-def score_to_conviction(score: Any) -> str:
-    try:
-        value = float(score)
-    except (TypeError, ValueError):
-        return 'Onbekend'
-    if value >= 2.60:
-        return 'Hoog'
-    if value >= 2.00:
-        return 'Gemiddeld'
-    if value >= 1.25:
-        return 'Laag tot gemiddeld'
-    return 'Laag'
-
-
-def add_score_explanations(text: str) -> str:
-    def repl(match: re.Match[str]) -> str:
-        prefix, score = match.group(1), match.group(2)
-        return f"{prefix}{score} /5 ({score_to_conviction(score)}) |"
-    return re.sub(r'(\|\s*)(\d+\.\d{2})(\s*\|\s*(?:Actief geselecteerd|Interessant, maar nog onvoldoende overtuiging|Niet aantrekkelijk genoeg deze week))', lambda m: repl(m) + m.group(3), text)
-
-
 def add_week_actions(text: str) -> str:
     old = """### Top 3 acties deze week
 1. Houd QQQ als sterkste kernpositie zolang het leiderschap intact blijft.
@@ -178,6 +175,27 @@ def add_week_actions(text: str) -> str:
 3. Vergelijk EEM direct met FXI en INDA als long-alternatieven en EUM als defensieve hedge.
 4. Bereid hedgeactivatie voor als marktbreedte verder verslechtert."""
     return text.replace(old, new)
+
+
+def section4_from_english(output_dir: Path, token: str) -> str:
+    en_report = output_dir / f'weekly_indices_review_{token}.md'
+    if not en_report.exists():
+        return ''
+    section = extract_section(en_report.read_text(encoding='utf-8'), 4)
+    if not section:
+        return ''
+    for src, dst in SECTION4_REPLACEMENTS:
+        section = section.replace(src, dst)
+    # Preserve English table geometry exactly: seven columns, no score labels,
+    # and a blank line between the table and the omitted-challenger paragraph.
+    section = re.sub(r'\n(Het bord blijft bewust compact\.)', r'\n\n\1', section)
+    section = re.sub(r'\n{3,}', '\n\n', section)
+    return section
+
+
+def sync_section4_with_english(text: str, output_dir: Path, token: str) -> str:
+    replacement = section4_from_english(output_dir, token)
+    return replace_section(text, 4, replacement) if replacement else text
 
 
 def add_universe_coverage(text: str, ranking: dict[str, Any]) -> str:
@@ -220,10 +238,9 @@ def render_v2(state: dict[str, Any], ranking: dict[str, Any], output_dir: Path, 
     fx_date = base.text((state.get('pricing_basis') or {}).get('fx_date'), close_date)
     text = base.render_native_nl(state, ranking, output_dir, token)
     text = replace_section(text, 1, section1_fixed(state, close_date, fx_date))
-    text = add_section4_omitted(text, ranking)
+    text = sync_section4_with_english(text, output_dir, token)
     text = add_week_actions(text)
     text = apply_client_language(text)
-    text = add_score_explanations(text)
     text = add_universe_coverage(text, ranking)
     text = add_reunderwriting_context(text)
     return strip_tv_markdown_links(text)
