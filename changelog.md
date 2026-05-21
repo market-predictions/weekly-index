@@ -15,6 +15,26 @@ Tiny typo-only edits do not need a full entry unless they affect output quality,
 
 ---
 
+## 2026-05-21 — Move Dutch ticker links to HTML delivery layer
+
+### What changed
+- Updated `send_index_report_bilingual.py` so Dutch ticker linking is applied to rendered HTML, not pre-written into the Dutch markdown source.
+- Added a final HTML ticker-link pass that converts visible ticker tokens and any literal markdown-style TradingView link text into proper HTML anchors.
+- Updated `.github/workflows/send-weekly-indices-report.yml` to stop running `tools/linkify_index_report_tickers.py` on the Dutch markdown before render.
+
+### Why
+The uploaded Dutch PDF showed raw markdown link syntax such as `[QQQ](https://...)` in custom HTML blocks. Weekly ETF avoids this class of bug by keeping markdown clean and handling rendering/linking in the delivery layer. The Weekly Index Dutch flow had drifted into pre-linkifying markdown before render, which broke custom renderer sections.
+
+### Affected files
+- `send_index_report_bilingual.py`
+- `.github/workflows/send-weekly-indices-report.yml`
+- `changelog.md`
+
+### Validation / evidence
+- Uploaded PDF `weekly_indices_review_nl_260520 (1).pdf` showed raw markdown links in the executive hero and body text. Next validation step is a fresh bilingual run and visual inspection that ticker text is clickable without exposing markdown syntax.
+
+---
+
 ## 2026-05-21 — Preserve required Dutch terminology after client polish
 
 ### What changed
