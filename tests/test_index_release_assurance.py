@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
@@ -81,11 +82,11 @@ class IndexReleaseAssuranceTests(unittest.TestCase):
                     "report_token": token,
                     "report_date": close_date,
                     "source_files": {
-                        "portfolio_state": str(portfolio),
-                        "scorecard": str(scorecard),
-                        "pricing_audit": str(pricing),
-                        "candidate_ranking": str(ranking),
-                        "discovery_coverage": str(coverage),
+                        "portfolio_state": "output_indices/index_portfolio_state.json",
+                        "scorecard": "output_indices/index_recommendation_scorecard.csv",
+                        "pricing_audit": f"output_indices/pricing/index_price_audit_{close_date}.json",
+                        "candidate_ranking": f"output_indices/index_candidate_ranking_{token}.json",
+                        "discovery_coverage": f"output_indices/index_discovery_coverage_{token}.json",
                     },
                 }
             ),
@@ -93,7 +94,6 @@ class IndexReleaseAssuranceTests(unittest.TestCase):
         )
         old_cwd = Path.cwd()
         try:
-            import os
             os.chdir(root)
             write_english_deferral_marker(en.relative_to(root), close_date=close_date, token=token)
         finally:
@@ -106,7 +106,6 @@ class IndexReleaseAssuranceTests(unittest.TestCase):
             en, nl, assurance = self._fixture(root)
             old_cwd = Path.cwd()
             try:
-                import os
                 os.chdir(root)
                 record = build_release_assurance(
                     source_sha="b" * 40,
@@ -133,7 +132,6 @@ class IndexReleaseAssuranceTests(unittest.TestCase):
             en, nl, assurance = self._fixture(root, dutch_value="99.999,99")
             old_cwd = Path.cwd()
             try:
-                import os
                 os.chdir(root)
                 record = build_release_assurance(
                     source_sha="b" * 40,
@@ -161,7 +159,6 @@ class IndexReleaseAssuranceTests(unittest.TestCase):
             pricing.write_text(json.dumps(payload), encoding="utf-8")
             old_cwd = Path.cwd()
             try:
-                import os
                 os.chdir(root)
                 record = build_release_assurance(
                     source_sha="b" * 40,
